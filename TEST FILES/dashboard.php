@@ -1,22 +1,23 @@
 <?php
 
-require_once 'config/database.php';
-require_once 'app/models/Employer.php';
+    set_include_path(__DIR__ . '/../');
+
+    require_once 'config/database.php';
+    require_once 'app/models/Employer.php';
+
+    if (isset($_COOKIE['employer_ID']) && !isset($_SESSION['employer_ID'])) {
+        $_SESSION['employer_ID'] = $_COOKIE['employer_ID'];
+    }
+
+    if (!isset($_SESSION['user_id'])) {
+        echo "User not logged in. Redirecting to login page...";
+        header('Location: login.php');
+        exit();
+    }
 
 
-if (isset($_COOKIE['employer_ID']) && !isset($_SESSION['employer_ID'])) {
-    $_SESSION['employer_ID'] = $_COOKIE['employer_ID'];
-}
-
-if (!isset($_SESSION['user_id'])) {
-    echo "User not logged in. Redirecting to login page...";
-    header('Location: login.php');
-    exit();
-}
-
-
-$emp = new Employer($connection);
-$emp->loadByID($_SESSION['user_id']);
+    $emp = new Employer($connection);
+    $emp->loadByID($_SESSION['user_id']);
 ?>
 
 <!DOCTYPE html>

@@ -4,6 +4,8 @@
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
 
+    set_include_path(__DIR__ . '/../');
+
     require_once 'app/models/Employer.php';
     require_once 'app/models/Position.php';
     require_once 'app/models/Vocations.php';
@@ -26,27 +28,27 @@
     echo "<br>";
 
 
-    $emp1 = new Employer($connection);
-    $dateFired = NULL; 
-    $emp1->addEmployer(
-        1,              // accessLevelID
-        "password789",  // Пароль
-        "Al5555ex",         // Имя
-        "Johnson",      // Фамилия
-        "Michael",      // Отчество
-        "1985-07-23",   // Дата рождения
-        "male",         // Пол
-        "CD4567890",    // Номер паспорта
-        "789 Pine Street", // Домашний адрес
-        "alex.joh44nson@example.com", // Электронная почта
-        "+14523456780",   // Номер телефона
-        "IT Department",// Кафедра/отделение
-        "2015-06-01",   // Дата приема на работу
-        "Active",       // Статус
-        $dateFired,     // Дата увольнения (если нет, то NULL)
-        "Contract #003",// Основание для приема
-        "Full-time"     // Тип занятости
-    );
+    // $emp1 = new Employer($connection);
+    // $dateFired = NULL; 
+    // $emp1->addEmployer(
+    //     1,              // accessLevelID
+    //     "password789",  // Пароль
+    //     "Al5555ex",         // Имя
+    //     "Johnson",      // Фамилия
+    //     "Michael",      // Отчество
+    //     "1985-07-23",   // Дата рождения
+    //     "male",         // Пол
+    //     "CD4567890",    // Номер паспорта
+    //     "789 Pine Street", // Домашний адрес
+    //     "alex.joh44nson@example.com", // Электронная почта
+    //     "+14523456780",   // Номер телефона
+    //     "IT Department",// Кафедра/отделение
+    //     "2015-06-01",   // Дата приема на работу
+    //     "Active",       // Статус
+    //     $dateFired,     // Дата увольнения (если нет, то NULL)
+    //     "Contract #003",// Основание для приема
+    //     "Full-time"     // Тип занятости
+    // );
 
 
     // $courseEng = new ContinuingEducation($connection);
