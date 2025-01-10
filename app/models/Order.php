@@ -12,6 +12,17 @@
             $this->connection = $connection;
         }
 
+        public function addOrder($date, $orderType, $employerID, $linkToFile){
+            $query = "INSERT INTO orders (date, orderType, employerID, linkToFile) VALUES (?, ?, ?, ?)";
+            $stmt = $this->connection->prepare($query);
+            $stmt->bind_param("ssis", $date, $orderType, $employerID, $linkToFile);
+            if ($stmt->execute()) {
+                echo "Order added successfully!";
+            } else {
+                echo "Error: " . $stmt->error;
+            }
+        }
+
         public function Show(){
             echo "orderID: " . $this->orderID . "<br>";
             echo "date: " . $this->date . "<br>";

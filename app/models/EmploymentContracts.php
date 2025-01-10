@@ -36,14 +36,40 @@
             echo "Term of Validity: " . $this->termOfValidity . "<br>";
         }
 
-        public function addContract(){
-            $sql = "INSERT INTO employmentcontracts (employerID, orderID, documentID, contractType, dateOfSigning, termOfValidity) VALUES ('$this->employerID', '$this->orderID', '$this->documentID', '$this->contractType', '$this->dateOfSigning', '$this->termOfValidity')";
-            if($this->connection->query($sql) === TRUE){
-                echo "New record created successfully";
-            } else {
-                echo "Error: " . $sql . "<br>" . $this->connection->error;
+        public function addContract($employerID, $orderID, $documentID, $contractType, $dateOfSigning, $termOfValidity) {
+            $this->employerID = $employerID;
+            $this->orderID = $orderID;
+            $this->documentID = $documentID;
+            $this->contractType = $contractType;
+            $this->dateOfSigning = $dateOfSigning;
+            $this->termOfValidity = $termOfValidity ?: null; // Установка NULL, если не указано
+        
+            $query = "INSERT INTO EmploymentContracts (employerID, orderID, documentID, contractType, dateOfSigning, termOfValidity) VALUES (?, ?, ?, ?, ?, ?)";
+            $stmt = $this->connection->prepare($query);
+        
+            if ($stmt === false) {
+                die("Prepare failed: " . $this->connection->error);
             }
+        
+            $stmt->bind_param(
+                "iiisss",
+                $this->employerID,
+                $this->orderID,
+                $this->documentID,
+                $this->contractType,
+                $this->dateOfSigning,
+                $this->termOfValidity
+            );
+        
+            if ($stmt->execute()) {
+                echo "Contract added successfully!";
+            } else {
+                echo "Error: " . $stmt->error;
+            }
+        
+            $stmt->close();
         }
+        
 
         public function updateContract(){
             $sql = "UPDATE employmentcontracts SET employerID = '$this->employerID', orderID = '$this->orderID', documentID = '$this->documentID', contractType = '$this->contractType', dateOfSigning = '$this->dateOfSigning', termOfValidity = '$this->termOfValidity' WHERE employerID = $this->employerID";

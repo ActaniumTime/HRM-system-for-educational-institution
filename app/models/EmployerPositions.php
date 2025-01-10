@@ -5,6 +5,19 @@
         private $employerID;
         private $positionID;
 
+        public function addEmployerPosition($employerID, $positionID){
+            $this->employerID = $employerID;
+            $this->positionID = $positionID;
+            $quary = "INSERT INTO employerpositions (employerID, positionID) VALUES ('$this->employerID', '$this->positionID')";
+            $stmt = $this->connection->prepare($quary);
+            if ($stmt->execute()) {
+                echo "Employers positions added successfully!";
+            } else {
+                echo "Error: " . $stmt->error;
+            }
+        }
+
+
         public function __construct($connection){
             $this->connection = $connection;
         }

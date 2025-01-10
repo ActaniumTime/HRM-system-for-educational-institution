@@ -24,32 +24,36 @@
             echo "Access Level Name: " . $this->accessLevelName . "<br>";
         }
 
-        public function addLevel(){
-            $sql = "INSERT INTO accesslevel (accessLevelName) VALUES ('$this->accessLevelName')";
-            if($this->connection->query($sql) === TRUE){
-                echo "New record created successfully";
+        public function addNewLevel($newName){
+            $query = "INSERT INTO accesslevel (accessLevelName) VALUES (?)";
+            $stmt = $this->connection->prepare($query);
+            $stmt->bind_param("s", $newName);
+            if ($stmt->execute()) {
+                echo "Access level added successfully!";
             } else {
-                echo "Error: " . $sql . "<br>" . $this->connection->error;
+                echo "Error: " . $stmt->error;
             }
         }
 
-        public function updateLevel(){
-            $sql = "UPDATE accesslevel SET accessLevelName = '$this->accessLevelName' WHERE accessLevelID = $this->accessLevelID";
-            if($this->connection->query($sql) === TRUE){
-                echo "Record updated successfully";
-            } else {
-                echo "Error: " . $sql . "<br>" . $this->connection->error;
-            }
-        }
+        //переписать нахуй
 
-        public function deleteLevel(){
-            $sql = "DELETE FROM accesslevel WHERE accessLevelID = $this->accessLevelID";
-            if($this->connection->query($sql) === TRUE){
-                echo "Record deleted successfully";
-            } else {
-                echo "Error: " . $sql . "<br>" . $this->connection->error;
-            }
-        }
+        // public function updateLevel(){
+        //     $sql = "UPDATE accesslevel SET accessLevelName = '$this->accessLevelName' WHERE accessLevelID = $this->accessLevelID";
+        //     if($this->connection->query($sql) === TRUE){
+        //         echo "Record updated successfully";
+        //     } else {
+        //         echo "Error: " . $sql . "<br>" . $this->connection->error;
+        //     }
+        // }
+
+        // public function deleteLevel(){
+        //     $sql = "DELETE FROM accesslevel WHERE accessLevelID = $this->accessLevelID";
+        //     if($this->connection->query($sql) === TRUE){
+        //         echo "Record deleted successfully";
+        //     } else {
+        //         echo "Error: " . $sql . "<br>" . $this->connection->error;
+        //     }
+        // }
 
         
 

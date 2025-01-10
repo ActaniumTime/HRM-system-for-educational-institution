@@ -66,65 +66,53 @@ class Employer {
         }
     }
 
-    // Метод для создания нового сотрудника
-    public function create() {
-        $query = "INSERT INTO Employers 
-                  (accessLevelID, password, name, surname, fathername, birthday, gender, passportID, homeAddress, email, phoneNumber, department, dateAccepted, currentStatus, dateFired, admissionBasis, employmentType)
-                  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
+    public function verify($email, $password) {
+        $query = "SELECT * FROM Employers WHERE email = ? LIMIT 1";
         $stmt = $this->connection->prepare($query);
-        $stmt->bind_param("issssssssssssssi", 
-            $this->accessLevelID, 
-            $this->password, 
-            $this->name, 
-            $this->surname, 
-            $this->fathername, 
-            $this->birthday, 
-            $this->gender, 
-            $this->passportID, 
-            $this->homeAddress, 
-            $this->email, 
-            $this->phoneNumber, 
-            $this->department, 
-            $this->dateAccepted, 
-            $this->currentStatus, 
-            $this->dateFired, 
-            $this->admissionBasis, 
-            $this->employmentType
-        );
-        return $stmt->execute();
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            $data = $result->fetch_assoc();
+            if (password_verify($password, $data['password'])) {
+
+                $_SESSION['employer_ID'] = $data['employerID'];
+                $token = bin2hex(random_bytes(32));
+
+                $uquery = "UPDATE Employers SET token = ? WHERE email = ?";
+                $ustmt = $this->connection->prepare($uquery);
+                $ustmt->bind_param("ss", $token, $email);
+                $ustmt->execute();
+
+                setcookie("token", $token, time() + 60 * 60 * 24 * 30, "/");
+
+                $this->employerID = $data['employerID'];
+                $this->accessLevelID = $data['accessLevelID'];
+                $this->password = $data['password'];
+                $this->name = $data['name'];
+                $this->surname = $data['surname'];
+                $this->fathername = $data['fathername'];
+                $this->birthday = $data['birthday'];
+                $this->gender = $data['gender'];
+                $this->passportID = $data['passportID'];
+                $this->homeAddress = $data['homeAddress'];
+                $this->email = $data['email'];
+                $this->phoneNumber = $data['phoneNumber'];
+                $this->department = $data['department'];
+                $this->dateAccepted = $data['dateAccepted'];
+                $this->currentStatus = $data['currentStatus'];
+                $this->dateFired = $data['dateFired'];
+                $this->admissionBasis = $data['admissionBasis'];
+                $this->employmentType = $data['employmentType'];
+                
+                return true;
+            }
+        }
+        return false;
     }
 
-    // Метод для обновления данных о сотруднике
-    public function update() {
-        $query = "UPDATE Employers SET 
-                  accessLevelID = ?, password = ?, name = ?, surname = ?, fathername = ?, birthday = ?, gender = ?, passportID = ?, 
-                  homeAddress = ?, email = ?, phoneNumber = ?, department = ?, dateAccepted = ?, currentStatus = ?, dateFired = ?, admissionBasis = ?, employmentType = ? 
-                  WHERE employerID = ?";
-
-        $stmt = $this->connection->prepare($query);
-        $stmt->bind_param("issssssssssssssi", 
-            $this->accessLevelID, 
-            $this->password, 
-            $this->name, 
-            $this->surname, 
-            $this->fathername, 
-            $this->birthday, 
-            $this->gender, 
-            $this->passportID, 
-            $this->homeAddress, 
-            $this->email, 
-            $this->phoneNumber, 
-            $this->department, 
-            $this->dateAccepted, 
-            $this->currentStatus, 
-            $this->dateFired, 
-            $this->admissionBasis, 
-            $this->employmentType,
-            $this->employerID
-        );
-        return $stmt->execute();
-    }
 
     // Метод для удаления сотрудника
     public function delete() {
@@ -166,6 +154,83 @@ class Employer {
         return $employees;
     }
 
+    public function addEmployer(
+        $accessLevelID,
+        $password,
+        $name,
+        $surname,
+        $fathername,
+        $birthday,
+        $gender,
+        $passportID,
+        $homeAddress,
+        $email,
+        $phoneNumber,
+        $department,
+        $dateAccepted,
+        $currentStatus,
+        $dateFired,
+        $admissionBasis,
+        $employmentType
+    )
+     {
+        // Hash the password before storing it in the database
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+    
+        $sql = "INSERT INTO employers (
+                    accessLevelID,
+                    password,
+                    name,
+                    surname,
+                    fathername,
+                    birthday,
+                    gender,
+                    passportID,
+                    homeAddress,
+                    email,
+                    phoneNumber,
+                    department,
+                    dateAccepted,
+                    currentStatus,
+                    dateFired,
+                    admissionBasis,
+                    employmentType
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    
+        $stmt = $this->connection->prepare($sql);
+    
+        if (!$stmt) {
+            throw new Exception("Failed to prepare statement: " . $this->connection->error);
+        }
+    
+        $stmt->bind_param(
+            "issssssssssssssss",
+            $accessLevelID,
+            $hashedPassword,
+            $name,
+            $surname,
+            $fathername,
+            $birthday,
+            $gender,
+            $passportID,
+            $homeAddress,
+            $email,
+            $phoneNumber,
+            $department,
+            $dateAccepted,
+            $currentStatus,
+            $dateFired,
+            $admissionBasis,
+            $employmentType
+        );
+        if ($stmt->execute()) {
+            echo "Employer added successfully!";
+        } else {
+            echo "Error: " . $stmt->error;
+        }
+        
+        $stmt->close();
+    }
     //геттеры и сеттеры
     public function getEmployerID() { return $this->employerID; }
     public function setEmployerID($employerID) { $this->employerID = $employerID; }

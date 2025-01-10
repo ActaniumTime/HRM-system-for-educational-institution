@@ -44,26 +44,41 @@
             }
         }
 
-        public function addNewVocation(){
-            $query = "INSERT INTO Vocations (employerID, vocationType, startingDate, endingDate, currentStatus, orderID) VALUES (?, ?, ?, ?, ?, ?)";
-            $stmt = $this->connection->prepare($query);
-            $stmt->bind_param("issssi", $this->employerID, $this->vocationType, $this->startingDate, $this->endingDate, $this->currentStatus, $this->orderID);
-            $stmt->execute();
-        }
 
-        public function updateVocation(){
-            $query = "UPDATE Vocations SET employerID = ?, vocationType = ?, startingDate = ?, endingDate = ?, currentStatus = ?, orderID = ? WHERE vocationID = ?";
+        public function addVocation($employerID, $vocationType, $startingDate, $endingDate, $currentStatus, $orderID) {
+            $this->employerID = $employerID;
+            $this->vocationType = $vocationType;
+            $this->startingDate = $startingDate;
+            $this->endingDate = $endingDate;
+            $this->currentStatus = $currentStatus;
+            $this->orderID = $orderID ?: null; // Если $orderID не задан, передаём NULL
+        
+            $query = "INSERT INTO Vocation (employerID, vocationType, startingDate, endingDate, currentStatus, orderID) VALUES (?, ?, ?, ?, ?, ?)";
             $stmt = $this->connection->prepare($query);
-            $stmt->bind_param("issssii", $this->employerID, $this->vocationType, $this->startingDate, $this->endingDate, $this->currentStatus, $this->orderID, $this->vocationID);
-            $stmt->execute();
+        
+            if ($stmt === false) {
+                die("Prepare failed: " . $this->connection->error);
+            }
+        
+            $stmt->bind_param(
+                "issssi", 
+                $this->employerID, 
+                $this->vocationType, 
+                $this->startingDate, 
+                $this->endingDate, 
+                $this->currentStatus, 
+                $this->orderID
+            );
+        
+            if ($stmt->execute()) {
+                echo "Vocation added successfully!";
+            } else {
+                echo "Error: " . $stmt->error;
+            }
+        
+            $stmt->close();
         }
-
-        public function deleteVocation(){
-            $query = "DELETE FROM Vocations WHERE vocationID = ?";
-            $stmt = $this->connection->prepare($query);
-            $stmt->bind_param("i", $this->vocationID);
-            $stmt->execute();
-        }
+        
 
         public function showAllVocations(){
             $query = "SELECT * FROM Vocations";

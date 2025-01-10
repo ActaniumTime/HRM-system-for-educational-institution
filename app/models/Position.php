@@ -37,25 +37,20 @@
             }
         }
 
-        public function addNewPosition(){
+        public function addNewPosition($positionName, $positionLevel, $positionRequirements, $salary){
+            $this->positionName = $positionName;
+            $this->positionLevel = $positionLevel;
+            $this->positionRequirements = $positionRequirements;
+            $this->salary = $salary;
+
             $query = "INSERT INTO Positions (positionName, positionLevel, positionRequirements, salary) VALUES (?, ?, ?, ?)";
             $stmt = $this->connection->prepare($query);
-            $stmt->bind_param("sisi", $this->positionName, $this->positionLevel, $this->positionRequirements, $this->salary);
-            $stmt->execute();
-        }
-
-        public function updatePosition(){
-            $query = "UPDATE Positions SET positionName = ?, positionLevel = ?, positionRequirements = ?, salary = ? WHERE positionID = ?";
-            $stmt = $this->connection->prepare($query);
-            $stmt->bind_param("sisii", $this->positionName, $this->positionLevel, $this->positionRequirements, $this->salary, $this->positionID);
-            $stmt->execute();
-        }
-
-        public function deletePosition(){
-            $query = "DELETE FROM Positions WHERE positionID = ?";
-            $stmt = $this->connection->prepare($query);
-            $stmt->bind_param("i", $this->positionID);
-            $stmt->execute();
+            $stmt->bind_param("sssi", $this->positionName, $this->positionLevel, $this->positionRequirements, $this->salary);
+            if ($stmt->execute()) {
+                echo "Position added successfully!";
+            } else {
+                echo "Error: " . $stmt->error;
+            }
         }
 
         public function showAllPositions(){

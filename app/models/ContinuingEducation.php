@@ -5,10 +5,10 @@
         private $courseID;
         private $employerID;
         private $courseName;
-        private $orgaminzationName;
+        private $organizationName;
         private $startingDate;
         private $endingDate;
-        private $currnetStatus;
+        private $currentStatus;
         private $documentID;
         private $hours;
         private $credits;
@@ -21,10 +21,10 @@
             echo "courseID: " . $this->courseID . "<br>";
             echo "employerID: " . $this->employerID . "<br>";
             echo "courseName: " . $this->courseName . "<br>";
-            echo "orgaminzationName: " . $this->orgaminzationName . "<br>";
+            echo "organizationName: " . $this->organizationName . "<br>";
             echo "startingDate: " . $this->startingDate . "<br>";
             echo "endingDate: " . $this->endingDate . "<br>";
-            echo "currnetStatus: " . $this->currnetStatus . "<br>";
+            echo "currentStatus: " . $this->currentStatus . "<br>";
             echo "documentID: " . $this->documentID . "<br>";
             echo "hours: " . $this->hours . "<br>";
             echo "credits: " . $this->credits . "<br>";
@@ -42,27 +42,49 @@
                 $this->courseID = $data['courseID'];
                 $this->employerID = $data['employerID'];
                 $this->courseName = $data['courseName'];
-                $this->orgaminzationName = $data['orgaminzationName'];
+                $this->organizationName = $data['organizationName'];
                 $this->startingDate = $data['startingDate'];
                 $this->endingDate = $data['endingDate'];
-                $this->currnetStatus = $data['currnetStatus'];
+                $this->currentStatus = $data['currentStatus'];
                 $this->documentID = $data['documentID'];
                 $this->hours = $data['hours'];
                 $this->credits = $data['credits'];
             }
         }
 
-        public function addNewCourse(){
-            $query = "INSERT INTO ContinuingEducation (employerID, courseName, orgaminzationName, startingDate, endingDate, currnetStatus, documentID, hours, credits) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+        public function addNewCourse($employerID, $courseName, $organizationName, $startingDate, $endingDate, $currentStatus, $documentID, $hours, $credits) {
+            $this->employerID = $employerID;
+            $this->courseName = $courseName;
+            $this->organizationName = $organizationName;
+            $this->startingDate = $startingDate;
+            $this->endingDate = $endingDate;
+            $this->currentStatus = $currentStatus;
+            $this->documentID = $documentID;
+            $this->hours = $hours;
+            $this->credits = $credits;
+        
+            $query = "INSERT INTO ContinuingEducation (employerID, courseName, organizationName, startingDate, endingDate, currentStatus, documentID, hours, credits) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
             $stmt = $this->connection->prepare($query);
-            $stmt->bind_param("isssssiii", $this->employerID, $this->courseName, $this->orgaminzationName, $this->startingDate, $this->endingDate, $this->currnetStatus, $this->documentID, $this->hours, $this->credits);
-            $stmt->execute();
+        
+            if ($stmt === false) {
+                die("Prepare failed: " . $this->connection->error);
+            }
+        
+            $stmt->bind_param("isssssiii", $this->employerID, $this->courseName, $this->organizationName, $this->startingDate, $this->endingDate, $this->currentStatus, $this->documentID, $this->hours, $this->credits);
+        
+            if ($stmt->execute()) {
+                echo "Course added successfully!";
+            } else {
+                echo "Error: " . $stmt->error;
+            }
         }
+        
 
         public function updateCourse(){
-            $query = "UPDATE ContinuingEducation SET employerID = ?, courseName = ?, orgaminzationName = ?, startingDate = ?, endingDate = ?, currnetStatus = ?, documentID = ?, hours = ?, credits = ? WHERE courseID = ?";
+            $query = "UPDATE ContinuingEducation SET employerID = ?, courseName = ?, organizationName = ?, startingDate = ?, endingDate = ?, currentStatus = ?, documentID = ?, hours = ?, credits = ? WHERE courseID = ?";
             $stmt = $this->connection->prepare($query);
-            $stmt->bind_param("isssssiiii", $this->employerID, $this->courseName, $this->orgaminzationName, $this->startingDate, $this->endingDate, $this->currnetStatus, $this->documentID, $this->hours, $this->credits, $this->courseID);
+            $stmt->bind_param("isssssiiii", $this->employerID, $this->courseName, $this->organizationName, $this->startingDate, $this->endingDate, $this->currentStatus, $this->documentID, $this->hours, $this->credits, $this->courseID);
             $stmt->execute();
         }
 
