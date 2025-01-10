@@ -19,7 +19,7 @@
 
     require_once 'config/database.php'; 
 
-    echo " <br><br>";    
+    echo "<br><br>";    
 
     $emp = new Employer($connection);
     $emp->loadByID(1);
