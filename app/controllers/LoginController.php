@@ -15,8 +15,7 @@ class LoginController {
     public function __construct($connection) {
         $this->connection = $connection;
     }
-    
-    // Обработка POST-запроса для входа пользователя
+
     public function login() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $email = $_POST['email'];
@@ -28,12 +27,10 @@ class LoginController {
                 header('Location: ./app/views/dashboard/dashboard.php');
                 exit;
             } else {
-                // Если верификация не удалась, передаем ошибку в представление
                 $error = "Invalid email or password.";
                 require_once 'app/views/auth/login.php';
             }
         } else {
-            // Если это не POST-запрос, просто отображаем форму входа
             require_once 'app/views/auth/login.php';
         }
     }
