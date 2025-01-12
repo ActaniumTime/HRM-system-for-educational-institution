@@ -5,6 +5,7 @@
 
     require_once __DIR__ . '/../../../config/database.php';
     require_once __DIR__ . '/../../../app/models/Employer.php';
+    
 
     if (isset($_COOKIE['employer_ID']) && !isset($_SESSION['employer_ID'])) {
         $_SESSION['employer_ID'] = $_COOKIE['employer_ID'];
@@ -17,6 +18,10 @@
     }
 
     require_once __DIR__ . '/../../../app/models/UserVerify.php';
+
+    $pic = $EmPhoto->getAvatarPath($_SESSION['employer_ID']);
+
+    echo "<br>" . $pic;
 ?>
 
 <!DOCTYPE html>
@@ -35,7 +40,10 @@
             <div class="d-flex justify-content-between align-items-center">
 
                 <div class="mx-auto text-center">
-                    <img src="path/to/company_logo.png" alt="Company Logo" class="img-fluid" style="max-height: 60px;">
+                    <img src="../../../Files/photo/<?php 
+                        echo $pic;
+                    ?>" 
+                    alt="Company Logo" class="img-fluid" style="max-height: 60px;">
                 </div>
 
                 <div class="text-end">
@@ -50,7 +58,7 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-12 text-center">
-                <img src="" alt="User Photo" class="rounded-circle" width="150" height="150">
+                <img src="../../../Files/photo/<?php echo $pic; ?>" alt="User Photo" class="rounded-circle" width="150" height="150">
                 <h2>Welcome, <?php echo $emp->getName(); ?></h2>
                 <p>This is a protected page.</p>
                 <a href="../../../TEST_FILES/logout.php" class="btn btn-danger">Logout</a>
