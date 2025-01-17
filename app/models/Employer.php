@@ -63,6 +63,7 @@ class Employer {
             $this->dateFired = $data['dateFired'];
             $this->admissionBasis = $data['admissionBasis'];
             $this->employmentType = $data['employmentType'];
+            
         }
     }
 
@@ -111,15 +112,6 @@ class Employer {
             }
         }
         return false;
-    }
-
-
-    // Метод для удаления сотрудника
-    public function delete() {
-        $query = "DELETE FROM Employers WHERE employerID = ?";
-        $stmt = $this->connection->prepare($query);
-        $stmt->bind_param("i", $this->employerID);
-        return $stmt->execute();
     }
 
     // Метод для получения всех сотрудников
@@ -231,6 +223,163 @@ class Employer {
         
         $stmt->close();
     }
+
+    // public function updateData($EmpList, $index) {
+    //     if (isset($EmpList[$index])) {
+    //         $data = $EmpList[$index];
+    //         $this->employerID = $data['employerID'];
+    //         $this->accessLevelID = $data['accessLevelID'];
+    //         $this->password = $data['password'];
+    //         $this->name = $data['name'];
+    //         $this->surname = $data['surname'];
+    //         $this->fathername = $data['fathername'];
+    //         $this->birthday = $data['birthday'];
+    //         $this->gender = $data['gender'];
+    //         $this->passportID = $data['passportID'];
+    //         $this->homeAddress = $data['homeAddress'];
+    //         $this->email = $data['email'];
+    //         $this->phoneNumber = $data['phoneNumber'];
+    //         $this->department = $data['department'];
+    //         $this->dateAccepted = $data['dateAccepted'];
+    //         $this->currentStatus = $data['currentStatus'];
+    //         $this->dateFired = $data['dateFired'];
+    //         $this->admissionBasis = $data['admissionBasis'];
+    //         $this->employmentType = $data['employmentType'];
+
+    //     } else {
+    //         throw new Exception("Index not found in the provided list.");
+    //     }
+    // }
+
+    public function updateEmployer($employer) {
+        $query = "UPDATE Employers SET 
+                    accessLevelID = ?, 
+                    name = ?, 
+                    surname = ?, 
+                    fathername = ?, 
+                    birthday = ?, 
+                    gender = ?, 
+                    passportID = ?, 
+                    homeAddress = ?, 
+                    email = ?, 
+                    phoneNumber = ?, 
+                    department = ?, 
+                    dateAccepted = ?, 
+                    currentStatus = ?, 
+                    dateFired = ?, 
+                    admissionBasis = ?, 
+                    employmentType = ?
+                  WHERE employerID = ?";
+    
+        $stmt = $this->connection->prepare($query);
+    
+        if (!$stmt) {
+            throw new Exception("Failed to prepare statement: " . $this->connection->error);
+        }
+    
+        $stmt->bind_param(
+            "isssssssssssssssi",
+            $employer->getAccessLevelID(),
+            $employer->getName(),
+            $employer->getSurname(),
+            $employer->getFathername(),
+            $employer->getBirthday(),
+            $employer->getGender(),
+            $employer->getPassportID(),
+            $employer->getHomeAddress(),
+            $employer->getEmail(),
+            $employer->getPhoneNumber(),
+            $employer->getDepartment(),
+            $employer->getDateAccepted(),
+            $employer->getCurrentStatus(),
+            $employer->getDateFired(),
+            $employer->getAdmissionBasis(),
+            $employer->getEmploymentType(),
+            $employer->getEmployerID() // Primary key to identify the record
+        );
+    
+        if ($stmt->execute()) {
+            echo "Employer updated successfully!";
+        } else {
+            echo "Error updating employer: " . $stmt->error;
+        }
+    
+        $stmt->close();
+    }
+    
+    public function jsonToObj($json_obj){
+        $this->employerID = $json_obj['employerID'];
+        $this->accessLevelID = $json_obj['accessLevelID'];
+        $this->name = $json_obj['name'];
+        $this->surname = $json_obj['surname'];
+        $this->fathername = $json_obj['fathername'];
+        $this->birthday = $json_obj['birthday'];
+        $this->gender = $json_obj['gender'];
+        $this->passportID = $json_obj['passportID'];
+        $this->homeAddress = $json_obj['homeAddress'];
+        $this->email = $json_obj['email'];
+        $this->phoneNumber = $json_obj['phoneNumber'];
+        $this->department = $json_obj['department'];
+        $this->dateAccepted = $json_obj['dateAccepted'];
+        $this->currentStatus = $json_obj['currentStatus'];
+        $this->dateFired = $json_obj['dateFired'];
+        $this->admissionBasis = $json_obj['admissionBasis'];
+        $this->employmentType = $json_obj['employmentType'];
+    }
+
+    public function updateChangedFields($data) {
+        // Prepare fields for update
+        $fields = [];
+        $values = [];
+    
+        // Check each field for changes
+        foreach ($data as $key => $value) {
+            if (property_exists($this, $key) && $this->$key !== $value) {
+                $fields[] = "$key = ?";
+                // If the value is empty and it's a date, set it to NULL
+                if ($key === 'dateFired' && empty($value)) {
+                    $values[] = null; // Set dateFired to NULL if empty
+                } else {
+                    $values[] = $value;
+                }
+            }
+        }
+    
+        // If no fields were changed, return early
+        if (empty($fields)) {
+            echo "No fields were changed.";
+            return;
+        }
+    
+        // Add the ID for WHERE clause
+        $values[] = $this->employerID;
+    
+        // Formulate the SQL query
+        $query = "UPDATE employers SET " . implode(", ", $fields) . " WHERE employerID = ?";
+    
+        // Prepare and execute the query
+        $stmt = $this->connection->prepare($query);
+        if (!$stmt) {
+            throw new Exception("Failed to prepare statement: " . $this->connection->error);
+        }
+    
+        // Create type string for bind_param
+        $types = str_repeat("s", count($values) - 1) . "i";
+    
+        // Bind parameters
+        $stmt->bind_param($types, ...$values);
+    
+        if ($stmt->execute()) {
+            echo "Fields updated successfully!";
+        } else {
+            echo "Error updating fields: " . $stmt->error;
+        }
+    
+        $stmt->close();
+    }
+    
+
+
     //геттеры и сеттеры
     public function getEmployerID() { return $this->employerID; }
     public function setEmployerID($employerID) { $this->employerID = $employerID; }

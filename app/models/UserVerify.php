@@ -8,6 +8,8 @@
     require_once __DIR__ . '/../../app/models/EmPhoto.php';
     require_once __DIR__ . '/../../app/models/Employer.php';
 
+    //Current user and his session
+
     if (isset($_COOKIE['employer_ID']) && !isset($_SESSION['employer_ID'])) {
         $_SESSION['employer_ID'] = $_COOKIE['employer_ID'];
     }
@@ -25,5 +27,10 @@
     $pic = $EmPhoto->getAvatarPath($_SESSION['employer_ID']);
     
     echo "current ID employer : " . $_SESSION['employer_ID'];
+
+    //For working with employers
+
+    $TargetEmp = new Employer($connection);
+    
 
 ?>
