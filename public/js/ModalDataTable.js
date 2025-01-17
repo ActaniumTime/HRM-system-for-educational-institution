@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     editButtons.forEach(button => {
         button.addEventListener('click', () => {
+            const employerAvatar = button.getAttribute('data-employer-avatar');
             const employerID = button.getAttribute('data-employer-id');
             const accessLevelID = button.getAttribute('data-access-level-id');
             const name = button.getAttribute('data-name');
@@ -22,6 +23,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const admissionBasis = button.getAttribute('data-admission-basis');
             const employmentType = button.getAttribute('data-employment-type');
             
+            const photoElement = document.getElementById('employerAvatar');
+            photoElement.src = employerAvatar;
+            
+            document.getElementById('employerAvatar').value = employerAvatar;
             document.getElementById('employerID').value = employerID;
             document.getElementById('accessLevelID').value = accessLevelID;
             document.getElementById('name').value = name;
@@ -41,4 +46,5 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('employmentType').value = employmentType;
         });
     });
+    
 });

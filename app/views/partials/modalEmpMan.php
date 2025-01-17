@@ -7,7 +7,16 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="employerForm">
+                <form id="employerForm"> 
+
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12 text-center">
+                                    <img id="employerAvatar" src="" alt="User Photo" class="rounded-circle" width="150" height="150" style="border: 3px solid #5a5af7; margin-bottom: 15px;">
+                                </div>
+                            </div>
+                        </div>
+  
                     <div class="row">
                         <div class="mb-3 col-md-6">
                             <label for="employerID" class="form-label">Employer ID</label>
