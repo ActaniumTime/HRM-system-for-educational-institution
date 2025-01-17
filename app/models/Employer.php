@@ -370,9 +370,11 @@ class Employer {
         $stmt->bind_param($types, ...$values);
     
         if ($stmt->execute()) {
-            echo "Fields updated successfully!";
+            echo json_encode(['success' => true]);
+            return true;
         } else {
-            echo "Error updating fields: " . $stmt->error;
+            echo "Error updating fields:  <br>" . $stmt->error;
+            return false;
         }
     
         $stmt->close();

@@ -27,7 +27,13 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .then(response => response.text())
         .then(result => {
-            console.log(result);
+            console.log(result.success);
+            // if (result.success === "true" || result.success === true) {
+            //     console.log("true");
+            // } else 
+            // {
+            //     console.log("false JS FILE");
+            // }
         });
 
         console.log(JSON.stringify(jsonData));

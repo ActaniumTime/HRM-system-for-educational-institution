@@ -12,7 +12,12 @@
         // echo json_encode($json, true);
         $tempEmp2 = new Employer($connection);
         $tempEmp2->loadByID($data['employerID']);
-        $tempEmp2->updateChangedFields($data);
+        if($tempEmp2->updateChangedFields($data) ){
+            echo json_encode(['success' => true]);
+        } else {
+            echo json_encode(['success' => false]);
+        }
+
     }
     
 ?>
