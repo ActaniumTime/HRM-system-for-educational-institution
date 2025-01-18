@@ -26,7 +26,7 @@
     $EmPhoto = new EmPhoto($connection);
     $pic = $EmPhoto->getAvatarPath($_SESSION['employer_ID']);
     
-    echo "current ID employer : " . $_SESSION['employer_ID'];
+    //echo "current ID employer : " . $_SESSION['employer_ID'];
 
     //For working with employers
 

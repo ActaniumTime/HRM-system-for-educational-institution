@@ -347,7 +347,7 @@ class Employer {
     
         // If no fields were changed, return early
         if (empty($fields)) {
-            echo "No fields were changed.";
+            echo json_encode(["status" => "error", "message" => "No fields were changed."]);
             return;
         }
     
@@ -357,25 +357,33 @@ class Employer {
         // Formulate the SQL query
         $query = "UPDATE employers SET " . implode(", ", $fields) . " WHERE employerID = ?";
     
-        // Prepare and execute the query
+        // Prepare the query
         $stmt = $this->connection->prepare($query);
         if (!$stmt) {
-            throw new Exception("Failed to prepare statement: " . $this->connection->error);
+            echo json_encode(["status" => "error", "message" => "Failed to prepare statement: " . $this->connection->error]);
+            return;
         }
     
         // Create type string for bind_param
         $types = str_repeat("s", count($values) - 1) . "i";
     
         // Bind parameters
-        $stmt->bind_param($types, ...$values);
-    
-        if ($stmt->execute()) {
-            echo "Fields updated successfully!";
-        } else {
-            echo "Error updating fields: " . $stmt->error;
+        if (!$stmt->bind_param($types, ...$values)) {
+            echo json_encode(["status" => "error", "message" => "Failed to bind parameters: " . $stmt->error]);
+            return;
         }
     
+        // Execute the query
+        if (!$stmt->execute()) {
+            echo json_encode(["status" => "error", "message" => "Failed to execute query: " . $stmt->error]);
+            return;
+        }
+    
+        // Close the statement
         $stmt->close();
+    
+        // Return success message
+        echo json_encode(["status" => "success", "message" => "Fields updated successfully."]);
     }
     
 

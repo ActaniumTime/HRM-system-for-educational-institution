@@ -1,15 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
     const updatedForm = document.getElementById('employerForm');
     const downloadJsonButton = document.getElementById('downloadJson');
-    const tableContainer = document.getElementById('tableContainer'); // Контейнер для таблицы
+    const tableBody = document.querySelector('table tbody');
 
-    let jsonData = {}; 
+    let jsonData = {};
 
     updatedForm.addEventListener('submit', (e) => {
         e.preventDefault();
 
         const formData = new FormData(updatedForm);
-        jsonData = {}; 
+        jsonData = {};
 
         formData.forEach((value, key) => {
             if (key === "dateFired" && value === "") {
@@ -26,14 +26,16 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             body: JSON.stringify(jsonData)
         })
-        .then(response => response.text())
+        .then(response => response.json())
         .then(result => {
             console.log(result);
-
-            // Обновляем таблицу
-            refreshTable();
+            updateTable(); // Обновляем таблицу после успешного обновления данных
         })
-        .catch(error => console.error('Error:', error));
+        .catch(error => {
+            console.error('Error:', error);
+        });
+
+        alert('Data updated. Table will refresh.');
     });
 
     downloadJsonButton.addEventListener('click', () => {
@@ -53,16 +55,80 @@ document.addEventListener('DOMContentLoaded', () => {
         URL.revokeObjectURL(downloadLink.href);
     });
 
-    // Функция для обновления таблицы
-    function refreshTable() {
-        fetch('../../../app/views/partials/tableEmp.php') // Путь к вашему файлу с таблицей
-            .then(response => response.text())
-            .then(html => {
-                tableContainer.innerHTML = html; // Обновляем содержимое таблицы
+    function updateTable() {
+        const url = '../../models/get_table.php';
+    
+        // Отправляем GET-запрос
+        fetch(url)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
             })
-            .catch(error => console.error('Error updating table:', error));
+            .then(data => {
+                console.log('Ответ от сервера:', data);
+                const tbody = document.querySelector('tbody'); // Находим tbody, где выводятся данные
+                tbody.innerHTML = ''; // Очищаем текущий контент таблицы
+    
+                // Заполняем таблицу новыми данными
+                data.forEach((employer, index) => {
+                    const row = document.createElement('tr');
+                    
+                    row.innerHTML = `
+                        <th scope="row">${index + 1}</th>
+                        <td><img src="../../../Files/photos/${employer.photoPath}" alt="User Photo" class="rounded-circle" width="50" height="50" id="employerAvatar"></td>
+                        <td>${employer.employerID}</td>
+                        <td>${employer.accessLevelID}</td>
+                        <td>${employer.name}</td>
+                        <td>${employer.surname}</td>
+                        <td>${employer.fathername}</td>
+                        <td>${employer.birthday}</td>
+                        <td>${employer.gender}</td>
+                        <td>${employer.passportID}</td>
+                        <td>${employer.homeAddress}</td>
+                        <td>${employer.email}</td>
+                        <td>${employer.phoneNumber}</td>
+                        <td>${employer.department}</td>
+                        <td>${employer.dateAccepted}</td>
+                        <td>${employer.currentStatus}</td>
+                        <td>${employer.dateFired}</td>
+                        <td>${employer.admissionBasis}</td>
+                        <td>${employer.employmentType}</td>
+                        <td>
+                            <button type="button" class="btn btn-primary editEmployerBtn" 
+                                data-employer-avatar="../../../Files/photos/${employer.photoPath}"
+                                data-employer-id="${employer.employerID}"
+                                data-access-level-id="${employer.accessLevelID}"
+                                data-name="${employer.name}"
+                                data-surname="${employer.surname}"
+                                data-fathername="${employer.fathername}"
+                                data-birthday="${employer.birthday}"
+                                data-gender="${employer.gender}"
+                                data-passport-id="${employer.passportID}"
+                                data-home-address="${employer.homeAddress}"
+                                data-email="${employer.email}"
+                                data-phone-number="${employer.phoneNumber}"
+                                data-department="${employer.department}"
+                                data-date-accepted="${employer.dateAccepted}"
+                                data-current-status="${employer.currentStatus}"
+                                data-date-fired="${employer.dateFired}"
+                                data-admission-basis="${employer.admissionBasis}"
+                                data-employment-type="${employer.employmentType}"
+                                data-bs-toggle="modal" data-bs-target="#employerModal">
+                                Edit Employer
+                            </button>
+                        </td>
+                    `;
+                    tbody.appendChild(row);
+                });
+            })
+            .catch(error => {
+                console.error('Ошибка при запросе:', error);
+            });
     }
+    
+    
+    
+    
 });
-
-
-

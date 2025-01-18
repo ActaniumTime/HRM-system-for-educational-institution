@@ -28,13 +28,6 @@
             </thead>
             <tbody>
                 <?php 
-                    ini_set('display_errors', 1);
-                    ini_set('display_startup_errors', 1);
-                    error_reporting(E_ALL);
-                
-                    require_once '../EmpManagmentPanel/EmpManagTable.php'; //КАСТІЛЬ
-
-                
                     $EmployersList[] = new Employer($connection);
                     $EmployersList = $emp->getAll($connection);
                     $counter = 1;
@@ -87,6 +80,7 @@
                                 Edit Employer
                               </button>";
                         echo "</td>";
+                        
                         echo "</tr>";
                     }
 
