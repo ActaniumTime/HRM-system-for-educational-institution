@@ -4,8 +4,6 @@
     error_reporting(E_ALL);
 
     require_once __DIR__ . '/../../../app/models/UserVerify.php';
-
-    echo "<br>" . $pic;
 ?>
 
 <!DOCTYPE html>
@@ -38,7 +36,7 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-12 text-center">
-                <img src="../../../Files/photos/<?php echo $pic; ?>" alt="User Photo" class="rounded-circle" width="150" height="150">
+                <img src="../../../Files/photos/<?php echo $emp->getAvatar(); ?>" alt="User Photo" class="rounded-circle" width="150" height="150">
                 <h2>Welcome, <?php echo $emp->getName(); ?></h2>
                 <p>This is a protected page.</p>
                 <a href="../../../TEST_FILES/logout.php" class="btn btn-danger">Logout</a>

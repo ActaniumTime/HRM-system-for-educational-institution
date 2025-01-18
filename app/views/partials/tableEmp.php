@@ -31,14 +31,13 @@
                     $EmployersList[] = new Employer($connection);
                     $EmployersList = $emp->getAll($connection);
                     $counter = 1;
-                    $avatar = new EmPhoto($connection);
+
 
                     foreach ($EmployersList as $employer)
                     {   
-                        $photoPath = $avatar->getAvatarPath($employer->getEmployerID());
                         echo "<tr>";
                         echo "<th scope=\"row\">" . $counter++ . "</th>";
-                        echo "<td><img src=\"../../../Files/photos/{$photoPath}\" alt=\"User Photo\" class=\"rounded-circle\" width=\"50\" height=\"50\"  id=\"employerAvatar\"></td>";
+                        echo "<td><img src=\"../../../Files/photos/{$employer->getAvatar()}\" alt=\"User Photo\" class=\"rounded-circle\" width=\"50\" height=\"50\"  id=\"employerAvatar\"></td>";
                         echo "<td>{$employer->getEmployerID()}</td>";
                         echo "<td>{$employer->getAccessLevelID()}</td>";
                         echo "<td>{$employer->getName()}</td>";
@@ -58,7 +57,7 @@
                         echo "<td>{$employer->getEmploymentType()}</td>";   
                         echo "<td>";
                         echo "<button type=\"button\" class=\"btn btn-primary editEmployerBtn\" 
-                                data-employer-avatar=\"../../../Files/photos/{$photoPath}\"
+                                data-employer-avatar=\"../../../Files/photos/{$employer->getAvatar()}\"
                                 data-employer-id=\"{$employer->getEmployerID()}\"
                                 data-access-level-id=\"{$employer->getAccessLevelID()}\"
                                 data-name=\"{$employer->getName()}\"

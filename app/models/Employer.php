@@ -19,6 +19,7 @@ class Employer {
     private $dateFired;
     private $admissionBasis;
     private $employmentType;
+    private $avatar;
 
     public function __construct($connection) {
         $this->connection = $connection;
@@ -63,6 +64,7 @@ class Employer {
             $this->dateFired = $data['dateFired'];
             $this->admissionBasis = $data['admissionBasis'];
             $this->employmentType = $data['employmentType'];
+            $this->avatar = $data['avatar'];
             
         }
     }
@@ -107,6 +109,7 @@ class Employer {
                 $this->dateFired = $data['dateFired'];
                 $this->admissionBasis = $data['admissionBasis'];
                 $this->employmentType = $data['employmentType'];
+                $this->avatar = $data['avatar'];
                 
                 return true;
             }
@@ -140,6 +143,7 @@ class Employer {
             $employee->dateFired = $row['dateFired'];
             $employee->admissionBasis = $row['admissionBasis'];
             $employee->employmentType = $row['employmentType'];
+            $employee->avatar = $row['avatar'];
 
             $employees[] = $employee;
         }
@@ -163,7 +167,9 @@ class Employer {
         $currentStatus,
         $dateFired,
         $admissionBasis,
-        $employmentType
+        $employmentType,
+        $avatar
+
     )
      {
         // Hash the password before storing it in the database
@@ -186,8 +192,9 @@ class Employer {
                     currentStatus,
                     dateFired,
                     admissionBasis,
-                    employmentType
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                    employmentType,
+                    avatar
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     
         $stmt = $this->connection->prepare($sql);
     
@@ -196,7 +203,7 @@ class Employer {
         }
     
         $stmt->bind_param(
-            "issssssssssssssss",
+            "isssssssssssssssss",
             $accessLevelID,
             $hashedPassword,
             $name,
@@ -213,7 +220,8 @@ class Employer {
             $currentStatus,
             $dateFired,
             $admissionBasis,
-            $employmentType
+            $employmentType,
+            $avatar
         );
         if ($stmt->execute()) {
             echo "Employer added successfully!";
@@ -268,7 +276,8 @@ class Employer {
                     currentStatus = ?, 
                     dateFired = ?, 
                     admissionBasis = ?, 
-                    employmentType = ?
+                    employmentType = ?,
+                    avatar = ?
                   WHERE employerID = ?";
     
         $stmt = $this->connection->prepare($query);
@@ -278,7 +287,7 @@ class Employer {
         }
     
         $stmt->bind_param(
-            "isssssssssssssssi",
+            "isssssssssssssssis",
             $employer->getAccessLevelID(),
             $employer->getName(),
             $employer->getSurname(),
@@ -295,7 +304,8 @@ class Employer {
             $employer->getDateFired(),
             $employer->getAdmissionBasis(),
             $employer->getEmploymentType(),
-            $employer->getEmployerID() // Primary key to identify the record
+            $employer->getEmployerID(), // Primary key to identify the record
+            $employer->getAvatar()
         );
     
         if ($stmt->execute()) {
@@ -325,6 +335,7 @@ class Employer {
         $this->dateFired = $json_obj['dateFired'];
         $this->admissionBasis = $json_obj['admissionBasis'];
         $this->employmentType = $json_obj['employmentType'];
+        $this->avatar = $json_obj['avatar'];
     }
 
     public function updateChangedFields($data) {
@@ -442,10 +453,11 @@ class Employer {
 
     public function getEmploymentType() { return $this->employmentType; }
     public function setEmploymentType($employmentType) { $this->employmentType = $employmentType; }
+
+    public function getAvatar(){return $this->avatar;}
+    public function setAvatar($avatar){$this->avatar = $avatar;}
+
 }
-
-
-
 
 
 ?>

@@ -22,9 +22,6 @@
 
     $emp = new Employer($connection);
     $emp->loadByID($_SESSION['employer_ID']);
-
-    $EmPhoto = new EmPhoto($connection);
-    $pic = $EmPhoto->getAvatarPath($_SESSION['employer_ID']);
     
     //echo "current ID employer : " . $_SESSION['employer_ID'];
 

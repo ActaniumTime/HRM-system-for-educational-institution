@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     
                     row.innerHTML = `
                         <th scope="row">${index + 1}</th>
-                        <td><img src="../../../Files/photos/${employer.photoPath}" alt="User Photo" class="rounded-circle" width="50" height="50" id="employerAvatar"></td>
+                        <td><img src="../../../Files/photos/${employer.avatar}" alt="User Photo" class="rounded-circle" width="50" height="50" id="employerAvatar"></td>
                         <td>${employer.employerID}</td>
                         <td>${employer.accessLevelID}</td>
                         <td>${employer.name}</td>
@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <td>${employer.employmentType}</td>
                         <td>
                             <button type="button" class="btn btn-primary editEmployerBtn" 
-                                data-employer-avatar="../../../Files/photos/${employer.photoPath}"
+                                data-employer-avatar="../../../Files/photos/${employer.avatar}"
                                 data-employer-id="${employer.employerID}"
                                 data-access-level-id="${employer.accessLevelID}"
                                 data-name="${employer.name}"

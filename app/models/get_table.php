@@ -27,7 +27,8 @@
                 'currentStatus' => $employer->getCurrentStatus(),
                 'dateFired' => $employer->getDateFired(),
                 'admissionBasis' => $employer->getAdmissionBasis(),
-                'employmentType' => $employer->getEmploymentType()
+                'employmentType' => $employer->getEmploymentType(),
+                'avatar' => $employer->getAvatar()
             ];
         }
         
