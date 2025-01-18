@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+        
+
     const editButtons = document.querySelectorAll('.editEmployerBtn');
     
     editButtons.forEach(button => {
@@ -25,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             const photoElement = document.getElementById('employerAvatar');
             photoElement.src = employerAvatar;
-            
+
             document.getElementById('employerAvatar').value = employerAvatar;
             document.getElementById('employerID').value = employerID;
             document.getElementById('accessLevelID').value = accessLevelID;
@@ -47,4 +49,87 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
     
+    document.addEventListener('DOMContentLoaded', () => {
+        const tableBody = document.querySelector('#employersTable tbody');
+    
+        const loadTableData = () => {
+            fetch('../../../app/models/getEmployers.php')
+                .then(response => response.json())
+                .then(data => {
+                    tableBody.innerHTML = ''; // Очистить таблицу перед добавлением данных
+    
+                    data.forEach((employer, index) => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <th scope="row">${index + 1}</th>
+                            <td><img src="${employer.avatar}" alt="User Photo" class="rounded-circle" width="50" height="50"></td>
+                            <td>${employer.employerID}</td>
+                            <td>${employer.accessLevelID}</td>
+                            <td>${employer.name}</td>
+                            <td>${employer.surname}</td>
+                            <td>${employer.fathername}</td>
+                            <td>${employer.birthday}</td>
+                            <td>${employer.gender}</td>
+                            <td>${employer.passportID}</td>
+                            <td>${employer.homeAddress}</td>
+                            <td>${employer.email}</td>
+                            <td>${employer.phoneNumber}</td>
+                            <td>${employer.department}</td>
+                            <td>${employer.dateAccepted}</td>
+                            <td>${employer.currentStatus}</td>
+                            <td>${employer.dateFired || '-'}</td>
+                            <td>${employer.admissionBasis}</td>
+                            <td>${employer.employmentType}</td>
+                            <td>
+                                <button type="button" class="btn btn-primary editEmployerBtn" 
+                                        data-employer-avatar="${employer.avatar}"
+                                        data-employer-id="${employer.employerID}"
+                                        data-access-level-id="${employer.accessLevelID}"
+                                        data-name="${employer.name}"
+                                        data-surname="${employer.surname}"
+                                        data-fathername="${employer.fathername}"
+                                        data-birthday="${employer.birthday}"
+                                        data-gender="${employer.gender}"
+                                        data-passport-id="${employer.passportID}"
+                                        data-home-address="${employer.homeAddress}"
+                                        data-email="${employer.email}"
+                                        data-phone-number="${employer.phoneNumber}"
+                                        data-department="${employer.department}"
+                                        data-date-accepted="${employer.dateAccepted}"
+                                        data-current-status="${employer.currentStatus}"
+                                        data-date-fired="${employer.dateFired}"
+                                        data-admission-basis="${employer.admissionBasis}"
+                                        data-employment-type="${employer.employmentType}"
+                                        data-bs-toggle="modal" data-bs-target="#employerModal">
+                                    Edit Employer
+                                </button>
+                            </td>
+                        `;
+                        tableBody.appendChild(row);
+                    });
+    
+                    // Реинициализация кнопок редактирования
+                    initEditButtons();
+                });
+        };
+    
+        const initEditButtons = () => {
+            const editButtons = document.querySelectorAll('.editEmployerBtn');
+            editButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Заполнить модальное окно, как в вашем коде
+                });
+            });
+        };
+    
+        // Загрузить данные при загрузке страницы
+        loadTableData();
+    
+        // Добавьте вызов loadTableData() после отправки формы, чтобы обновить данные
+        document.getElementById('employerForm').addEventListener('submit', () => {
+            loadTableData();
+        });
+    });
+    
+
 });
