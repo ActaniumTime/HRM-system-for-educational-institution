@@ -1,5 +1,11 @@
 <div class="container my-4">
     <h1 class="text-center mb-4">All Employees</h1>
+    
+    <div class="search-container mb-4">
+            <input type="text" class="form-control search-input" id="searchInput" placeholder="Search by Name, Surname, or Fathername">
+            <span class="search-icon" id="searchIcon">&#128269;</span>
+    </div>
+
     <div class="table-responsive">
         <table class="table table-hover table-striped align-middle">
             <thead class="table-dark">
@@ -26,7 +32,7 @@
                     <th scope="col">Actions</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="employeeTable">
                 <?php 
                     $EmployersList[] = new Employer($connection);
                     $EmployersList = $emp->getAll($connection);

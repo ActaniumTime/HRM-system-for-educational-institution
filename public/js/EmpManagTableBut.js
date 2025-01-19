@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const updatedForm = document.getElementById('employerForm');
     const downloadJsonButton = document.getElementById('downloadJson');
-    const tableBody = document.querySelector('table tbody');
 
     let jsonData = {};
 
@@ -127,6 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.error('Ошибка при запросе:', error);
             });
     }
+    
     
     
     

@@ -107,3 +107,126 @@ button:hover {
     transform: scale(1.05);
     box-shadow: 0 4px 8px rgba(90, 90, 247, 0.4);
 }
+
+/* Стили для таблицы */
+.table-container {
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9ff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow-x: auto;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1rem;
+    color: #333;
+    background-color: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.table th, .table td {
+    padding: 15px 20px;
+    text-align: left;
+}
+
+.table thead th {
+    background-color: #eef2ff;
+    color: #4a4af7;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-bottom: 2px solid #ddd;
+}
+
+.table tbody tr {
+    border-bottom: 1px solid #eee;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.table tbody tr:nth-child(even) {
+    background-color: #fafaff;
+}
+
+.table tbody tr:hover {
+    background-color: #f0f5ff;
+}
+
+.table tbody td {
+    color: #555;
+}
+
+.table img.rounded-circle {
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Стили для кнопок */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #fff;
+    background-color: #4a4af7;
+    border: none;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+}
+
+.btn:hover {
+    background-color: #3737d1;
+    box-shadow: 0 4px 10px rgba(74, 74, 247, 0.3);
+}
+
+/* Стили для поиска */
+.search-container {
+    max-width: 400px;
+    margin: 20px auto;
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    padding: 10px 15px;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.search-input {
+    flex: 1;
+    border: none;
+    font-size: 1rem;
+    color: #555;
+    padding: 5px;
+    outline: none;
+}
+
+.search-icon {
+    font-size: 1.2rem;
+    color: #4a4af7;
+}
+
+/* Поле пустое */
+.dynamic-input:invalid {
+    border: 2px solid #f79a9a;
+    animation: shake 0.2s ease-in-out;
+}
+
+/* Поле изменено */
+.dynamic-input.updated {
+    border: 2px solid #ffd966;
+    background-color: #fff8d6;
+}
+
+/* Анимация ошибки */
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}
