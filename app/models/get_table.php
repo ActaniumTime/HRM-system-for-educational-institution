@@ -5,6 +5,7 @@
     require_once __DIR__ . '/../../app/models/UserVerify.php';
 
     if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+        $employers = null;
         $employers = Employer::getAll($connection);
         
         $result = [];

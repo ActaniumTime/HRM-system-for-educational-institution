@@ -29,6 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(result => {
             console.log(result);
             updateTable(); // Обновляем таблицу после успешного обновления данных
+            console.log("JS work 6");
         })
         .catch(error => {
             console.error('Error:', error);
@@ -73,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Заполняем таблицу новыми данными
                 data.forEach((employer, index) => {
                     const row = document.createElement('tr');
-                    
+                    console.log("JS work 4");
                     row.innerHTML = `
                         <th scope="row">${index + 1}</th>
                         <td><img src="../../../Files/photos/${employer.avatar}" alt="User Photo" class="rounded-circle" width="50" height="50" id="employerAvatar"></td>
