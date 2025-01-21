@@ -150,76 +150,87 @@
 </div>
 
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const table = document.getElementById("employeeTable");
-        const filters = {
-            accessLevel: document.getElementById("accessLevelFilter"),
-            gender: document.getElementById("genderFilter"),
-            department: document.getElementById("departmentFilter"),
-            employmentType: document.getElementById("employmentTypeFilter"),
-        };
-        const sortButtons = {
-            birthday: document.getElementById("sortByBirthday"),
-            dateAccepted: document.getElementById("sortByDateAccepted"),
-            dateFired: document.getElementById("sortByDateFired"),
-            reset: document.getElementById("resetFilters"),
-        };
+    
+    document.addEventListener("DOMContentLoaded", () => {
+    const table = document.getElementById("employeeTable");
+    const tableRows = Array.from(table.rows); // Сохраняем строки таблицы, исключая заголовок
+    const sortState = {
+        birthday: true,
+        dateAccepted: true,
+        dateFired: true,
+    };
 
-        /**
-         * Apply filters to the table based on selected criteria.
-         */
-        function applyFilters() {
-            const accessLevel = filters.accessLevel.value;
-            const gender = filters.gender.value;
-            const department = filters.department.value.toLowerCase();
-            const employmentType = filters.employmentType.value.toLowerCase();
-
-            Array.from(table.rows).forEach(row => {
-                const accessLevelCell = row.cells[3]?.textContent.trim();
-                const genderCell = row.cells[8]?.textContent.trim().toLowerCase();
-                const departmentCell = row.cells[13]?.textContent.trim().toLowerCase();
-                const employmentTypeCell = row.cells[18]?.textContent.trim().toLowerCase();
-
-                const matchesAccessLevel = !accessLevel || accessLevelCell === accessLevel;
-                const matchesGender = !gender || genderCell === gender;
-                const matchesDepartment = !department || departmentCell.includes(department);
-                const matchesEmploymentType = !employmentType || employmentTypeCell.includes(employmentType);
-
-                row.style.display = matchesAccessLevel && matchesGender && matchesDepartment && matchesEmploymentType ? "" : "none";
-            });
-        }
-
-        /**
-         * Sort table rows based on column index.
-         * @param {number} columnIndex - The column index to sort by.
-         * @param {boolean} isDate - Whether to treat the column values as dates.
-         */
-        function sortTable(columnIndex, isDate = false) {
-            const rows = Array.from(table.rows);
-            rows.sort((a, b) => {
-                const valA = a.cells[columnIndex]?.textContent.trim();
-                const valB = b.cells[columnIndex]?.textContent.trim();
-                return isDate ? new Date(valA) - new Date(valB) : valA.localeCompare(valB);
-            });
-
-            rows.forEach(row => table.appendChild(row));
-        }
-
-        /**
-         * Reset all filters and display the default table view.
-         */
-        function resetFilters() {
-            Object.values(filters).forEach(filter => (filter.value = ""));
+    // Делегирование событий для фильтров
+    document.addEventListener("change", (event) => {
+        if (event.target.matches("#accessLevelFilter, #genderFilter, #departmentFilter, #employmentTypeFilter")) {
             applyFilters();
         }
-
-        // Attach event listeners to filters
-        Object.values(filters).forEach(filter => filter.addEventListener("change", applyFilters));
-
-        // Attach event listeners to sort buttons
-        sortButtons.birthday.addEventListener("click", () => sortTable(7, true));
-        sortButtons.dateAccepted.addEventListener("click", () => sortTable(14, true));
-        sortButtons.dateFired.addEventListener("click", () => sortTable(16, true));
-        sortButtons.reset.addEventListener("click", resetFilters);
     });
+
+    // Делегирование событий для сортировки
+    document.addEventListener("click", (event) => {
+        if (event.target.matches("#sortByBirthday")) {
+            sortTable(7, true, "birthday");
+        } else if (event.target.matches("#sortByDateAccepted")) {
+            sortTable(14, true, "dateAccepted");
+        } else if (event.target.matches("#sortByDateFired")) {
+            sortTable(16, true, "dateFired");
+        } else if (event.target.matches("#resetFilters")) {
+            resetFilters();
+        }
+    });
+
+    function applyFilters() {
+        const filters = {
+            accessLevel: document.getElementById("accessLevelFilter").value,
+            gender: document.getElementById("genderFilter").value.toLowerCase(),
+            department: document.getElementById("departmentFilter").value.toLowerCase(),
+            employmentType: document.getElementById("employmentTypeFilter").value.toLowerCase(),
+        };
+
+        tableRows.forEach((row) => {
+            const cells = row.cells;
+            if (!cells.length) return; // Пропуск строк заголовков
+
+            const matchesAccessLevel = !filters.accessLevel || cells[3].textContent.trim() === filters.accessLevel;
+            const matchesGender = !filters.gender || cells[8].textContent.trim().toLowerCase() === filters.gender;
+            const matchesDepartment = !filters.department || cells[13].textContent.trim().toLowerCase().includes(filters.department);
+            const matchesEmploymentType = !filters.employmentType || cells[18].textContent.trim().toLowerCase().includes(filters.employmentType);
+
+            row.style.display = matchesAccessLevel && matchesGender && matchesDepartment && matchesEmploymentType ? "" : "none";
+        });
+    }
+
+    function sortTable(columnIndex, isDate = false, sortKey) {
+        const rows = tableRows.filter((row) => row.cells.length > 0 && row.style.display !== "none"); // Только видимые строки
+        const ascending = sortState[sortKey];
+
+        rows.sort((a, b) => {
+            const valA = a.cells[columnIndex].textContent.trim();
+            const valB = b.cells[columnIndex].textContent.trim();
+
+            if (isDate) {
+                return ascending ? new Date(valA) - new Date(valB) : new Date(valB) - new Date(valA);
+            }
+            return ascending ? valA.localeCompare(valB) : valB.localeCompare(valA);
+        });
+
+        rows.forEach((row) => table.appendChild(row));
+        sortState[sortKey] = !ascending;
+    }
+
+    function resetFilters() {
+        document.getElementById("accessLevelFilter").value = "";
+        document.getElementById("genderFilter").value = "";
+        document.getElementById("departmentFilter").value = "";
+        document.getElementById("employmentTypeFilter").value = "";
+
+        tableRows.forEach((row) => {
+            row.style.display = "";
+            table.appendChild(row);
+        });
+    }
+});
+
+
 </script>
