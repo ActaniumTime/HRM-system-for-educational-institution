@@ -1,4 +1,4 @@
-body {
+.body {
     background: #f7f9fc;
     color: #333;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -72,4 +72,105 @@ h1 {
     width: 50px;
     height: 50px;
     border: 2px solid #5a5af7;
+}
+
+button {
+    color: #ffffff00;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 15px;
+    transition: transform 0.2s, background-color 0.3s, box-shadow 0.3s;
+}
+
+button:hover {
+    background-color: #4a4ae0;
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(90, 90, 247, 0.4);
+}
+
+.d-flex {
+    display: flex;
+    align-items: center;
+    gap: 10px; 
+}
+
+.btn-primary {
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.icon_white {
+    fill: rgb(131, 131, 131);
+    height: 26px;
+    width: 26px;
+}
+
+.deleteEmployerBtn {
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    background: transparent; 
+}
+
+.Delete-button {
+    background: transparent; 
+    border: none;
+    cursor: pointer;
+}
+
+.Delete-button:hover {
+    background-color: #ff3636; 
+    transform: scale(1.05);
+    box-shadow: none;
+}
+
+.Delete-button:hover .icon_white {
+    fill: #ffffff; 
+    box-shadow: none;
+}
+
+.editEmployerBtn {
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    background: transparent; 
+}
+
+.Info-button {
+    background: transparent; 
+    border: none;
+    cursor: pointer;
+}
+
+.Info-button:hover {
+    background-color: #5a5af7;
+    transform: scale(1.05);
+    box-shadow: none;
+}
+
+.Info-button:hover .icon_white {
+    fill: white; 
+    box-shadow: none;
+}
+
+.editEmployerBtn:hover {
+
+    background-color: #f7fda3;
+    transform: scale(1.05);
+    box-shadow: none;
 }
