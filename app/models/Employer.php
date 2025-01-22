@@ -397,6 +397,13 @@ class Employer {
         echo json_encode(["status" => "success", "message" => "Fields updated successfully."]);
     }
     
+    public function deleteEmployer($id) {
+        $query = "DELETE FROM employers WHERE employerID = ?";
+        $stmt = $this->connection->prepare($query);
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $stmt->close();
+    }
 
 
     //геттеры и сеттеры

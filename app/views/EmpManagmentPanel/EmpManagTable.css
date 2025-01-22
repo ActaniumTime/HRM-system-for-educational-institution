@@ -174,3 +174,7 @@ button:hover {
     transform: scale(1.05);
     box-shadow: none;
 }
+
+.no-click {
+    pointer-events: none;
+}
