@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (row.cells.length > 0) {
             row.dataset.originalIndex = index; // Сохраняем индекс в атрибуте
         }
-    });
+    });1
     }
 
     saveRowsOrder();

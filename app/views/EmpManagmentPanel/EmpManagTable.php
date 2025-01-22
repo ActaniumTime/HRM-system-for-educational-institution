@@ -29,11 +29,12 @@
 
 <script src="../../../public/js/ModalDataTable.js"></script>
 
-<script src="../../../public/js/EmpManagTableBut.js"></script>
-
 <script src="../../../public/js/tableSearching.js"></script>
 
 <script src="../../../public/js/tableEmpFilters.js"></script>
+
+<script src="../../../public/js/EmpManagTableBut.js"></script>
+
 
 </body>
 </html>
