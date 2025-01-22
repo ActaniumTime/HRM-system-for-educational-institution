@@ -126,6 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .catch(error => {
                 console.error('Ошибка при запросе:', error);
             });
+            saveRowsOrder();
     }
     
     
