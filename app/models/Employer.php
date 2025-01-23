@@ -232,33 +232,6 @@ class Employer {
         $stmt->close();
     }
 
-    // public function updateData($EmpList, $index) {
-    //     if (isset($EmpList[$index])) {
-    //         $data = $EmpList[$index];
-    //         $this->employerID = $data['employerID'];
-    //         $this->accessLevelID = $data['accessLevelID'];
-    //         $this->password = $data['password'];
-    //         $this->name = $data['name'];
-    //         $this->surname = $data['surname'];
-    //         $this->fathername = $data['fathername'];
-    //         $this->birthday = $data['birthday'];
-    //         $this->gender = $data['gender'];
-    //         $this->passportID = $data['passportID'];
-    //         $this->homeAddress = $data['homeAddress'];
-    //         $this->email = $data['email'];
-    //         $this->phoneNumber = $data['phoneNumber'];
-    //         $this->department = $data['department'];
-    //         $this->dateAccepted = $data['dateAccepted'];
-    //         $this->currentStatus = $data['currentStatus'];
-    //         $this->dateFired = $data['dateFired'];
-    //         $this->admissionBasis = $data['admissionBasis'];
-    //         $this->employmentType = $data['employmentType'];
-
-    //     } else {
-    //         throw new Exception("Index not found in the provided list.");
-    //     }
-    // }
-
     public function updateEmployer($employer) {
         $query = "UPDATE Employers SET 
                     accessLevelID = ?, 
