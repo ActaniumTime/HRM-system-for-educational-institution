@@ -7,6 +7,7 @@
     require_once __DIR__ . '/../../../app/models/UserVerify.php';
     require_once __DIR__ . '/../../../app/models/DashboardModel.php';
     require_once __DIR__ . '../../partials/modalEmpMan.php';
+    require_once __DIR__ . '/../../../app/models/delete-endpoint.php';
     // require_once __DIR__ . '/../../../app/models/deleteEmpModel.php';
 
 ?>
