@@ -371,11 +371,19 @@ class Employer {
     }
     
     public function deleteEmployer($id) {
-        $query = "DELETE FROM employers WHERE employerID = ?";
-        $stmt = $this->connection->prepare($query);
-        $stmt->bind_param("i", $id);
-        $stmt->execute();
-        $stmt->close();
+        if(isset($id)){
+            $query = "DELETE FROM employers WHERE employerID = ?";
+            $stmt = $this->connection->prepare($query);
+            $stmt->bind_param("i", $id);
+            if( $stmt->execute()){
+                $stmt->close();
+                return true;
+            } else {
+                return false;
+            }
+            $stmt->close();
+        }
+
     }
 
 
