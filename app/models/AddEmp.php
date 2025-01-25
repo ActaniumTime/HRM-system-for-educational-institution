@@ -15,10 +15,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         mkdir($uploadDir, 0755, true);
     }
 
-    // Инициализация переменных
     $newFileName = null;
 
-    // Обработка файла
     if (isset($_FILES['avatar']) && $_FILES['avatar']['error'] === UPLOAD_ERR_OK) {
         $fileTmpPath = $_FILES['avatar']['tmp_name'];
         $fileName = $_FILES['avatar']['name'];
@@ -33,10 +31,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-    // Чтение JSON-данных
     $data = $_POST;
 
-    // Валидация
     $requiredFields = [
         'accessLevelID', 'name', 'surname', 'fathername', 'birthday',
         'gender', 'passportID', 'homeAddress', 'email', 'phoneNumber',
@@ -51,7 +47,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-    // Сохранение данных
     try {
         $tempEmp = new Employer($connection);
         $tempEmp->addEmployer(

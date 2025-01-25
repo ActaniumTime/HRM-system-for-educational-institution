@@ -113,7 +113,6 @@ document.getElementById('employerForm_AddForm').addEventListener('submit', funct
     const formData = new FormData(form);
     let jsonData = {};
 
-    // Сбор данных из формы
     formData.forEach((value, key) => {
         if (key === "dateFired_AddForm" && value === "") {
             jsonData[key] = null;
@@ -124,10 +123,9 @@ document.getElementById('employerForm_AddForm').addEventListener('submit', funct
 
     console.log('Отправляемые данные:', jsonData);
 
-    // Отправка данных на сервер
     fetch('../../../app/models/AddEmp.php', {
         method: 'POST',
-        body: formData, // Для поддержки отправки файлов FormData
+        body: formData, 
     })
         .then(response => response.json())
         .then(result => {
