@@ -102,3 +102,46 @@
         </div>
     </div>
 </div>
+
+
+<script>
+
+document.getElementById('employerForm_AddForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const form = e.target;
+    const formData = new FormData(form);
+    let jsonData = {};
+
+    // Сбор данных из формы
+    formData.forEach((value, key) => {
+        if (key === "dateFired_AddForm" && value === "") {
+            jsonData[key] = null;
+        } else {
+            jsonData[key] = value;
+        }
+    });
+
+    console.log('Отправляемые данные:', jsonData);
+
+    // Отправка данных на сервер
+    fetch('../../../app/models/AddEmp.php', {
+        method: 'POST',
+        body: formData, // Для поддержки отправки файлов FormData
+    })
+        .then(response => response.json())
+        .then(result => {
+            console.log('Результат сервера:', result);
+            if (result.success) {
+                alert('Сотрудник добавлен успешно!');
+                location.reload();
+            } else {
+                alert(`Ошибка: ${result.message}`);
+            }
+        })
+        .catch(error => {
+            console.error('Ошибка:', error);
+        });
+});
+
+</script>

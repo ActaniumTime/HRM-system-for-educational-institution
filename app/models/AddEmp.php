@@ -7,6 +7,7 @@ require_once __DIR__ . '/../../app/models/UserVerify.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     header('Content-Type: application/json');
+
     
     $uploadDir = __DIR__ . '/../../Files/photos/';
     

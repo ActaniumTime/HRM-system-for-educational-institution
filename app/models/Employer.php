@@ -224,9 +224,11 @@ class Employer {
             $avatar
         );
         if ($stmt->execute()) {
-            echo "Employer added successfully!";
+            // echo "Employer added successfully!";
+            return true;
         } else {
-            echo "Error: " . $stmt->error;
+            // echo "Error: " . $stmt->error;
+            return false;
         }
         
         $stmt->close();
