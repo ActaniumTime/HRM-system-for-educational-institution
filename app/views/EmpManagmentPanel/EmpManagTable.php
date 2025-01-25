@@ -9,8 +9,7 @@
     require_once __DIR__ . '../../partials/modalEmpMan.php';
     require_once __DIR__ . '../../partials/modalDelete.php';
     require_once __DIR__ . '/../../../app/models/deleteEndpoint.php';
-
-    // require_once __DIR__ . '/../../../app/models/deleteEmpModel.php';
+    require_once __DIR__ . '../../partials/modalAddEmp.php';
 
 ?>
 
