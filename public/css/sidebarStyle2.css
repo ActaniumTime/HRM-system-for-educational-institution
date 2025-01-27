@@ -1,13 +1,13 @@
 
 :root {
-    --background: #f7f9fc;
+    --background: #ffffff;
     --navbar-width: 256px;
     --navbar-width-min: 80px;
-    --navbar-dark-primary: #eef2ff;
+    --navbar-dark-primary: #ffffff;
     --navbar-dark-secondary: #4a4af70d;
-    --navbar-light-primary: #5a5af7;
-    --navbar-light-secondary: #5a5af7;
-    --hover-highlight: #5a5af7;
+    --navbar-light-primary: #303030;
+    --navbar-light-secondary: #303030;
+    --hover-highlight: #303030;
   }
   
   #nav-toggle:checked ~ #nav-header {
@@ -57,7 +57,7 @@
     top: 1vw;
     height: calc(100% - 2vw);
     background: var(--navbar-dark-primary);
-    border-radius: 16px;
+    border-radius: 36px;
     display: flex;
     flex-direction: column;
     color: var(--navbar-light-primary);
@@ -94,7 +94,7 @@
 	width: calc(var(--navbar-width) - 16px);
 	min-height: 80px;
 	background: var(--navbar-dark-primary);
-	border-radius: 16px;
+	border-radius: 36px;
 	z-index: 2;
 	display: flex;
 	align-items: center;
@@ -163,7 +163,7 @@
   }
   #nav-content::-webkit-scrollbar-thumb {
 	border-radius: 99px;
-	background-color: #D62929;
+	background-color: #303030;
   }
   
   #nav-content-highlight {
@@ -174,7 +174,7 @@
 	height: 54px;
 	background: var(--background);
 	background-attachment: fixed;
-	border-radius: 16px 0 0 16px;
+	border-radius: 36px 0 0 16px;
 	transition: top 0.2s;
   }
   #nav-content-highlight:before, #nav-content-highlight:after {
@@ -269,7 +269,7 @@
 	width: var(--navbar-width);
 	height: 54px;
 	background: var(--navbar-dark-secondary);
-	border-radius: 16px;
+	border-radius: 36px;
 	display: flex;
 	flex-direction: column;
 	z-index: 2;
@@ -346,7 +346,7 @@
   }
   #nav-footer-content::-webkit-scrollbar-thumb {
 	border-radius: 99px;
-	background-color: #5a5af7;
+	background-color: #303030;
   }
 
   .nav-button:hover {
