@@ -23,6 +23,7 @@
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   overflow: hidden;
   user-select: none;
+  transition: width 0.2s, background 0.2s;
 }
 #nav-bar hr {
   margin: 0;
@@ -35,6 +36,10 @@
 #nav-bar a {
   color: inherit;
   text-decoration: inherit;
+}
+
+#nav-toggle:checked ~ #nav-bar {
+  background: linear-gradient(90deg, var(--navbar-dark-primary), rgba(0, 0, 0, 0.1)); /* Фон адаптируется под новую ширину */
 }
 
 #nav-header {

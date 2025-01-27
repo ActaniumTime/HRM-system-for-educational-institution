@@ -116,7 +116,6 @@ button:hover {
 /* Сайдбар */
 #nav-bar {
     transition: width 0.3s;
-    width: var(--navbar-width);
 }
 
 #nav-toggle:checked ~ #nav-bar {

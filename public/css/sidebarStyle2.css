@@ -52,31 +52,37 @@
   }
   
   #nav-bar {
-	position: absolute;
-	left: 1vw;
-	top: 1vw;
-	height: calc(100% - 2vw);
-	background: var(--navbar-dark-primary);
-	border-radius: 16px;
-	display: flex;
-	flex-direction: column;
-	color: var(--navbar-light-primary);
-	font-family: Verdana, Geneva, Tahoma, sans-serif;
-	overflow: hidden;
-	user-select: none;
-  }
-  #nav-bar hr {
-	margin: 0;
-	position: relative;
-	left: 16px;
-	width: calc(100% - 32px);
-	border: none;
-	border-top: solid 1px var(--navbar-dark-secondary);
-  }
-  #nav-bar a {
-	color: inherit;
-	text-decoration: inherit;
-  }
+    position: absolute;
+    left: 1vw;
+    top: 1vw;
+    height: calc(100% - 2vw);
+    background: var(--navbar-dark-primary);
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    color: var(--navbar-light-primary);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    overflow: hidden;
+    user-select: none;
+    transition: width 0.2s, background 0.2s;
+}
+#nav-bar hr {
+    margin: 0;
+    position: relative;
+    left: 16px;
+    width: calc(100% - 32px);
+    border: none;
+    border-top: solid 1px var(--navbar-dark-secondary);
+}
+#nav-bar a {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+#nav-toggle:checked ~ #nav-bar {
+    background: linear-gradient(90deg, var(--navbar-dark-primary), rgba(0, 0, 0, 0.1)); /* Фон адаптируется под новую ширину */
+}
+
   #nav-bar input[type=checkbox] {
 	display: none;
   }
