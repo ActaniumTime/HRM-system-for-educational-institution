@@ -118,7 +118,10 @@ button:hover {
     padding: 20px;
     margin-left: calc(var(--navbar-width) + 1rem);
     transition: margin-left 0.3s;
+    overflow-y: auto; /* Добавлено */
+    height: 100vh; /* Убедись, что высота равна высоте окна */
 }
+
 
 h3 {
     margin: 0 0 10px;

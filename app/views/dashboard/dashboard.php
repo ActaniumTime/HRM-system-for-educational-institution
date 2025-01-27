@@ -114,7 +114,84 @@ require_once __DIR__ . '/../../../app/models/UserVerify.php';
                 </div>
 
 
-            
+                <div class="temp-line">
+                <div class="tall-tile">
+
+                </div>
+                <div class="tile">
+                    <h3>Tasks</h3>
+                    <p>Manage your tasks effectively and increase productivity.</p>
+                    <button>Open</button>
+                </div>
+                <div class="tile">
+                    <h5 class="card-title">Personnel Management</h5>
+                    <p class="card-text">Manage personnel records.</p>
+                    <a href="../EmpManagmentPanel/EmpManagTable.php" class="btn btn-primary">Manage Personnel</a>
+                </div>
+                <div class="tile">
+                    <h5>Доброго дня, <?php echo htmlspecialchars($emp->getName(), ENT_QUOTES); ?></h5>
+                    <img src="../../../Files/photos/<?php echo $emp->getAvatar(); ?>" alt="User Photo" class="rounded-circle" width="100" height="100">
+                    <p>Рівень: 
+                    <?php
+                    switch ($emp->getAccessLevelID()) {
+                        case 1:
+                            echo "Admin";
+                            break;
+                        case 2:
+                            echo "Manager";
+                            break;
+                        case 3:
+                            echo "Employee";
+                            break;
+                        default:
+                            echo "Unknown";
+                            break;
+                    }
+                    ?>
+                    </p>
+                    <p><a href="#"><button style="width: 150px; height:30px;">До кабінету</button></a></p>
+                </div>
+                </div>
+
+
+                <div class="temp-line">
+                <div class="tall-tile">
+
+                </div>
+                <div class="tile">
+                    <h3>Tasks</h3>
+                    <p>Manage your tasks effectively and increase productivity.</p>
+                    <button>Open</button>
+                </div>
+                <div class="tile">
+                    <h5 class="card-title">Personnel Management</h5>
+                    <p class="card-text">Manage personnel records.</p>
+                    <a href="../EmpManagmentPanel/EmpManagTable.php" class="btn btn-primary">Manage Personnel</a>
+                </div>
+                <div class="tile">
+                    <h5>Доброго дня, <?php echo htmlspecialchars($emp->getName(), ENT_QUOTES); ?></h5>
+                    <img src="../../../Files/photos/<?php echo $emp->getAvatar(); ?>" alt="User Photo" class="rounded-circle" width="100" height="100">
+                    <p>Рівень: 
+                    <?php
+                    switch ($emp->getAccessLevelID()) {
+                        case 1:
+                            echo "Admin";
+                            break;
+                        case 2:
+                            echo "Manager";
+                            break;
+                        case 3:
+                            echo "Employee";
+                            break;
+                        default:
+                            echo "Unknown";
+                            break;
+                    }
+                    ?>
+                    </p>
+                    <p><a href="#"><button style="width: 150px; height:30px;">До кабінету</button></a></p>
+                </div>
+                </div>
 
 
             </div>
