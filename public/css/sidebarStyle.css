@@ -4,7 +4,7 @@
   --navbar-width: 256px;
   --navbar-width-min: 80px;
   --navbar-dark-primary: #ffffff;
-  --navbar-dark-secondary: #4a4af70d;
+  --navbar-dark-secondary: #ffffff;
   --navbar-light-primary: #303030;
   --navbar-light-secondary: #303030;
   --hover-highlight: #303030;
@@ -135,8 +135,8 @@ label[for=nav-toggle] {
   position: relative;
   margin: 11px 0 11px 16px;
   left: 0;
-  width: 32px;
-  height: 32px;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
   overflow: hidden;
 }

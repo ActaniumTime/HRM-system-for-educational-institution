@@ -95,7 +95,7 @@ button {
 }
 
 button:hover {
-    background-color: #4a4ae0;
+    background-color: #303030;
     transform: scale(1.05);
 }
 
@@ -115,7 +115,7 @@ button:hover {
 
 .content-wrapper {
     flex-grow: 1;
-    padding: 20px;
+    padding: 12px;
     margin-left: calc(var(--navbar-width) + 1rem);
     transition: margin-left 0.3s;
     overflow-y: auto; /* Добавлено */
@@ -137,15 +137,14 @@ p {
 .temp-line {
     display: grid;
     grid-template-columns: repeat(4, 1fr); /* 4 столбца одинаковой ширины */
-    gap: 20px;
-    padding: 20px;
+    gap: 6px;
+    padding: 6px;
     background: transparent;
 }
 
 .tile {
     background: #ffffff8e;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 36px;
     padding: 20px;
     text-align: center;
     display: flex;
@@ -160,14 +159,13 @@ p {
     background: #e0e0e0;
     border-radius: 5px;
     overflow: hidden;
-    margin: 10px 0;
     position: relative;
 }
 
 .progress-bar .progress {
     height: 100%;
     background: #ffc825;
-    border-radius: 5px;
+    border-radius: 36px;
     transition: width 0.3s;
 }
 
@@ -186,11 +184,10 @@ p {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin-top: 20px;
+    margin-top: 6px;
     background: rgba(255, 255, 255, 0.9);
-    border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 36px;
+    padding: 6px;
 }
 
 .summary div {
