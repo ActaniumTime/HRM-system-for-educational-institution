@@ -1,5 +1,6 @@
 .body {
-    background: #f7f9fc;
+    background: linear-gradient(90deg, #f7f6ef, #f1e7d6);
+
     color: #333;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
