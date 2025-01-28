@@ -37,7 +37,35 @@
 
     <div class="content-wrapper">
         <div class="layout-container">
-            <?php require_once __DIR__ . "../../partials/tableEmp.php"; ?>
+            <div class="temp-line">
+
+                <div class="tile project-time">
+                <?php  
+                    require_once __DIR__ . "../../partials/EmpManagPartial/searchBar.php";
+                ?>
+                </div>
+
+                <div class="summary">
+                    <div>
+                    <?php  
+                        require_once __DIR__ . "../../partials/EmpManagPartial/FiltersMenu1.php";
+                    ?>
+                    </div>
+                    <div>
+                    <?php  
+                        require_once __DIR__ . "../../partials/EmpManagPartial/FiltersMenu1.php";
+                    ?>
+                    </div>
+ 
+                </div>
+
+                <div class="summary">
+                <?php require_once __DIR__ . "../../partials/tableEmp.php"; ?>
+                </div>
+
+
+            </div>
+
         </div>
     </div>
 </div>
@@ -54,7 +82,19 @@
 
 <script src="../../../public/js/EmpManagTableBut.js"></script>
 
+<script>
+        const navToggle = document.getElementById('nav-toggle');
+        const contentWrapper = document.querySelector('.content-wrapper');
 
+        navToggle.addEventListener('change', () => {
+            if (navToggle.checked) {
+                contentWrapper.style.marginLeft = `calc(var(--navbar-width-min) + 1rem)`;
+            } else {
+                contentWrapper.style.marginLeft = `calc(var(--navbar-width) + 1rem)`;
+            }
+        });
+
+    </script>
 
 </body>
 </html>

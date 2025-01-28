@@ -1,16 +1,15 @@
 /* Общие стили для светлой темы в стиле Microsoft */
-body {
-    background: #ffffff;
+html {
+    background: rgb(228,229,231);
+    background: linear-gradient(135deg, rgba(228,229,231,1) 44%, rgba(249,232,178,1) 84%, rgba(246,232,203,1) 100%);
     color: #2e2e2e;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    padding: 0;
 }
 
-header {
-    background-color: #e6e6f0;
-    padding: 20px 0;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: transparent !important;
+    display: flex;
+    color: #303030;
 }
 
 header img {
@@ -39,16 +38,10 @@ header .btn:hover {
 }
 
 .card {
-    background-color: rgb(rgba(255, 255, 255, 0.5));
+    background-color: rgba(244, 244, 252, 0.5);
     border: none;
-    border-radius: 12px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-radius: 36px;
+    transition: transform 0.3s;
 }
 
 .card-title {
@@ -90,7 +83,7 @@ h2 {
 
 /* Круглая аватарка */
 img.rounded-circle {
-    border: 3px solid #5a5af7;
+    border: 3px solid #ffc825;
 }
 
 /* button {
@@ -112,9 +105,8 @@ button:hover {
 .table-container {
     margin: 20px auto;
     padding: 20px;
-    background-color: #f9f9ff;
+    background-color: rgba(255, 255, 255, 0.5);
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     overflow-x: auto;
 }
 
@@ -235,4 +227,139 @@ button:hover {
 
 .no-click {
     pointer-events: none;
+}
+
+
+
+.page-wrapper {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+#nav-bar {
+    transition: width 0.3s;
+}
+
+#nav-toggle:checked ~ #nav-bar {
+    width: var(--navbar-width-min);
+}
+
+.content-wrapper {
+    flex-grow: 1;
+    padding: 12px;
+    margin-left: calc(var(--navbar-width) + 1rem);
+    transition: margin-left 0.3s;
+    overflow-y: auto; /* Добавлено */
+    height: 100vh; /* Убедись, что высота равна высоте окна */
+}
+
+
+h3 {
+    margin: 0 0 10px;
+    color: #5a5af7;
+}
+
+p {
+    color: #555;
+}
+
+
+
+.temp-line {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 столбца одинаковой ширины */
+    gap: 6px;
+    padding: 6px;
+    background: transparent;
+}
+
+.tile {
+    background: #ffffff8e;
+    border-radius: 36px;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 10px;
+    background: #e0e0e0;
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-bar .progress {
+    height: 100%;
+    background: #ffc825;
+    border-radius: 36px;
+    transition: width 0.3s;
+}
+
+.progress-bar.striped .progress {
+    background: repeating-linear-gradient(
+        45deg,
+        #ffc825,
+        #ffc825 10px,
+        #ffd95a 10px,
+        #ffd95a 20px
+    );
+}
+
+.summary {
+    grid-column: span 4; /* Растянуть summary на всю ширину */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 6px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 36px;
+    padding: 6px;
+}
+
+.summary div {
+    text-align: center;
+}
+
+.summary span {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #5a5af7;
+}
+
+.summary p {
+    margin: 5px 0 0;
+    font-size: 1rem;
+    color: #555;
+}
+
+/* Адаптивность */
+@media (max-width: 1024px) {
+    .temp-line {
+        grid-template-columns: repeat(2, 1fr); /* 2 столбца на средних экранах */
+    }
+
+    .summary {
+        grid-column: span 2; /* Растянуть summary на 2 столбца */
+    }
+}
+
+@media (max-width: 768px) {
+    .temp-line {
+        grid-template-columns: 1fr; /* 1 столбец на маленьких экранах */
+    }
+
+    .summary {
+        grid-column: span 1; /* Растянуть summary на 1 столбец */
+        flex-direction: column;
+    }
+
+    .summary div {
+        margin-bottom: 10px;
+    }
 }

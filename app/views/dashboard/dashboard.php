@@ -26,49 +26,49 @@ require_once __DIR__ . '/../../../app/models/UserVerify.php';
 
 
             <div class="temp-line">
-    <div class="tile interviews">
-        <h3>Interviews</h3>
-        <div class="progress-bar">
-            <div class="progress" style="width: 70%;"></div>
-        </div>
-        <span>70%</span>
-    </div>
-    <div class="tile hired">
-        <h3>Hired</h3>
-        <div class="progress-bar">
-            <div class="progress" style="width: 10%;"></div>
-        </div>
-        <span>10%</span>
-    </div>
-    <div class="tile project-time">
-        <h3>Project Time</h3>
-        <div class="progress-bar striped">
-            <div class="progress" style="width: 15%;"></div>
-        </div>
-        <span>15%</span>
-    </div>
-    <div class="tile output">
-        <h3>Output</h3>
-        <div class="progress-bar">
-            <div class="progress" style="width: 5%;"></div>
-        </div>
-        <span>5%</span>
-    </div>
-    <div class="summary">
-        <div>
-            <span>91</span>
-            <p>Employee</p>
-        </div>
-        <div>
-            <span>104</span>
-            <p>Hirings</p>
-        </div>
-        <div>
-            <span>185</span>
-            <p>Projects</p>
-        </div>
-    </div>
-</div>
+                <div class="tile interviews">
+                    <h3>Interviews</h3>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 70%;"></div>
+                    </div>
+                    <span>70%</span>
+                </div>
+                <div class="tile hired">
+                    <h3>Hired</h3>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 10%;"></div>
+                    </div>
+                    <span>10%</span>
+                </div>
+                <div class="tile project-time">
+                    <h3>Project Time</h3>
+                    <div class="progress-bar striped">
+                        <div class="progress" style="width: 15%;"></div>
+                    </div>
+                    <span>15%</span>
+                </div>
+                <div class="tile output">
+                    <h3>Output</h3>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 5%;"></div>
+                    </div>
+                    <span>5%</span>
+                </div>
+                <div class="summary">
+                    <div>
+                        <span>91</span>
+                        <p>Employee</p>
+                    </div>
+                    <div>
+                        <span>104</span>
+                        <p>Hirings</p>
+                    </div>
+                    <div>
+                        <span>185</span>
+                        <p>Projects</p>
+                    </div>
+                </div>
+            </div>
 
 
 
