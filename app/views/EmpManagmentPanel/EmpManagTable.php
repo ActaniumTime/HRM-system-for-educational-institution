@@ -40,10 +40,14 @@
             <div class="temp-line">
 
                 <div class="tile project-time">
-                <?php  
-                    require_once __DIR__ . "../../partials/EmpManagPartial/searchBar.php";
-                ?>
+
                 </div>
+
+
+                <div class="summary">
+                <?php require_once __DIR__ . "../../partials/tableEmp.php"; ?>
+                </div>
+
 
                 <div class="summary">
                     <div>
@@ -58,11 +62,6 @@
                     </div>
  
                 </div>
-
-                <div class="summary">
-                <?php require_once __DIR__ . "../../partials/tableEmp.php"; ?>
-                </div>
-
 
             </div>
 

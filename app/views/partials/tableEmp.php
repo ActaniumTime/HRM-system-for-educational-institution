@@ -1,7 +1,10 @@
 
-<div class="table-responsive card">
-    
-    <table class="table table-hover table-striped align-middle">
+<div class=" card">
+    <?php
+        require_once __DIR__ . "/EmpManagPartial/searchBar.php";
+    ?>
+    <div class="table-responsive">
+    <table class="table table-hover align-middle">
         <thead class="table-dark">
             <tr>
                 <th scope="col">№</th>
@@ -117,6 +120,9 @@
         </tbody>
         
     </table>
+    </div>
+
+
 </div>
 
 
