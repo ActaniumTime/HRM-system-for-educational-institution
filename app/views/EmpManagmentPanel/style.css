@@ -17,7 +17,7 @@ header img {
 }
 
 header .btn {
-    background-color: #5a5af7;
+    background-color: #303030;
     color: #ffffff;
     border: none;
     border-radius: 8px;
@@ -27,7 +27,7 @@ header .btn {
 }
 
 header .btn:hover {
-    background-color: #4a4ae0;
+    background-color: #303030;
     box-shadow: 0 4px 8px rgba(90, 90, 247, 0.4);
 }
 
@@ -47,16 +47,16 @@ header .btn:hover {
 .card-title {
     font-size: 1.4rem;
     font-weight: bold;
-    color: #5a5af7;
+    color: #303030;
 }
 
 .card-text {
-    color: #5e5e5e;
+    color: #303030;
     font-size: 1rem;
 }
 
 .btn-primary {
-    background-color: #5a5af7;
+    background-color: #303030;
     color: #ffffff;
     border: none;
     border-radius: 8px;
@@ -66,14 +66,14 @@ header .btn:hover {
 }
 
 .btn-primary:hover {
-    background-color: #4a4ae0;
+    background-color: #303030;
     box-shadow: 0 4px 8px rgba(90, 90, 247, 0.4);
 }
 
 h2 {
     font-size: 2rem;
     margin-bottom: 10px;
-    color: #5a5af7;
+    color: #303030;
 }
 
 
@@ -106,7 +106,7 @@ button:hover {
     margin: 20px auto;
     padding: 20px;
     background-color: rgba(255, 255, 255, 0.5);
-    border-radius: 12px;
+    border-radius: 36px;
     overflow-x: auto;
 }
 
@@ -116,8 +116,9 @@ button:hover {
     font-size: 1rem;
     color: #333;
     background-color: #fff;
-    border-radius: 12px;
+    border-radius: 36px;
     overflow: hidden;
+    --bs-table-hover-bg: rgb(255 200 37);
 }
 
 .table th, .table td {
@@ -126,7 +127,7 @@ button:hover {
 }
 
 .table thead th {
-    background-color: #eef2ff;
+    background-color: rgba(255, 255, 255, 0.5);
     color: #4a4af7;
     font-weight: bold;
     text-transform: uppercase;
@@ -139,15 +140,17 @@ button:hover {
 }
 
 .table tbody tr:nth-child(even) {
-    background-color: #fafaff;
+    background-color: rgba(255, 255, 255, 0.5);
 }
 
-.table tbody tr:hover {
+/* .table tbody tr:hover {
     background-color: #FFD85F;
-}
+    border-radius: 36px;
+    overflow: hidden;
+} */
 
 .table tbody td {
-    color: #555;
+    color: #303030;
 }
 
 .table img.rounded-circle {
@@ -162,9 +165,9 @@ button:hover {
     font-size: 0.9rem;
     font-weight: 600;
     color: #fff;
-    background-color: #4a4af7;
+    background-color: #303030;
     border: none;
-    border-radius: 8px;
+    border-radius: 36px;
     text-align: center;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -172,7 +175,7 @@ button:hover {
 }
 
 .btn:hover {
-    background-color: #3737d1;
+    background-color: #303030;
     box-shadow: 0 4px 10px rgba(74, 74, 247, 0.3);
 }
 
@@ -181,10 +184,9 @@ button:hover {
     flex-direction: row;
     max-width: 400px;
     margin: 10px auto;
-    display: flex
-;
+    display: flex;
     align-items: center;
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.5);
     /* padding: 10px; */
     border-radius: 36px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
@@ -194,7 +196,7 @@ button:hover {
     flex: 1;
     border: none;
     font-size: 1rem;
-    color: #555;
+    color: #303030;
     padding: 5px;
     outline: none;
 }
@@ -258,11 +260,11 @@ button:hover {
 
 h3 {
     margin: 0 0 10px;
-    color: #5a5af7;
+    color: #303030;
 }
 
 p {
-    color: #555;
+    color: #303030;
 }
 
 
@@ -276,7 +278,7 @@ p {
 }
 
 .tile {
-    background: #ffffff8e;
+    background: rgba(255, 255, 255, 0.5);
     border-radius: 36px;
     padding: 20px;
     text-align: center;
@@ -289,7 +291,7 @@ p {
 .progress-bar {
     width: 100%;
     height: 10px;
-    background: #e0e0e0;
+    background: rgba(255, 255, 255, 0.5);
     border-radius: 5px;
     overflow: hidden;
     position: relative;
@@ -318,7 +320,7 @@ p {
     justify-content: space-around;
     align-items: center;
     margin-top: 6px;
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.5);
     border-radius: 36px;
     padding: 6px;
 }
@@ -336,7 +338,7 @@ p {
 .summary p {
     margin: 5px 0 0;
     font-size: 1rem;
-    color: #555;
+    color: #303030;
 }
 
 /* Адаптивность */
@@ -364,3 +366,37 @@ p {
         margin-bottom: 10px;
     }
 }
+
+
+
+
+
+
+
+.profile-line{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.log-out {
+    position: relative;
+    margin-left: 16px;
+    margin-right: 16px;
+    margin-bottom: 6px;
+    padding: 0px 16px;
+    width: 100%;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    color: var(--navbar-light-secondary);
+    cursor: pointer;
+    z-index: 1;
+    transition: background 0.2s, color 0.2s;
+    border-radius: 36px;
+  }
+  
+  .log-out:hover {
+    background: var(--hover-highlight);
+    color: var(--navbar-dark-primary);
+  }

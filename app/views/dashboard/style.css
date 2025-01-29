@@ -20,7 +20,7 @@ header img {
 }
 
 header .btn {
-    background-color: #5a5af7;
+    background-color: #303030;
     color: #ffffff;
     border: none;
     border-radius: 36px;
@@ -30,7 +30,7 @@ header .btn {
 }
 
 header .btn:hover {
-    background-color: #4a4ae0;
+    background-color: #303030;
 }
 
 .container {
@@ -49,7 +49,7 @@ header .btn:hover {
 .card-title {
     font-size: 1.4rem;
     font-weight: bold;
-    color: #5a5af7;
+    color: #303030;
 }
 
 .card-text {
@@ -58,7 +58,7 @@ header .btn:hover {
 }
 
 .btn-primary {
-    background-color: #5a5af7;
+    background-color: #303030;
     color: #ffffff;
     border: none;
     border-radius: 36px;
@@ -68,13 +68,13 @@ header .btn:hover {
 }
 
 .btn-primary:hover {
-    background-color: #4a4ae0;
+    background-color: #303030;
 }
 
 h2 {
     font-size: 2rem;
     margin-bottom: 10px;
-    color: #5a5af7;
+    color: #303030;
 }
 
 .row .col-md-4 {
@@ -125,7 +125,7 @@ button:hover {
 
 h3 {
     margin: 0 0 10px;
-    color: #5a5af7;
+    color: #303030;
 }
 
 p {
@@ -197,7 +197,7 @@ p {
 .summary span {
     font-size: 2rem;
     font-weight: bold;
-    color: #5a5af7;
+    color: #303030;
 }
 
 .summary p {
