@@ -143,7 +143,7 @@ button:hover {
 }
 
 .table tbody tr:hover {
-    background-color: #f0f5ff;
+    background-color: #FFD85F;
 }
 
 .table tbody td {
@@ -180,12 +180,13 @@ button:hover {
 .search-container {
     flex-direction: row;
     max-width: 400px;
-    margin: 20px auto;
-    display: flex;
+    margin: 10px auto;
+    display: flex
+;
     align-items: center;
     background-color: #fff;
-    padding: 10px 15px;
-    border-radius: 12px;
+    /* padding: 10px; */
+    border-radius: 36px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 

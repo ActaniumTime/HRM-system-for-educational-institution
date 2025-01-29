@@ -1,8 +1,29 @@
 
 <div class=" card">
-    <?php
-        require_once __DIR__ . "/EmpManagPartial/searchBar.php";
-    ?>
+
+    <div class="tool-bar">
+        <div class="tool-bar-element" >
+            <?php  
+                require_once __DIR__ . "/EmpManagPartial/FiltersMenu1.php";
+            ?>
+        </div>
+
+        <div  class="tool-bar-element">
+            <?php  
+                require_once __DIR__ . "/EmpManagPartial/FiltersMenu2.php";
+            ?>
+        </div>
+
+        <div>
+            <?php
+                require_once __DIR__ . "/EmpManagPartial/searchBar.php";
+            ?>
+        </div>
+    </div>
+
+
+
+
     <div class="table-responsive">
     <table class="table table-hover align-middle">
         <thead class="table-dark">

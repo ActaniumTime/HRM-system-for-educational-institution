@@ -39,9 +39,6 @@
         <div class="layout-container">
             <div class="temp-line">
 
-                <div class="tile project-time">
-
-                </div>
 
 
                 <div class="summary">
@@ -50,16 +47,7 @@
 
 
                 <div class="summary">
-                    <div>
-                    <?php  
-                        require_once __DIR__ . "../../partials/EmpManagPartial/FiltersMenu1.php";
-                    ?>
-                    </div>
-                    <div>
-                    <?php  
-                        require_once __DIR__ . "../../partials/EmpManagPartial/FiltersMenu1.php";
-                    ?>
-                    </div>
+
  
                 </div>
 

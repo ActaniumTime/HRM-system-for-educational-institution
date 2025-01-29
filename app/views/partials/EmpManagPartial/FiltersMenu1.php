@@ -1,4 +1,4 @@
-<div class="mb-4">
+<div >
     <label for="accessLevelFilter" class="form-label">Access Level</label>
     <select class="form-select" id="accessLevelFilter">
         <option value="">All</option>
@@ -7,7 +7,7 @@
         <option value="3">3</option>
     </select>
 </div>
-<div class="mb-4">
+<div >
     <label for="genderFilter" class="form-label">Gender</label>
     <select class="form-select" id="genderFilter">
         <option value="">All</option>
@@ -16,14 +16,14 @@
         <option value="other">Other</option>
     </select>
 </div>
-<div class="mb-4">
+<div >
     <label for="departmentFilter" class="form-label">Department</label>
     <select class="form-select" id="departmentFilter">
         <option value="">All</option>
         <!-- Dynamic options from server -->
     </select>
 </div>
-<div class="mb-4">
+<div >
     <label for="employmentTypeFilter" class="form-label">Employment Type</label>
     <select class="form-select" id="employmentTypeFilter">
         <option value="">All</option>

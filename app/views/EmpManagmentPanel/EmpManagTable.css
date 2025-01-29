@@ -11,6 +11,8 @@ h1 {
     border-radius: 36px;
     padding: 10px 15px;
     font-size: 1rem;
+    /* padding: 20px; */
+    width: 600px;
 }
 
 .search-input:focus {
@@ -172,4 +174,17 @@ button:hover {
 
 .no-click {
     pointer-events: none;
+}
+
+.tool-bar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.tool-bar-element{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
 }
