@@ -30,7 +30,6 @@
             <tr>
                 <th scope="col">№</th>
                 <th scope="col">Avatar</th>
-                <th scope="col">Employer's ID</th>
                 <th scope="col">Access Level</th>
                 <th scope="col">Name</th>
                 <th scope="col">Surname</th>
@@ -62,11 +61,26 @@
 
                 foreach ($EmployersList as $employer)
                 {   
+                    $AccID = $employer->getAccessLevelID();
                     echo "<tr>";
                     echo "<th scope=\"row\">" . $counter++ . "</th>";
                     echo "<td><img src=\"../../../Files/photos/{$employer->getAvatar()}\" alt=\"User Photo\" class=\"rounded-circle\" width=\"50\" height=\"50\"  id=\"employerAvatar\"></td>";
-                    echo "<td>{$employer->getEmployerID()}</td>";
-                    echo "<td>{$employer->getAccessLevelID()}</td>";
+                    
+                    switch ($AccID) {
+                        case 1:
+                            echo "<td>Admin</td>";
+                            break;
+                        case 2:
+                            echo "<td>Manager</td>";
+                            break;
+                        case 3:
+                            echo "<td>Employee</td>";
+                            break;
+                        default:
+                            echo "<td>Unknown</td>";
+                            break;
+                    }
+
                     echo "<td>{$employer->getName()}</td>";
                     echo "<td>{$employer->getSurname()}</td>";
                     echo "<td>{$employer->getFathername()}</td>";

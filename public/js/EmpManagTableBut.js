@@ -61,6 +61,15 @@ document.addEventListener('DOMContentLoaded', () => {
         URL.revokeObjectURL(downloadLink.href);
     });
 
+    function getAccessLevelText(accessLevelID) {
+        const levels = {
+            1: "Admin",
+            2: "Manager",
+            3: "Employee"
+        };
+        return levels[accessLevelID] || "Unknown";
+    }
+
     function updateTable() {
         const url = '../../models/get_table.php';
     
@@ -79,13 +88,13 @@ document.addEventListener('DOMContentLoaded', () => {
     
                 // Заполняем таблицу новыми данными
                 data.forEach((employer, index) => {
+                    const accessLevelText = getAccessLevelText(employer.accessLevelID);
                     const row = document.createElement('tr');
                     console.log("JS work 4");
                     row.innerHTML = `
                         <th scope="row">${index + 1}</th>
                         <td><img src="../../../Files/photos/${employer.avatar}" alt="User Photo" class="rounded-circle" width="50" height="50" id="employerAvatar"></td>
-                        <td>${employer.employerID}</td>
-                        <td>${employer.accessLevelID}</td>
+                        <td>${accessLevelText}</td>
                         <td>${employer.name}</td>
                         <td>${employer.surname}</td>
                         <td>${employer.fathername}</td>
