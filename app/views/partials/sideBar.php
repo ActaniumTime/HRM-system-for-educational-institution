@@ -6,14 +6,24 @@
         <hr/>
     </div>
     <div id="nav-content">
-        <div class="nav-button"><i class="fas fi fi-sr-mode-portrait"></i><span>Дошка управління</span></div>
+        <div class="nav-button"><i class="fas fi fi-sr-home"></i><span>Головна</span></div>
+
+        <?php
+            if($emp->getAccessLevelID() == 1 || $emp->getAccessLevelID() == 2 || $emp->getAccessLevelID() == 3)
+            {
+                echo "<div class=\"nav-button\"><i class=\"fas fi fi-sr-mode-portrait\"></i><span>Управління</span></div>";
+            }
+        ?>
+
+        
         <div class="nav-button"><i class="fas fi fi-ss-book-circle-arrow-right"></i><span>Курси</span></div>
         <div class="nav-button"><i class="fas fi fi-sr-duplicate"></i><span>Документи </span></div>
         <hr/>
-        <div class="nav-button"><i class="fas fa-heart"></i><span>Відстежувати</span></div>
-        <div class="nav-button"><i class="fas fa-chart-line"></i><span>Активні</span></div>
+
+        
         <div class="nav-button"><i class="fas fa-fire"></i><span>Завдачі</span></div>
         <div class="nav-button"><i class="fas fa-magic"></i><span>Заглушка</span></div>
+        <div class="nav-button"><i class="fas fi fi-ss-user"></i><span>Мій кабінет</span></div>
         <hr/>
 
         <?php
