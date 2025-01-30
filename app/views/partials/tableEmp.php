@@ -80,7 +80,7 @@
                             echo "<td>Unknown</td>";
                             break;
                     }
-
+                    
                     echo "<td>{$employer->getName()}</td>";
                     echo "<td>{$employer->getSurname()}</td>";
                     echo "<td>{$employer->getFathername()}</td>";

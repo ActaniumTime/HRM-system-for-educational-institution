@@ -2,9 +2,9 @@
     <label for="accessLevelFilter" class="form-label">Access Level</label>
     <select class="form-select" id="accessLevelFilter">
         <option value="">All</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
+        <option value="Admin">Admin</option>
+        <option value="Manager">Manager</option>
+        <option value="Employee">Employee</option>
     </select>
 </div>
 <div >

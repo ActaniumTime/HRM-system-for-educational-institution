@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function filterTable(query) {
         Array.from(table.rows).forEach(row => {
-            const cells = Array.from(row.cells).slice(4, 7); // Только столбцы с именем, фамилией и отчеством
+            const cells = Array.from(row.cells).slice(3, 6); // Только столбцы с именем, фамилией и отчеством
             const matches = cells.some(cell => cell.textContent.toLowerCase().includes(query));
             row.style.display = matches ? "" : "none";
         });

@@ -27,15 +27,15 @@ document.addEventListener("DOMContentLoaded", () => {
     // Делегирование событий для сортировки
     document.addEventListener("click", (event) => {
         if (event.target.matches("#sortByBirthday")) {
-            toggleSort(7, "birthday");
+            toggleSort(6, "birthday");
         } else if (event.target.matches("#sortByDateAccepted")) {
-            toggleSort(14, "dateAccepted");
+            toggleSort(13, "dateAccepted");
         } else if (event.target.matches("#sortByDateFired")) {
-            toggleSort(16, "dateFired");
+            toggleSort(15, "dateFired");
         } else if (event.target.matches("#resetFilters")) {
             resetFilters();
         }
-    });
+    });11
 
     function getTableRows() {
         return Array.from(table.rows).filter((row) => row.cells.length > 0); // Исключаем строки заголовков
@@ -51,10 +51,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         getTableRows().forEach((row) => {
             const cells = row.cells;
-            const matchesAccessLevel = !filters.accessLevel || cells[3].textContent.trim() === filters.accessLevel;
-            const matchesGender = !filters.gender || cells[8].textContent.trim().toLowerCase() === filters.gender;
-            const matchesDepartment = !filters.department || cells[13].textContent.trim().toLowerCase().includes(filters.department);
-            const matchesEmploymentType = !filters.employmentType || cells[18].textContent.trim().toLowerCase().includes(filters.employmentType);
+            const matchesAccessLevel = !filters.accessLevel || cells[2].textContent.trim() === filters.accessLevel;
+            const matchesGender = !filters.gender || cells[7].textContent.trim().toLowerCase() === filters.gender;
+            const matchesDepartment = !filters.department || cells[12].textContent.trim().toLowerCase().includes(filters.department);
+            const matchesEmploymentType = !filters.employmentType || cells[17].textContent.trim().toLowerCase().includes(filters.employmentType);
 
             row.style.display = matchesAccessLevel && matchesGender && matchesDepartment && matchesEmploymentType ? "" : "none";
         });
