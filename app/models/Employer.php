@@ -71,7 +71,7 @@ class Employer {
 
 
     public function verify($email, $password) {
-        $query = "SELECT * FROM Employers WHERE email = ? LIMIT 1";
+        $query = "SELECT * FROM employers WHERE email = ? LIMIT 1";
         $stmt = $this->connection->prepare($query);
         $stmt->bind_param("s", $email);
         $stmt->execute();
@@ -84,7 +84,7 @@ class Employer {
                 $_SESSION['employer_ID'] = $data['employerID'];
                 $token = bin2hex(random_bytes(32));
 
-                $uquery = "UPDATE Employers SET token = ? WHERE email = ?";
+                $uquery = "UPDATE employers SET token = ? WHERE email = ?";
                 $ustmt = $this->connection->prepare($uquery);
                 $ustmt->bind_param("ss", $token, $email);
                 $ustmt->execute();
