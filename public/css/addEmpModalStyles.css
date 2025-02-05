@@ -1,0 +1,228 @@
+
+.modal-content {
+    background: rgb(255, 255, 255); 
+    border-radius: 36px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    border: none;
+    padding: 20px;
+    color: #303030;
+}
+
+.modal-header {
+    border-bottom: none; 
+    padding-bottom: 10px;
+}
+
+.modal-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #303030;
+}
+
+.btn-close {
+    background: rgb(48, 48, 48); 
+    border-radius: 50%;
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+}
+
+.btn-close:hover {
+    opacity: 1;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.container {
+    padding: 0;
+}
+
+.form-control {
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 36px;
+    border: 1px solid rgba(48, 48, 48, 0.2);
+    padding: 10px 15px;
+    font-size: 14px;
+    color: #303030;
+    box-shadow: none;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #ffc825;
+    outline: none;
+    box-shadow: 0 0 4px rgba(255, 200, 37, 0.6);
+}
+
+.form-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #303030;
+}
+
+
+.form-select {
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 36px;
+    border: 1px solid rgba(48, 48, 48, 0.2);
+    padding: 12px 16px;
+    font-size: 14px;
+    color: #303030;
+    box-shadow: none;
+    appearance: none; 
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23303030'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E"); 
+    background-repeat: no-repeat;
+    background-position: calc(100% - 16px) center;
+}
+
+.form-select:hover {
+    border-color: #ffc825; 
+}
+
+.form-select:focus {
+    outline: none;
+    border-color: #ffc825;
+}
+
+
+
+.form-select:focus-visible {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+
+.form-select:focus::after {
+    content: "";
+    transform: rotate(180deg);
+    transition: transform 0.3s ease;
+}
+
+
+.form-select option:checked {
+    background: #ffc825;
+    color: #fff;
+}
+
+@media (max-width: 768px) {
+    .form-select {
+        font-size: 16px;
+        padding: 14px;
+    }
+}
+
+#employerAvatarPreview {
+    background-color: #303030;
+    border-radius: 50%;
+
+}
+
+input[type="file"] {
+    border-radius: 36px;
+    padding: 10px;
+    font-size: 14px;
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid #303030;
+    color: #303030;
+}
+
+
+.modal-footer .btn {
+    background: rgba(255, 200, 37, 0.6);
+    color: #303030;
+    border-radius: 36px;
+    padding: 10px 20px;
+    font-weight: bold;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.modal-footer .btn:hover {
+    background: rgba(255, 200, 37, 0.8);
+}
+
+.modal-footer .btn-secondary {
+    background: #303030; 
+    color: #fff;
+}
+
+.modal-footer .btn-secondary:hover {
+    background: #303030;
+}
+
+
+.row {
+    margin-bottom: 15px;
+}
+
+
+.text-center img {
+    border-color: #ffc825;
+}
+
+
+
+
+.custom-select-container {
+    position: relative;
+    width: 100%;
+}
+
+.custom-select {
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 36px;
+    border: 1px solid rgba(48, 48, 48, 0.2);
+    padding: 12px 16px;
+    font-size: 14px;
+    color: #303030;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.custom-select::after {
+    content: "▼";
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #303030;
+    font-size: 12px;
+    transition: transform 0.3s ease;
+}
+
+.custom-options {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    border: 1px solid rgba(48, 48, 48, 0.2);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: none;
+    z-index: 1000;
+}
+
+.custom-options li {
+    padding: 12px;
+    font-size: 14px;
+    color: #303030;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    border-radius: 20px;
+}
+
+.custom-options li:hover {
+    background: #ffc825;
+    color: #303030;
+}
+
+.custom-select.open::after {
+    transform: translateY(-50%) rotate(180deg);
+}

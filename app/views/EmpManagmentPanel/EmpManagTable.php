@@ -34,6 +34,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="../../../public/css/sidebarStyle.css">
     <link rel="stylesheet" href="../../../public/css/sidebarStyle2.css">
+    <link rel="stylesheet" href="../../../public/css/addEmpModalStyles.css">
     <link rel="stylesheet" href="EmpManagTable.css">
 </head>
 <body>

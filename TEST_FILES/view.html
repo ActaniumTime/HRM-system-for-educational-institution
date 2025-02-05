@@ -1,4 +1,68 @@
-<div class="modal fade" id="employerModal" tabindex="-1" aria-labelledby="employerModalLabel" aria-hidden="true">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* Кастомный стиль для dropdown */
+  .custom-dropdown {
+      position: relative;
+      width: 100%;
+      user-select: none;
+      margin-top: 5px;
+  }
+  
+  .dropdown-selected {
+      background: #fff;
+      border: 1px solid #ddd;
+      padding: 10px 15px;
+      font-size: 16px;
+      color: #333;
+      border-radius: 5px;
+      cursor: pointer;
+      position: relative;
+      transition: border-color 0.3s ease;
+  }
+  
+  .dropdown-selected:hover {
+      border-color: #007bff;
+  }
+  
+  .dropdown-options {
+      position: absolute;
+      top: calc(100% + 5px);
+      left: 0;
+      width: 100%;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      display: none;
+      z-index: 1000;
+  }
+  
+  .dropdown-options.active {
+      display: block;
+  }
+  
+  .dropdown-options li {
+      padding: 10px 15px;
+      font-size: 16px;
+      color: #333;
+      cursor: pointer;
+      transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .dropdown-options li:hover {
+      background: #007bff;
+      color: #fff;
+  }
+  
+  </style>
+</head>
+<body>
+  <div class="modal fade" id="AddEmployerModal" tabindex="-1" aria-labelledby="employerModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -6,7 +70,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="employerForm" enctype="multipart/form-data">
+                <form id="employerForm_AddForm" enctype="multipart/form-data">
                     <div class="container">
                         <div class="row">
                             <div class="col-md-12 text-center">
@@ -14,87 +78,105 @@
                                 <input type="file" id="employerAvatar" name="avatar" accept="image/*" class="form-control mt-3">
                             </div>
                         </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="mb-3 col-md-6">
-                            <label for="employerID" class="form-label">Employer ID</label>
-                            <input type="text" class="form-control" id="employerID" name="employerID" readonly>
+  
+                        <!-- Кастомный dropdown для Access Level -->
+                        <div class="row">
+                            <div class="mb-3 col-md-6">
+                                <label for="accessLevelID" class="form-label">Access Level</label>
+                                <div class="custom-dropdown" id="accessLevelDropdown">
+                                    <div class="dropdown-selected">Администратор</div>
+                                    <ul class="dropdown-options">
+                                        <li data-value="Administrator">Администратор</li>
+                                        <li data-value="Manager">Менеджер</li>
+                                        <li data-value="Employee">Сотрудник</li>
+                                        <li data-value="Teacher">Преподаватель</li>
+                                    </ul>
+                                </div>
+                                <input type="hidden" name="accessLevelID" id="accessLevelID_AddForm" value="Administrator">
+                            </div>
                         </div>
-                        <div class="mb-3 col-md-6">
-                            <label for="accessLevelID" class="form-label">Access Level ID</label>
-                            <input type="text" class="form-control" id="accessLevelID" name="accessLevelID">
-                        </div>
-                        <div class="mb-3 col-md-6">
-                            <label for="name" class="form-label">Name</label>
-                            <input type="text" class="form-control" id="name" name="name">
-                        </div>
-                        <div class="mb-3 col-md-6">
-                            <label for="surname" class="form-label">Surname</label>
-                            <input type="text" class="form-control" id="surname" name="surname">
-                        </div>
-                        <div class="mb-3 col-md-6">
-                            <label for="fathername" class="form-label">Fathername</label>
-                            <input type="text" class="form-control" id="fathername" name="fathername">
-                        </div>
-                        <div class="mb-3 col-md-6">
-                            <label for="birthday" class="form-label">Birthday</label>
-                            <input type="date" class="form-control" id="birthday" name="birthday">
-                        </div>
-                        <div class="mb-3 col-md-6">
-                            <label for="gender" class="form-label">Gender</label>
-                            <select class="form-select" id="gender" name="gender">
-                                <option value="Male">Male</option>
-                                <option value="Female">Female</option>
-                            </select>
-                        </div>
-                        <div class="mb-3 col-md-6">
-                            <label for="passportID" class="form-label">Passport ID</label>
-                            <input type="text" class="form-control" id="passportID" name="passportID">
-                        </div>
-                        <div class="mb-3 col-md-6">
-                            <label for="homeAddress" class="form-label">Home Address</label>
-                            <input type="text" class="form-control" id="homeAddress" name="homeAddress">
-                        </div>
-                        <div class="mb-3 col-md-6">
-                            <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" name="email">
-                        </div>
-                        <div class="mb-3 col-md-6">
-                            <label for="phoneNumber" class="form-label">Phone Number</label>
-                            <input type="text" class="form-control" id="phoneNumber" name="phoneNumber">
-                        </div>
-                        <div class="mb-3 col-md-6">
-                            <label for="department" class="form-label">Department</label>
-                            <input type="text" class="form-control" id="department" name="department">
-                        </div>
-                        <div class="mb-3 col-md-6">
-                            <label for="dateAccepted" class="form-label">Date Accepted</label>
-                            <input type="date" class="form-control" id="dateAccepted" name="dateAccepted">
-                        </div>
-                        <div class="mb-3 col-md-6">
-                            <label for="currentStatus" class="form-label">Current Status</label>
-                            <input type="text" class="form-control" id="currentStatus" name="currentStatus">
-                        </div>
-                        <div class="mb-3 col-md-6">
-                            <label for="dateFired" class="form-label">Date Fired</label>
-                            <input type="date" class="form-control" id="dateFired" name="dateFired">
-                        </div>
-                        <div class="mb-3 col-md-6">
-                            <label for="admissionBasis" class="form-label">Admission Basis</label>
-                            <input type="text" class="form-control" id="admissionBasis" name="admissionBasis">
-                        </div>
-                        <div class="mb-3 col-md-6">
-                            <label for="employmentType" class="form-label">Employment Type</label>
-                            <input type="text" class="form-control" id="employmentType" name="employmentType">
+  
+                        <!-- Остальные поля формы -->
+                        <div class="row">
+                            <div class="mb-3 col-md-6">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="text" class="form-control" id="password_AddForm" name="password">
+                            </div>
+                            <div class="mb-3 col-md-6">
+                                <label for="name" class="form-label">Name</label>
+                                <input type="text" class="form-control" id="name_AddForm" name="name">
+                            </div>
+                            <div class="mb-3 col-md-6">
+                                <label for="surname" class="form-label">Surname</label>
+                                <input type="text" class="form-control" id="surname_AddForm" name="surname">
+                            </div>
+                            <div class="mb-3 col-md-6">
+                                <label for="gender" class="form-label">Gender</label>
+                                <div class="custom-dropdown" id="genderDropdown">
+                                    <div class="dropdown-selected">Male</div>
+                                    <ul class="dropdown-options">
+                                        <li data-value="Male">Male</li>
+                                        <li data-value="Female">Female</li>
+                                    </ul>
+                                </div>
+                                <input type="hidden" name="gender" id="gender_AddForm" value="Male">
+                            </div>
                         </div>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary" form="employerForm">Save Changes</button>
+                <button type="submit" class="btn btn-primary" form="employerForm_AddForm">Save Changes</button>
             </div>
         </div>
     </div>
-</div>
+  </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // Функция для создания кастомного dropdown
+    function initCustomDropdown(dropdownId, hiddenInputId) {
+        const dropdown = document.getElementById(dropdownId);
+        const selected = dropdown.querySelector('.dropdown-selected');
+        const options = dropdown.querySelector('.dropdown-options');
+        const hiddenInput = document.getElementById(hiddenInputId);
+
+        // Открытие/закрытие меню
+        selected.addEventListener('click', () => {
+            options.classList.toggle('active');
+        });
+
+        // Выбор элемента из списка
+        options.addEventListener('click', (event) => {
+            if (event.target.tagName === 'LI') {
+                const value = event.target.getAttribute('data-value');
+                selected.textContent = event.target.textContent;
+                hiddenInput.value = value; // Установка значения для скрытого input
+                options.classList.remove('active');
+            }
+        });
+
+        // Закрытие меню при клике вне dropdown
+        document.addEventListener('click', (event) => {
+            if (!dropdown.contains(event.target)) {
+                options.classList.remove('active');
+            }
+        });
+    }
+
+    // Инициализация dropdown для Access Level и Gender
+    initCustomDropdown('accessLevelDropdown', 'accessLevelID_AddForm');
+    initCustomDropdown('genderDropdown', 'gender_AddForm');
+});
+
+</script>

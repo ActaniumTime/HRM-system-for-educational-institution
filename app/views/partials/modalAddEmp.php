@@ -18,17 +18,18 @@
 
                     <div class="row">
                         <div class="mb-3 col-md-6">
-                            <label for="accessLevelID" class="form-label">Access Level ID</label>
-                            <input type="text" class="form-control" id="accessLevelID_AddForm" name="accessLevelID">
+                            <label for="accessLevelID" class="form-label">Access Level</label>
+                            <select class="form-select" id="accessLevelID_AddForm" name="accessLevelID">
+                                <option value="Administrator">Администратор</option>
+                                <option value="Manager">Менеджер</option>
+                                <option value="Employee">Сотрудник</option>
+                                <option value="Teacher">Преподаватель</option>
+                            </select>
                         </div>
                         <div class="mb-3 col-md-6">
-                            <label for="accessLevelID" class="form-label">Password</label>
+                            <label for="password" class="form-label">Password</label>
                             <input type="text" class="form-control" id="password_AddForm" name="password">
                         </div>
-                        <!-- <div class="mb-3 col-md-6">
-                            <label for="accessLevelID" class="form-label">Repeat password</label>
-                            <input type="text" class="form-control" id="password_AddForm" name="accessLevelID">
-                        </div> -->
                         <div class="mb-3 col-md-6">
                             <label for="name" class="form-label">Name</label>
                             <input type="text" class="form-control" id="name_AddForm" name="name">
@@ -70,7 +71,13 @@
                         </div>
                         <div class="mb-3 col-md-6">
                             <label for="department" class="form-label">Department</label>
-                            <input type="text" class="form-control" id="department_AddForm" name="department">
+                            <select class="form-select" id="department_AddForm" name="department">
+                                <option value="Software Engineering">Программная инженерия</option>
+                                <option value="Computer Science">Компьютерные науки</option>
+                                <option value="Designers">Дизайнеры</option>
+                                <option value="Administration">Администрация</option>
+                                <option value="Accounting">Бухгалтерия</option>
+                            </select>
                         </div>
                         <div class="mb-3 col-md-6">
                             <label for="dateAccepted" class="form-label">Date Accepted</label>
@@ -90,7 +97,10 @@
                         </div>
                         <div class="mb-3 col-md-6">
                             <label for="employmentType" class="form-label">Employment Type</label>
-                            <input type="text" class="form-control" id="employmentType_AddForm" name="employmentType">
+                            <select class="form-select" id="employmentType_AddForm" name="employmentType">
+                                <option value="Full-time">Полный день</option>
+                                <option value="Part-time">Частичный</option>
+                            </select>
                         </div>
                     </div>
                 </form>
@@ -103,8 +113,17 @@
     </div>
 </div>
 
-
 <script>
+document.getElementById('employerAvatar').addEventListener('change', function (e) {
+    const file = e.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            document.getElementById('employerAvatarPreview').src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+    }
+});
 
 document.getElementById('employerForm_AddForm').addEventListener('submit', function (e) {
     e.preventDefault();
@@ -141,5 +160,4 @@ document.getElementById('employerForm_AddForm').addEventListener('submit', funct
             console.error('Ошибка:', error);
         });
 });
-
 </script>

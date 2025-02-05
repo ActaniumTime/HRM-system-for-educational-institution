@@ -6,30 +6,30 @@
         <hr/>
     </div>
     <div id="nav-content">
-        <div class="nav-button"><i class="fas fi fi-sr-home"></i><span>Головна</span></div>
+    <a href="../dashboard/dashboard.php"><div class="nav-button"><i class="fas fi fi-sr-home"></i><span>Головна</span></div></a>
 
         <?php
             if($emp->getAccessLevelID() == 1 || $emp->getAccessLevelID() == 2 || $emp->getAccessLevelID() == 3)
             {
-                echo "<div class=\"nav-button\"><i class=\"fas fi fi-sr-mode-portrait\"></i><span>Управління</span></div>";
+                echo "<a href=\"../EmpManagmentPanel/EmpManagTable.php\"><div class=\"nav-button\"><i class=\"fas fi fi-sr-mode-portrait\"></i><span>Управління</span></div></a>";
             }
         ?>
 
         
-        <div class="nav-button"><i class="fas fi fi-ss-book-circle-arrow-right"></i><span>Курси</span></div>
+        <a href=""><div class="nav-button"><i class="fas fi fi-ss-book-circle-arrow-right"></i><span>Курси</span></div></a>
         <div class="nav-button"><i class="fas fi fi-sr-duplicate"></i><span>Документи </span></div>
         <hr/>
 
         
-        <div class="nav-button"><i class="fas fa-fire"></i><span>Завдачі</span></div>
-        <div class="nav-button"><i class="fas fa-magic"></i><span>Заглушка</span></div>
-        <div class="nav-button"><i class="fas fi fi-ss-user"></i><span>Мій кабінет</span></div>
+        <a href=""><div class="nav-button"><i class="fas fa-fire"></i><span>Завдачі</span></div></a>
+        <a href=""><div class="nav-button"><i class="fas fa-magic"></i><span>Заглушка</span></div></a>
+        <a href=""><div class="nav-button"><i class="fas fi fi-ss-user"></i><span>Мій кабінет</span></div></a>
         <hr/>
 
         <?php
             if($emp->getAccessLevelID() == 1)
             {
-                echo "<div class=\"nav-button\"><i class=\"fas fi fi-br-admin\"></i><span>Адмін. панель</span></div>";
+                echo "<a href=\"../AdminPanel/AdminPanel.php\"><div class=\"nav-button\"><i class=\"fas fi fi-br-admin\"></i><span>Адмін. панель</span></div></a>";
             }
         ?>
         
@@ -56,7 +56,7 @@
                         echo "Employee";
                         break;
                     default:
-                        echo "Unknown";
+                        echo "Teacher";
                         break;
                 }
                 ?>
