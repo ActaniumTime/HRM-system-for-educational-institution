@@ -23,7 +23,7 @@
                         </div>
                         <div class="mb-3 col-md-6">
                             <label for="accessLevelID" class="form-label">Password</label>
-                            <input type="text" class="form-control" id="password_AddForm" name="password_AddForm">
+                            <input type="text" class="form-control" id="password_AddForm" name="password">
                         </div>
                         <!-- <div class="mb-3 col-md-6">
                             <label for="accessLevelID" class="form-label">Repeat password</label>

@@ -4,6 +4,9 @@
     error_reporting(E_ALL);
 
     require_once __DIR__ . '/../../app/models/UserVerify.php';
+    require_once __DIR__ . '/../../app/models/enc.php';
+
+    $enc = new Enigma();
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header('Content-Type: application/json');
@@ -34,7 +37,7 @@
     }
 
     $user = $result->fetch_assoc();
-    if (!password_verify($password, $user['password'])) {
+    if (!$password === $enc->encrypt($user['password'])) {
         echo json_encode(['success' => false, 'message' => 'Incorrect password.']);
         exit;
     }

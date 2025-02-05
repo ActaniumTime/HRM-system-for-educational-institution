@@ -19,36 +19,67 @@
 
     require_once 'config/database.php'; 
 
-    echo "<br><br>";    
+    // $tempEmp = new Employer($connection);
+    // $tempEmp->addEmployer(
+    //     2,
+    //     "passwd1!",
+    //     "test",
+    //     "test",
+    //     "test",
+    //     "2025-02-03",
+    //     "Male",
+    //     "test",
+    //     "test",
+    //     "test12223123@gmail.com",
+    //     "+128449330",
+    //     "test",
+    //     "2025-02-03",
+    //     "Active",
+    //     null,
+    //     null,
+    //     "Part-time",
+    //     "path123.jpg"
+    // );
+
+    // echo "<br><br>";    
 
     $emp = new Employer($connection);
     $emp->loadByID(1);
     $emp->Show();
-    
     echo "<br>";
+    $test1 = "password789";
 
+    $enigma = new Enigma();
+    $encrypted = $enigma->encrypt($test1);
 
-    // $emp1 = new Employer($connection);
-    // $dateFired = NULL; 
-    // $emp1->addEmployer(
-    //     1,              // accessLevelID
-    //     "password789",  // Пароль
-    //     "Al5555ex",         // Имя
-    //     "Johnson",      // Фамилия
-    //     "Michael",      // Отчество
-    //     "1985-07-23",   // Дата рождения
-    //     "male",         // Пол
-    //     "CD4567890",    // Номер паспорта
-    //     "789 Pine Street", // Домашний адрес
-    //     "alex.joh44nson@example.com", // Электронная почта
-    //     "+14523456780",   // Номер телефона
-    //     "IT Department",// Кафедра/отделение
-    //     "2015-06-01",   // Дата приема на работу
-    //     "Active",       // Статус
-    //     $dateFired,     // Дата увольнения (если нет, то NULL)
-    //     "Contract #003",// Основание для приема
-    //     "Full-time"     // Тип занятости
-    // );
+    echo $encrypted . "<br>";
+
+    $decrypted = $enigma->encrypt($encrypted);
+
+    echo $decrypted . "<br>";
+
+    //  $emp1 = new Employer($connection);
+    //  $dateFired = NULL; 
+    //  $emp1->addEmployer(
+    //      1,              // accessLevelID
+    //      "password789",  // Пароль
+    //      "Al5555ex",         // Имя
+    //      "Johnson",      // Фамилия
+    //      "Michael",      // Отчество
+    //      "1985-07-23",   // Дата рождения
+    //      "male",         // Пол
+    //      "CD4567890",    // Номер паспорта
+    //      "789 Pine Street", // Домашний адрес
+    //      "alex.joh44nson@example.com", // Электронная почта
+    //      "+14523456780",   // Номер телефона
+    //      "IT Department",// Кафедра/отделение
+    //      "2015-06-01",   // Дата приема на работу
+    //      "Active",       // Статус
+    //      $dateFired,     // Дата увольнения (если нет, то NULL)
+    //      "Contract #003",// Основание для приема
+    //      "Full-time",     // Тип занятости
+    //     "path123.jpg"
+    //  );
 
 
     // $courseEng = new ContinuingEducation($connection);

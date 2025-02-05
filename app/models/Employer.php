@@ -1,4 +1,7 @@
 <?php
+
+require_once __DIR__ . "/enc.php";
+
 class Employer {
     private $connection;
     private $employerID;
@@ -76,10 +79,12 @@ class Employer {
         $stmt->bind_param("s", $email);
         $stmt->execute();
         $result = $stmt->get_result();
+        $enc = new Enigma();
 
         if ($result->num_rows > 0) {
             $data = $result->fetch_assoc();
-            if (password_verify($password, $data['password'])) {
+            if ($password === $enc->encrypt($data['password'])) 
+            {
 
                 $_SESSION['employer_ID'] = $data['employerID'];
                 $token = bin2hex(random_bytes(32));
@@ -173,8 +178,9 @@ class Employer {
     )
      {
         // Hash the password before storing it in the database
-        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-    
+        $enigma = new Enigma();
+        $hashedPassword = $enigma->encrypt($password);
+        
         $sql = "INSERT INTO employers (
                     accessLevelID,
                     password,
