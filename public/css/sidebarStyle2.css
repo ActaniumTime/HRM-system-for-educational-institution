@@ -152,7 +152,6 @@
 	flex: 1;
 	width: var(--navbar-width);
 	background: var(--navbar-dark-primary);
-	box-shadow: 0 0 0 16px var(--navbar-dark-primary);
 	direction: rtl;
 	overflow-x: hidden;
 	transition: width 0.2s;
@@ -185,11 +184,9 @@
 	width: 32px;
 	height: 32px;
 	border-radius: 50%;
-	box-shadow: 16px 16px var(--background);
   }
   #nav-content-highlight:after {
 	top: 100%;
-	box-shadow: 16px -16px var(--background);
   }
   
   .nav-button {

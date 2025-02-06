@@ -2,7 +2,6 @@
 .modal-content {
     background: rgb(255, 255, 255); 
     border-radius: 36px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
     border: none;
     padding: 20px;
     color: #303030;
@@ -52,7 +51,6 @@
 .form-control:focus {
     border-color: #ffc825;
     outline: none;
-    box-shadow: 0 0 4px rgba(255, 200, 37, 0.6);
 }
 
 .form-label {
@@ -165,8 +163,6 @@ input[type="file"] {
 }
 
 
-
-
 .custom-select-container {
     position: relative;
     width: 100%;
@@ -204,7 +200,6 @@ input[type="file"] {
     background: rgba(255, 255, 255, 0.95);
     border-radius: 20px;
     border: 1px solid rgba(48, 48, 48, 0.2);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     display: none;
     z-index: 1000;
 }

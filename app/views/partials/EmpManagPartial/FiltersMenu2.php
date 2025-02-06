@@ -1,7 +1,9 @@
 <div >
-    <button class="btn btn-outline-primary" id="sortByBirthday">Birthday</button>
-    <button class="btn btn-outline-primary" id="sortByDateAccepted">Date Accepted</button>
-    <button class="btn btn-outline-primary" id="sortByDateFired">Date Fired</button>
-    <button class="btn btn-outline-danger" id="resetFilters">Reset Filters</button>
-    <button class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#addEmployerModal">Add Employer</button>
+    <button class="btn sort-btn" id="sortByBirthday"><i class="fi fi-br-calendar-birhtday-cake  no-click" ></i></button>
+    <button class="btn sort-btn" id="sortByDateAccepted"><i class="fi fi-sr-shopping-bag-add  no-click"></i></button>
+    <button class="btn sort-btn" id="sortByDateFired"><i class="fi fi-ss-bag-shopping-minus  no-click"></i></button>
+    <button class="btn sort-btn" id="resetFilters"><i class="fi fi-rr-rotate-right  no-click"></i></button>
+    <button class="btn sort-btn" data-bs-toggle="modal" data-bs-target="#addEmployerModal">
+        
+    <i class="fi fi-rr-multiple no-click"></i></button>
 </div>

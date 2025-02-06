@@ -245,7 +245,6 @@ label[for=nav-toggle] {
 }
 
 #nav-content {
-  box-shadow: 0 0 0 16px var(--navbar-dark-primary);
   direction: rtl;
   transition: width 0.2s;
 }
@@ -277,11 +276,9 @@ label[for=nav-toggle] {
   width: 32px;
   height: 32px;
   border-radius: 36px;
-  box-shadow: 16px 16px var(--background);
 }
 #nav-content-highlight:after {
   top: 100%;
-  box-shadow: 16px -16px var(--background);
 }
 
 

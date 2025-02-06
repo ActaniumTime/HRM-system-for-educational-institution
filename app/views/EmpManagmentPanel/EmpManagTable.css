@@ -16,7 +16,6 @@ h1 {
 }
 
 .search-input:focus {
-    box-shadow: 0 0 8px rgba(90, 90, 247, 0.4);
     outline: none;
 }
 
@@ -84,7 +83,6 @@ button {
 button:hover {
     background-color: #303030;
     transform: scale(1);
-    box-shadow: 0 4px 8px rgba(90, 90, 247, 0.4);
 }
 
 .d-flex {
@@ -172,8 +170,7 @@ button:hover {
 .editEmployerBtn:hover .icon_white {
     fill: #ffffff;
     background-color: #303030;
-    transform: scale(1);
-    box-shadow: none;
+    transition: background-color 0.3s ease, fill 0.3s ease;
 }
 
 .no-click {
