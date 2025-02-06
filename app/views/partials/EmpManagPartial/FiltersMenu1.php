@@ -1,34 +1,30 @@
 <div >
-    <label for="accessLevelFilter" class="form-label">Access Level</label>
     <select class="form-select" id="accessLevelFilter">
-        <option value="">All</option>
-        <option value="Admin">Admin</option>
-        <option value="Manager">Manager</option>
-        <option value="Employee">Employee</option>
+        <option value="">Рівень доступу</option>
+        <option value="Admin">Администратор</option>
+        <option value="Manager">Менеджер</option>
+        <option value="Employee">Викладач</option>
     </select>
 </div>
 <div >
-    <label for="genderFilter" class="form-label">Gender</label>
-    <select class="form-select" id="genderFilter">
-        <option value="">All</option>
-        <option value="male">Male</option>
-        <option value="female">Female</option>
-        <option value="other">Other</option>
+    <select class="form-select" id="genderFilter" placeholder="Gender">
+        <option value="">Стать</option>
+        <option value="male">Чоловіча</option>
+        <option value="female">Жіноча</option>
+        <option value="other">Інша</option>
     </select>
 </div>
 <div >
-    <label for="departmentFilter" class="form-label">Department</label>
     <select class="form-select" id="departmentFilter">
-        <option value="">All</option>
+        <option value="">Відділ/кафедра</option>
         <!-- Dynamic options from server -->
     </select>
 </div>
 <div >
-    <label for="employmentTypeFilter" class="form-label">Employment Type</label>
     <select class="form-select" id="employmentTypeFilter">
-        <option value="">All</option>
-        <option value="full-time">Full-Time</option>
-        <option value="part-time">Part-Time</option>
-        <option value="contract">Contract</option>
+        <option value="">Тип зайнятості </option>
+        <option value="full-time">Повна зайнятость</option>
+        <option value="part-time">Часткова зайнятость</option>
+        <option value="contract">Контрактна</option>
     </select>
 </div>

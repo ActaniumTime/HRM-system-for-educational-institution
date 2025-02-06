@@ -393,7 +393,7 @@ class Employer {
         }
 
     }
-
+    
     //геттеры и сеттеры
     public function getEmployerID() { return $this->employerID; }
     public function setEmployerID($employerID) { $this->employerID = $employerID; }

@@ -14,7 +14,7 @@
             ?>
         </div>
 
-        <div>
+        <div class="tool-bar-element">
             <?php
                 require_once __DIR__ . "/EmpManagPartial/searchBar.php";
             ?>

@@ -5,7 +5,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (button) {
             const employerId = button.getAttribute('data-employer-id');
             document.getElementById('deleteEmployerId').textContent = employerId;
-
             const confirmButton = document.getElementById('confirmDeleteEmployer');
             confirmButton.onclick = () => deleteEmployer(employerId, button.closest('tr'));
         }
