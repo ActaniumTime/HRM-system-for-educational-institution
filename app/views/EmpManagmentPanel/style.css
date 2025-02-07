@@ -178,14 +178,13 @@ button:hover {
 
 /* Стили для поиска */
 .search-container {
-    flex-direction: row;
-    max-width: 400px;
-    margin: 10px auto;
     display: flex;
     align-items: center;
     background-color: rgba(255, 255, 255, 0.5);
-    /* padding: 10px; */
     border-radius: 36px;
+    max-width: 400px; /* Изначальная ширина */
+    width: 100%;
+    padding: 5px 10px;
 }
 
 .search-input {
@@ -195,6 +194,7 @@ button:hover {
     color: #303030;
     padding: 5px;
     outline: none;
+    min-width: 50px;
 }
 
 .search-icon {
@@ -271,6 +271,9 @@ p {
     gap: 6px;
     padding: 6px;
     background: transparent;
+    margin-top: -10px;
+    margin-bottom: -14px;
+    align-items: center; 
 }
 
 .tile {
@@ -338,29 +341,67 @@ p {
 }
 
 /* Адаптивность */
-@media (max-width: 1024px) {
-    .temp-line {
-        grid-template-columns: repeat(2, 1fr); /* 2 столбца на средних экранах */
-    }
+@media (max-width: 1198px) {
 
     .summary {
         grid-column: span 2; /* Растянуть summary на 2 столбца */
     }
+
+    .temp-line {
+        grid-template-columns: 1fr 1fr; /* Две колонки */
+        grid-template-rows: auto auto; /* Две строки */
+    }
+
+    .tool-bar-element:nth-child(1) { /* FiltersMenu1 */
+        display: flex;
+        flex-direction: column;
+        grid-column: span 1; /* Занимает половину ширины */
+    }
+
+    .tool-bar-element:nth-child(3) { /* searchBar */
+        grid-column: span 1; /* Растягивается на всю ширину */
+    }
+
+    .tool-bar-element:nth-child(2) { /* FiltersMenu2 */
+        grid-column: span 1; /* Переносится под searchBar */
+    }
 }
 
 @media (max-width: 768px) {
+    .search-container {
+        max-width: 100%; /* Растягиваем на всю ширину */
+    }
+
+    .search-input {
+        font-size: 0.9rem; /* Уменьшаем текст */
+        padding: 3px;
+    }
+
+    .search-icon {
+        font-size: 1rem; /* Уменьшаем иконку */
+    }
+
+
+
     .temp-line {
-        grid-template-columns: 1fr; /* 1 столбец на маленьких экранах */
+        grid-template-columns: 1fr 1fr; /* Две колонки */
+        grid-template-rows: auto auto; /* Две строки */
     }
 
-    .summary {
-        grid-column: span 1; /* Растянуть summary на 1 столбец */
+    .tool-bar-element:nth-child(1) { /* FiltersMenu1 */
+        display: flex;
         flex-direction: column;
+        grid-column: span 2; /* Занимает половину ширины */
     }
 
-    .summary div {
-        margin-bottom: 10px;
+    .tool-bar-element:nth-child(3) { /* searchBar */
+        grid-column: span 2; /* Растягивается на всю ширину */
     }
+
+    .tool-bar-element:nth-child(2) { /* FiltersMenu2 */
+        grid-column: span 2; /* Переносится под searchBar */
+    }
+
 }
 
 
@@ -411,4 +452,9 @@ p {
 .sort-btn:hover {
     background: var(--hover-highlight);
     color: var(--navbar-dark-primary);
+}
+
+.tool-bar-element:last-child {
+    display: flex;
+    justify-content: flex-end; /* Прижимает содержимое к правому краю */
 }

@@ -49,20 +49,20 @@
     <div class="content-wrapper">
         <div class="layout-container">
             
-            <div class="temp-line tools" style="grid-template-columns:  1fr auto 1fr; margin-top: -10px; margin-bottom: -14px;">
-                    <div class="tool-bar-element" >
+            <div class="temp-line" style="grid-template-columns: 1fr 1fr auto; margin-top: -10px; margin-bottom: -14px;">
+                    <div class="tool-bar-element filters-1" >
                         <?php  
                             require_once __DIR__ . "/../partials/EmpManagPartial/FiltersMenu1.php";
                         ?>
                     </div>
 
-                    <div class="tool-bar-element">
+                    <div  class="tool-bar-element filters-2">
                         <?php  
                             require_once __DIR__ . "/../partials/EmpManagPartial/FiltersMenu2.php";
                         ?>
                     </div>
 
-                    <div class="tool-bar-element">
+                    <div class="tool-bar-element search-container-u">
                         <?php
                             require_once __DIR__ . "/../partials/EmpManagPartial/searchBar.php";
                         ?>
