@@ -48,6 +48,28 @@
 
     <div class="content-wrapper">
         <div class="layout-container">
+            
+            <div class="temp-line tools" style="grid-template-columns:  1fr auto 1fr; margin-top: -10px; margin-bottom: -14px;">
+                    <div class="tool-bar-element" >
+                        <?php  
+                            require_once __DIR__ . "/../partials/EmpManagPartial/FiltersMenu1.php";
+                        ?>
+                    </div>
+
+                    <div class="tool-bar-element">
+                        <?php  
+                            require_once __DIR__ . "/../partials/EmpManagPartial/FiltersMenu2.php";
+                        ?>
+                    </div>
+
+                    <div class="tool-bar-element">
+                        <?php
+                            require_once __DIR__ . "/../partials/EmpManagPartial/searchBar.php";
+                        ?>
+                    </div>
+            </div>
+
+
             <div class="temp-line">
 
 

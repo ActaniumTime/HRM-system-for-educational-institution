@@ -4,7 +4,20 @@ document.addEventListener('DOMContentLoaded', () => {
         const button = event.target.closest('.Delete-button');
         if (button) {
             const employerId = button.getAttribute('data-employer-id');
+
+            const name = button.getAttribute('data-name');
+            const surname = button.getAttribute('data-surname');
+            const fathername = button.getAttribute('data-fathername');
+            const employerName = `${surname} ${name} ${fathername}`;
+            
+            const employerLevelID = button.getAttribute('data-access-level-id');
+            const employerAccepted = button.getAttribute('data-date-accepted');
+            
             document.getElementById('deleteEmployerId').textContent = employerId;
+            document.getElementById('deleteEmployerName').textContent = employerName;
+            document.getElementById('deleteEmployerLevel').textContent = employerLevelID;
+            document.getElementById('deleteEmployerAccepted').textContent = employerAccepted;
+
             const confirmButton = document.getElementById('confirmDeleteEmployer');
             confirmButton.onclick = () => deleteEmployer(employerId, button.closest('tr'));
         }

@@ -1,52 +1,29 @@
 
-<div class="card">
-
-    <div class="tool-bar">
-        <div class="tool-bar-element" >
-            <?php  
-                require_once __DIR__ . "/EmpManagPartial/FiltersMenu1.php";
-            ?>
-        </div>
-
-        <div  class="tool-bar-element">
-            <?php  
-                require_once __DIR__ . "/EmpManagPartial/FiltersMenu2.php";
-            ?>
-        </div>
-
-        <div class="tool-bar-element">
-            <?php
-                require_once __DIR__ . "/EmpManagPartial/searchBar.php";
-            ?>
-        </div>
-    </div>
-
-
-
+<div class="card" style="margin-top: 25px;">
 
     <div class="table-responsive">
     <table class="table table-hover align-middle">
         <thead class="table-dark">
             <tr>
                 <th scope="col">№</th>
-                <th scope="col">Avatar</th>
-                <th scope="col">Access Level</th>
-                <th scope="col">Name</th>
-                <th scope="col">Surname</th>
-                <th scope="col">Fathername</th>
-                <th scope="col">Birthday</th>
-                <th scope="col">Gender</th>
-                <th scope="col">Passport ID</th>
-                <th scope="col">Home Address</th>
+                <th scope="col">Аватар</th>
+                <th scope="col">Рівень доступу</th>
+                <th scope="col">Ім'я</th>
+                <th scope="col">Фамілія</th>
+                <th scope="col">По батькові</th>
+                <th scope="col">День Народження</th>
+                <th scope="col">Стать</th>
+                <th scope="col">Паспорт ID</th>
+                <th scope="col">Дом. адреса</th>
                 <th scope="col">Email</th>
-                <th scope="col">Phone Number</th>
+                <th scope="col">Телефон</th>
                 <th scope="col">Department</th>
-                <th scope="col">Accepted From</th>
-                <th scope="col">Current Status</th>
-                <th scope="col">Fired From</th>
-                <th scope="col">Admission Basis</th>
-                <th scope="col">Employment Type</th>
-                <th scope="col">Actions</th>
+                <th scope="col">Прийнято з</th>
+                <th scope="col">Поточний стан</th>
+                <th scope="col">Звільнено з</th>
+                <th scope="col">Наказ про прийняття</th>
+                <th scope="col">Тип зайнятості</th>
+                <th scope="col">Дії</th>
             </tr>
         </thead>
         <tbody id="employeeTable">
@@ -128,6 +105,22 @@
                     
                     echo "<button type=\"button\" class=\"Delete-button\"
                             data-employer-id=\"{$employer->getEmployerID()}\"
+                            data-access-level-id=\"{$employer->getAccessLevelID()}\"
+                            data-name=\"{$employer->getName()}\"
+                            data-surname=\"{$employer->getSurname()}\"
+                            data-fathername=\"{$employer->getFathername()}\"
+                            data-birthday=\"{$employer->getBirthday()}\"
+                            data-gender=\"{$employer->getGender()}\"
+                            data-passport-id=\"{$employer->getPassportID()}\"
+                            data-home-address=\"{$employer->getHomeAddress()}\"
+                            data-email=\"{$employer->getEmail()}\"
+                            data-phone-number=\"{$employer->getPhoneNumber()}\"
+                            data-department=\"{$employer->getDepartment()}\"
+                            data-date-accepted=\"{$employer->getDateAccepted()}\"
+                            data-current-status=\"{$employer->getCurrentStatus()}\"
+                            data-date-fired=\"{$employer->getDateFired()}\"
+                            data-admission-basis=\"{$employer->getAdmissionBasis()}\"
+                            data-employment-type=\"{$employer->getEmploymentType()}\"
                             data-bs-toggle=\"modal\"
                             data-bs-target=\"#deleteEmployerModal\">
 

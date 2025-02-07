@@ -10,7 +10,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-12 text-center">
-                                <img id="employerAvatarPreview" src="" alt="User Photo" class="rounded-circle" width="150" height="150" style="border: 3px solid #5a5af7; margin-bottom: 15px;">
+                                <img id="employerAvatarPreview" src="" alt="User Photo" class="rounded-circle" width="150" height="150" style="    border: 5px solid #ffc825; margin-bottom: 15px;">
                                 <input type="file" id="employerAvatar" name="avatar" accept="image/*" class="form-control mt-3">
                             </div>
                         </div>

@@ -3,7 +3,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="employerModalLabel">Employer Details</h5>
+                <h5 class="modal-title text-center w-100"" id="employerModalLabel">Employer Details</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -12,7 +12,7 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-12 text-center">
-                                    <img id="employerAvatar" src="" alt="User Photo" class="rounded-circle" width="150" height="150" style="border: 3px solid #5a5af7; margin-bottom: 15px;">
+                                    <img id="employerAvatar" src="" alt="User Photo" class="rounded-circle" width="150" height="150" style="    border: 5px solid #ffc825; margin-bottom: 15px;">
                                 </div>
                             </div>
                         </div>

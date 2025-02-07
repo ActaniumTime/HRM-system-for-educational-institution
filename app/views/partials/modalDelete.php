@@ -1,12 +1,3 @@
-<!-- Delete Employer Modal -->
-<?php
-
-    $tempEmp3 = new Employer($connection);
-    // $tempEmp3->loadByID();
-
-
-?>
-
 
 <div class="modal fade" id="deleteEmployerModal" tabindex="-1" aria-labelledby="deleteEmployerModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -18,10 +9,10 @@
             <div class="modal-body">
                 <p>Ви увірені у тому, що бажаєте звільнити співробітника?</p>
                 <p><strong>Employer ID:</strong> <span id="deleteEmployerId"></span></p>
-                <p><strong>ФІБ: </strong><span></span></p>
-                <p><strong>Рівень доступу :</strong><span></span></p>
+                <p><strong>ФІБ: </strong><span id="deleteEmployerName"></span></p>
+                <p><strong>Рівень доступу :</strong><span id="deleteEmployerLevel"></span></p>
                 <!-- <p><strong>Посада :</strong><span></span></p> -->
-                <p><strong>Прийнято з: </strong><span></span></p>
+                <p><strong>Прийнято з: </strong><span id="deleteEmployerAccepted"></span></p>
                 <div class="mb-3">
                     <label for="adminPassword" class="form-label">Підтвердить пароль адміністратору:</label>
                     <input type="password" id="adminPassword" class="form-control" placeholder="Введить пароль" required>
@@ -34,10 +25,3 @@
         </div>
     </div>
 </div>
-
-
-
-
-
-
-
