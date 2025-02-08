@@ -20,10 +20,10 @@
                         <div class="mb-3 col-md-6">
                             <label for="accessLevelID" class="form-label">Access Level</label>
                             <select class="form-select" id="accessLevelID_AddForm" name="accessLevelID">
-                                <option value="Administrator">Администратор</option>
-                                <option value="Manager">Менеджер</option>
-                                <option value="Employee">Сотрудник</option>
-                                <option value="Teacher">Преподаватель</option>
+                                <option value="1">Администратор</option>
+                                <option value="2">Менеджер</option>
+                                <option value="3">Сотрудник</option>
+                                <option value="4">Преподаватель</option>
                             </select>
                         </div>
                         <div class="mb-3 col-md-6">

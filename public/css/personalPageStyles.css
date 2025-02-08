@@ -1,0 +1,219 @@
+html {
+    background: rgb(228,229,231);
+    background: linear-gradient(135deg, rgba(228,229,231,1) 44%, rgba(249,232,178,1) 84%, rgba(246,232,203,1) 100%);
+    color: #2e2e2e;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: transparent !important;
+    display: flex;
+    color: #303030;
+}
+
+header {
+    padding: 20px 0;
+}
+
+header img {
+    max-height: 50px;
+}
+
+header .btn {
+    background-color: #303030;
+    color: #ffffff;
+    border: none;
+    border-radius: 36px;
+    padding: 10px 20px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+header .btn:hover {
+    background-color: #303030;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.card {
+    background-color: rgba(244, 244, 252, 0.5);
+    border: none;
+    border-radius: 36px;
+    transition: transform 0.3s;
+}
+
+.card-title {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #303030;
+}
+
+.card-text {
+    color: #5e5e5e;
+    font-size: 1rem;
+}
+
+.btn-primary {
+    background-color: #303030;
+    color: #ffffff;
+    border: none;
+    border-radius: 36px;
+    padding: 10px 20px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #303030;
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: #303030;
+}
+
+.row .col-md-4 {
+    margin-bottom: 20px;
+}
+
+img.rounded-circle {
+    border: 3px solid #ffc825;
+}
+
+button {
+    background-color: #303030;
+    color: #ffffff;
+    border: none;
+    border-radius: 36px;
+    padding: 10px 15px;
+    transition: transform 0.2s, background-color 0.3s;
+}
+
+button:hover {
+    background-color: #303030;
+    transform: scale(1.05);
+}
+
+
+h3 {
+    margin: 0 0 10px;
+    color: #303030;
+}
+
+p {
+    color: #555;
+}
+
+.temp-line {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 столбца одинаковой ширины */
+    gap: 6px;
+    padding: 6px;
+    background: transparent;
+}
+
+.main-plate{
+    display: grid;
+    gap: 6px;
+    padding: 6px;
+    background: transparent;
+}
+
+.tile {
+    background: #ffffff8e;
+    border-radius: 36px;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.summary {
+    grid-column: span 4; /* Растянуть summary на всю ширину */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 6px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 36px;
+    padding: 6px;
+}
+
+.summary div {
+    text-align: center;
+}
+
+.summary span {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #303030;
+}
+
+.summary p {
+    margin: 5px 0 0;
+    font-size: 1rem;
+    color: #555;
+}
+
+
+
+
+/* Адаптивность */
+@media (max-width: 1024px) {
+    .temp-line {
+        grid-template-columns: repeat(2, 1fr); /* 2 столбца на средних экранах */
+    }
+
+    .summary {
+        grid-column: span 2; /* Растянуть summary на 2 столбца */
+    }
+}
+
+@media (max-width: 768px) {
+    .temp-line {
+        grid-template-columns: 1fr; /* 1 столбец на маленьких экранах */
+    }
+
+    .summary {
+        grid-column: span 1; /* Растянуть summary на 1 столбец */
+        flex-direction: column;
+    }
+
+    .summary div {
+        margin-bottom: 10px;
+    }
+}
+
+
+
+
+.page-wrapper {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+#nav-bar {
+    transition: width 0.3s;
+}
+
+#nav-toggle:checked ~ #nav-bar {
+    width: var(--navbar-width-min);
+}
+
+.content-wrapper {
+    flex-grow: 1;
+    padding: 12px;
+    margin-left: calc(var(--navbar-width) + 1rem);
+    transition: margin-left 0.3s;
+    overflow-y: auto; /* Добавлено */
+    height: 100vh; /* Убедись, что высота равна высоте окна */
+}

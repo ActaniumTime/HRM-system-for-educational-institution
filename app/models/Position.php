@@ -53,6 +53,30 @@
             }
         }
 
+        public function editPosition($positionID, $positionName, $positionLevel, $positionRequirements, $salary){
+            $this->positionID = $positionID;
+            $this->positionName = $positionName;
+            $this->positionLevel = $positionLevel;
+            $this->positionRequirements = $positionRequirements;
+            $this->salary = $salary;
+            $query = "UPDATE Positions SET positionName = ?, positionLevel = ?, positionRequirements = ?, salary = ? WHERE positionID = ?";
+            $stmt = $this->connection->prepare($query);
+
+            if (!$stmt) {
+                throw new Exception("Failed to prepare statement: " . $this->connection->error);
+            }
+
+            $stmt->bind_param("isssi",$this->positionID ,$this->positionName, $this->positionLevel, $this->positionRequirements, $this->salary);
+            
+            if ($stmt->execute()) {
+                echo "Employer updated successfully!";
+            } else {
+                echo "Error updating employer: " . $stmt->error;
+            }
+        
+            $stmt->close();
+        }
+
         public function showAllPositions(){
             $query = "SELECT * FROM Positions";
             $result = $this->connection->query($query);

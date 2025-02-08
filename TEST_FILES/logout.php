@@ -1,5 +1,4 @@
 <?php
-
     require_once __DIR__ . '/../config/database.php';
 
     session_unset();
@@ -7,6 +6,6 @@
     setcookie('employer_ID', '', time() - 3600, '/');
     
     echo "Session destroyed";
-    // header('Location: login.php');
+    header('Location: ./../index.php');
     exit();
 ?>
