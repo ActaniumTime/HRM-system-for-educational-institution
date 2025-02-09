@@ -66,7 +66,7 @@
                 throw new Exception("Failed to prepare statement: " . $this->connection->error);
             }
 
-            $stmt->bind_param("isssi",$this->positionID ,$this->positionName, $this->positionLevel, $this->positionRequirements, $this->salary);
+            $stmt->bind_param("sssii", $this->positionName, $this->positionLevel, $this->positionRequirements, $this->salary, $this->positionID);
             
             if ($stmt->execute()) {
                 echo "Employer updated successfully!";

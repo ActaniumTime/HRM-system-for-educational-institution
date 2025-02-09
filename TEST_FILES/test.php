@@ -19,6 +19,19 @@
 
     require_once 'config/database.php'; 
 
+    // $testPos = new Position($connection);
+    // $testPos->loadByID(1);
+    // $testPos->Show();
+
+    // echo "<br>";
+
+    // $testPos->showAllPositions();
+
+    // echo "<br>";
+
+    // $newPos = new Position($connection);
+    // $newPos->editPosition(6,"Teacher", "jun", "1 years of exp in education`s institutions", 500.00);
+
     // $tempEmp = new Employer($connection);
     // $tempEmp->addEmployer(
     //     2,
@@ -43,20 +56,20 @@
 
     // echo "<br><br>";    
 
-    $emp = new Employer($connection);
-    $emp->loadByID(1);
-    $emp->Show();
-    echo "<br>";
-    $test1 = "password789";
+    // $emp = new Employer($connection);
+    // $emp->loadByID(1);
+    // $emp->Show();
+    // echo "<br>";
+    // $test1 = "password789";
 
-    $enigma = new Enigma();
-    $encrypted = $enigma->encrypt($test1);
+    // $enigma = new Enigma();
+    // $encrypted = $enigma->encrypt($test1);
 
-    echo $encrypted . "<br>";
+    // echo $encrypted . "<br>";
 
-    $decrypted = $enigma->encrypt($encrypted);
+    // $decrypted = $enigma->encrypt($encrypted);
 
-    echo $decrypted . "<br>";
+    // echo $decrypted . "<br>";
 
     //  $emp1 = new Employer($connection);
     //  $dateFired = NULL; 
