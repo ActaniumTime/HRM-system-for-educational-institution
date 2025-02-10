@@ -71,6 +71,38 @@
         .modal-footer .btn:hover {
             background: rgba(255, 200, 37, 0.8);
         }
+
+        img.rounded-circle {
+            border: 3px solid #ffc825;
+        }
+
+        .table img.rounded-circle {
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        header img {
+            max-height: 50px;
+        }
+
+
+        .btn-cor {
+            background: transparent; /* Изначально без фона */
+            border: 2px solid transparent; /* Границы скрыты */
+            border-radius: 36px;
+            opacity: 0.6;
+            transition: border-color 0.3s ease, opacity 0.3s ease;
+            border-radius: 36px;
+            padding: 10px 20px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .btn-cor:hover {
+            border-color: #303030; /* Границы появляются при наведении */
+            background: transparent; /* Фон остаётся прозрачным */
+            opacity: 1;
+        }
         </style>
 
 </head>
@@ -80,17 +112,6 @@
         Open Salary Management
     </button>
     
-    <div class="user-info">
-        <div class="user-av">
-            <img src="https://via.placeholder.com/80" alt="Avatar">
-        </div>
-        <div class="user-inf">
-            <p><strong>ПІБ КОРИСТУВАЧА</strong></p>
-            <p>ID КОРИСТУВАЧА</p>
-            <p>Прийнятий з: ДАТА</p>
-            <p>Буде звільнено з: ДАТА</p>
-        </div>
-    </div>
     
     <div class="modal fade" id="SalaryManagementModal" tabindex="-1" aria-labelledby="salaryModalLabel" aria-hidden="true" >
         <div class="modal-dialog modal-lg">
@@ -100,27 +121,23 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="salaryForm" enctype="multipart/form-data">
+                    <form id="positionForm" enctype="multipart/form-data">
                         <div class="row">
                             <div class="mb-3 col-md-6">
-                                <label for="employeeSelect" class="form-label">Select Employee</label>
-                                <select class="form-select" id="employeeSelect" name="employeeID">
-                                    <option value="1">John Doe</option>
-                                    <option value="2">Jane Smith</option>
-                                    <option value="3">Mark Johnson</option>
-                                </select>
+                                <label for="employeeSelect" class="form-label">Input a new posotion</label>
+                                <input type="text" class="form-control" id="positionName" name="positionName" required>
                             </div>
                             <div class="mb-3 col-md-6">
-                                <label for="currentSalary" class="form-label">Current Salary</label>
-                                <input type="text" class="form-control" id="currentSalary" name="currentSalary" disabled>
+                                <label for="employeeSelect" class="form-label">positionLevel</label>
+                                <input type="text" class="form-control" id="positionLevel" name="positionLevel">
                             </div>
                             <div class="mb-3 col-md-6">
-                                <label for="newSalary" class="form-label">New Salary</label>
-                                <input type="number" class="form-control" id="newSalary" name="newSalary" required>
+                                <label for="currentSalary" class="form-label">Salary</label>
+                                <input type="text" class="form-control" id="currentSalary" name="currentSalary" required>
                             </div>
                             <div class="mb-3 col-md-6">
-                                <label for="bonus" class="form-label">Bonus</label>
-                                <input type="number" class="form-control" id="bonus" name="bonus">
+                                <label for="positionRequirements" class="form-label">Positions requirments</label>
+                                <input type="text" class="form-control" id="positionRequirements" name="positionRequirements" required>
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="uploadPDF" class="form-label">Attach PDF Confirmation</label>
@@ -130,7 +147,7 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn-cor" data-bs-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary" form="salaryForm">Save Changes</button>
                 </div>
             </div>
@@ -143,17 +160,8 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-document.getElementById('employeeSelect').addEventListener('change', function () {
-    const employeeID = this.value;
-    const salaryData = {
-        1: 50000,
-        2: 55000,
-        3: 60000
-    };
-    document.getElementById('currentSalary').value = salaryData[employeeID] || 'Not Available';
-});
 
-document.getElementById('salaryForm').addEventListener('submit', function (e) {
+document.getElementById('positionForm').addEventListener('submit', function (e) {
     e.preventDefault();
     const formData = new FormData(this);
     console.log('Submitted data:', Object.fromEntries(formData.entries()));
