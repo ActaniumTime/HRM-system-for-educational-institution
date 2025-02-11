@@ -1,3 +1,15 @@
+<?php
+
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
+
+    require_once __DIR__ . '/../../../models/UserVerify.php';
+    require_once __DIR__ . '/../../../models/DashboardModel.php';
+    require_once __DIR__ . '/../../../models/modals/deleteEndpoint.php';
+    require_once __DIR__ . '/../../../models/modals/addPosition.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -133,7 +145,7 @@
                             </div>
                             <div class="mb-3 col-md-6">
                                 <label for="currentSalary" class="form-label">Salary</label>
-                                <input type="text" class="form-control" id="currentSalary" name="currentSalary" required>
+                                <input type="text" class="form-control" id="positionSalary" name="positionSalary" required>
                             </div>
                             <div class="mb-3 col-md-6">
                                 <label for="positionRequirements" class="form-label">Positions requirments</label>
@@ -147,8 +159,8 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn-cor" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary" form="salaryForm">Save Changes</button>
+                    <button type="button"  class="btn-cor"  data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" form="positionForm">Save Changes</button>
                 </div>
             </div>
         </div>
@@ -160,27 +172,29 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-
 document.getElementById('positionForm').addEventListener('submit', function (e) {
     e.preventDefault();
     const formData = new FormData(this);
-    console.log('Submitted data:', Object.fromEntries(formData.entries()));
 
-    fetch('/save_salary', {
+    console.log("Submitting form data:");
+    formData.forEach((value, key) => console.log(`${key}:`, value));
+
+    fetch('../../../models/modals/addPosition.php', {
         method: 'POST',
         body: formData
     })
     .then(response => response.json())
     .then(data => {
         if (data.success) {
-            alert('Salary updated successfully!');
-            location.reload();
+            alert('Position added successfully!');
+            document.getElementById('SalaryManagementModal').classList.remove('show');
+            document.body.classList.remove('modal-open');
+            document.querySelector('.modal-backdrop').remove(); // Убираем затемнение
         } else {
             alert(`Error: ${data.message}`);
         }
     })
     .catch(error => console.error('Error:', error));
 });
+
 </script>
-
-

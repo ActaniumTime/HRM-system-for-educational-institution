@@ -65,13 +65,11 @@
         
             $stmt->bind_param("isssss", $this->ownerID, $this->documentName, $this->sphere, $this->purpose, $this->docType, $this->linkToFile);
         
-            if ($stmt->execute()) {
-                echo "Document added successfully!";
-            } else {
-                echo "Error: " . $stmt->error;
-            }
+            $stmt->execute();
+            $documentID = $stmt->insert_id;
         
             $stmt->close();
+            return $documentID;
         }
         
     }

@@ -6,7 +6,8 @@
         private $positionName;
         private $positionLevel;
         private $positionRequirements;
-        private $salary ;
+        private $salary;
+        private $documentID;
 
         public function __construct($connection){
             $this->connection = $connection;
@@ -37,20 +38,23 @@
             }
         }
 
-        public function addNewPosition($positionName, $positionLevel, $positionRequirements, $salary){
+        public function addNewPosition($positionName, $positionLevel, $positionRequirements, $salary, $documentID){
             $this->positionName = $positionName;
             $this->positionLevel = $positionLevel;
             $this->positionRequirements = $positionRequirements;
             $this->salary = $salary;
-
-            $query = "INSERT INTO Positions (positionName, positionLevel, positionRequirements, salary) VALUES (?, ?, ?, ?)";
+            $this->documentID = $documentID;
+            
+            $query = "INSERT INTO Positions (positionName, positionLevel, positionRequirements, salary, documentID) VALUES (?, ?, ?, ?, ?)";
             $stmt = $this->connection->prepare($query);
-            $stmt->bind_param("sssi", $this->positionName, $this->positionLevel, $this->positionRequirements, $this->salary);
-            if ($stmt->execute()) {
-                echo "Position added successfully!";
-            } else {
-                echo "Error: " . $stmt->error;
-            }
+            $stmt->bind_param("sssis", $this->positionName, $this->positionLevel, $this->positionRequirements, $this->salary, $this->documentID);
+            $flag = false;
+            if ($stmt->execute())
+                $flag = true;
+            $stmt->close();
+            return $flag;
+
+
         }
 
         public function editPosition($positionID, $positionName, $positionLevel, $positionRequirements, $salary){
