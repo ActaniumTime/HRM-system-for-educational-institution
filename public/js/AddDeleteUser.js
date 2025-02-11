@@ -32,7 +32,7 @@ function deleteEmployer(employerId, tableRow) {
         return;
     }
 
-    fetch('../../../app/models/deleteEndpoint.php', {
+    fetch('../../../app/models/modals/deleteEndpoint.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -57,3 +57,4 @@ function deleteEmployer(employerId, tableRow) {
         alert('An error occurred while deleting the employer.');
     });
 }
+

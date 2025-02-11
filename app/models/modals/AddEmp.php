@@ -3,13 +3,13 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-require_once __DIR__ . '/../../app/models/UserVerify.php';
+require_once __DIR__ . '/../../models/UserVerify.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     header('Content-Type: application/json');
 
     
-    $uploadDir = __DIR__ . '/../../Files/photos/';
+    $uploadDir = __DIR__ . '../../../../Files/photos/';
     
     if (!is_dir($uploadDir)) {
         mkdir($uploadDir, 0755, true);

@@ -142,7 +142,7 @@ document.getElementById('employerForm_AddForm').addEventListener('submit', funct
 
     console.log('Отправляемые данные:', jsonData);
 
-    fetch('../../../app/models/AddEmp.php', {
+    fetch('../../../app/models/modals/AddEmp.php', {
         method: 'POST',
         body: formData, 
     })

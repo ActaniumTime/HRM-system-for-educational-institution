@@ -6,10 +6,10 @@
 
     require_once __DIR__ . '/../../../app/models/UserVerify.php';
     require_once __DIR__ . '/../../../app/models/DashboardModel.php';
-    require_once __DIR__ . '../../partials/modalEmpMan.php';
-    require_once __DIR__ . '../../partials/modalDelete.php';
-    require_once __DIR__ . '/../../../app/models/deleteEndpoint.php';
-    require_once __DIR__ . '../../partials/modalAddEmp.php';
+    require_once __DIR__ . '../../partials/modals/modalEmpMan.php';
+    require_once __DIR__ . '../../partials/modals/modalDelete.php';
+    require_once __DIR__ . '/../../../app/models/modals/deleteEndpoint.php';
+    require_once __DIR__ . '../../partials/modals/modalAddEmp.php';
 
 ?>
 
@@ -75,7 +75,7 @@
 
 
                 <div class="summary">
-                <?php require_once __DIR__ . "../../partials/tableEmp.php"; ?>
+                <?php require_once __DIR__ . "../../partials/EmpManagPartial/tableEmp.php"; ?>
                 </div>
 
 
