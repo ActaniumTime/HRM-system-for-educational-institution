@@ -9,7 +9,7 @@
     <a href="../dashboard/dashboard.php"><div class="nav-button"><i class="fas fi fi-sr-home"></i><span>Головна</span></div></a>
 
         <?php
-            if($emp->getAccessLevelID() == 1 || $emp->getAccessLevelID() == 2 || $emp->getAccessLevelID() == 3)
+            if($emp->getAccessLevelID() == 1 || $emp->getAccessLevelID() == 2)
             {
                 echo "<a href=\"../EmpManagmentPanel/EmpManagTable.php\"><div class=\"nav-button\"><i class=\"fas fi fi-sr-mode-portrait\"></i><span>Управління</span></div></a>";
             }

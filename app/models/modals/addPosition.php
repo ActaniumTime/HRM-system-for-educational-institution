@@ -37,11 +37,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $newDoc = new Document($connection);
         $documentID = $newDoc->addDocument(
-            1,
-            $fileName,
-            null,
-            'Документ о создании новой позиции',
-            'Распоряжение',
+            $emp->getEmployerID(),
+            $data['docName'],
+            $data['sphere'],
+            $data['purpose'],
+            $data['docType'],
             $destinationPath
         );
     } else {

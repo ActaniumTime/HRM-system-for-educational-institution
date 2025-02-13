@@ -60,12 +60,12 @@
     // $emp->loadByID(1);
     // $emp->Show();
     // echo "<br>";
-    // $test1 = "password789";
+    $test1 = "password456";
 
-    // $enigma = new Enigma();
-    // $encrypted = $enigma->encrypt($test1);
+    $enigma = new Enigma();
+    $encrypted = $enigma->encrypt($test1);
 
-    // echo $encrypted . "<br>";
+    echo $encrypted . "<br>";
 
     // $decrypted = $enigma->encrypt($encrypted);
 

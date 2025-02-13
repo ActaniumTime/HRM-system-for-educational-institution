@@ -115,6 +115,13 @@
             background: transparent; /* Фон остаётся прозрачным */
             opacity: 1;
         }
+
+        .file-attach{
+            border-radius: 36px;
+            background:rgba(255, 248, 218, 0.66);
+            padding: 25px;
+        }
+
         </style>
 
 </head>
@@ -151,12 +158,34 @@
                                 <label for="positionRequirements" class="form-label">Positions requirments</label>
                                 <input type="text" class="form-control" id="positionRequirements" name="positionRequirements" required>
                             </div>
-                            <div class="mb-3 col-md-12">
-                                <label for="uploadPDF" class="form-label">Attach PDF Confirmation</label>
-                                <input type="file" class="form-control" id="uploadPDF" name="confirmationFile" accept=".pdf" required>
+                            <div class="file-attach">
+                                <div class="mb-3 col-md-12" >
+                                    <label for="uploadPDF" class="form-label">Attach PDF Confirmation</label>
+                                    <input type="file" class="form-control" id="uploadPDF" name="confirmationFile" accept=".pdf" required >
+                                </div>
+                                <div class="row">
+                                    <div class="mb-3 col-md-6">
+                                        <label for="employeeSelect" class="form-label">Input a new name of doc</label>
+                                        <input type="text" class="form-control" id="docName" name="docName" required>
+                                    </div>
+                                    <div class="mb-3 col-md-6">
+                                        <label for="employeeSelect" class="form-label">sphere</label>
+                                        <input type="text" class="form-control" id="sphere" name="sphere">
+                                    </div>
+                                    <div class="mb-3 col-md-6">
+                                        <label for="currentSalary" class="form-label">purpose</label>
+                                        <input type="text" class="form-control" id="purpose" name="purpose" required>
+                                    </div>
+                                    <div class="mb-3 col-md-6">
+                                        <label for="positionRequirements" class="form-label">docType</label>
+                                        <input type="text" class="form-control" id="docType" name="docType" required>
+                                    </div>
+                                </div>
                             </div>
+
                         </div>
                     </form>
+
                 </div>
                 <div class="modal-footer">
                     <button type="button"  class="btn-cor"  data-bs-dismiss="modal">Close</button>

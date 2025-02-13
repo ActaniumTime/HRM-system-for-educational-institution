@@ -85,19 +85,38 @@ require_once __DIR__ . '/../../../app/models/UserVerify.php';
 
 
             <div class="temp-line">
-                <div class="tall-tile">
-
+                <div class="tile">
+                    <h3>Управління документами</h3>
+                    <p>сторінка для керування усіми документами у системі</p>
+                    <button>Відкрити</button>
+                </div>
+                <div class="tile">
+                    <h3>Управління позиціями</h3>
+                    <p>сторінка для керування позиції у закладі</p>
+                    <button>Відкрити</button>
                 </div>
                 <div class="tile">
                     <h3>Tasks</h3>
                     <p>Manage your tasks effectively and increase productivity.</p>
                     <button>Open</button>
                 </div>
-                <div class="tile">
-                    <h5 class="card-title">Personnel Management</h5>
-                    <p class="card-text">Manage personnel records.</p>
-                    <a href="../EmpManagmentPanel/EmpManagTable.php" class="btn btn-primary">Manage Personnel</a>
-                </div>
+
+                <?php
+                    switch ($emp->getAccessLevelID()) {
+                        case 1 : case 2 :
+                            echo "
+                                <div class=\"tile\">
+                                    <h5 class=\"card-title\">Керування персоналом</h5>
+                                    <p class=\"card-text\">Тут будуть якись записи.</p>
+                                    <a href=\"../EmpManagmentPanel/EmpManagTable.php\" class=\"btn btn-primary\">Керування персоналом</a>
+                                </div>
+                            ";
+                        default:
+                            break;
+                    }
+                    ?>
+
+
                 <div class="tile">
                     <h5>Доброго дня, <?php echo htmlspecialchars($emp->getName(), ENT_QUOTES); ?></h5>
                     <img src="../../../Files/photos/<?php echo $emp->getAvatar(); ?>" alt="User Photo" class="rounded-circle" width="100" height="100">
