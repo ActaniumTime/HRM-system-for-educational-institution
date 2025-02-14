@@ -92,6 +92,76 @@
             return $positions;
         }
 
+
+        public function getAllPosition($connection){
+            $query = "SELECT * FROM Positions";
+            $result = $connection->query($query);
+            $positions = [];
+
+            while($row = $result->fetch_assoc()){
+                $position = new Position($connection);
+                $position->positionID = $row['positionID'];
+                $position->positionName = $row['positionName'];
+                $position->positionLevel = $row['positionLevel'];
+                $position->positionRequirements = $row['positionRequirements'];
+                $position->salary = $row['salary'];
+                $position->documentID = $row['documentID'];
+
+                $positions [] = $position;
+            }
+            return $positions;
+        }
+
+
+
+
+        public function getPositionID() {
+            return $this->positionID;
+        }
+
+        public function getPositionName() {
+            return $this->positionName;
+        }
+
+        public function getPositionLevel() {
+            return $this->positionLevel;
+        }
+
+        public function getPositionRequirements() {
+            return $this->positionRequirements;
+        }
+
+        public function getSalary() {
+            return $this->salary;
+        }
+
+        public function getDocumentID() {
+            return $this->documentID;
+        }
+
+        public function setPositionID($positionID) {
+            $this->positionID = $positionID;
+        }
+
+        public function setPositionName($positionName) {
+            $this->positionName = $positionName;
+        }
+
+        public function setPositionLevel($positionLevel) {
+            $this->positionLevel = $positionLevel;
+        }
+
+        public function setPositionRequirements($positionRequirements) {
+            $this->positionRequirements = $positionRequirements;
+        }
+
+        public function setSalary($salary) {
+            $this->salary = $salary;
+        }
+
+        public function setDocumentID($documentID) {
+            $this->documentID = $documentID;
+        }
     }
 
 ?>

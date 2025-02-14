@@ -19,6 +19,11 @@
 
     require_once 'config/database.php'; 
 
+    // $doc = new Document($connection);
+
+    // $doc->loadByID(3);
+    // $doc->deleteDocument(3);
+
     // $testPos = new Position($connection);
     // $testPos->loadByID(1);
     // $testPos->Show();
@@ -60,12 +65,12 @@
     // $emp->loadByID(1);
     // $emp->Show();
     // echo "<br>";
-    $test1 = "password456";
+    // $test1 = "password456";
 
-    $enigma = new Enigma();
-    $encrypted = $enigma->encrypt($test1);
+    // $enigma = new Enigma();
+    // $encrypted = $enigma->encrypt($test1);
 
-    echo $encrypted . "<br>";
+    // echo $encrypted . "<br>";
 
     // $decrypted = $enigma->encrypt($encrypted);
 

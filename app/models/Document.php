@@ -71,6 +71,22 @@
             $stmt->close();
             return $documentID;
         }
+
+        public function deleteDocument($id){
+            if(isset($id)){
+                $query = "DELETE FROM document WHERE documentID = ?";
+                $stmt = $this->connection->prepare($query);
+                $stmt -> bind_param('i', $id);
+                if($stmt->execute()){
+                    $stmt->close();
+                    return true;
+                } else {
+                    return false;
+                }
+                $stmt->close();
+            }
+        }
+        
         
     }
 

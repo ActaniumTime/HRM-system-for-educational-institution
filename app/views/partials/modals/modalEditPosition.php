@@ -128,7 +128,7 @@
 <body>
 
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#SalaryManagementModal">
-        Open Salary Management
+        Edit positions
     </button>
     
     
