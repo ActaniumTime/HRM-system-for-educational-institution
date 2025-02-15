@@ -5,7 +5,7 @@
     error_reporting(E_ALL);
 
     require_once __DIR__ . '/../../config/database.php';
-    require_once __DIR__ . '/../../app/models/EmPhoto.php';
+
     require_once __DIR__ . '/../../app/models/Employer.php';
 
     //Current user and his session

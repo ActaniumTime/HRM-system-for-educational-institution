@@ -1,189 +1,149 @@
+<?php
+
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
+
+    require_once __DIR__ . '/../../../models/UserVerify.php';
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css'>
+
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-rounded/css/uicons-solid-rounded.css'>
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css">
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-straight/css/uicons-regular-straight.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-chubby/css/uicons-solid-chubby.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-straight/css/uicons-solid-straight.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-bold-rounded/css/uicons-bold-rounded.css'>
+    
 
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="../../../public/css/sidebarStyle.css">
-    <link rel="stylesheet" href="../../../public/css/sidebarStyle2.css">
-    <link rel="stylesheet" href="../../../public/css/addEmpModalStyles.css">
+    <link rel="stylesheet" href="../../../../public/css/sidebarStyle.css">
+    <link rel="stylesheet" href="../../../../public/css/sidebarStyle.css">
     <link rel="stylesheet" href="EmpManagTable.css">
 </head>
 <body>
 
-<div class="temp-line">
+
+
+<div class="page-wrapper">
+    <?php  
+        require_once __DIR__ . "../../../partials/sideBar.php";
+    ?>
+    <div class="content-wrapper">
+        <div class="layout-container">
+            <div class="temp-line" style="grid-template-columns: 1fr 1fr auto; margin-top: -10px; margin-bottom: -14px;">
+                    <div class="tool-bar-element filters-1" >
+                        <?php  
+                            require_once __DIR__ . "/../EmpManagPartial/FiltersMenu1.php";
+                        ?>
+                    </div>
+
+                    <div  class="tool-bar-element filters-2">
+                        <?php  
+                            require_once __DIR__ . "/../EmpManagPartial/FiltersMenu2.php";
+                        ?>
+                    </div>
+
+                    <div class="tool-bar-element search-container-u">
+                        <?php
+                            require_once __DIR__ . "/../EmpManagPartial/searchBar.php";
+                        ?>
+                    </div>
+            </div>
+
+            <div class="temp-line">
+                <div class="summary">
+                    
+                <div class="card" style="margin-top: 25px;">
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th scope="col">№</th>
+                                    <th scope="col">Номер посади</th>
+                                    <th scope="col">Назва посади</th>
+                                    <th scope="col">Рівень</th>
+                                    <th scope="col">Ставка</th>
+                                    <th scope="col">Ордер</th>
+                                    <th scope="col">Вимоги для отримання посади</th>
+                                </tr>
+                            </thead>
+                            <tbody id="positionsTable">
+                                <?php 
+
+                                    require_once __DIR__ . '/../../../models/UserVerify.php';
+                                    require_once __DIR__ . "/../../../models/Position.php";
+
+                                    ini_set('display_errors', 1);
+                                    ini_set('display_startup_errors', 1);
+                                    error_reporting(E_ALL);
+
+                                    $tempPos = new Position($connection);
+                                    $positionsList[] = new Position($connection);
+                                    $positionsList = $tempPos->getAllPosition($connection);
+                                    $counter = 1;
 
 
 
-<div class="summary">
+                                    foreach ($positionsList as $position)
+                                    {   
+                                        echo "<tr class=\"table-row\">";
+                                        echo "<th scope=\"row\" style=\"border-radius: 36px 0px 0px 36px;\" >" . $counter++ . "</th>";
+                                        echo "<td>{$position->getPositionID()}</td>";
+                                        echo "<td>{$position->getPositionName()}</td>";
+                                        echo "<td>{$position->getPositionLevel()}</td>";
+                                        echo "<td>{$position->getSalary()}</td>";
+                                        echo "<td>{$position->getDocumentID()}</td>";
+                                        echo "<td>{$position->getPositionRequirements()}</td>";
+                                        echo "<td class=\"d-flex\" style=\"border-radius:  0px 36px 36px 0px ;\">";
+                                        echo "<button type=\"button\" class=\"editEmployerBtn \" id=\"docViewBtn\"
+                                                    data-documentID = \"{$position->getDocumentID()}\">
+                                                    
+                                                    <svg xmlns=\"http://www.w3.org/2000/svg\" id=\"Layer_1\" data-name=\"Layer 1\" viewBox=\"0 0 24 22\" class=\"icon_white no-click\">
+                                                        <path d=\"m23.705,18.549c-.896-1.325-2.959-3.549-6.705-3.549s-5.81,2.224-6.705,3.549c-.391.577-.392,1.323,0,1.902.896,1.325,2.96,3.549,6.706,3.549s5.809-2.224,6.705-3.549c.391-.578.391-1.324,0-1.902Zm-6.705,2.951c-1.105,0-2-.895-2-2s.895-2,2-2,2,.895,2,2-.895,2-2,2Zm-8.362.072c-.852-1.262-.851-2.888.001-4.146,1.116-1.651,3.689-4.427,8.361-4.427,3.311,0,5.568,1.395,7,2.796V5c0-2.761-2.239-5-5-5H5C2.239,0,0,2.239,0,5v13c0,2.761,2.239,5,5,5h4.797c-.489-.506-.872-1.004-1.159-1.428Zm2.362-16.572h7c.552,0,1,.448,1,1s-.448,1-1,1h-7c-.552,0-1-.448-1-1s.448-1,1-1Zm0,5h7c.552,0,1,.448,1,1s-.448,1-1,1h-7c-.552,0-1-.448-1-1s.448-1,1-1Zm-4.5-5.5c.828,0,1.5.672,1.5,1.5s-.672,1.5-1.5,1.5-1.5-.672-1.5-1.5.672-1.5,1.5-1.5Zm0,5c.828,0,1.5.672,1.5,1.5s-.672,1.5-1.5,1.5-1.5-.672-1.5-1.5.672-1.5,1.5-1.5Zm0,8c-.828,0-1.5-.672-1.5-1.5s.672-1.5,1.5-1.5,1.5.672,1.5,1.5-.672,1.5-1.5,1.5Z\"/>
+                                                    </svg>
+                                                </button>";
 
+                                        echo "</td>";
 
-<div class="card" style="margin-top: 25px;">
+                                        echo "</tr>";
+                                    }
 
-<div class="table-responsive">
-<table class="table table-hover align-middle">
-    <thead class="table-dark">
-        <tr>
-            <th scope="col">№</th>
-            <th scope="col">Номер посади</th>
-            <th scope="col">Назва посади</th>
-            <th scope="col">Рівень</th>
-            <th scope="col">Ставка</th>
-            <th scope="col">Ордер</th>
-            <th scope="col">Вимоги для отримання посади</th>
-        </tr>
-    </thead>
-    <tbody id="positionsTable">
-        <?php 
+                                ?>
 
-            require_once __DIR__ . "../../../models/Position.php";
+                            </tbody>
+                            
+                        </table>
+                    </div>
+                </div>
 
-            ini_set('display_errors', 1);
-            ini_set('display_startup_errors', 1);
-            error_reporting(E_ALL);
+                </div>
+                <div class="summary">
 
-            $tempPos = new Position($connection);
-            $positionsList[] = new Position($connection);
-            $positionsList = $tempPos->getAllPosition($connection);
-            $counter = 1;
+                </div>
 
-
-
-            foreach ($positionsList as $position)
-            {   
-                echo "<tr class=\"table-row\">";
-                echo "<th scope=\"row\" style=\"border-radius: 36px 0px 0px 36px;\" >" . $counter++ . "</th>";
-                echo "<td><img src=\"../../../Files/photos/{$employer->getAvatar()}\" alt=\"User Photo\" class=\"rounded-circle\" width=\"50\" height=\"50\"  id=\"employerAvatar\"></td>";
-                
-                echo "<td>{$position->getPositionID()}</td>";
-                echo "<td>{$position->getPositionName()}</td>";
-                echo "<td>{$position->getPositionLevel()}</td>";
-                echo "<td>{$position->getSalary()}</td>";
-                echo "<td>{$position->getDocumentID()}</td>";
-                echo "<td>{$position->getPositionRequirements()}</td>";
-                echo "<td class=\"d-flex\" style=\"border-radius:  0px 36px 36px 0px ;\">";
-                echo "<button type=\"button\" class=\"editEmployerBtn \" 
-                        data-employer-avatar=\"../../../Files/photos/{$employer->getAvatar()}\"
-                        data-employer-id=\"{$employer->getEmployerID()}\"
-                        data-access-level-id=\"{$employer->getAccessLevelID()}\"
-                        data-name=\"{$employer->getName()}\"
-                        data-surname=\"{$employer->getSurname()}\"
-                        data-fathername=\"{$employer->getFathername()}\"
-                        data-birthday=\"{$employer->getBirthday()}\"
-                        data-gender=\"{$employer->getGender()}\"
-                        data-passport-id=\"{$employer->getPassportID()}\"
-                        data-home-address=\"{$employer->getHomeAddress()}\"
-                        data-email=\"{$employer->getEmail()}\"
-                        data-phone-number=\"{$employer->getPhoneNumber()}\"
-                        data-department=\"{$employer->getDepartment()}\"
-                        data-date-accepted=\"{$employer->getDateAccepted()}\"
-                        data-current-status=\"{$employer->getCurrentStatus()}\"
-                        data-date-fired=\"{$employer->getDateFired()}\"
-                        data-admission-basis=\"{$employer->getAdmissionBasis()}\"
-                        data-employment-type=\"{$employer->getEmploymentType()}\"
-                        data-bs-toggle=\"modal\" data-bs-target=\"#employerModal\">
-                        
-                        <svg xmlns=\"http://www.w3.org/2000/svg\" id=\"Layer_1\" data-name=\"Layer 1\" viewBox=\"0 0 24 24\" class=\"icon_white no-click\">
-                        <path d=\"M22.987,5.452c-.028-.177-.312-1.767-1.464-2.928-1.157-1.132-2.753-1.412-2.931-1.44-.237-.039-.479,.011-.682,.137-.071,.044-1.114,.697-3.173,2.438,1.059,.374,2.428,1.023,3.538,2.109,1.114,1.09,1.78,2.431,2.162,3.471,1.72-2.01,2.367-3.028,2.41-3.098,.128-.205,.178-.45,.14-.689Z\"/>
-                        <path d=\"M12.95,5.223c-1.073,.968-2.322,2.144-3.752,3.564C3.135,14.807,1.545,17.214,1.48,17.313c-.091,.14-.146,.301-.159,.467l-.319,4.071c-.022,.292,.083,.578,.29,.785,.188,.188,.443,.293,.708,.293,.025,0,.051,0,.077-.003l4.101-.316c.165-.013,.324-.066,.463-.155,.1-.064,2.523-1.643,8.585-7.662,1.462-1.452,2.668-2.716,3.655-3.797-.151-.649-.678-2.501-2.005-3.798-1.346-1.317-3.283-1.833-3.927-1.975Z\"/>
-                        </svg>
-
-
-                        </button>";
-                
-                echo "<button type=\"button\" class=\"Delete-button\"
-                        data-employer-id=\"{$employer->getEmployerID()}\"
-                        data-access-level-id=\"{$employer->getAccessLevelID()}\"
-                        data-name=\"{$employer->getName()}\"
-                        data-surname=\"{$employer->getSurname()}\"
-                        data-fathername=\"{$employer->getFathername()}\"
-                        data-birthday=\"{$employer->getBirthday()}\"
-                        data-gender=\"{$employer->getGender()}\"
-                        data-passport-id=\"{$employer->getPassportID()}\"
-                        data-home-address=\"{$employer->getHomeAddress()}\"
-                        data-email=\"{$employer->getEmail()}\"
-                        data-phone-number=\"{$employer->getPhoneNumber()}\"
-                        data-department=\"{$employer->getDepartment()}\"
-                        data-date-accepted=\"{$employer->getDateAccepted()}\"
-                        data-current-status=\"{$employer->getCurrentStatus()}\"
-                        data-date-fired=\"{$employer->getDateFired()}\"
-                        data-admission-basis=\"{$employer->getAdmissionBasis()}\"
-                        data-employment-type=\"{$employer->getEmploymentType()}\"
-                        data-bs-toggle=\"modal\"
-                        data-bs-target=\"#deleteEmployerModal\">
-
-                        <svg xmlns=\"http://www.w3.org/2000/svg\" id=\"Layer_1\" data-name=\"Layer 1\" viewBox=\"0 0 24 24\" class=\"icon_white no-click\">
-                        <path d=\"m23,12h-6c-.553,0-1-.447-1-1s.447-1,1-1h6c.553,0,1,.447,1,1s-.447,1-1,1Zm-1,4c0-.553-.447-1-1-1h-4c-.553,0-1,.447-1,1s.447,1,1,1h4c.553,0,1-.447,1-1Zm-2,5c0-.553-.447-1-1-1h-2c-.553,0-1,.447-1,1s.447,1,1,1h2c.553,0,1-.447,1-1Zm-4.344,2.668c-.558.213-1.162.332-1.795.332h-5.728c-2.589,0-4.729-1.943-4.977-4.521L1.86,6h-.86c-.552,0-1-.447-1-1s.448-1,1-1h4.101C5.566,1.721,7.586,0,10,0h2c2.414,0,4.434,1.721,4.899,4h4.101c.553,0,1,.447,1,1s-.447,1-1,1h-.886l-.19,2h-2.925c-1.654,0-3,1.346-3,3,0,1.044.537,1.962,1.348,2.5-.811.538-1.348,1.456-1.348,2.5s.537,1.962,1.348,2.5c-.811.538-1.348,1.456-1.348,2.5,0,1.169.678,2.173,1.656,2.668Zm-.84-19.668c-.414-1.161-1.514-2-2.816-2h-2c-1.302,0-2.402.839-2.816,2h7.631Z\"/>
-                        </svg>
-
-                    </button>";
-
-                echo "<button type=\"button\" class=\"Info-button\" 
-                        data-employer-id=\"{$employer->getEmployerID()}\"
-                        data-bs-toggle=\"modal\">
-
-                        <svg xmlns=\"http://www.w3.org/2000/svg\" id=\"Layer_1\" data-name=\"Layer 1\" viewBox=\"0 0 24 24\" class=\"icon_white no-click\">
-                        <path d=\"M12.836.028A12,12,0,0,0,.029,12.855C.47,19.208,6.082,24,13.083,24H19a5.006,5.006,0,0,0,5-5V12.34A12.209,12.209,0,0,0,12.836.028ZM12,5a1.5,1.5,0,0,1,0,3A1.5,1.5,0,0,1,12,5Zm2,13a1,1,0,0,1-2,0V12H11a1,1,0,0,1,0-2h1a2,2,0,0,1,2,2Z\"/>
-                        </svg>
-
-
-                    </button>";
-
-                echo "<button type=\"button\" class=\"Info-button\" 
-                        data-employer-id=\"{$employer->getEmployerID()}\"
-                        data-bs-toggle=\"modal\">
-
-                        <svg xmlns=\"http://www.w3.org/2000/svg\" id=\"Layer_1\" data-name=\"Layer 1\" viewBox=\"0 0 24 24\" class=\"icon_white no-click\">
-                        <path d=\"m9.54,1.717c.486-.453.96-1.063.96-1.717h-4c0,.654.474,1.264.96,1.717-1.653.64-3.46,2.584-3.46,4.363,0,1.61,1.233,2.919,2.75,2.919h3.5c1.517,0,2.75-1.31,2.75-2.919,0-1.78-1.807-3.724-3.46-4.363Zm13.609,6.963c-.515-.469-1.186-.712-1.878-.678-.697.032-1.339.334-1.794.835l-3.541,3.737c.032.21.065.42.065.638,0,2.083-1.555,3.876-3.617,4.17l-4.241.606-.283-1.979,4.241-.606c1.084-.155,1.9-1.097,1.9-2.191,0-1.22-.993-2.213-2.213-2.213H3c-1.654,0-3,1.346-3,3v7c0,1.654,1.346,3,3,3h9.664l10.674-11.655c.948-1.062.862-2.707-.189-3.665Zm-7.898-3.931l-1.414-1.414,2.75-2.75c.779-.78,2.049-.78,2.828,0l2.752,2.752-1.414,1.414-1.752-1.752v3.661c-.361.219-.69.488-.976.801l-1.024,1.081V3l-1.75,1.75\"/>
-                        </svg>
-
-                    </button>";
-
-                echo "<button type=\"button\" class=\"Info-button\" 
-                        data-employer-id=\"{$employer->getEmployerID()}\"
-                        data-bs-toggle=\"modal\">
-
-                        <svg xmlns=\"http://www.w3.org/2000/svg\" id=\"Layer_1\" data-name=\"Layer 1\" viewBox=\"0 0 24 24\" class=\"icon_white no-click\">
-                        <path d=\"m20,0H4C1.794,0,0,1.794,0,4v12c0,2.206,1.794,4,4,4h2.923l3.749,3.157c.382.339.861.507,1.337.507.468,0,.931-.163,1.292-.484l3.848-3.18h2.852c2.206,0,4-1.794,4-4V4c0-2.206-1.794-4-4-4ZM7,12c-.828,0-1.5-.672-1.5-1.5s.672-1.5,1.5-1.5,1.5.672,1.5,1.5-.672,1.5-1.5,1.5Zm5,0c-.828,0-1.5-.672-1.5-1.5s.672-1.5,1.5-1.5,1.5.672,1.5,1.5-.672,1.5-1.5,1.5Zm5,0c-.828,0-1.5-.672-1.5-1.5s.672-1.5,1.5-1.5,1.5.672,1.5,1.5-.672,1.5-1.5,1.5Z\"/>
-                        </svg>
-
-
-                </button>";
-                
-                
-                echo "</td>";
-
-                
-                
-                
-                
-                echo "</tr>";
-            }
-
-        ?>
-
-    </tbody>
-    
-</table>
+            </div>
+        </div>
+    </div>
 </div>
-
-
-</div>
-
-
-
-</div>
-
-</div>
-
-
-
-
 
 </body>
 </html>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 
 <script>
 document.querySelectorAll('.no-click').forEach(element => {
@@ -193,5 +153,5 @@ element.addEventListener('click', event => {
 });
 
 </script>
+<script src="../../../../public/js/navBar.js"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

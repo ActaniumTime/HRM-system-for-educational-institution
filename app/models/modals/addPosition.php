@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $data['sphere'],
             $data['purpose'],
             $data['docType'],
-            $destinationPath
+            $newFileName
         );
     } else {
         echo json_encode(['success' => false, 'message' => 'No document provided']);

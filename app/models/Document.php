@@ -86,8 +86,64 @@
                 $stmt->close();
             }
         }
+
         
         
+        public function getDocumentID() {
+            return $this->documentID;
+        }
+
+        public function getOwnerID() {
+            return $this->ownerID;
+        }
+
+        public function getDocumentName() {
+            return $this->documentName;
+        }
+
+        public function getSphere() {
+            return $this->sphere;
+        }
+
+        public function getPurpose() {
+            return $this->purpose;
+        }
+
+        public function getDocType() {
+            return $this->docType;
+        }
+
+        public function getLinkToFile() {
+            return $this->linkToFile;
+        }
+
+        public function setDocumentID($documentID) {
+            $this->documentID = $documentID;
+        }
+
+        public function setOwnerID($ownerID) {
+            $this->ownerID = $ownerID;
+        }
+
+        public function setDocumentName($documentName) {
+            $this->documentName = $documentName;
+        }
+
+        public function setSphere($sphere) {
+            $this->sphere = $sphere;
+        }
+
+        public function setPurpose($purpose) {
+            $this->purpose = $purpose;
+        }
+
+        public function setDocType($docType) {
+            $this->docType = $docType;
+        }
+
+        public function setLinkToFile($linkToFile) {
+            $this->linkToFile = $linkToFile;
+        }
     }
 
 ?>
