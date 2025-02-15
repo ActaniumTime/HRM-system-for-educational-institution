@@ -109,7 +109,12 @@
                                         echo "<td>{$position->getDocumentID()}</td>";
                                         echo "<td>{$position->getPositionRequirements()}</td>";
                                         echo "<td class=\"d-flex\" style=\"border-radius:  0px 36px 36px 0px ;\">";
-                                        echo "<button type=\"button\" class=\"editEmployerBtn \" id=\"docViewBtn\"
+                                        echo "
+                                        
+                                        <a href=\"#\" class=\"docViewBtn\" data-documentID=\"{$position->getDocumentID()}\">
+
+                                        
+                                        <button type=\"button\" class=\"editEmployerBtn \" id=\"docViewBtn\"
                                                     data-documentID = \"{$position->getDocumentID()}\">
                                                     
                                                     <svg xmlns=\"http://www.w3.org/2000/svg\" id=\"Layer_1\" data-name=\"Layer 1\" viewBox=\"0 0 24 22\" class=\"icon_white no-click\">
@@ -152,6 +157,19 @@ element.addEventListener('click', event => {
     });
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('positionsTable').addEventListener('click', event => {
+        const button = event.target.closest('.docViewBtn');
+        if (button) {
+            const docID = button.getAttribute('data-documentID');
+            window.open(`../../../models/GetData/getDocument.php?documentID=${docID}`, '_blank');
+        }
+    });
+});
+
+
 </script>
+
+
 <script src="../../../../public/js/navBar.js"></script>
 
