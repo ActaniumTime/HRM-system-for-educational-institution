@@ -112,7 +112,19 @@
             return $positions;
         }
 
-
+        public function deletePosition($id){
+            $query = "DELETE FROM positions WHERE positionID = ?";
+            $stmt = $this->connection->prepare($query);
+            $stmt->bind_param("i", $id);
+            if($stmt->execute()){
+                $stmt->close();
+                return true;
+            }
+            else{
+                return false;
+            }
+            $stmt->close();
+        }
 
 
         public function getPositionID() {

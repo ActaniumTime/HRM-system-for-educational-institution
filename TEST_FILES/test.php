@@ -24,11 +24,11 @@
     // $doc->loadByID(3);
     // $doc->deleteDocument(3);
 
-    // $testPos = new Position($connection);
-    // $testPos->loadByID(1);
-    // $testPos->Show();
-
-    // echo "<br>";
+    $testPos = new Position($connection);
+    $testPos->loadByID(13);
+    $testPos->Show();
+    $testPos->deletePosition(13);
+    echo "<br>";
 
     // $testPos->showAllPositions();
 
