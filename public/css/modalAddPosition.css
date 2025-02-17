@@ -1,0 +1,103 @@
+.modal-content {
+    background: rgb(255, 255, 255); 
+    border-radius: 36px;
+    border: none;
+    color: #303030;
+}
+.modal-header {
+    border-radius: 36px 36px 0px 0px;
+    border-bottom: none; 
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.modal-title {
+    flex-grow: 1;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #303030;
+}
+.btn-close {
+    background: rgb(48, 48, 48); 
+    border-radius: 50%;
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+}
+.btn-close:hover {
+    opacity: 1;
+}
+.modal-body {
+    padding: 20px;
+}
+.form-control {
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 36px;
+    border: 1px solid rgba(48, 48, 48, 0.2);
+    padding: 10px 15px;
+    font-size: 14px;
+    color: #303030;
+    transition: all 0.3s ease;
+}
+.form-control:focus {
+    border-color: #ffc825;
+    outline: none;
+}
+.form-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #303030;
+}
+.modal-footer .btn {
+    background: rgba(255, 200, 37, 0.6);
+    color: #303030;
+    border-radius: 36px;
+    padding: 10px 20px;
+    font-weight: bold;
+    font-size: 14px;
+    border: none;
+    transition: all 0.3s ease;
+}
+.modal-footer .btn:hover {
+    background: rgba(255, 200, 37, 0.8);
+}
+
+img.rounded-circle {
+    border: 3px solid #ffc825;
+}
+
+.table img.rounded-circle {
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+header img {
+    max-height: 50px;
+}
+
+
+.btn-cor {
+    background: transparent; /* Без фона */
+    border: 2px solid transparent; /* Граница скрыта */
+    border-radius: 36px;
+    opacity: 0.6;
+    transition: border-color 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
+    padding: 10px 20px;
+    font-weight: bold;
+    font-size: 14px;
+    color: inherit; /* Наследуем цвет от button, если там изменится */
+}
+
+.btn-cor:hover {
+    border-color: #303030;
+    background: transparent;
+    opacity: 1;
+}
+
+.file-attach{
+    border-radius: 36px;
+    background:rgba(255, 248, 218, 0.66);
+    padding: 25px;
+}
+

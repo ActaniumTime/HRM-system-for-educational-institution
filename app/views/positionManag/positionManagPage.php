@@ -8,6 +8,8 @@
     require_once __DIR__ . '/../../../app/models/Position.php';
     require_once __DIR__ . '/../../../app/models/Document.php';
     require_once __DIR__ . '../../partials/positionsManagPartial/modalDelPosition.php';
+    require_once __DIR__ . '../../partials/positionsManagPartial/modalAddPosotion.php';
+    
     require_once __DIR__ . '/../../../app/models/modals/deletePosition.php';
 
 
@@ -30,13 +32,15 @@
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-straight/css/uicons-solid-straight.css'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-bold-rounded/css/uicons-bold-rounded.css'>
 
+
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="EmpManagTable.css">
     <link rel="stylesheet" href="../../../public/css/sidebarStyle.css">
     <link rel="stylesheet" href="../../../public/css/sidebarStyle2.css">
-    <link rel="stylesheet" href="EmpManagTable.css">
+    <link rel="stylesheet" href="../../../public/css/modalAddPosition.css">
+
 </head>
 <body>
-
 
 <div class="page-wrapper">
 <?php  
@@ -55,7 +59,7 @@
 
                     <div  class="tool-bar-element filters-2">
                         <?php  
-                            require_once __DIR__ . "/../partials/EmpManagPartial/FiltersMenu2.php";
+                            require_once __DIR__ . "/../partials/positionsManagPartial/FiltersMenu.php";
                         ?>
                     </div>
 
@@ -65,7 +69,6 @@
                         ?>
                     </div>
             </div>
-
 
             <div class="temp-line">
                 <div class="summary">
@@ -79,7 +82,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 <script src="../../../public/js/DeletePosition.js"></script>
-
+<script src="../../../public/js/AddPositions.js"></script>
 <script src="../../../public/js/navBar.js"></script>
 
 </body>
