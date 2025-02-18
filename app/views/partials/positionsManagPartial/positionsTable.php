@@ -5,7 +5,7 @@
             <thead class="table-dark">
                 <tr>
                     <th scope="col">№</th>
-                    <th scope="col">Номер посади</th>
+                    <th scope="col">Номер <br> посади</th>
                     <th scope="col">Назва посади</th>
                     <th scope="col">Рівень</th>
                     <th scope="col">Ставка</th>

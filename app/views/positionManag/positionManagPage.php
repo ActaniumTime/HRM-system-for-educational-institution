@@ -51,11 +51,6 @@
         <div class="layout-container">
             
             <div class="temp-line" style="grid-template-columns: 1fr 1fr auto; margin-top: -10px; margin-bottom: -14px;">
-                    <div class="tool-bar-element filters-1" >
-                        <?php  
-                            require_once __DIR__ . "/../partials/EmpManagPartial/FiltersMenu1.php";
-                        ?>
-                    </div>
 
                     <div  class="tool-bar-element filters-2">
                         <?php  
@@ -65,7 +60,7 @@
 
                     <div class="tool-bar-element search-container-u">
                         <?php
-                            require_once __DIR__ . "/../partials/EmpManagPartial/searchBar.php";
+                            require_once __DIR__ . "/../partials/positionsManagPartial/searchBar.php";
                         ?>
                     </div>
             </div>
@@ -85,6 +80,7 @@
 <script src="../../../public/js/AddPositions.js"></script>
 <script src="../../../public/js/navBar.js"></script>
 <script src="../../../public/js/tablePositionFilters.js"></script>
+<script src="../../../public/js/tablePositionSearch.js"></script>
 
 </body>
 </html>
