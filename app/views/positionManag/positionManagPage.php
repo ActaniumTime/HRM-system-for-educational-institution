@@ -84,6 +84,7 @@
 <script src="../../../public/js/DeletePosition.js"></script>
 <script src="../../../public/js/AddPositions.js"></script>
 <script src="../../../public/js/navBar.js"></script>
+<script src="../../../public/js/tablePositionFilters.js"></script>
 
 </body>
 </html>
