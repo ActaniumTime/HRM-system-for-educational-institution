@@ -35,6 +35,7 @@
                 $this->positionLevel = $data['positionLevel'];
                 $this->positionRequirements = $data['positionRequirements'];
                 $this->salary = $data['salary'];
+                $this->documentID = $data['documentID'];
             }
         }
 
@@ -55,30 +56,6 @@
             return $flag;
 
 
-        }
-
-        public function editPosition($positionID, $positionName, $positionLevel, $positionRequirements, $salary){
-            $this->positionID = $positionID;
-            $this->positionName = $positionName;
-            $this->positionLevel = $positionLevel;
-            $this->positionRequirements = $positionRequirements;
-            $this->salary = $salary;
-            $query = "UPDATE Positions SET positionName = ?, positionLevel = ?, positionRequirements = ?, salary = ? WHERE positionID = ?";
-            $stmt = $this->connection->prepare($query);
-
-            if (!$stmt) {
-                throw new Exception("Failed to prepare statement: " . $this->connection->error);
-            }
-
-            $stmt->bind_param("sssii", $this->positionName, $this->positionLevel, $this->positionRequirements, $this->salary, $this->positionID);
-            
-            if ($stmt->execute()) {
-                echo "Employer updated successfully!";
-            } else {
-                echo "Error updating employer: " . $stmt->error;
-            }
-        
-            $stmt->close();
         }
 
         public function showAllPositions(){
@@ -126,6 +103,48 @@
             $stmt->close();
         }
 
+        public function updatePosition($position) {
+            $query = "UPDATE positions SET 
+                        positionName = ?, 
+                        positionLevel = ?, 
+                        positionRequirements = ?, 
+                        salary = ?, 
+                        documentID = ? 
+                      WHERE positionID = ?";
+        
+            $stmt = $this->connection->prepare($query);
+        
+            if (!$stmt) {
+                throw new Exception("Failed to prepare statement: " . $this->connection->error);
+            }
+        
+            $stmt->bind_param(
+                "sssiii",
+                $position->getPositionName(),
+                $position->getPositionLevel(),
+                $position->getPositionRequirements(),
+                $position->getSalary(),
+                $position->getDocumentID(),
+                $position->getPositionID()
+            );
+        
+            if ($stmt->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        
+            $stmt->close();
+        }
+
+        public function setPos($positionName, $positionLevel, $positionRequirements, $salary, $documentID){
+            $this->positionName = $positionName;
+            $this->positionLevel = $positionLevel;
+            $this->positionRequirements = $positionRequirements;
+            $this->salary = $salary;
+            $this->documentID = $documentID;
+        }
+        
 
         public function getPositionID() {
             return $this->positionID;

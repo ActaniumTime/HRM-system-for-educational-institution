@@ -92,8 +92,8 @@ require_once __DIR__ . '/../../../app/models/UserVerify.php';
                 </div>
                 <div class="tile">
                     <h3>Управління позиціями</h3>
-                    <p>сторінка для керування позиції у закладі</p>
-                    <button>Відкрити</button>
+                    <p>сторінка для керування позиціями у закладі</p>
+                    <a href="../positionManag/positionManagPage.php"><button>Відкрити</button></a>
                 </div>
                 <div class="tile">
                     <h3>Tasks</h3>

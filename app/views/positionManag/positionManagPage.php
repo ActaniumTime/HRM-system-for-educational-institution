@@ -9,8 +9,11 @@
     require_once __DIR__ . '/../../../app/models/Document.php';
     require_once __DIR__ . '../../partials/positionsManagPartial/modalDelPosition.php';
     require_once __DIR__ . '../../partials/positionsManagPartial/modalAddPosotion.php';
+    require_once __DIR__ . '../../partials/positionsManagPartial/modalEditPosition.php';
     
     require_once __DIR__ . '/../../../app/models/modals/deletePosition.php';
+    require_once __DIR__ . '/../../../app/models/modals/EditPosition.php';
+
 
 
 ?>
@@ -81,6 +84,8 @@
 <script src="../../../public/js/navBar.js"></script>
 <script src="../../../public/js/tablePositionFilters.js"></script>
 <script src="../../../public/js/tablePositionSearch.js"></script>
+<script src="../../../public/js/DataPositionTable.js"></script>
+<script src="../../../public/js/EditPosition.js"></script>
 
 </body>
 </html>

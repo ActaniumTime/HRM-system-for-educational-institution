@@ -42,7 +42,7 @@
                         
                         <button type=\"button\" class=\"editEmployerBtn \" id=\"docViewBtn\"
                             data-positionID = \"{$position->getPositionID()}\"
-                            data-positionID = \"{$position->getPositionName()}\"
+                            data-documentID = \"{$position->getDocumentID()}\"
                             data-positionName = \"{$position->getPositionName()}\"
                             data-positionLevel = \"{$position->getPositionLevel()}\"
                             data-salary = \"{$position->getSalary()}\"
@@ -54,7 +54,7 @@
                         </button>
                         </a>";
 
-                        echo "<button type=\"button\" class=\"editEmployerBtn \" 
+                        echo "<button type=\"button\" class=\"editEmployerBtn editPositionBtn\" 
                             data-positionID = \"{$position->getPositionID()}\"
                             data-documentID = \"{$position->getDocumentID()}\"
                             data-positionName = \"{$position->getPositionName()}\"
@@ -62,7 +62,8 @@
                             data-salary = \"{$position->getSalary()}\"
                             data-positionRequirments = \"{$position->getPositionRequirements()}\"
 
-                            data-bs-toggle=\"modal\" data-bs-target=\"#employerModal\">
+                            data-bs-toggle=\"modal\" 
+                            data-bs-target=\"#EditPositionModal\">
                 
                             <svg xmlns=\"http://www.w3.org/2000/svg\" id=\"Layer_1\" data-name=\"Layer 1\" viewBox=\"0 0 24 24\" class=\"icon_white no-click\">
                             <path d=\"M22.987,5.452c-.028-.177-.312-1.767-1.464-2.928-1.157-1.132-2.753-1.412-2.931-1.44-.237-.039-.479,.011-.682,.137-.071,.044-1.114,.697-3.173,2.438,1.059,.374,2.428,1.023,3.538,2.109,1.114,1.09,1.78,2.431,2.162,3.471,1.72-2.01,2.367-3.028,2.41-3.098,.128-.205,.178-.45,.14-.689Z\"/>
