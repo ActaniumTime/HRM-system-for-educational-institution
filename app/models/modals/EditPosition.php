@@ -51,6 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     try {
         $newPos = new Position($connection);
+        $newPos ->loadByID($data['editPositionID']);
         $newPos -> setPos(
             $data["positionName"],
             $data["positionLevel"],
@@ -58,11 +59,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $data['positionSalary'],
             $documentID
         );
-        $positionID = $newPos->updatePosition($newPos);
+        $check = $newPos->updatePosition();
 
-
-        if ($positionID) {
-            echo json_encode(['success' => true, 'message' => 'Position added successfully']);
+        if ($check) {
+            echo json_encode(['success' => true, 'message' => 'Position updated successfully']);
         } else {
             echo json_encode(['success' => false, 'message' => 'Failed to save position']);
         }
