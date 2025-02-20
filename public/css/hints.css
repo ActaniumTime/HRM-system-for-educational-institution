@@ -1,0 +1,24 @@
+.tooltip {
+    --bs-tooltip-bg: rgba(255, 255, 255, 0.9); /* Светлый фон */
+    --bs-tooltip-color: #333; /* Тёмный текст */
+    --bs-tooltip-border-radius: 36px; /* Закруглённые углы */
+    --bs-tooltip-padding-x: 15px;
+    --bs-tooltip-padding-y: 10px;
+    --bs-tooltip-opacity: 1;
+    font-size: 14px;
+    text-align: center;
+}
+
+.tooltip-inner {
+    background-color: var(--bs-tooltip-bg);
+    color: var(--bs-tooltip-color);
+    border-radius: var(--bs-tooltip-border-radius);
+    padding: var(--bs-tooltip-padding-y) var(--bs-tooltip-padding-x);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Лёгкая тень */
+    font-weight: 500;
+}
+
+.tooltip-arrow::before {
+    border-top-color: var(--bs-tooltip-bg); /* Цвет стрелки */
+}
+

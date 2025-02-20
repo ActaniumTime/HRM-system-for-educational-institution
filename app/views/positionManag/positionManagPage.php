@@ -41,6 +41,7 @@
     <link rel="stylesheet" href="../../../public/css/sidebarStyle.css">
     <link rel="stylesheet" href="../../../public/css/sidebarStyle2.css">
     <link rel="stylesheet" href="../../../public/css/modalAddPosition.css">
+    <link rel="stylesheet" href="../../../public/css/hints.css">
 
 </head>
 <body>

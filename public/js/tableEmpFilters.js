@@ -119,3 +119,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    let tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+    tooltipTriggerList.forEach(function (tooltipTriggerEl) {
+        new bootstrap.Tooltip(tooltipTriggerEl);
+    });
+});
+
