@@ -5,11 +5,16 @@
     error_reporting(E_ALL);
 
     require_once __DIR__ . '/../../../app/models/UserVerify.php';
-    require_once __DIR__ . '/../../../app/models/DashboardModel.php';
-    require_once __DIR__ . '../../partials/modals/modalEmpMan.php';
-    require_once __DIR__ . '../../partials/modals/modalDelete.php';
-    require_once __DIR__ . '/../../../app/models/modals/deleteEndpoint.php';
-    require_once __DIR__ . '../../partials/modals/modalAddEmp.php';
+    require_once __DIR__ . '/../../../app/models/Position.php';
+    require_once __DIR__ . '/../../../app/models/Document.php';
+    require_once __DIR__ . '../../partials/positionsManagPartial/modalDelPosition.php';
+    require_once __DIR__ . '../../partials/positionsManagPartial/modalAddPosotion.php';
+    require_once __DIR__ . '../../partials/positionsManagPartial/modalEditPosition.php';
+    
+    require_once __DIR__ . '/../../../app/models/modals/deletePosition.php';
+    require_once __DIR__ . '/../../../app/models/modals/EditPosition.php';
+
+
 
 ?>
 
@@ -29,18 +34,17 @@
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-chubby/css/uicons-solid-chubby.css'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-straight/css/uicons-solid-straight.css'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-bold-rounded/css/uicons-bold-rounded.css'>
-    
 
 
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="EmpManagTable.css">
     <link rel="stylesheet" href="../../../public/css/sidebarStyle.css">
     <link rel="stylesheet" href="../../../public/css/sidebarStyle2.css">
-    <link rel="stylesheet" href="../../../public/css/addEmpModalStyles.css">
+    <link rel="stylesheet" href="../../../public/css/modalAddPosition.css">
     <link rel="stylesheet" href="../../../public/css/hints.css">
-    <link rel="stylesheet" href="EmpManagTable.css">
+
 </head>
 <body>
-
 
 <div class="page-wrapper">
 <?php  
@@ -51,59 +55,38 @@
         <div class="layout-container">
             
             <div class="temp-line" style="grid-template-columns: 1fr 1fr auto; margin-top: -10px; margin-bottom: -14px;">
-                    <div class="tool-bar-element filters-1" >
-                        <?php  
-                            require_once __DIR__ . "/../partials/EmpManagPartial/FiltersMenu1.php";
-                        ?>
-                    </div>
 
                     <div  class="tool-bar-element filters-2">
                         <?php  
-                            require_once __DIR__ . "/../partials/EmpManagPartial/FiltersMenu2.php";
+                            require_once __DIR__ . "/../partials/positionsManagPartial/FiltersMenu.php";
                         ?>
                     </div>
 
                     <div class="tool-bar-element search-container-u">
                         <?php
-                            require_once __DIR__ . "/../partials/EmpManagPartial/searchBar.php";
+                            require_once __DIR__ . "/../partials/positionsManagPartial/searchBar.php";
                         ?>
                     </div>
             </div>
 
-
             <div class="temp-line">
-
-
-
                 <div class="summary">
-                <?php require_once __DIR__ . "../../partials/EmpManagPartial/tableEmp.php"; ?>
+                    <?php require_once __DIR__ . "../../partials/positionsManagPartial/positionsTable.php"; ?>
                 </div>
-
-
-                <div class="summary">
-
- 
-                </div>
-
             </div>
-
         </div>
     </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-<script src="../../../public/js/AddDeleteUser.js"></script>
-
-<script src="../../../public/js/ModalDataTable.js"></script>
-
-<script src="../../../public/js/tableSearching.js"></script>
-
-<script src="../../../public/js/tableEmpFilters.js"></script>
-
-<script src="../../../public/js/EmpManagTableBut.js"></script>
-
+<script src="../../../public/js/DeletePosition.js"></script>
+<script src="../../../public/js/AddPositions.js"></script>
 <script src="../../../public/js/navBar.js"></script>
+<script src="../../../public/js/tablePositionFilters.js"></script>
+<script src="../../../public/js/tablePositionSearch.js"></script>
+<script src="../../../public/js/DataPositionTable.js"></script>
+<script src="../../../public/js/EditPosition.js"></script>
 
 </body>
 </html>

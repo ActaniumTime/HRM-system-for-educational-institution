@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     });
                     target.tooltipInstance.show();
                 }
-            }, 2000);
+            }, 1000);
 
             tooltipTimeouts.set(target, timeout);
         }

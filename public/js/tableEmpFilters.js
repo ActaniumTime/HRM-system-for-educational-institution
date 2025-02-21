@@ -29,9 +29,9 @@ document.addEventListener("DOMContentLoaded", () => {
         if (event.target.matches("#sortByBirthday")) {
             toggleSort(6, "birthday");
         } else if (event.target.matches("#sortByDateAccepted")) {
-            toggleSort(13, "dateAccepted");
+            toggleSort(11, "dateAccepted");
         } else if (event.target.matches("#sortByDateFired")) {
-            toggleSort(15, "dateFired");
+            toggleSort(12, "dateFired");
         } else if (event.target.matches("#resetFilters")) {
             resetFilters();
         }

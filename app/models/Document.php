@@ -87,6 +87,17 @@
             }
         }
 
+        public static function getAll($connection){
+            $sql = "SELECT * FROM document";
+            $result = $connection->query($sql);
+            $documents = [];
+            if($result->num_rows > 0){
+            while($row = $result->fetch_assoc()){
+                $documents[] = $row;
+            }
+            }
+            return $documents;
+        }
         
         
         public function getDocumentID() {
