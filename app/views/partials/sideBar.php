@@ -21,8 +21,6 @@
         <hr/>
 
         
-        <a href=""><div class="nav-button"><i class="fas fa-fire"></i><span>Завдачі</span></div></a>
-        <a href=""><div class="nav-button"><i class="fas fa-magic"></i><span>Заглушка</span></div></a>
         <a href="../personalPage.php/personalPage.php"><div class="nav-button"><i class="fas fi fi-ss-user"></i><span>Мій кабінет</span></div></a>
         <hr/>
 

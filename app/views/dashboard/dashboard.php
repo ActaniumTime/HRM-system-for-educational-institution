@@ -88,7 +88,7 @@ require_once __DIR__ . '/../../../app/models/UserVerify.php';
                 <div class="tile">
                     <h3>Управління документами</h3>
                     <p>сторінка для керування усіми документами у системі</p>
-                    <button>Відкрити</button>
+                    <a href="../documentManag/documentManagPage.php"><button>Відкрити</button></a>
                 </div>
                 <div class="tile">
                     <h3>Управління позиціями</h3>

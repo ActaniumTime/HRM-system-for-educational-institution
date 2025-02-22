@@ -27,7 +27,6 @@
 
     //For working with employers
 
-    $TargetEmp = new Employer($connection);
+    $testEmp = new Employer($connection);
     
-
 ?>

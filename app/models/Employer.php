@@ -393,8 +393,22 @@ class Employer {
         }
 
     }
+
+    public function getEmpNameByID($empID){
+        $query = "SELECT name, surname, fathername FROM employers WHERE employerID = ?";
+        $stmt = $this->connection->prepare($query);
+        $stmt->bind_param("i", $empID);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            $data = $result->fetch_assoc();
+            return $data['surname'] . " " . $data['name'] . " " . $data['fathername'];
+        } else {
+            return null;
+        }
+    }
     
-    //геттеры и сеттеры
     public function getEmployerID() { return $this->employerID; }
     public function setEmployerID($employerID) { $this->employerID = $employerID; }
 

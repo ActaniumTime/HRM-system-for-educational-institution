@@ -5,15 +5,10 @@
     error_reporting(E_ALL);
 
     require_once __DIR__ . '/../../../app/models/UserVerify.php';
-    require_once __DIR__ . '/../../../app/models/Position.php';
     require_once __DIR__ . '/../../../app/models/Document.php';
-    require_once __DIR__ . '../../partials/positionsManagPartial/modalDelPosition.php';
-    require_once __DIR__ . '../../partials/positionsManagPartial/modalAddPosotion.php';
-    require_once __DIR__ . '../../partials/positionsManagPartial/modalEditPosition.php';
-    
-    require_once __DIR__ . '/../../../app/models/modals/deletePosition.php';
-    require_once __DIR__ . '/../../../app/models/modals/EditPosition.php';
+    require_once __DIR__ . '../../partials/documentManagPartial/modalDelDocument.php';
 
+    require_once __DIR__ . '/../../../app/models/modals/deleteDocument.php';
 
 
 ?>
@@ -23,7 +18,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Employees</title>
+    <title>All Documents</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css'>
 
@@ -56,22 +51,28 @@
             
             <div class="temp-line" style="grid-template-columns: 1fr 1fr auto; margin-top: -10px; margin-bottom: -14px;">
 
+                    <div  class="tool-bar-element filters-1">
+                        <?php  
+                            require_once __DIR__ . "/../partials/documentManagPartial/FiltersMenu1.php";
+                        ?>
+                    </div>
+            
                     <div  class="tool-bar-element filters-2">
                         <?php  
-                            require_once __DIR__ . "/../partials/positionsManagPartial/FiltersMenu.php";
+                            require_once __DIR__ . "/../partials/documentManagPartial/FiltersMenu.php";
                         ?>
                     </div>
 
                     <div class="tool-bar-element search-container-u">
                         <?php
-                            require_once __DIR__ . "/../partials/positionsManagPartial/searchBar.php";
+                            require_once __DIR__ . "/../partials/documentManagPartial/searchBar.php";
                         ?>
                     </div>
             </div>
 
             <div class="temp-line">
                 <div class="summary">
-                    <?php require_once __DIR__ . "../../partials/positionsManagPartial/positionsTable.php"; ?>
+                    <?php require_once __DIR__ . "../../partials/documentManagPartial/documentTable.php"; ?>
                 </div>
             </div>
         </div>
@@ -80,13 +81,10 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-<script src="../../../public/js/DeletePosition.js"></script>
-<script src="../../../public/js/AddPositions.js"></script>
 <script src="../../../public/js/navBar.js"></script>
-<script src="../../../public/js/tablePositionFilters.js"></script>
-<script src="../../../public/js/tablePositionSearch.js"></script>
-<script src="../../../public/js/DataPositionTable.js"></script>
-<script src="../../../public/js/EditPosition.js"></script>
+<script src="../../../public/js/documentJS/DataDocumentTable.js"></script>
+<script src="../../../public/js/documentJS/DeleteDocument.js"></script>
+
 
 </body>
 </html>

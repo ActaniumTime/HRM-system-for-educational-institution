@@ -87,15 +87,25 @@
             }
         }
 
-        public static function getAll($connection){
+        public static function getAll($connection) {
             $sql = "SELECT * FROM document";
             $result = $connection->query($sql);
             $documents = [];
-            if($result->num_rows > 0){
-            while($row = $result->fetch_assoc()){
-                $documents[] = $row;
+        
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    $document = new Document($connection);
+                    $document->setDocumentID($row['documentID']);
+                    $document->setOwnerID($row['ownerID']);
+                    $document->setDocumentName($row['documentName']);
+                    $document->setSphere($row['sphere']);
+                    $document->setPurpose($row['purpose']);
+                    $document->setDocType($row['docType']);
+                    $document->setLinkToFile($row['linkToFile']);
+                    $documents[] = $document;
+                }
             }
-            }
+        
             return $documents;
         }
         

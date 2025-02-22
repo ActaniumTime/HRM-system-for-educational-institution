@@ -15,7 +15,7 @@
         foreach ($docs as $doc) {
             $result[] = [
                 'documentID' => $doc->getDocumentID(),
-                'ownerID' => $doc->getOwnerID(),
+                'ownerID' => $$doc->getEmpNameByID($document->getOwnerID()),
                 'documentName' => $doc->getDocumentName(),
                 'sphere' => $doc->getSphere(),
                 'purpose' => $doc->getPurpose(),
