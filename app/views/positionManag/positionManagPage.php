@@ -80,13 +80,13 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-<script src="../../../public/js/DeletePosition.js"></script>
-<script src="../../../public/js/AddPositions.js"></script>
+<script src="../../../public/js/positionJS/DeletePosition.js"></script>
+<script src="../../../public/js/positionJS/AddPositions.js"></script>
 <script src="../../../public/js/navBar.js"></script>
-<script src="../../../public/js/tablePositionFilters.js"></script>
-<script src="../../../public/js/tablePositionSearch.js"></script>
-<script src="../../../public/js/DataPositionTable.js"></script>
-<script src="../../../public/js/EditPosition.js"></script>
+<script src="../../../public/js/positionJS/tablePositionFilters.js"></script>
+<script src="../../../public/js/positionJS/tablePositionSearch.js"></script>
+<script src="../../../public/js/positionJS/DataPositionTable.js"></script>
+<script src="../../../public/js/positionJS/EditPosition.js"></script>
 
 </body>
 </html>

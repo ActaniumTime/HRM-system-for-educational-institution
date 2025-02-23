@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
         } else if (event.target.matches("#resetFilters")) {
             resetFilters();
         }
-    });11
+    });
 
     function getTableRows() {
         return Array.from(table.rows).filter((row) => row.cells.length > 0); // Исключаем строки заголовков

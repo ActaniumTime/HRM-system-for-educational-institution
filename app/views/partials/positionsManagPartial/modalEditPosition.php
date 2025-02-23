@@ -49,7 +49,12 @@
                                     </div>
                                     <div class="mb-3 col-md-6">
                                         <label for="positionRequirements" class="form-label">Тип документу</label>
-                                        <input type="text" class="form-control" id="docTypeEdit" name="docType" required>
+                                        <select class="form-control" id="docTypeEdit" name="docType" required>
+                                            <option value="Наказ">Наказ</option>
+                                            <option value="Розпорядження">Розпорядження</option>
+                                            <option value="Постанова">Постанова</option>
+                                            <option value="Рішення">Рішення</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>

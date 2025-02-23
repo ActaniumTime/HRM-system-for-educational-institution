@@ -12,8 +12,6 @@
     require_once __DIR__ . '/../../../app/models/modals/deleteDocument.php';
     require_once __DIR__ . '/../../../app/models/modals/EditDocument.php';
     
-
-
 ?>
 
 <!DOCTYPE html>
