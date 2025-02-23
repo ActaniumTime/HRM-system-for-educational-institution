@@ -10,7 +10,7 @@
                     <th scope="col">Назва документу</th>
                     <th scope="col">Категорія</th>
                     <th scope="col">Призначення</th>
-                    <th scope="col">Тип <br>документ</th>
+                    <th scope="col">Тип <br>документу</th>
                     <th scope="col">Дії</th>
                 </tr>
             </thead>
@@ -41,7 +41,7 @@
                         
                         <button type=\"button\" class=\"editEmployerBtn \" id=\"docViewBtn\"
                             data-documentID = \"{$document->getDocumentID()}\"
-                            data-ownerID = \"{$document->getOwnerID()}\"
+                            data-ownerID = \"{$testEmp->getEmpNameByID($document->getOwnerID())}\"
                             data-documentName = \"{$document->getDocumentName()}\"
                             data-sphere = \"{$document->getSphere()}\"
                             data-purpose = \"{$document->getPurpose()}\"
@@ -55,16 +55,16 @@
                         </button>
                         </a>";
 
-                        echo "<button type=\"button\" class=\"editEmployerBtn editPositionBtn\" 
+                        echo "<button type=\"button\" class=\"editEmployerBtn editDocumentBtn\" 
                             data-documentID = \"{$document->getDocumentID()}\"
-                            data-ownerID = \"{$document->getOwnerID()}\"
+                            data-ownerID = \"{$testEmp->getEmpNameByID($document->getOwnerID())}\"
                             data-documentName = \"{$document->getDocumentName()}\"
                             data-sphere = \"{$document->getSphere()}\"
                             data-purpose = \"{$document->getPurpose()}\"
                             data-docType = \"{$document->getDocType()}\"
 
                             data-bs-toggle=\"modal\" 
-                            data-bs-target=\"#EditPositionModal\"
+                            data-bs-target=\"#EditDocumentModal\"
                             title=\"Змінити дані про документ\">
                 
                             <svg xmlns=\"http://www.w3.org/2000/svg\" id=\"Layer_1\" data-name=\"Layer 1\" viewBox=\"0 0 24 24\" class=\"icon_white no-click\">
@@ -76,7 +76,7 @@
 
                         echo "<button type=\"button\" class=\"Delete-button\" 
                             data-documentID = \"{$document->getDocumentID()}\"
-                            data-ownerID = \"{$document->getOwnerID()}\"
+                            data-ownerID = \"{$testEmp->getEmpNameByID($document->getOwnerID())}\"
                             data-documentName = \"{$document->getDocumentName()}\"
                             data-sphere = \"{$document->getSphere()}\"
                             data-purpose = \"{$document->getPurpose()}\"

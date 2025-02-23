@@ -109,6 +109,32 @@
             return $documents;
         }
         
+        public function updateDoc() {
+            $query = "UPDATE document SET ownerID = ?, 
+            documentName = ?, sphere = ?, 
+            purpose = ?, docType = ?, 
+            linkToFile = ? WHERE documentID = ?";
+            $stmt = $this->connection->prepare($query);
+
+            if ($stmt === false) {
+            die("Prepare failed: " . $this->connection->error);
+            }
+
+            $stmt->bind_param("isssssi", 
+            $this->ownerID,
+            $this->documentName, 
+            $this->sphere, 
+            $this->purpose, 
+            $this->docType, 
+            $this->linkToFile, 
+            $this->documentID);
+
+            $flag = false;
+            if ($stmt->execute())
+                $flag = true;
+            $stmt->close();
+            return $flag;
+        }
         
         public function getDocumentID() {
             return $this->documentID;

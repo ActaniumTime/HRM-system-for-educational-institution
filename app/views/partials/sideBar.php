@@ -17,7 +17,14 @@
 
         
         <a href=""><div class="nav-button"><i class="fas fi fi-ss-book-circle-arrow-right"></i><span>Курси</span></div></a>
-        <div class="nav-button"><i class="fas fi fi-sr-duplicate"></i><span>Документи </span></div>
+        
+        <?php
+            if($emp->getAccessLevelID() == 1 || $emp->getAccessLevelID() == 2)
+            {
+                echo "<a href=\"../documentManag/documentManagPage.php\"><div class=\"nav-button\"><i class=\"fas fi fi-sr-duplicate\"></i><span>Документи </span></div></a>";
+            }
+        ?>
+
         <hr/>
 
         
@@ -51,10 +58,10 @@
                         echo "Manager";
                         break;
                     case 3:
-                        echo "Employee";
+                        echo "Teacher";
                         break;
                     default:
-                        echo "Teacher";
+                        echo "Employee";
                         break;
                 }
                 ?>

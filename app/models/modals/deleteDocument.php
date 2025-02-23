@@ -43,7 +43,7 @@
         if($document->deleteDocument($data['documentID'])){
             echo json_encode(['success' => true]);
         } else {
-            echo json_encode(['success' => false, 'message' => 'Failed to delete position.']);
+            echo json_encode(['success' => false, 'message' => 'Failed to delete document.']);
         }
     }
 ?>

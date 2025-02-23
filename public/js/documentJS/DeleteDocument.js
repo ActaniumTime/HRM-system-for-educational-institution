@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
         const button = event.target.closest('.Delete-button');
         if(button){
             const documentID = button.getAttribute('data-documentID');
-            const ownerID =  button.getAttribute('data-ownerID ');
+            const ownerID =  button.getAttribute('data-ownerID');
             const documentName =  button.getAttribute('data-documentName');
             const sphere =  button.getAttribute('data-sphere');
             const purpose =  button.getAttribute('data-purpose');
@@ -32,8 +32,6 @@ function deletePosition(documentID, tableRow){
         return;
     }
 
-
-
     fetch('../../../app/models/modals/deleteDocument.php', {
         method: 'POST',
         headers: {
@@ -44,16 +42,17 @@ function deletePosition(documentID, tableRow){
     .then(response => response.json())
     .then(data => {
         if (data.success) {
-            alert('Position deleted successfully.');
+            alert('Document deleted successfully.');
             if (tableRow) {
                 tableRow.remove();
             }
+
         } else {
             alert('Error: ' + data.message);
         }
     })
     .catch(error => {
         console.error('Error:', error);
-        alert('An error occurred while deleting the position.');
+        alert('An error occurred while deleting the document.');
     });
 }

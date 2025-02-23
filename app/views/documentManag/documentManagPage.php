@@ -7,8 +7,11 @@
     require_once __DIR__ . '/../../../app/models/UserVerify.php';
     require_once __DIR__ . '/../../../app/models/Document.php';
     require_once __DIR__ . '../../partials/documentManagPartial/modalDelDocument.php';
+    require_once __DIR__ . '../../partials/documentManagPartial/modalEditDoc.php';
 
     require_once __DIR__ . '/../../../app/models/modals/deleteDocument.php';
+    require_once __DIR__ . '/../../../app/models/modals/EditDocument.php';
+    
 
 
 ?>
@@ -84,7 +87,9 @@
 <script src="../../../public/js/navBar.js"></script>
 <script src="../../../public/js/documentJS/DataDocumentTable.js"></script>
 <script src="../../../public/js/documentJS/DeleteDocument.js"></script>
-
+<script src="../../../public/js/documentJS/tableDocumentFilters.js"></script>
+<script src="../../../public/js/documentJS/tableDocumentSearch.js"></script>
+<script src="../../../public/js/documentJS/editDocument.js"></script>
 
 </body>
 </html>
