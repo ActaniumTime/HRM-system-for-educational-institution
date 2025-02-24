@@ -36,8 +36,11 @@
                                         <input type="text" class="form-control" id="docName" name="docName" placeholder="Постанова про створення позиції..." required>
                                     </div>
                                     <div class="mb-3 col-md-6">
-                                        <label for="employeeSelect" class="form-label">Ради</label>
-                                        <input type="text" class="form-control" id="sphere" name="sphere" placeholder="Адмінастративна...">
+                                        <label for="department" class="form-label">Ради</label>
+                                        <select class="form-control" id="sphere" name="sphere" required placeholder="Адмінастративна...">
+                                            <option value="Адмінастративна">Адмінастративна</option>
+                                            <option value="Навчальна">Навчальна</option>
+                                        </select>
                                     </div>
                                     <div class="mb-3 col-md-6">
                                         <label for="currentSalary" class="form-label">Призначення</label>
