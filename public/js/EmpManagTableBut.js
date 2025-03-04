@@ -44,22 +44,6 @@ document.addEventListener('DOMContentLoaded', () => {
         alert('Data updated. Table will refresh.');
     });
 
-    downloadJsonButton.addEventListener('click', () => {
-        if (Object.keys(jsonData).length === 0) {
-            alert('Please submit the form first to generate JSON.');
-            return;
-        }
-
-        const jsonBlob = new Blob([JSON.stringify(jsonData, null, 2)], { type: 'application/json' });
-
-        const downloadLink = document.createElement('a');
-        downloadLink.href = URL.createObjectURL(jsonBlob);
-        downloadLink.download = 'employer_data.json';
-
-        downloadLink.click();
-
-        URL.revokeObjectURL(downloadLink.href);
-    });
 
     function getAccessLevelText(accessLevelID) {
         const levels = {

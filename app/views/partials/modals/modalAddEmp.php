@@ -84,16 +84,12 @@
                             <input type="date" class="form-control" id="dateAccepted_AddForm" name="dateAccepted" placeholder="оберіть дату прийняття на роботу...">
                         </div>
                         <div class="mb-3 col-md-6">
-                            <label for="currentStatus" class="form-label">Поточний статус (НЕ ЗАБУДЬ ВИДАЛИТИ)</label>
-                            <input type="text" class="form-control" id="currentStatus_AddForm" name="currentStatus" placeholder="Введить поточний статус...">
-                        </div>
-                        <div class="mb-3 col-md-6">
                             <label for="dateFired" class="form-label">Дата звільнення</label>
                             <input type="date" class="form-control" id="dateFired_AddForm" name="dateFired" placeholder="Оберіть дату звільнення...">
                         </div>
                         <div class="mb-3 col-md-6">
-                            <label for="admissionBasis" class="form-label">Прийняття (ПЕРЕРОБИ ДЛЯ ДОДАВАННЯ ФАЙЛУ ПРО ПРИЙНЯТТЯ НА РАБОТУ)</label>
-                            <input type="text" class="form-control" id="admissionBasis_AddForm" name="admissionBasis">
+                            <label for="currentStatus" class="form-label">Поточний статус </label>
+                            <input type="text" class="form-control" id="currentStatus_AddForm" name="currentStatus" placeholder="Введить поточний статус...">
                         </div>
                         <div class="mb-3 col-md-6">
                             <label for="employmentType" class="form-label">Тип зайнятості</label>
@@ -102,6 +98,57 @@
                                 <option value="Part-time">Пів дня</option>
                             </select>
                         </div>
+
+                        <div class="mb-3 col-md-6">
+                            <label for="employmentType" class="form-label">Категорія</label>
+                            <select class="form-select" id="category_AddForm" name="category" placeholder="Оберіть тип зайнятості...">
+                                <option value="1">Спеціаліст</option>
+                                <option value="2">Спеціаліст другої категорії</option>
+                                <option value="3">Спеціаліст першої категорії</option>
+                                <option value="4">Спеціаліст вищої категорії</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3 col-md-6">
+                            <label for="dateFired" class="form-label">Кількість років у поточної категорії</label>
+                            <input type="text" class="form-control" id="categoryAge_AddForm" name="categoryAge" placeholder="Введить кілкість років у поточної категорії...">
+                        </div>
+                        
+                        <div class="file-attach">
+                            <div class="mb-3 col-md-12" >
+                                <label for="uploadPDF" class="form-label">Додати файл із контрактом</label>
+                                <input type="file" class="form-control" id="uploadPDF" name="confirmationFile" accept=".pdf" required >
+                            </div>
+                            <div class="row">
+                                <div class="mb-3 col-md-6">
+                                    <label for="employeeSelect" class="form-label">Назва документу</label>
+                                    <input type="text" class="form-control" id="docName" name="docName" placeholder="Постанова про створення позиції..." required>
+                                </div>
+                                <div class="mb-3 col-md-6">
+                                    <label for="department" class="form-label">Ради</label>
+                                    <select class="form-control" id="sphere" name="sphere" required placeholder="Адмінастративна...">
+                                        <option value="Адмінастративна">Адмінастративна</option>
+                                        <option value="Навчальна">Навчальна</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3 col-md-6">
+                                    <label for="currentSalary" class="form-label">Призначення</label>
+                                    <input type="text" class="form-control" id="purpose" name="purpose" placeholder="Наказ про створення нової посади..." required >
+                                </div>
+                                <div class="mb-3 col-md-6">
+                                    <label for="department" class="form-label">Тип документа</label>
+                                    <select class="form-control" id="docType" name="docType" required>
+                                        <option value="Наказ">Наказ</option>
+                                        <option value="Розпорядження">Розпорядження</option>
+                                        <option value="Постанова">Постанова</option>
+                                        <option value="Рішення">Рішення</option>
+                                        <option value="Свідоцтво">Свідоцтво </option>
+                                        <option value="Свідоцтво">Контракт про працевлаштування</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </form>
             </div>

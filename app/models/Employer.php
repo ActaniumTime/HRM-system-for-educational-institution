@@ -231,7 +231,7 @@ class Employer {
         );
         if ($stmt->execute()) {
             // echo "Employer added successfully!";
-            return true;
+            return $stmt->insert_id;
         } else {
             // echo "Error: " . $stmt->error;
             return false;
