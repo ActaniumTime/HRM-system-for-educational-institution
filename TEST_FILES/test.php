@@ -12,23 +12,55 @@
     require_once 'app/models/ContinuingEducation.php';
     require_once 'app/models/Order.php';
     require_once 'app/models/Document.php';
-    require_once 'app/models/AccessLevel.php';
     require_once 'app/models/EmployerPositions.php';
     require_once 'app/models/Continuingeducationhistory.php';
     require_once 'app/models/EmploymentContracts.php';
+    require_once 'app/models/Accreditation.php';
 
     require_once 'config/database.php'; 
+
+    // $user = new Accreditation($connection);
+    // $user->loadByID(1);
+    // $user->Show();
+
+    // $user->setEmployerID(11);
+    // $user->setAccreditationPlan(null);
+    // $user->setDocumentYears(null);
+    // $user->setFinishDay(null);
+    // $user->setexperienceYears(3);
+    // $user->Add();
+    // $user->Show();
+
+    // echo "<br>";
+
+    // $user2 = new Accreditation($connection);
+    // $user2->loadByID(6);
+    // $user2->Show();
+
+    // echo "<br>";
+
+    // $user3 = new Accreditation($connection);
+    // $user3->loadByID(6);
+    // $user3->setEmployerID(41);
+    // $user3->setAccreditationPlan(['2024'=> 'true']);
+    // $user3->setDocumentYears(['2024'=> '41']);
+    // $user3->setFinishDay(['2024-01-01'=> 'Спеціаліст']);
+    // $user3->setexperienceYears(1);
+
+    // $user3->Show();
+    // $user3->updatedata();
+
 
     // $doc = new Document($connection);
 
     // $doc->loadByID(3);
     // $doc->deleteDocument(3);
 
-    $testPos = new Position($connection);
-    $testPos->loadByID(13);
-    $testPos->Show();
-    $testPos->deletePosition(13);
-    echo "<br>";
+    // $testPos = new Position($connection);
+    // $testPos->loadByID(13);
+    // $testPos->Show();
+    // $testPos->deletePosition(13);
+    // echo "<br>";
 
     // $testPos->showAllPositions();
 
