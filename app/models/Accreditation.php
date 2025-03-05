@@ -110,6 +110,24 @@ class Accreditation{
         $stmt->close();
     }
     
+    public function GetAll(){
+        $query = "SELECT * FROM accreditation";
+        $result = $this->connection->prepare($query);
+        $accreditations = [];
+        while($row = $result->fetch_assoc()){
+            $accreditioan = new Accreditation($this->connection);
+            $accreditioan->accreditationID = $row['id'];
+            $accreditioan->employerID = $row['employerID'];
+            $accreditioan->accreditationPlan = json_decode($row['accreditationPlan'], true) ?: [];
+            $accreditioan->documentYears = json_decode($row['documentYears'], true) ?: [];
+            $accreditioan->finishDay = json_decode($row['finishDay'], true) ?: [];
+            $accreditioan->experienceYears = $row['experienceYears'];
+
+            $accreditations[] = $accreditioan;
+
+        }
+        return $accreditations;
+    }
 
     public function Show(){
         echo "Accreditation ID: " . $this->accreditationID . "<br>";
