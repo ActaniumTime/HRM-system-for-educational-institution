@@ -33,7 +33,7 @@ class Accreditation{
     }
     
 
-    public function Add(){
+    public function AddAccreditation(){
         $query = "INSERT INTO accreditation (
             employerID, 
             accreditationPlan, 

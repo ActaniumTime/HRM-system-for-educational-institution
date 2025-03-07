@@ -5,6 +5,7 @@ error_reporting(E_ALL);
 
 require_once __DIR__ . '/../../models/UserVerify.php';
 require_once __DIR__ . '/../../models/Document.php';
+require_once __DIR__ . '/../../models/Accreditation.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     header('Content-Type: application/json');
@@ -107,6 +108,106 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $data['docType'],
             $newFileName2
         );
+
+
+        $currentYear = date('Y');
+        $lastYear = $currentYear - $data['categoryAge'];
+        $empAccred = new Accreditation($connection);
+        $empAccred->setEmployerID($employID);
+
+        // Определяем первый возможный год аккредитации
+        if ($data['categoryAge'] < 3) {
+            $commingAccreditationYear = $currentYear + (3 - $data['categoryAge']);
+        } else {
+            $commingAccreditationYear = $lastYear + 3;
+        }
+
+        // Ограничиваем перенос на 5 лет максимум
+        $commingAccreditationYear = min($commingAccreditationYear, $lastYear + 5);
+
+        // Для 4-й категории проверка каждые 5 лет
+        if ($data['category'] == 4) {
+            $commingAccreditationYear = $lastYear + 5;
+        }
+
+
+        // function checkDate($lastAccreditationYear, $expirienceYear){
+        //     $currentYear = date('Y');
+        //     $newAccreditationYear = $lastAccreditationYear + $expirienceYear;
+        //     if ($newAccreditationYear < $currentYear && $expirienceYear < 5) {
+        //         return $newAccreditationYear+= $currentYear - $newAccreditationYear;
+        //     }
+        //     return $newAccreditationYear;
+        // }
+
+        // $newerAccreditationYear = checkDate($lastYear, $data['categoryAge']);
+
+        switch ($data['category']) {
+            case 1:
+                $accreditationPlan = [
+                    'Спеціаліст' => $lastYear,
+                    'Спеціаліст другої категорії' => $commingAccreditationYear,
+                    'Спеціаліст першої категорії' => $commingAccreditationYear + 3,
+                    'Спеціаліст вищої категорії' => $commingAccreditationYear + 6,
+                ];
+                break;
+            case 2:
+                $accreditationPlan = [
+                    'Спеціаліст' => null,
+                    'Спеціаліст другої категорії' => $lastYear,
+                    'Спеціаліст першої категорії' => $commingAccreditationYear,
+                    'Спеціаліст вищої категорії' => $commingAccreditationYear + 3,
+                ];
+                break;
+            case 3:
+                $accreditationPlan = [
+                    'Спеціаліст' => null,
+                    'Спеціаліст другої категорії' => null,
+                    'Спеціаліст першої категорії' => $lastYear,
+                    'Спеціаліст вищої категорії' => $commingAccreditationYear,
+                ];
+                break;
+            case 4:
+                $accreditationPlan = [
+                    'Спеціаліст' => null,
+                    'Спеціаліст другої категорії' => null,
+                    'Спеціаліст першої категорії' => null,
+                    'Спеціаліст вищої категорії' => $lastYear,
+                ];
+                break;
+        }
+        
+        switch($data['category']){
+            case 1 : $empAccred->setDocumentYears([
+                $lastYear=>null,
+                $commingAccreditationYear=>null,
+                $commingAccreditationYear + 3=>null, 
+                $commingAccreditationYear + 6=>null,
+            ]); break;
+            case 2 : $empAccred->setDocumentYears([
+                null=>null,
+                $lastYear=>null,
+                $commingAccreditationYear=>null, 
+                $commingAccreditationYear + 3=>null,
+            ]); break;
+            case 3 : $empAccred->setDocumentYears([
+                null=>null,
+                null=>null,
+                $lastYear=>null, 
+                $commingAccreditationYear=>null,
+            ]); break;
+            case 4 : $empAccred->setDocumentYears([
+                null=>null,
+                null=>null,
+                null=>null,
+                $lastYear=>null,
+            ]); break;
+        }
+
+        $empAccred->setAccreditationPlan($accreditationPlan);
+        $empAccred->setexperienceYears($data['categoryAge']);
+        $empAccred->AddAccreditation();
+
 
 
         echo json_encode(['success' => true, 'message' => 'Employer added successfully']);
