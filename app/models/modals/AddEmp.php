@@ -100,7 +100,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
 
         $newDoc = new Document($connection);
-        $newDoc->addDocument(
+        $docID = $newDoc->addDocument(
             $employID,
             $data['docName'],
             $data['sphere'],
@@ -119,7 +119,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($data['categoryAge'] < 3) {
             $commingAccreditationYear = $currentYear + (3 - $data['categoryAge']);
         } else {
-            $commingAccreditationYear = $lastYear + 3;
+            $commingAccreditationYear = $lastYear + $data['categoryAge'];
         }
 
         // Ограничиваем перенос на 5 лет максимум
@@ -208,7 +208,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $empAccred->setexperienceYears($data['categoryAge']);
         $empAccred->AddAccreditation();
 
-
+        $tempEmp -> SetContractByID($employID, $docID );
 
         echo json_encode(['success' => true, 'message' => 'Employer added successfully']);
     } catch (Exception $e) {

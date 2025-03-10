@@ -408,6 +408,13 @@ class Employer {
             return null;
         }
     }
+
+    public function SetContractByID($empID, $pathToContract){
+        $query = "UPDATE employers SET admissionBasis = ? WHERE employerID = ?";
+        $stmt = $this->connection->prepare($query);
+        $stmt->bind_param("si", $pathToContract, $empID);
+        $stmt->execute();
+    }
     
     public function getEmployerID() { return $this->employerID; }
     public function setEmployerID($employerID) { $this->employerID = $employerID; }
