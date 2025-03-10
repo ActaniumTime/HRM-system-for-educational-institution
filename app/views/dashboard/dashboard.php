@@ -86,6 +86,11 @@ require_once __DIR__ . '/../../../app/models/UserVerify.php';
 
             <div class="temp-line">
                 <div class="tile">
+                    <h3>Управління акредитацією</h3>
+                    <p>сторінка для керування акредаціями співроботників</p>
+                    <a href="../AccreditationManag/AccreditationManag.php"><button>Відкрити</button></a>
+                </div>
+                <div class="tile">
                     <h3>Управління документами</h3>
                     <p>сторінка для керування усіми документами у системі</p>
                     <a href="../documentManag/documentManagPage.php"><button>Відкрити</button></a>

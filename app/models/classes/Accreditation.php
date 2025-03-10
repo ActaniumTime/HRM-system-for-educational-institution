@@ -110,24 +110,29 @@ class Accreditation{
         $stmt->close();
     }
     
-    public function GetAll(){
-        $query = "SELECT * FROM accreditation";
-        $result = $this->connection->prepare($query);
-        $accreditations = [];
-        while($row = $result->fetch_assoc()){
-            $accreditioan = new Accreditation($this->connection);
-            $accreditioan->accreditationID = $row['id'];
-            $accreditioan->employerID = $row['employerID'];
-            $accreditioan->accreditationPlan = json_decode($row['accreditationPlan'], true) ?: [];
-            $accreditioan->documentYears = json_decode($row['documentYears'], true) ?: [];
-            $accreditioan->finishDay = json_decode($row['finishDay'], true) ?: [];
-            $accreditioan->experienceYears = $row['experienceYears'];
-
-            $accreditations[] = $accreditioan;
-
+    public function GetAll($connection){
+        $sql = "SELECT * FROM accreditation";
+        $result = $connection->query($sql);
+        $accreditationList = [];
+        if ($result->num_rows > 0){
+            while ($row = $result->fetch_assoc()){
+                $accreditation = new Accreditation($connection);
+                $accreditation->accreditationID = $row['id'];
+                $accreditation->employerID = $row['employerID'];
+                $accreditation->accreditationPlan = json_decode($row['accreditationPlan'], true) ?: [];
+                $accreditation->documentYears = json_decode($row['documentYears'], true) ?: [];
+                $accreditation->finishDay = json_decode($row['finishDay'], true) ?: [];
+                $accreditation->experienceYears = $row['experienceYears'];
+                $accreditationList[] = $accreditation;
+            }
         }
-        return $accreditations;
+        return $accreditationList;
     }
+    
+    public function isAccreditedYear($year) {
+        return in_array($year, $this->accreditationPlan);
+    }
+    
 
     public function Show(){
         echo "Accreditation ID: " . $this->accreditationID . "<br>";
@@ -136,6 +141,21 @@ class Accreditation{
         echo "Document Years: " . json_encode($this->documentYears) . "<br>";
         echo "Finish Day: " . json_encode($this->documentYears) . "<br>";
         echo "Expirience Years: " . $this->experienceYears . "<br>";
+    }
+
+    public function CheckYearByID($EmpID, $tempYear){
+        $sql = "SELECT * FROM accreditation WHERE employerID = ?";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->bind_param("i", $EmpID);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        $documentYears = json_decode($row['documentYears'], true);
+        $stmt->close();
+        if (in_array($tempYear, $documentYears)){
+            return true;
+        }
+        return false;
     }
 
     public function setEmployerID($employerID){

@@ -125,22 +125,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Ограничиваем перенос на 5 лет максимум
         $commingAccreditationYear = min($commingAccreditationYear, $lastYear + 5);
 
-        // Для 4-й категории проверка каждые 5 лет
         if ($data['category'] == 4) {
             $commingAccreditationYear = $lastYear + 5;
         }
 
-
-        // function checkDate($lastAccreditationYear, $expirienceYear){
-        //     $currentYear = date('Y');
-        //     $newAccreditationYear = $lastAccreditationYear + $expirienceYear;
-        //     if ($newAccreditationYear < $currentYear && $expirienceYear < 5) {
-        //         return $newAccreditationYear+= $currentYear - $newAccreditationYear;
-        //     }
-        //     return $newAccreditationYear;
-        // }
-
-        // $newerAccreditationYear = checkDate($lastYear, $data['categoryAge']);
 
         switch ($data['category']) {
             case 1:

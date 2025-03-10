@@ -409,6 +409,21 @@ class Employer {
         }
     }
 
+    public function getAvatarByID($empID){
+        $query = "SELECT avatar FROM employers WHERE employerID = ?";
+        $stmt = $this->connection->prepare($query);
+        $stmt->bind_param("i", $empID);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if($result -> num_rows > 0){
+            $data = $result->fetch_assoc();
+            return $data['avatar'];
+        } else {
+            return null;
+        }
+    }
+
+
     public function SetContractByID($empID, $pathToContract){
         $query = "UPDATE employers SET admissionBasis = ? WHERE employerID = ?";
         $stmt = $this->connection->prepare($query);

@@ -1,0 +1,212 @@
+h1 {
+    color: #303030;
+    font-weight: bold;
+}
+
+.search-container {
+    position: relative;
+}
+
+.search-input {
+    border-radius: 36px;
+    padding: 10px 15px;
+    font-size: 1rem;
+    /* padding: 20px; */
+    width: 600px;
+}
+
+.search-input:focus {
+    outline: none;
+}
+
+.search-icon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    color: #303030;
+    cursor: pointer;
+}
+
+.table {
+    border-collapse: separate;
+    border-spacing: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 36px;
+    overflow: hidden;
+
+}
+
+.table th, .table td {
+    background-color: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.5);
+    color: #303030;
+    padding: 15px;
+    text-align: center;
+}
+
+.table thead th {
+    background: rgba(255, 255, 255, 0.5);
+    color: #303030;
+    font-weight: bold;
+}
+
+.table tbody tr {
+    background: rgba(255, 255, 255, 0.5);
+    color: #303030;
+    transition: background-color 0.2s, border-radius 0.2s;
+}
+
+/* .table tbody tr:hover {
+    background-color: #FFD85F;
+    border-radius: 36px;
+    overflow: hidden;
+} */
+
+.table img {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    border: 2px solid #303030;
+}
+
+button {
+    color: #ffffff00;
+    border: none;
+    border-radius: 36px;
+    padding: 10px 15px;
+    transition: transform 0.2s, background-color 0.3s;
+}
+
+button:hover {
+    background-color: #303030;
+    transform: scale(1);
+}
+
+.d-flex {
+    display: flex;
+    align-items: center;
+    gap: 10px; 
+}
+
+.btn-primary {
+    padding: 8px 12px;
+    border-radius: 36px;
+    font-size: 14px;
+}
+
+.icon_white {
+    fill: #303030;
+    height: 22px;
+    width: 22px;
+}
+
+.deleteEmployerBtn {
+    color: white;
+    border: none;
+    border-radius: 36px;
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    background: transparent; 
+}
+
+.Delete-button {
+    background: transparent; 
+    border: none;
+    cursor: pointer;
+}
+
+.Delete-button:hover {
+    background-color: #ff3636; 
+    transform: scale(1);
+    box-shadow: none;
+}
+
+.Delete-button:hover .icon_white {
+    fill: #ffffff; 
+    box-shadow: none;
+}
+
+.editEmployerBtn {
+    fill: #303030;
+    color: white;
+    border: none;
+    border-radius: 36px;
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    background: transparent; 
+}
+
+.Info-button {
+    fill: #303030;
+    background: transparent; 
+    border: none;
+    cursor: pointer;
+}
+
+.Info-button:hover {
+    background-color: #303030;
+    transform: scale(1);
+    box-shadow: none;
+}
+
+.Info-button:hover .icon_white {
+    fill: white; 
+    box-shadow: none;
+}
+
+.editEmployerBtn:hover .icon_white {
+    fill: #ffffff;
+    background-color: #303030;
+    transition: background-color 0.3s ease, fill 0.3s ease;
+}
+
+.no-click {
+    pointer-events: none;
+}
+
+.tool-bar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.tool-bar-element{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.form-select-fixed{
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 36px;
+    border: 1px solid rgba(48, 48, 48, 0.2);
+    padding: 12px 16px;
+    font-size: 14px;
+    color: #303030;
+    box-shadow: none;
+    appearance: none; 
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 24' fill='%23303030'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E"); 
+    background-repeat: no-repeat;
+    background-position: calc(100% - 16px) center;
+}
+
+#currentYear{
+    background:rgb(255, 248, 218);
+}
