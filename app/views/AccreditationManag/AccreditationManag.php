@@ -8,6 +8,8 @@
     require_once __DIR__ . '/../../../app/models/classes/Accreditation.php';
     require_once __DIR__ . '/../../../app/models/modals/deleteEndpoint.php';
     require_once __DIR__ . '../../partials/modals/modalAddEmp.php';
+    require_once __DIR__ . '../../partials/AccreditationManagPartial/modalEditAccreditation.php'
+
 
 ?>
 
@@ -49,11 +51,6 @@
         <div class="layout-container">
             
             <div class="temp-line" style="grid-template-columns: 1fr 1fr auto; margin-top: -10px; margin-bottom: -14px;">
-                    <div class="tool-bar-element filters-1" >
-                        <?php  
-                            require_once __DIR__ . "/../partials/EmpManagPartial/FiltersMenu1.php";
-                        ?>
-                    </div>
 
                     <div  class="tool-bar-element filters-2">
                         <?php  
