@@ -43,11 +43,20 @@
                                   alt=\"User Photo\" class=\"rounded-circle\" width=\"50\" height=\"50\" id=\"employerAvatar\"></td>";
                     echo "<td>{$emp->getEmpNameByID($Accreditation->getEmployerID())}</td>"; 
                     
-                    for ($i = $oldestYear; $i <= $newestYear; $i++) { // <= исправлено (раньше не включало newestYear)
+                    for ($i = $oldestYear; $i <= $newestYear; $i++) {
                         if ($Accreditation->isAccreditedYear($i)) {
-                            echo "<td><i class=\"fas fa-check\"></i></td>";
+                            if($i == $currentYear){
+                                echo "<td id=\"currentYear\"><i class=\"fas fa-check\"></i></td>";
+                            } else {
+                                echo "<td><i class=\"fas fa-check\"></i></td>";
+                            }
+
                         } else {
-                            echo "<td></td>";
+                            if($i == $currentYear){
+                                echo "<td id=\"currentYear\"></td>";
+                            } else {
+                                echo "<td></td>";
+                            }
                         }
                     }
                 
@@ -86,6 +95,7 @@
         </tbody>
     </table>
     </div>
+
 </div>
 
 <script>

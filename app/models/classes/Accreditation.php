@@ -133,6 +133,27 @@ class Accreditation{
         return in_array($year, $this->accreditationPlan);
     }
     
+    public function isAccreditedYearList($connection, $year) {
+        $query = "SELECT * FROM accreditation";
+        $result = $connection->query($query);
+        $accreditationList = [];
+        if ($result->num_rows > 0){
+            while ($row = $result->fetch_assoc()){
+                $accreditation = new Accreditation($connection);
+                $accreditation->accreditationID = $row['id'];
+                $accreditation->employerID = $row['employerID'];
+                $accreditation->accreditationPlan = json_decode($row['accreditationPlan'], true) ?: [];
+                $accreditation->documentYears = json_decode($row['documentYears'], true) ?: [];
+                $accreditation->finishDay = json_decode($row['finishDay'], true) ?: [];
+                $accreditation->experienceYears = $row['experienceYears'];
+                if(in_array($year, $accreditation->accreditationPlan)){
+                    $accreditationList[] = $accreditation;
+                }
+            }
+        }
+        return $accreditationList;
+    }
+
 
     public function Show(){
         echo "Accreditation ID: " . $this->accreditationID . "<br>";
@@ -158,6 +179,25 @@ class Accreditation{
         return false;
     }
 
+    public function getCurrentCategory() {
+        if (empty($this->accreditationPlan) || !is_array($this->accreditationPlan)) {
+            return null;
+        }
+    
+        $currentYear = date('Y');
+        $latestCategory = null;
+        $latestYear = 0;
+    
+        foreach ($this->accreditationPlan as $category => $year) {
+            if ($year !== null && $year <= $currentYear && $year > $latestYear) {
+                $latestCategory = $category;
+                $latestYear = $year;
+            }
+        }
+    
+        return $latestCategory;
+    }
+    
     public function setEmployerID($employerID){
         $this->employerID = $employerID;
     }

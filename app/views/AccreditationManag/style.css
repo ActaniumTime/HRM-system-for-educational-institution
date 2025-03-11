@@ -8,7 +8,7 @@ html {
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: transparent !important;
-    display: flex;
+    /* display: flex; */
     color: #303030;
 }
 
@@ -474,3 +474,4 @@ p {
     background:rgba(255, 248, 218, 0.66);
     padding: 25px;
 }
+

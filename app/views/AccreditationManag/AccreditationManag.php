@@ -70,19 +70,14 @@
 
 
             <div class="temp-line">
-
-
-
                 <div class="summary">
                     <?php require_once __DIR__ . "../../partials/AccreditationManagPartial/AccreditationPlan.php"; ?>
                 </div>
 
-
                 <div class="summary">
-
- 
+                    <?php require_once __DIR__ . "../../partials/AccreditationManagPartial/AccreditationWillAchive.php"; ?>
                 </div>
-
+                
             </div>
 
         </div>
