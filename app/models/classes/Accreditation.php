@@ -198,6 +198,93 @@ class Accreditation{
         return $latestCategory;
     }
     
+    public function getAllDataById($connection, $employerID){
+        $sql = "SELECT * FROM accreditation WHERE employerID = ?";
+        $stmt = $connection->prepare($sql);
+        $stmt->bind_param("i", $employerID);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $accreditationList = [];
+        if ($result->num_rows > 0){
+            while ($row = $result->fetch_assoc()){
+                $accreditation = new Accreditation($connection);
+                $accreditation->accreditationID = $row['id'];
+                $accreditation->employerID = $row['employerID'];
+                $accreditation->accreditationPlan = json_decode($row['accreditationPlan'], true) ?: [];
+                $accreditation->documentYears = json_decode($row['documentYears'], true) ?: [];
+                $accreditation->finishDay = json_decode($row['finishDay'], true) ?: [];
+                $accreditation->experienceYears = $row['experienceYears'];
+                $accreditationList[] = $accreditation;
+            }
+        }
+        return $accreditationList;
+
+    }
+
+    public function updateAccreditationPlan(){
+        $query = "UPDATE accreditation SET accreditationPlan = ? WHERE employerID = ?";
+        $stmt = $this->connection->prepare($query);
+        $accreditationPlanJson = json_encode($this->accreditationPlan);
+        $stmt->bind_param('si', $accreditationPlanJson, $this->employerID);
+        $stmt->execute();
+        $stmt->close();
+    }
+
+    public function updateDocumentYears(){
+        $query = "UPDATE accreditation SET documentYears = ? WHERE employerID = ?";
+        $stmt = $this->connection->prepare($query);
+        $documentYearsJson = json_encode($this->documentYears);
+        $stmt->bind_param('si', $documentYearsJson, $this->employerID);
+        $stmt->execute();
+        $stmt->close();
+    }
+
+    public function updateFinishDay(){
+        $query = "UPDATE accreditation SET finishDay = ? WHERE employerID = ?";
+        $stmt = $this->connection->prepare($query);
+        $finishDayJson = json_encode($this->finishDay);
+        $stmt->bind_param('si', $finishDayJson, $this->employerID);
+        $stmt->execute();
+        $stmt->close();
+    }
+
+    public function updateExperienceYears(){
+        $query = "UPDATE accreditation SET experienceYears = ? WHERE employerID = ?";
+        $stmt = $this->connection->prepare($query);
+        $stmt->bind_param('ii', $this->experienceYears, $this->employerID);
+        $stmt->execute();
+        $stmt->close();
+    }
+
+    public function updateAccreditationData() {
+        $query = "UPDATE accreditation 
+                  SET accreditationPlan = ?, 
+                      documentYears = ?, 
+                      finishDay = ?, 
+                      experienceYears = ? 
+                  WHERE employerID = ?";
+        
+        $stmt = $this->connection->prepare($query);
+    
+        $accreditationPlanJson = json_encode($this->accreditationPlan);
+        $documentYearsJson = json_encode($this->documentYears);
+        $finishDayJson = json_encode($this->finishDay);
+    
+        $stmt->bind_param(
+            'sssii', 
+            $accreditationPlanJson, 
+            $documentYearsJson, 
+            $finishDayJson, 
+            $this->experienceYears, 
+            $this->employerID
+        );
+    
+        $stmt->execute();
+        $stmt->close();
+    }
+    
+
+
     public function setEmployerID($employerID){
         $this->employerID = $employerID;
     }

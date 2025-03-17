@@ -5,7 +5,7 @@ error_reporting(E_ALL);
 
 require_once __DIR__ . '/../../models/UserVerify.php';
 require_once __DIR__ . '/../../models/Document.php';
-require_once __DIR__ . '/../../models/Accreditation.php';
+require_once __DIR__ . '/../../models/classes/Accreditation.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     header('Content-Type: application/json');
