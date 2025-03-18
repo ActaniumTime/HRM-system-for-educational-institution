@@ -101,7 +101,7 @@ class Accreditation{
             $this->employerID, 
             $accreditationPlanJson, 
             $documentYearsJson,  
-            $finishDayJson, 
+            $finishDayJson,
             $this->experienceYears,
             $this->accreditationID
         );
@@ -325,7 +325,7 @@ class Accreditation{
         return $this->finishDay;
     }
 
-    public function getexperienceYears(){
+    public function getExperienceYears(){
         return $this->experienceYears;
     }
 }

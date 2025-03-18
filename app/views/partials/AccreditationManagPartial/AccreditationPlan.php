@@ -62,6 +62,14 @@
                 
                     echo "<td class=\"d-flex\" style=\"border-radius:  0px 36px 36px 0px ;\">";
                     echo "<button type=\"button\" class=\"editEmployerBtn \" 
+                            data-employer-id=\"{$Accreditation->getEmployerID()}\"
+                            data-accreditation-id=\"{$Accreditation->getAccreditationID()}\"
+                            data-accreditation-plan='" . json_encode($Accreditation->getAccreditationPlan()) . "'
+                            data-document-years='" . json_encode($Accreditation->getDocumentYears()) . "'
+                            data-finish-day='" . json_encode($Accreditation->getFinishDay()) . "'
+                            data-expirience-years=\"{$Accreditation->getExperienceYears()}\"
+                            data-emp-name=\"{$emp->getEmpNameByID($Accreditation->getEmployerID())}\"
+
                             data-bs-toggle=\"modal\" data-bs-target=\"#EditAccreditationModal\"
                             title=\"Редагувати дані співробітника\">
                             <svg xmlns=\"http://www.w3.org/2000/svg\" id=\"Layer_1\" data-name=\"Layer 1\" viewBox=\"0 0 24 24\" class=\"icon_white no-click\">

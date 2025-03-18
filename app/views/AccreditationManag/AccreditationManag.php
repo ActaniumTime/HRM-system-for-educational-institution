@@ -83,15 +83,12 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-<script src="../../../public/js//AddDeleteUser.js"></script>
-
-<script src="../../../public/js/ModalDataTable.js"></script>
+<script src="../../../public/js/accreditationJS/DataAccreditationTable.js"></script>
 
 <script src="../../../public/js/tableSearching.js"></script>
 
 <script src="../../../public/js/tableEmpFilters.js"></script>
 
-<script src="../../../public/js/EmpManagTableBut.js"></script>
 
 <script src="../../../public/js/navBar.js"></script>
 
