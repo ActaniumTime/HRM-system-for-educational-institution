@@ -15,9 +15,47 @@
     require_once 'app/models/EmployerPositions.php';
     require_once 'app/models/Continuingeducationhistory.php';
     require_once 'app/models/EmploymentContracts.php';
-    require_once 'app/models/Accreditation.php';
+    require_once 'app/models/classes/Accreditation.php';
 
     require_once 'config/database.php'; 
+
+
+    $accred = new Accreditation($connection);
+
+    $acredPlan = [
+        "Спеціаліст" => 2016,
+        "Спеціаліст вищої категорії" => 2028,
+        "Спеціаліст другої категорії" => 2020,
+        "Спеціаліст першої категорії" => 2025
+    ];
+
+    $finDay = [
+        "Спеціаліст" => "2016-05-21",
+        "Спеціаліст вищої категорії" => "",
+        "Спеціаліст другої категорії" => "2020-04-19",
+        "Спеціаліст першої категорії" => "2025-03-11"
+    ];
+
+    $docYear = [
+        "2016" => 74,
+        "2020" => 75,
+        "2025" => 74,
+        "2028" => null
+    ];
+
+    $accred->loadByID(6);
+   
+    $accred->Show();
+
+    
+    $accred->setAccreditationPlan($acredPlan);
+    $accred->setFinishDay($finDay);
+    $accred->setDocumentYears($docYear);
+    $accred->setexperienceYears(3);
+
+    $accred->Show();
+
+    $accred->updateData();
 
     // $user = new Accreditation($connection);
     // $user->loadByID(1);

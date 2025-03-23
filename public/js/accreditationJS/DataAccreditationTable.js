@@ -24,56 +24,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
             document.getElementById('teacherNameModal').value = empName;
             document.getElementById('accreditationID').value = acredID;
+            document.getElementById('employerIDmodal').value = empID;
             document.getElementById('currentYearModal').value = expYears;
-
-
-
-            
-
-
-            // document.getElementById('').value = empID;
-            // document.getElementById('').value = empID;
-            // document.getElementById('').value = empID;
-            // document.getElementById('').value = empID;
-            // document.getElementById('').value = empID;
-            // document.getElementById('').value = empID;
-            // document.getElementById('').value = empID;
-            // document.getElementById('').value = empID;
-            // document.getElementById('').value = empID;
-            // document.getElementById('').value = empID;
-            // document.getElementById('').value = empID;
-            // document.getElementById('').value = empID;
-            // document.getElementById('').value = empID;
-            // document.getElementById('').value = empID;
-            // document.getElementById('').value = empID;
-            // document.getElementById('').value = empID;
-            // document.getElementById('').value = empID;
-            // document.getElementById('').value = empID;
-            // document.getElementById('').value = empID;
-            // document.getElementById('').value = empID;
-            // document.getElementById('').value = empID;
-            // document.getElementById('').value = empID;
-            // document.getElementById('').value = empID;
-            // document.getElementById('').value = empID;
-            // document.getElementById('').value = empID;
-            // document.getElementById('').value = empID;
-            // document.getElementById('').value = empID;
-            // document.getElementById('').value = empID;
-            // document.getElementById('').value = empID;
-            // document.getElementById('').value = empID;
-            // document.getElementById('').value = empID;
-            // document.getElementById('').value = empID;
-            // document.getElementById('').value = empID;
-            // document.getElementById('').value = empID;
-            // document.getElementById('').value = empID;
-            // document.getElementById('').value = empID;
-            // document.getElementById('').value = empID;
-            // document.getElementById('').value = empID;
-            // document.getElementById('').value = empID;
-
             
         }
     });
+
+
+
 });
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -92,7 +50,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 "Спеціаліст": 1,
                 "Спеціаліст другої категорії": 2,
                 "Спеціаліст першої категорії": 3,
-                "Спеціаліст вищої категорії": 4
+                "Спеціаліст вищої категорії": 4,
+                "Підтвердження вищої категорії": 5
             };
 
             // Заполнение полей для каждой категории
@@ -100,17 +59,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 const categoryId = categoryMapping[category];
                 if (categoryId && year) {
                     document.getElementById(`accreditationYearModal${categoryId}`).value = year;
-                    document.getElementById(`categoryYearsModal${categoryId}`).value = experienceYears || 0;
+                    // document.getElementById(`categoryYearsModal${categoryId}`).value = experienceYears || 0;
                 }
             }
-
-            // Заполнение годов документов
-            Object.keys(documentYears).forEach((year, index) => {
-                const docInput = document.getElementById(`docNameModal${index + 1}`);
-                if (docInput && year) {
-                    docInput.value = `Документ за ${year} рік`;
-                }
-            });
 
             // Сортируем годы и значения (по возрастанию годов)
             const sortedYears = Object.entries(documentYears)
@@ -137,4 +88,3 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 });
-

@@ -71,7 +71,7 @@ class Accreditation{
         $stmt->close();
     }
 
-    public function updatedata(){
+    public function updateData(){
         $query = "UPDATE accreditation SET 
             employerID = ?, 
             accreditationPlan = ?, 
@@ -155,14 +155,15 @@ class Accreditation{
     }
 
 
-    public function Show(){
+    public function Show() {
         echo "Accreditation ID: " . $this->accreditationID . "<br>";
         echo "Employer ID: " . $this->employerID . "<br>";
-        echo "Accreditation Plan: " . json_encode($this->accreditationPlan) . "<br>";
-        echo "Document Years: " . json_encode($this->documentYears) . "<br>";
-        echo "Finish Day: " . json_encode($this->documentYears) . "<br>";
-        echo "Expirience Years: " . $this->experienceYears . "<br>";
+        echo "Accreditation Plan: " . json_encode($this->accreditationPlan, JSON_UNESCAPED_UNICODE) . "<br>";
+        echo "Document Years: " . json_encode($this->documentYears, JSON_UNESCAPED_UNICODE) . "<br>";
+        echo "Finish Day: " . json_encode($this->finishDay, JSON_UNESCAPED_UNICODE) . "<br>";
+        echo "Experience Years: " . $this->experienceYears . "<br>";
     }
+    
 
     public function CheckYearByID($EmpID, $tempYear){
         $sql = "SELECT * FROM accreditation WHERE employerID = ?";
