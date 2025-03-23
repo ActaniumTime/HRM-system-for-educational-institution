@@ -1,7 +1,7 @@
 <?php
-    require_once __DIR__ . '/../../models/UserVerify.php';
-    require_once __DIR__ . '/../../models/Document.php';
-    require_once __DIR__ . '/../../models/classes/Accreditation.php';
+require_once __DIR__ . '/../../models/UserVerify.php';
+require_once __DIR__ . '/../../models/Document.php';
+require_once __DIR__ . '/../../models/classes/Accreditation.php';
 
 header('Content-Type: application/json');
 
@@ -24,6 +24,8 @@ try {
     // Если указан accreditationID, загружаем существующую аккредитацию
     if (!empty($inputData['accreditationID'])) {
         $accreditation->loadByID($inputData['accreditationID']);
+    } else {
+        throw new Exception('Создание новой аккредитации не поддерживается этим модулем');
     }
 
     // Устанавливаем данные аккредитации
@@ -33,17 +35,14 @@ try {
     $accreditation->setFinishDay($inputData['finishDay']);
     $accreditation->setExperienceYears($inputData['currentYear']);
 
-    // Обновление или создание аккредитации
-    if (!empty($inputData['accreditationID'])) {
-        $accreditation->updateData();
-    } else {
-        throw new Exception('Создание новой аккредитации не поддерживается этим модулем');
-    }
+    // Массив для новых документов и обновления documentYears
+    $addedDocuments = [];
+    $updatedDocumentYears = $inputData['documentYears'];
 
     // Обработка документов
-    $addedDocuments = [];
     foreach ($inputData['categories'] as $category) {
         if (empty($category['docID']) && !empty($category['docName'])) {
+            // Создаем новый документ
             $docID = $document->addDocument(
                 $inputData['employerID'],
                 $category['docName'],
@@ -52,16 +51,28 @@ try {
                 $category['docType'],
                 '' // Файлы загружаются отдельно
             );
+
+            // Добавляем новый ID в список
             $addedDocuments[] = $docID;
+
+            // Обновляем documentYears для соответствующего года
+            if (!empty($category['year'])) {
+                $updatedDocumentYears[$category['year']] = $docID;
+            }
         }
     }
+
+    // Обновляем документYears и сохраняем изменения
+    $accreditation->setDocumentYears($updatedDocumentYears);
+    $accreditation->updateData();
 
     // Возвращаем результат
     echo json_encode([
         'status' => 'success',
         'message' => 'Аккредитация успешно обновлена',
         'accreditationID' => $accreditation->getAccreditationID(),
-        'addedDocumentIDs' => $addedDocuments
+        'addedDocumentIDs' => $addedDocuments,
+        'updatedDocumentYears' => $updatedDocumentYears
     ]);
 } catch (Exception $e) {
     http_response_code(400);

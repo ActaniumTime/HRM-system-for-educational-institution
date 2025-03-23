@@ -1,60 +1,61 @@
 <?php
-    require_once __DIR__ . '/../../models/UserVerify.php';
-    require_once __DIR__ . '/../../models/Document.php';
-    require_once __DIR__ . '/../../models/classes/Accreditation.php';
+require_once __DIR__ . '/../../models/UserVerify.php';
+require_once __DIR__ . '/../../models/Document.php';
+require_once __DIR__ . '/../../models/classes/Accreditation.php';
 
 header('Content-Type: application/json');
 
 try {
-    // Проверка наличия accreditationID
-    if (empty($_POST['accreditationID'])) {
-        throw new Exception('Отсутствует accreditationID');
+    if (empty($_POST['accreditationID']) || empty($_POST['ownerID'])) {
+        throw new Exception('Отсутствуют обязательные параметры: accreditationID или ownerID');
     }
 
     $accreditationID = intval($_POST['accreditationID']);
+    $ownerID = intval($_POST['ownerID']);
     $document = new Document($connection);
-    $uploadedFiles = [];
 
-    // Путь для сохранения файлов
-    $uploadDir = __DIR__ . '/../../../uploads/';
-    if (!is_dir($uploadDir)) {
-        mkdir($uploadDir, 0777, true);
+    $uploadedFiles = [];
+    $uploadDir = __DIR__ . '/../../../../Files/documents/';
+    if (!is_dir($uploadDir) && !mkdir($uploadDir, 0777, true)) {
+        throw new Exception('Не удалось создать директорию загрузки');
     }
 
-    // Обработка загруженных файлов
     foreach ($_FILES as $key => $file) {
-        if ($file['error'] === UPLOAD_ERR_OK) {
-            $fileExtension = pathinfo($file['name'], PATHINFO_EXTENSION);
-            $fileName = uniqid('doc_', true) . '.' . $fileExtension;
-            $filePath = $uploadDir . $fileName;
-            $publicPath = '/uploads/' . $fileName;
-
-            // Перемещение файла в директорию
-            if (move_uploaded_file($file['tmp_name'], $filePath)) {
-                // Извлечение индекса документа из имени поля (например: file_1)
-                $index = intval(str_replace('file_', '', $key));
-
-                // Добавление записи о файле в базу данных
-                $docID = $document->addDocument(
-                    $_POST['ownerID'] ?? null,
-                    $_POST["docName_$index"] ?? 'Без названия',
-                    $_POST["sphere_$index"] ?? '',
-                    $_POST["purpose_$index"] ?? '',
-                    $_POST["docType_$index"] ?? 'Прочее',
-                    $publicPath
-                );
-
-                $uploadedFiles[] = [
-                    'index' => $index,
-                    'fileName' => $fileName,
-                    'documentID' => $docID
-                ];
-            } else {
-                throw new Exception("Не удалось сохранить файл: {$file['name']}");
-            }
-        } elseif ($file['error'] !== UPLOAD_ERR_NO_FILE) {
-            throw new Exception("Ошибка загрузки файла: {$file['name']}");
+        if ($file['error'] !== UPLOAD_ERR_OK) {
+            throw new Exception("Ошибка загрузки файла: {$file['name']}, код: {$file['error']}");
         }
+
+        if (!preg_match('/^file_(\d+)$/', $key, $matches)) {
+            throw new Exception("Некорректное имя файла: $key");
+        }
+        $index = intval($matches[1]);
+
+        $fileExtension = pathinfo($file['name'], PATHINFO_EXTENSION);
+        $fileName = uniqid('doc_', true) . '.' . $fileExtension;
+        $filePath = $uploadDir . $fileName;
+        $publicPath = '/Files/documents/' . $fileName;
+
+        if (!move_uploaded_file($file['tmp_name'], $filePath)) {
+            throw new Exception("Не удалось сохранить файл: {$file['name']}");
+        }
+
+        // Получение данных документа из POST
+        $docName = $_POST["docName_$index"] ?? 'Без названия';
+        $sphere = $_POST["sphere_$index"] ?? '';
+        $purpose = $_POST["purpose_$index"] ?? '';
+        $docType = $_POST["docType_$index"] ?? 'Прочее';
+
+        // Добавление документа в базу
+        $docID = $document->addDocument($ownerID, $docName, $sphere, $purpose, $docType, $publicPath);
+        if (!$docID) {
+            throw new Exception("Ошибка при добавлении документа в базу.");
+        }
+
+        $uploadedFiles[] = [
+            'index' => $index,
+            'fileName' => $fileName,
+            'documentID' => $docID
+        ];
     }
 
     echo json_encode([

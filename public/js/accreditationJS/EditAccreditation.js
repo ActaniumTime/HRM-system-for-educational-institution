@@ -89,27 +89,42 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const result = await jsonResponse.json();
 
-            // Шаг 6: Если есть файлы, отправляем их отдельно
             if (files.length > 0) {
                 const fileData = new FormData();
                 fileData.append('accreditationID', result.accreditationID);
-
+                fileData.append('ownerID', employerID); 
+            
                 files.forEach(({ index, file }) => {
                     fileData.append(`file_${index}`, file);
+                    fileData.append(`docName_${index}`, categories[index - 1].docName || 'Без названия');
+                    fileData.append(`sphere_${index}`, categories[index - 1].sphere || '');
+                    fileData.append(`purpose_${index}`, categories[index - 1].purpose || '');
+                    fileData.append(`docType_${index}`, categories[index - 1].docType || 'Прочее');
                 });
-
+            
+                console.log('Отправляемые файлы:', fileData);
+            
                 const fileResponse = await fetch('../../../app/models/modals/UploadAccreditationFiles.php', {
                     method: 'POST',
                     body: fileData
                 });
-
+            
                 if (!fileResponse.ok) {
                     throw new Error(`Ошибка загрузки файлов: ${fileResponse.statusText}`);
                 }
-
+            
                 const fileResult = await fileResponse.json();
-                console.log('Загруженные файлы:', fileResult);
+                console.log('Ответ сервера после загрузки файлов:', fileResult);
+            
+                if (fileResult.status !== 'success') {
+                    throw new Error('Ошибка при добавлении документов в БД.');
+                }
+            
+                alert('Аккредитация и документы успешно сохранены!');
+                location.reload();
             }
+            
+
 
             alert('Аккредитация успешно сохранена!');
             document.getElementById('EditAccreditationModal').modal('hide');
