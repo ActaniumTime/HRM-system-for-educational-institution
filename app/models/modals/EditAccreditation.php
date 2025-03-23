@@ -6,75 +6,108 @@ require_once __DIR__ . '/../../models/classes/Accreditation.php';
 header('Content-Type: application/json');
 
 try {
-    // Получение и декодирование входных данных
-    $inputData = json_decode(file_get_contents('php://input'), true);
-    if (!$inputData) {
-        throw new Exception('Некорректные данные');
+    // Проверка наличия обязательных данных
+    if (empty($_POST['employerID']) || empty($_POST['accreditationID'])) {
+        throw new Exception('Отсутствуют обязательные параметры: employerID или accreditationID');
     }
 
-    // Проверка обязательных полей
-    if (empty($inputData['employerID'])) {
-        throw new Exception('Ошибка: отсутствует employerID');
+    $employerID = intval($_POST['employerID']);
+    $accreditationID = intval($_POST['accreditationID']);
+
+    // Проверяем наличие данных
+    $accreditationPlan = json_decode($_POST['accreditationPlan'], true) ?? [];
+    $documentYears = json_decode($_POST['documentYears'], true) ?? [];
+    $finishDay = json_decode($_POST['finishDay'], true) ?? [];
+    $categories = json_decode($_POST['categories'], true) ?? [];
+    $currentYear = intval($_POST['currentYear'] ?? 0);
+
+    // Проверяем корректность данных
+    if (!$accreditationPlan || !$categories) {
+        throw new Exception('Некорректные или неполные данные');
     }
 
     // Инициализация объектов
     $accreditation = new Accreditation($connection);
     $document = new Document($connection);
 
-    // Если указан accreditationID, загружаем существующую аккредитацию
-    if (!empty($inputData['accreditationID'])) {
-        $accreditation->loadByID($inputData['accreditationID']);
-    } else {
-        throw new Exception('Создание новой аккредитации не поддерживается этим модулем');
+    // Загружаем существующую аккредитацию
+    $accreditation->loadByID($accreditationID);
+
+    // Устанавливаем основные данные аккредитации
+    $accreditation->setEmployerID($employerID);
+    $accreditation->setAccreditationPlan($accreditationPlan);
+    $accreditation->setDocumentYears($documentYears);
+    $accreditation->setFinishDay($finishDay);
+    $accreditation->setExperienceYears($currentYear);
+
+    // Директория для загрузки файлов
+    $uploadDir = __DIR__ . '../../../../Files/documents/';
+    if (!is_dir($uploadDir) && !mkdir($uploadDir, 0777, true)) {
+        throw new Exception('Не удалось создать директорию загрузки');
     }
 
-    // Устанавливаем данные аккредитации
-    $accreditation->setEmployerID($inputData['employerID']);
-    $accreditation->setAccreditationPlan($inputData['accreditationPlan']);
-    $accreditation->setDocumentYears($inputData['documentYears']);
-    $accreditation->setFinishDay($inputData['finishDay']);
-    $accreditation->setExperienceYears($inputData['currentYear']);
-
-    // Массив для новых документов и обновления documentYears
     $addedDocuments = [];
-    $updatedDocumentYears = $inputData['documentYears'];
+    $updatedDocumentYears = $documentYears;
 
-    // Обработка документов
-    foreach ($inputData['categories'] as $category) {
-        if (empty($category['docID']) && !empty($category['docName'])) {
-            // Создаем новый документ
-            $docID = $document->addDocument(
-                $inputData['employerID'],
-                $category['docName'],
-                $category['sphere'],
-                $category['purpose'],
-                $category['docType'],
-                '' // Файлы загружаются отдельно
-            );
+    // Обработка категорий и файлов
+    foreach ($categories as $category) {
+        $index = $category['index'];
+        $docID = $category['docID'] ?? null;
 
-            // Добавляем новый ID в список
-            $addedDocuments[] = $docID;
-
-            // Обновляем documentYears для соответствующего года
-            if (!empty($category['year'])) {
-                $updatedDocumentYears[$category['year']] = $docID;
+        // Если файл присутствует, обрабатываем его
+        if (isset($_FILES["file_{$index}"])) {
+            $file = $_FILES["file_{$index}"];
+            if ($file['error'] !== UPLOAD_ERR_OK) {
+                throw new Exception("Ошибка загрузки файла: {$file['name']}, код: {$file['error']}");
             }
+
+            // Генерируем уникальное имя файла
+            $fileExtension = pathinfo($file['name'], PATHINFO_EXTENSION);
+            $fileName = uniqid('doc_', true) . '.' . $fileExtension;
+            $filePath = $uploadDir . $fileName;
+            $publicPath = "{$fileName}";
+
+            // Перемещаем загруженный файл
+            if (!move_uploaded_file($file['tmp_name'], $filePath)) {
+                throw new Exception("Не удалось сохранить файл: {$file['name']}");
+            }
+
+            // Если нет docID, создаём новый документ
+            if (!$docID) {
+                $docName = $_POST["docName_{$index}"] ?? 'Без названия';
+                $sphere = $_POST["sphere_{$index}"] ?? '';
+                $purpose = $_POST["purpose_{$index}"] ?? '';
+                $docType = $_POST["docType_{$index}"] ?? 'Прочее';
+
+                $docID = $document->addDocument($employerID, $docName, $sphere, $purpose, $docType, $publicPath);
+                if (!$docID) {
+                    throw new Exception("Ошибка при добавлении документа в базу");
+                }
+
+                $addedDocuments[] = $docID;
+            }
+        }
+
+        // Если создан новый документ, обновляем documentYears
+        if ($docID && !empty($category['year'])) {
+            $updatedDocumentYears[$category['year']] = $docID;
         }
     }
 
-    // Обновляем документYears и сохраняем изменения
+    // Обновляем аккредитацию с новыми documentYears
     $accreditation->setDocumentYears($updatedDocumentYears);
     $accreditation->updateData();
 
-    // Возвращаем результат
+    // Возвращаем успешный результат
     echo json_encode([
         'status' => 'success',
-        'message' => 'Аккредитация успешно обновлена',
+        'message' => 'Аккредитация и документы успешно обновлены',
         'accreditationID' => $accreditation->getAccreditationID(),
         'addedDocumentIDs' => $addedDocuments,
         'updatedDocumentYears' => $updatedDocumentYears
     ]);
 } catch (Exception $e) {
+    // Обработка ошибок
     http_response_code(400);
     echo json_encode([
         'status' => 'error',

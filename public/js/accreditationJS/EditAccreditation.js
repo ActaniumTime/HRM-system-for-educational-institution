@@ -5,11 +5,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const form = document.getElementById('EditAccreditationForm');
 
         // Шаг 1: Сбор данных из модального окна
-        const accreditationID = form.querySelector('#accreditationID').value || null;
-        const employerID = form.querySelector('#employerIDmodal').value || null;
-        const teacherName = form.querySelector('#teacherNameModal').value || null;
-        const currentCategory = form.querySelector('#currentCategoryModal').value || null;
-        const currentYear = parseInt(form.querySelector('#currentYearModal').value) || 0;
+        const accreditationID = form.querySelector('#accreditationID')?.value || null;
+        const employerID = form.querySelector('#employerIDmodal')?.value || null;
+        const teacherName = form.querySelector('#teacherNameModal')?.value || null;
+        const currentCategory = form.querySelector('#currentCategoryModal')?.value || null;
+        const currentYear = parseInt(form.querySelector('#currentYearModal')?.value) || 0;
 
         // Проверяем обязательные поля
         if (!employerID) {
@@ -33,12 +33,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const file = fileInput?.files.length > 0 ? fileInput.files[0] : null;
 
             if (year || date || docID || docName || sphere || purpose || docType || file) {
-                categories.push({ year, date, docID, docName, sphere, purpose, docType });
+                categories.push({ index: i, year, date, docID, docName, sphere, purpose, docType });
                 if (file) files.push({ index: i, file });
             }
         }
 
-        // Шаг 3: Формирование структуры данных
+        // Шаг 3: Формирование структур данных
         const accreditationPlan = {};
         const documentYears = {};
         const finishDay = {};
@@ -58,79 +58,52 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Шаг 4: Создание JSON-объекта
-        const payload = {
-            accreditationID,
-            employerID,
-            teacherName,
-            currentCategory,
-            currentYear,
-            accreditationPlan,
-            documentYears,
-            finishDay,
-            categories
-        };
+        // Шаг 4: Создание FormData (для JSON и файлов)
+        const formData = new FormData();
+        formData.append('accreditationID', accreditationID);
+        formData.append('employerID', employerID);
+        formData.append('teacherName', teacherName);
+        formData.append('currentCategory', currentCategory);
+        formData.append('currentYear', currentYear);
+        formData.append('accreditationPlan', JSON.stringify(accreditationPlan));
+        formData.append('documentYears', JSON.stringify(documentYears));
+        formData.append('finishDay', JSON.stringify(finishDay));
+        formData.append('categories', JSON.stringify(categories));
 
-        console.log('Payload JSON:', payload);
+        // Добавляем файлы в formData
+        files.forEach(({ index, file }) => {
+            formData.append(`file_${index}`, file);
+            formData.append(`docName_${index}`, categories[index - 1].docName || 'Без названия');
+            formData.append(`sphere_${index}`, categories[index - 1].sphere || '');
+            formData.append(`purpose_${index}`, categories[index - 1].purpose || '');
+            formData.append(`docType_${index}`, categories[index - 1].docType || 'Прочее');
+        });
+
+        console.log('Отправляемые данные:', formData);
 
         try {
-            // Шаг 5: Отправка JSON-данных
-            const jsonResponse = await fetch('../../../app/models/modals/EditAccreditation.php', {
+            // Шаг 5: Отправка всех данных на EditAccreditation.php
+            const response = await fetch('../../../app/models/modals/EditAccreditation.php', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(payload)
+                body: formData
             });
 
-            if (!jsonResponse.ok) {
-                throw new Error(`Ошибка: ${jsonResponse.statusText}`);
+            if (!response.ok) {
+                throw new Error(`Ошибка: ${response.statusText}`);
             }
 
-            const result = await jsonResponse.json();
+            const result = await response.json();
+            console.log('Ответ от EditAccreditation.php:', result);
 
-            if (files.length > 0) {
-                const fileData = new FormData();
-                fileData.append('accreditationID', result.accreditationID);
-                fileData.append('ownerID', employerID); 
-            
-                files.forEach(({ index, file }) => {
-                    fileData.append(`file_${index}`, file);
-                    fileData.append(`docName_${index}`, categories[index - 1].docName || 'Без названия');
-                    fileData.append(`sphere_${index}`, categories[index - 1].sphere || '');
-                    fileData.append(`purpose_${index}`, categories[index - 1].purpose || '');
-                    fileData.append(`docType_${index}`, categories[index - 1].docType || 'Прочее');
-                });
-            
-                console.log('Отправляемые файлы:', fileData);
-            
-                const fileResponse = await fetch('../../../app/models/modals/UploadAccreditationFiles.php', {
-                    method: 'POST',
-                    body: fileData
-                });
-            
-                if (!fileResponse.ok) {
-                    throw new Error(`Ошибка загрузки файлов: ${fileResponse.statusText}`);
-                }
-            
-                const fileResult = await fileResponse.json();
-                console.log('Ответ сервера после загрузки файлов:', fileResult);
-            
-                if (fileResult.status !== 'success') {
-                    throw new Error('Ошибка при добавлении документов в БД.');
-                }
-            
-                alert('Аккредитация и документы успешно сохранены!');
-                location.reload();
+            if (result.status !== 'success') {
+                throw new Error(`Ошибка сохранения: ${result.message}`);
             }
-            
 
-
-            alert('Аккредитация успешно сохранена!');
-            document.getElementById('EditAccreditationModal').modal('hide');
+            alert('Аккредитация и документы успешно сохранены!');
+            location.reload();
         } catch (error) {
             console.error('Ошибка при сохранении аккредитации:', error);
-            alert('Ошибка при сохранении. Проверьте консоль для деталей.');
+            alert('Ошибка при сохранении. Подробности в консоли.');
         }
     });
 });
