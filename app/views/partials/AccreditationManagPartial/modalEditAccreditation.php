@@ -41,11 +41,11 @@
                         <div class="accordion" id="accordionExample">
                             <div class="accordion-item">
                                 <h2 class="accordion-header">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
                                     Спеціаліст
                                 </button>
                                 </h2>
-                                <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                                <div id="collapse1" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
 
                                         <div class="row">
@@ -109,11 +109,11 @@
 
                             <div class="accordion-item">
                                 <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
                                     Спеціаліст другої категорії
                                 </button>
                                 </h2>
-                                <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                                <div id="collapse2" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
 
                                         <div class="row">
@@ -178,11 +178,11 @@
 
                             <div class="accordion-item">
                                 <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
                                     Спеціаліст першої категорії
                                 </button>
                                 </h2>
-                                <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                                <div id="collapse3" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
                                         
                                         <div class="row">
@@ -247,11 +247,11 @@
 
                             <div class="accordion-item">
                                 <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
                                     Спеціаліст висщої категорії
                                 </button>
                                 </h2>
-                                <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                                <div id="collapse4" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
                                         
                                         <div class="row">
@@ -316,11 +316,11 @@
 
                             <div class="accordion-item">
                                 <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFour">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
                                     Верифікація вищої категорії
                                 </button>
                                 </h2>
-                                <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                                <div id="collapse5" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
                                         
                                         <div class="row">

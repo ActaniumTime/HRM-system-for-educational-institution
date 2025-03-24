@@ -6,7 +6,7 @@ require_once __DIR__ . '/../../models/classes/Accreditation.php';
 header('Content-Type: application/json');
 
 try {
-    // Проверка наличия обязательных данных
+    // Проверяем наличие обязательных данных
     if (empty($_POST['employerID']) || empty($_POST['accreditationID'])) {
         throw new Exception('Отсутствуют обязательные параметры: employerID или accreditationID');
     }
@@ -14,7 +14,7 @@ try {
     $employerID = intval($_POST['employerID']);
     $accreditationID = intval($_POST['accreditationID']);
 
-    // Проверяем наличие данных
+    // Декодируем JSON-данные
     $accreditationPlan = json_decode($_POST['accreditationPlan'], true) ?? [];
     $documentYears = json_decode($_POST['documentYears'], true) ?? [];
     $finishDay = json_decode($_POST['finishDay'], true) ?? [];
@@ -33,30 +33,41 @@ try {
     // Загружаем существующую аккредитацию
     $accreditation->loadByID($accreditationID);
 
+    // Получаем исходный массив documentYears (для сравнения)
+    $originalDocumentYears = $accreditation->getDocumentYears();
+
     // Устанавливаем основные данные аккредитации
     $accreditation->setEmployerID($employerID);
     $accreditation->setAccreditationPlan($accreditationPlan);
-    $accreditation->setDocumentYears($documentYears);
     $accreditation->setFinishDay($finishDay);
     $accreditation->setExperienceYears($currentYear);
 
     // Директория для загрузки файлов
-    $uploadDir = __DIR__ . '../../../../Files/documents/';
+    $uploadDir = __DIR__ . '/../../../../Files/documents/';
     if (!is_dir($uploadDir) && !mkdir($uploadDir, 0777, true)) {
         throw new Exception('Не удалось создать директорию загрузки');
     }
 
     $addedDocuments = [];
-    $updatedDocumentYears = $documentYears;
+    $updatedDocumentYears = $originalDocumentYears; // Копируем исходные значения
+
+    // Функция для проверки изменений в документе
+    function isDocumentChanged($index) {
+        return isset($_FILES["file_{$index}"]) || !empty($_POST["docName_{$index}"]) ||
+               !empty($_POST["sphere_{$index}"]) || !empty($_POST["purpose_{$index}"]) ||
+               !empty($_POST["docType_{$index}"]);
+    }
 
     // Обработка категорий и файлов
     foreach ($categories as $category) {
         $index = $category['index'];
         $docID = $category['docID'] ?? null;
+        $file = $_FILES["file_{$index}"] ?? null;
+        $publicPath = null;
+        $year = $category['year'];
 
         // Если файл присутствует, обрабатываем его
-        if (isset($_FILES["file_{$index}"])) {
-            $file = $_FILES["file_{$index}"];
+        if ($file) {
             if ($file['error'] !== UPLOAD_ERR_OK) {
                 throw new Exception("Ошибка загрузки файла: {$file['name']}, код: {$file['error']}");
             }
@@ -71,27 +82,53 @@ try {
             if (!move_uploaded_file($file['tmp_name'], $filePath)) {
                 throw new Exception("Не удалось сохранить файл: {$file['name']}");
             }
+        }
 
-            // Если нет docID, создаём новый документ
-            if (!$docID) {
-                $docName = $_POST["docName_{$index}"] ?? 'Без названия';
-                $sphere = $_POST["sphere_{$index}"] ?? '';
-                $purpose = $_POST["purpose_{$index}"] ?? '';
-                $docType = $_POST["docType_{$index}"] ?? 'Прочее';
+        // Получаем данные документа из POST
+        $docName = $_POST["docName_{$index}"] ?? '';
+        $sphere = $_POST["sphere_{$index}"] ?? '';
+        $purpose = $_POST["purpose_{$index}"] ?? '';
+        $docType = $_POST["docType_{$index}"] ?? '';
 
-                $docID = $document->addDocument($employerID, $docName, $sphere, $purpose, $docType, $publicPath);
-                if (!$docID) {
-                    throw new Exception("Ошибка при добавлении документа в базу");
-                }
+        // Проверяем, изменился ли документ
+        $isDocumentUpdated = isDocumentChanged($index);
 
-                $addedDocuments[] = $docID;
+        // Если нет изменений и есть старый docID — сохраняем старый
+        if (!$isDocumentUpdated && $docID) {
+            $addedDocuments[] = $docID;
+            $updatedDocumentYears[$year] = $docID;
+            continue;
+        }
+
+        // Если есть изменения и старый docID — создаём новый документ
+        if ($isDocumentUpdated && $docID) {
+            $newDocID = $document->addDocument($employerID, $docName, $sphere, $purpose, $docType, $publicPath);
+
+            if (!$newDocID) {
+                throw new Exception("Ошибка при добавлении нового документа");
             }
+
+            $addedDocuments[] = $newDocID;
+            $updatedDocumentYears[$year] = $newDocID;
+            continue;
         }
 
-        // Если создан новый документ, обновляем documentYears
-        if ($docID && !empty($category['year'])) {
-            $updatedDocumentYears[$category['year']] = $docID;
+        // Если нет старого docID, но есть новый документ — создаем новый
+        if (!$docID && $isDocumentUpdated) {
+            $newDocID = $document->addDocument($employerID, $docName, $sphere, $purpose, $docType, $publicPath);
+
+            if (!$newDocID) {
+                throw new Exception("Ошибка при добавлении нового документа");
+            }
+
+            $addedDocuments[] = $newDocID;
+            $updatedDocumentYears[$year] = $newDocID;
+            continue;
         }
+
+        // Если ничего не изменилось и docID == null, оставляем старое значение
+        $addedDocuments[] = $originalDocumentYears[$year] ?? null;
+        $updatedDocumentYears[$year] = $originalDocumentYears[$year] ?? null;
     }
 
     // Обновляем аккредитацию с новыми documentYears

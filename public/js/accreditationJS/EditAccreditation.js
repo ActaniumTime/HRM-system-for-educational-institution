@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
         for (let i = 1; i <= 5; i++) {
             const year = form.querySelector(`#accreditationYearModal${i}`)?.value || null;
             const date = form.querySelector(`#accreditationDateModal${i}`)?.value || null;
-            const docID = form.querySelector(`#collapseOne .editEmployerBtn[data-documentID]`)?.getAttribute('data-documentID') || null;
+            const docID = form.querySelector(`#collapse${i} .editEmployerBtn[data-documentID]`)?.getAttribute('data-documentID') || null;
             const docName = form.querySelector(`#docNameModal${i}`)?.value || null;
             const sphere = form.querySelector(`#sphereModal${i}`)?.value || null;
             const purpose = form.querySelector(`#purposeModal${i}`)?.value || null;
