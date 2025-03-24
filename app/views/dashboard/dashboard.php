@@ -34,121 +34,86 @@ require_once __DIR__ . '/../../../app/models/UserVerify.php';
         <div class="content-wrapper">
             <div class="layout-container">
 
-
-            <div class="temp-line">
-                <div class="tile interviews">
-                    <h3>Interviews</h3>
-                    <div class="progress-bar">
-                        <div class="progress" style="width: 70%;"></div>
+                <div class="temp-line">
+                    <div class="tile">
+                        <i class="fi fi-sr-graduation-cap" style="font-size: 3rem; color: #ffc825;"></i>
+                        <h3>Підвищення кваліфікації</h3>
+                        <p>Сторінка для керування акредитаціями співробітників.</p>
+                        <a href="../AccreditationManag/AccreditationManag.php"><button>Відкрити</button></a>
                     </div>
-                    <span>70%</span>
-                </div>
-                <div class="tile hired">
-                    <h3>Hired</h3>
-                    <div class="progress-bar">
-                        <div class="progress" style="width: 10%;"></div>
-                    </div>
-                    <span>10%</span>
-                </div>
-                <div class="tile project-time">
-                    <h3>Project Time</h3>
-                    <div class="progress-bar striped">
-                        <div class="progress" style="width: 15%;"></div>
-                    </div>
-                    <span>15%</span>
-                </div>
-                <div class="tile output">
-                    <h3>Output</h3>
-                    <div class="progress-bar">
-                        <div class="progress" style="width: 5%;"></div>
-                    </div>
-                    <span>5%</span>
-                </div>
-                <div class="summary">
-                    <div>
-                        <span>91</span>
-                        <p>Employee</p>
-                    </div>
-                    <div>
-                        <span>104</span>
-                        <p>Hirings</p>
-                    </div>
-                    <div>
-                        <span>185</span>
-                        <p>Projects</p>
-                    </div>
-                </div>
-            </div>
 
+                    <div class="tile">
+                    <i class="fas fi fi-sr-duplicate" style="font-size: 3rem; color: #303030;"></i>
+                        <h3>Документообіг</h3>
+                        <p>Сторінка для керування усіма документами у системі.</p>
+                        <a href="../documentManag/documentManagPage.php"><button>Відкрити</button></a>
+                    </div>
 
+                    <div class="tile">
+                        <i class="fi fi-sr-briefcase" style="font-size: 3rem; color: #303030;"></i>
+                        <h3>Посади</h3>
+                        <p>Сторінка для керування позиціями у закладі.</p>
+                        <a href="../positionManag/positionManagPage.php"><button>Відкрити</button></a>
+                    </div>
 
+                    <div class="tile">
+                        <i class="fas fi fi-ss-book-circle-arrow-right" style="font-size: 3rem; color: #303030;"></i>
+                        <h3>Курси та стажування</h3>
+                        <p>Керування додатковими курсами та стажуванням співробітників.</p>
+                        <a href=""><button>Відкрити</button></a>
+                    </div>
 
-
-            <div class="temp-line">
-                <div class="tile">
-                    <h3>Управління акредитацією</h3>
-                    <p>сторінка для керування акредаціями співроботників</p>
-                    <a href="../AccreditationManag/AccreditationManag.php"><button>Відкрити</button></a>
-                </div>
-                <div class="tile">
-                    <h3>Управління документами</h3>
-                    <p>сторінка для керування усіми документами у системі</p>
-                    <a href="../documentManag/documentManagPage.php"><button>Відкрити</button></a>
-                </div>
-                <div class="tile">
-                    <h3>Управління позиціями</h3>
-                    <p>сторінка для керування позиціями у закладі</p>
-                    <a href="../positionManag/positionManagPage.php"><button>Відкрити</button></a>
-                </div>
-                <div class="tile">
-                    <h3>Tasks</h3>
-                    <p>Manage your tasks effectively and increase productivity.</p>
-                    <button>Open</button>
-                </div>
-
-                <?php
+                    <?php
                     switch ($emp->getAccessLevelID()) {
                         case 1 : case 2 :
                             echo "
                                 <div class=\"tile\">
+                                    <i class=\"fas fi fi-sr-mode-portrait\" style=\"font-size: 3rem; color: #2e2e2e;\"></i>
                                     <h5 class=\"card-title\">Керування персоналом</h5>
-                                    <p class=\"card-text\">Тут будуть якись записи.</p>
-                                    <a href=\"../EmpManagmentPanel/EmpManagTable.php\" class=\"btn btn-primary\">Керування персоналом</a>
+                                    <p>Керування записами співробітників.</p>
+                                    <a href=\"../EmpManagmentPanel/EmpManagTable.php\"><button>Відкрити</button></a>
                                 </div>
                             ";
                         default:
                             break;
                     }
+                    
+                    ?>
+                    
+
+                    <div class="tile">
+                        <h5>Доброго дня, <?php echo htmlspecialchars($emp->getName(), ENT_QUOTES); ?></h5>
+                        <img src="../../../Files/photos/<?php echo $emp->getAvatar(); ?>" alt="User Photo" class="rounded-circle" width="100" height="100">
+                        <p>Рівень: 
+                            <?php
+                            switch ($emp->getAccessLevelID()) {
+                                case 1: echo "Admin"; break;
+                                case 2: echo "Manager"; break;
+                                case 3: echo "Employee"; break;
+                                default: echo "Unknown"; break;
+                            }
+                            ?>
+                        </p>
+                        <a href=""><button>Відкрити</button></a>
+                    </div>
+
+                    <?php 
+                        switch ($emp->getAccessLevelID()) {
+                            case 1 :
+                                echo "
+                                    <div class=\"tile\">
+                                        <i class=\"fas fi fi-br-admin\" style=\"font-size: 3rem; color: #2e2e2e;\"></i>
+                                        <h5 class=\"card-title\">Панель адміністратору</h5>
+                                        <p>Якись чудові настроїки для адміна, якому не має що робити</p>
+                                        <a href=\"\"><button>Відкрити</button></a>
+                                    </div>
+                                ";
+                            default:
+                                break;
+                        }
                     ?>
 
-
-                <div class="tile">
-                    <h5>Доброго дня, <?php echo htmlspecialchars($emp->getName(), ENT_QUOTES); ?></h5>
-                    <img src="../../../Files/photos/<?php echo $emp->getAvatar(); ?>" alt="User Photo" class="rounded-circle" width="100" height="100">
-                    <p>Рівень: 
-                    <?php
-                    switch ($emp->getAccessLevelID()) {
-                        case 1:
-                            echo "Admin";
-                            break;
-                        case 2:
-                            echo "Manager";
-                            break;
-                        case 3:
-                            echo "Employee";
-                            break;
-                        default:
-                            echo "Unknown";
-                            break;
-                    }
-                    ?>
-                    </p>
-                    <p><a href="#"><button style="width: 150px; height:30px;">До кабінету</button></a></p>
                 </div>
-                </div>
-
-
-
             </div>
         </div>
     </div>
