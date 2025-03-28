@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const finDay = event.target.getAttribute('data-finish-day');
             const expYears = event.target.getAttribute('data-expirience-years');
             const empName = event.target.getAttribute('data-emp-name');
+            const empCategory = event.target.getAttribute('data-emp-cat');
             let accPlan = {};
             let docYears = {};
             let fDay = {};
@@ -26,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('accreditationID').value = acredID;
             document.getElementById('employerIDmodal').value = empID;
             document.getElementById('currentYearModal').value = expYears;
-            
+            document.getElementById('currentCategoryModal').value = empCategory;
         }
     });
 

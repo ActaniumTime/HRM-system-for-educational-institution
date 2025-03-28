@@ -23,7 +23,7 @@
                 <th scope="col">Дії</th>
             </tr>
         </thead>
-        <tbody id="employeeTable">
+        <tbody id="accreditationTable">
             <?php 
                 ini_set('display_errors', 1);
                 ini_set('display_startup_errors', 1);
@@ -46,9 +46,9 @@
                     for ($i = $oldestYear; $i <= $newestYear; $i++) {
                         if ($Accreditation->isAccreditedYear($i)) {
                             if($i == $currentYear){
-                                echo "<td id=\"currentYear\"><i class=\"fas fa-check\"></i></td>";
+                                echo "<td id=\"currentYear\"> <div class=\"AccredInfo\">" . $Accreditation->outputCategory($i) . "<div></td>";
                             } else {
-                                echo "<td><i class=\"fas fa-check\"></i></td>";
+                                echo "<td><div class=\"AccredInfo\">" . $Accreditation->outputCategory($i) . "<div></td>";
                             }
 
                         } else {
@@ -69,7 +69,8 @@
                             data-finish-day='" . json_encode($Accreditation->getFinishDay()) . "'
                             data-expirience-years=\"{$Accreditation->getExperienceYears()}\"
                             data-emp-name=\"{$emp->getEmpNameByID($Accreditation->getEmployerID())}\"
-
+                            data-emp-cat=\"{$Accreditation->currentCategory()}\"
+                            
                             data-bs-toggle=\"modal\" data-bs-target=\"#EditAccreditationModal\"
                             title=\"Редагувати дані співробітника\">
                             <svg xmlns=\"http://www.w3.org/2000/svg\" id=\"Layer_1\" data-name=\"Layer 1\" viewBox=\"0 0 24 24\" class=\"icon_white no-click\">
@@ -84,15 +85,6 @@
 
                             <svg xmlns=\"http://www.w3.org/2000/svg\" id=\"Layer_1\" data-name=\"Layer 1\" viewBox=\"0 0 24 24\" class=\"icon_white no-click\">
                             <path d=\"M12.836.028A12,12,0,0,0,.029,12.855C.47,19.208,6.082,24,13.083,24H19a5.006,5.006,0,0,0,5-5V12.34A12.209,12.209,0,0,0,12.836.028ZM12,5a1.5,1.5,0,0,1,0,3A1.5,1.5,0,0,1,12,5Zm2,13a1,1,0,0,1-2,0V12H11a1,1,0,0,1,0-2h1a2,2,0,0,1,2,2Z\"/>
-                            </svg>
-                        </button>";
-                    echo "<button type=\"button\" class=\"Info-button\" 
-                            data-employer-id=\"{$Accreditation->getEmployerID()}\"
-                            data-bs-toggle=\"modal\"
-                            title=\"Керування позиціями та ЗП \">
-
-                            <svg xmlns=\"http://www.w3.org/2000/svg\" id=\"Layer_1\" data-name=\"Layer 1\" viewBox=\"0 0 24 24\" class=\"icon_white no-click\">
-                            <path d=\"m9.54,1.717c.486-.453.96-1.063.96-1.717h-4c0,.654.474,1.264.96,1.717-1.653.64-3.46,2.584-3.46,4.363,0,1.61,1.233,2.919,2.75,2.919h3.5c1.517,0,2.75-1.31,2.75-2.919,0-1.78-1.807-3.724-3.46-4.363Zm13.609,6.963c-.515-.469-1.186-.712-1.878-.678-.697.032-1.339.334-1.794.835l-3.541,3.737c.032.21.065.42.065.638,0,2.083-1.555,3.876-3.617,4.17l-4.241.606-.283-1.979,4.241-.606c1.084-.155,1.9-1.097,1.9-2.191,0-1.22-.993-2.213-2.213-2.213H3c-1.654,0-3,1.346-3,3v7c0,1.654,1.346,3,3,3h9.664l10.674-11.655c.948-1.062.862-2.707-.189-3.665Zm-7.898-3.931l-1.414-1.414,2.75-2.75c.779-.78,2.049-.78,2.828,0l2.752,2.752-1.414,1.414-1.752-1.752v3.661c-.361.219-.69.488-.976.801l-1.024,1.081V3l-1.75,1.75\"/>
                             </svg>
                         </button>";
                     echo "</td>";

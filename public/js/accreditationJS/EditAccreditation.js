@@ -1,23 +1,21 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('EditAccreditationForm');
+    const modal = document.getElementById('EditAccreditationModal'); // Если используешь Bootstrap-модалку
+
     document.getElementById('saveAccreditation').addEventListener('click', async (event) => {
         event.preventDefault();
 
-        const form = document.getElementById('EditAccreditationForm');
-
-        // Шаг 1: Сбор данных из модального окна
         const accreditationID = form.querySelector('#accreditationID')?.value || null;
         const employerID = form.querySelector('#employerIDmodal')?.value || null;
         const teacherName = form.querySelector('#teacherNameModal')?.value || null;
         const currentCategory = form.querySelector('#currentCategoryModal')?.value || null;
         const currentYear = parseInt(form.querySelector('#currentYearModal')?.value) || 0;
 
-        // Проверяем обязательные поля
         if (!employerID) {
             alert('Ошибка: отсутствует employerID');
             return;
         }
 
-        // Шаг 2: Сбор данных по категориям
         const categories = [];
         const files = [];
 
@@ -38,7 +36,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // Шаг 3: Формирование структур данных
         const accreditationPlan = {};
         const documentYears = {};
         const finishDay = {};
@@ -58,7 +55,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Шаг 4: Создание FormData (для JSON и файлов)
         const formData = new FormData();
         formData.append('accreditationID', accreditationID);
         formData.append('employerID', employerID);
@@ -70,7 +66,6 @@ document.addEventListener('DOMContentLoaded', () => {
         formData.append('finishDay', JSON.stringify(finishDay));
         formData.append('categories', JSON.stringify(categories));
 
-        // Добавляем файлы в formData
         files.forEach(({ index, file }) => {
             formData.append(`file_${index}`, file);
             formData.append(`docName_${index}`, categories[index - 1].docName || 'Без названия');
@@ -82,7 +77,6 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('Отправляемые данные:', formData);
 
         try {
-            // Шаг 5: Отправка всех данных на EditAccreditation.php
             const response = await fetch('../../../app/models/modals/EditAccreditation.php', {
                 method: 'POST',
                 body: formData
@@ -105,5 +99,20 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('Ошибка при сохранении аккредитации:', error);
             alert('Ошибка при сохранении. Подробности в консоли.');
         }
+    });
+
+    function clearForm() {
+        form.reset();
+        document.querySelectorAll('#EditAccreditationForm input, #EditAccreditationForm select').forEach(input => {
+            if (input.type !== 'hidden') input.value = '';
+        });
+    }
+
+    if (modal) {
+        modal.addEventListener('hidden.bs.modal', clearForm);
+    }
+
+    document.querySelectorAll('[data-bs-dismiss="modal"]').forEach(button => {
+        button.addEventListener('click', clearForm);
     });
 });

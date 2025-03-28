@@ -8,8 +8,8 @@
     require_once __DIR__ . '/../../../app/models/classes/Accreditation.php';
     require_once __DIR__ . '/../../../app/models/modals/deleteEndpoint.php';
     require_once __DIR__ . '../../partials/modals/modalAddEmp.php';
-    require_once __DIR__ . '../../partials/AccreditationManagPartial/modalEditAccreditation.php'
-
+    require_once __DIR__ . '../../partials/AccreditationManagPartial/modalEditAccreditation.php';
+    require_once __DIR__ . "../../partials/AccreditationManagPartial/AccreditationWillAchive.php";
 
 ?>
 
@@ -37,7 +37,7 @@
     <link rel="stylesheet" href="../../../public/css/sidebarStyle2.css">
     <link rel="stylesheet" href="../../../public/css/addEmpModalStyles.css">
     <link rel="stylesheet" href="../../../public/css/hints.css">
-    <link rel="stylesheet" href="EmpManagTable.css">
+    <link rel="stylesheet" href="AccredStyle.css">
 </head>
 <body>
 
@@ -54,7 +54,7 @@
 
                     <div  class="tool-bar-element filters-2">
                         <?php  
-                            require_once __DIR__ . "/../partials/EmpManagPartial/FiltersMenu2.php";
+                            require_once __DIR__ . "/../partials/AccreditationManagPartial/FiltersMenu2.php";
                         ?>
                     </div>
 
@@ -70,10 +70,6 @@
                 <div class="summary">
                     <?php require_once __DIR__ . "../../partials/AccreditationManagPartial/AccreditationPlan.php"; ?>
                 </div>
-
-                <div class="summary">
-                    <?php require_once __DIR__ . "../../partials/AccreditationManagPartial/AccreditationWillAchive.php"; ?>
-                </div>
                 
             </div>
 
@@ -84,7 +80,12 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 <script src="../../../public/js/accreditationJS/DataAccreditationTable.js"></script>
+
 <script src="../../../public/js/accreditationJS/EditAccreditation.js"></script>
+
+<script src="../../../public/js/accreditationJS/tableSearching.js"></script>
+
+<script src="../../../public/js/tooltip.js"></script>
 
 <script src="../../../public/js/tableSearching.js"></script>
 

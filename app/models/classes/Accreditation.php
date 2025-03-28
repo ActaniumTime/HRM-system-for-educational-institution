@@ -283,8 +283,40 @@ class Accreditation{
         $stmt->execute();
         $stmt->close();
     }
+        public function verifyAccredPlan($year){
+            foreach ($this->accreditationPlan as $category => $categoryYear) {
+                if ($categoryYear == $year) {
+                    return true;
+                }
+            }
+            return false ;
+    }
+
+    public function currentCategory() {
+        $currentYear = date('Y');
+        $currentCategory = "Не має даних";
+    
+        foreach ($this->accreditationPlan as $category => $categoryYear) {
+            if ($categoryYear <= $currentYear) {
+                $currentCategory = $category;
+            }
+        }
+        return $currentCategory;
+    }
     
 
+    public function outputCategory($year)
+    {
+        foreach ($this->accreditationPlan as $category => $categoryYear) {
+            if ($categoryYear == $year && $categoryYear != null) {
+                if($categoryYear < date('Y')){
+                    return "Отримано: <br>$category";
+                }
+                return "Очікує на: <br>$category";;
+            }
+        }
+        return "Не має даних. Додайте дані." ;
+    }
 
     public function setEmployerID($employerID){
         $this->employerID = $employerID;
