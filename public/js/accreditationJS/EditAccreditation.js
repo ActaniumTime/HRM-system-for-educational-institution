@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const categories = [];
         const files = [];
 
-        for (let i = 1; i <= 5; i++) {
+        for (let i = 1; i <= 6; i++) {
             const year = form.querySelector(`#accreditationYearModal${i}`)?.value || null;
             const date = form.querySelector(`#accreditationDateModal${i}`)?.value || null;
             const docID = form.querySelector(`#collapse${i} .editEmployerBtn[data-documentID]`)?.getAttribute('data-documentID') || null;
@@ -46,7 +46,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 'Спеціаліст другої категорії',
                 'Спеціаліст першої категорії',
                 'Спеціаліст вищої категорії',
-                'Підтвердження вищої категорії'
+                'Підтвердження вищої категорії',
+                'Підтвердження вищої категорії 2'
             ];
             if (category.year) {
                 accreditationPlan[categoryNames[index]] = parseInt(category.year);

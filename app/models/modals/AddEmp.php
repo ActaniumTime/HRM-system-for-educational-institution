@@ -138,6 +138,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     'Спеціаліст першої категорії' => $commingAccreditationYear + 3,
                     'Спеціаліст вищої категорії' => $commingAccreditationYear + 6,
                     'Підтвердження вищої категорії' => $commingAccreditationYear + 11,
+                    'Підтвердження вищої категорії 2' => $commingAccreditationYear + 16
                 ];
                 break;
             case 2:
@@ -147,6 +148,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     'Спеціаліст першої категорії' => $commingAccreditationYear,
                     'Спеціаліст вищої категорії' => $commingAccreditationYear + 3,
                     'Підтвердження вищої категорії' => $commingAccreditationYear + 8,
+                    'Підтвердження вищої категорії 2' => $commingAccreditationYear +13
                 ];
                 break;
             case 3:
@@ -156,6 +158,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     'Спеціаліст першої категорії' => $lastYear,
                     'Спеціаліст вищої категорії' => $commingAccreditationYear,
                     'Підтвердження вищої категорії' => $commingAccreditationYear + 5,
+                    'Підтвердження вищої категорії 2' => $commingAccreditationYear + 10
                 ];
                 break;
             case 4:
@@ -165,6 +168,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     'Спеціаліст першої категорії' => null,
                     'Спеціаліст вищої категорії' => $lastYear,
                     'Підтвердження вищої категорії' => $lastYear+5,
+                    'Підтвердження вищої категорії 2' => $lastYear+10
                 ];
                 break;
         }
@@ -176,6 +180,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $commingAccreditationYear + 3=>null, 
                 $commingAccreditationYear + 6=>null,
                 $commingAccreditationYear + 11=>null,
+                $commingAccreditationYear + 16=>null
             ]); break;
             case 2 : $empAccred->setDocumentYears([
                 null=>null,
@@ -183,6 +188,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $commingAccreditationYear=>null, 
                 $commingAccreditationYear + 3=>null,
                 $commingAccreditationYear + 8=>null,
+                $commingAccreditationYear + 13=>null
 
             ]); break;
             case 3 : $empAccred->setDocumentYears([
@@ -191,6 +197,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $lastYear=>null, 
                 $commingAccreditationYear=>null,
                 $commingAccreditationYear + 5=>null,
+                $commingAccreditationYear + 10=>null
             ]); break;
             case 4 : $empAccred->setDocumentYears([
                 null=>null,
@@ -198,6 +205,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 null=>null,
                 $lastYear=>null,
                 $lastYear+5 =>null,
+                $lastYear + 10=>null
 
             ]); break;
         }

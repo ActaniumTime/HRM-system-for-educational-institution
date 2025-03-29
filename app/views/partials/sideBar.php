@@ -11,17 +11,31 @@
         <?php
             if($emp->getAccessLevelID() == 1 || $emp->getAccessLevelID() == 2)
             {
-                echo "<a href=\"../EmpManagmentPanel/EmpManagTable.php\"><div class=\"nav-button\"><i class=\"fas fi fi-sr-mode-portrait\"></i><span>Управління</span></div></a>";
+                echo "<a href=\"../EmpManagmentPanel/EmpManagTable.php\"><div class=\"nav-button\"><i class=\"fas fi fi-sr-mode-portrait\"></i><span>Персонал</span></div></a>";
             }
         ?>
 
-        
+        <?php
+            if($emp->getAccessLevelID() == 1 || $emp->getAccessLevelID() == 2)
+            {
+                echo "<a href=\"../AccreditationManag/AccreditationManag.php\"><div class=\"nav-button\"><i class=\"fas fi fi-sr-graduation-cap\"></i></i><span>Акредитація</span></div></a>";
+            }
+        ?>
+
+        <?php
+            if($emp->getAccessLevelID() == 1 || $emp->getAccessLevelID() == 2)
+            {
+                echo "<a href=\"../positionManag/positionManagPage.php\"><div class=\"nav-button\"><i class=\"fas fi fi-sr-briefcase\"></i><span>Посади</span></div></a>";
+            }
+        ?>
+
+
         <a href=""><div class="nav-button"><i class="fas fi fi-ss-book-circle-arrow-right"></i><span>Курси</span></div></a>
         
         <?php
             if($emp->getAccessLevelID() == 1 || $emp->getAccessLevelID() == 2)
             {
-                echo "<a href=\"../documentManag/documentManagPage.php\"><div class=\"nav-button\"><i class=\"fas fi fi-sr-duplicate\"></i><span>Документи </span></div></a>";
+                echo "<a href=\"../documentManag/documentManagPage.php\"><div class=\"nav-button\"><i class=\"fas fi fi-sr-duplicate\"></i><span>Документообіг</span></div></a>";
             }
         ?>
 

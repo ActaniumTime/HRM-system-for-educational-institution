@@ -324,6 +324,7 @@
                                     <div class="accordion-body">
                                         
                                         <div class="row">
+                                            <h4>Найближча верифікація</h4>
                                             <div class="mb-3 col-md-3">
                                                 <label for="accreditationDate" class="form-label">Рік проходження акредитації</label>
                                                 <input type="text" class="form-control" id="accreditationYearModal5" name="accreditationYearModal5">
@@ -347,6 +348,21 @@
                                                     </button>
                                                 </a>
                                             </div>
+                                        </div>
+
+                                        <div class="row">
+
+                                            <h4>Наступна верифікація</h4>
+
+                                            <div class="mb-3 col-md-3">
+                                                <label for="accreditationDate" class="form-label">Рік проходження акредитації</label>
+                                                <input type="text" class="form-control" id="accreditationYearModal6" name="accreditationYearModal6">
+                                            </div>
+                                            <div class="mb-3 col-md-3">
+                                                <label for="accreditationDate" class="form-label">Дата проходження акредитації</label>
+                                                <input type="date" class="form-control" id="accreditationDateModal6" name="accreditationDateModal6">
+                                            </div>
+
                                         </div>
 
                                         <div class="file-attach">
@@ -378,6 +394,8 @@
                                                 </div>
                                             </div>
                                         </div>
+
+
 
                                     </div>
                                 </div>
