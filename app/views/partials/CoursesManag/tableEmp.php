@@ -7,12 +7,14 @@
             <tr>
                 <th scope="col">№</th>
                 <th scope="col">Аватар</th>
+                <th scope="col">ПІБ</th>
                 <th scope="col">Назва курсів</th>
                 <th scope="col">Назва організації</th>
                 <th scope="col">Початок курсів</th>
                 <th scope="col">Кінець курсів</th>
-                <th scope="col">Кількість часів з</th>
-                <th scope="col">Кількість кредитів</th>
+                <th scope="col">Нараховано часів</th>
+                <th scope="col">Нараховано кредитів</th>
+                <th scope="col">Стан</th>
                 <th scope="col">Дії</th>
             </tr>
         </thead>
@@ -32,12 +34,18 @@
                     echo "<tr class=\"table-row\">";
                     echo "<th scope=\"row\" style=\"border-radius: 36px 0px 0px 36px;\" >" . $counter++ . "</th>";
                     echo "<td><img src=\"../../../Files/photos/{$emp->getAvatarByID($course->getEmployerID())}\" alt=\"User Photo\" class=\"rounded-circle\" width=\"50\" height=\"50\"  id=\"employerAvatar\"></td>";
+                    echo "<td>{$emp->getEmpNameByID($course->getEmployerID())}</td>";
                     echo "<td>{$course->getCourseName()}</td>";
                     echo "<td>{$course->getOrganizationName()}</td>";
                     echo "<td>{$course->getStartingDate()}</td>";
                     echo "<td>{$course->getEndingDate()}</td>";
                     echo "<td>{$course->getHours()}</td>";
                     echo "<td>{$course->getCredits()}</td>"; 
+                    if($course->getCurrentStatus() == "Completed"){
+                        echo "<td style=\"color:##303030;\">Завершений</span></td>";
+                    } else {
+                        echo "<td style=\"color:green;\">Активний</span></td>";
+                    }
                     echo "<td class=\"d-flex\" style=\"border-radius:  0px 36px 36px 0px ;\">";
                     echo "<button type=\"button\" class=\"editEmployerBtn \" 
                             data-employer-avatar=\"../../../Files/photos/{$emp->getAvatarByID($course->getEmployerID())}\"
@@ -95,25 +103,8 @@
 
 
                         </button>";
-
-                    echo "<button type=\"button\" class=\"Info-button\" 
-                            data-employer-id=\"{$course->getEmployerID()}\"
-                            data-bs-toggle=\"modal\"
-                            title=\"Керування позиціями та ЗП \">
-
-                            <svg xmlns=\"http://www.w3.org/2000/svg\" id=\"Layer_1\" data-name=\"Layer 1\" viewBox=\"0 0 24 24\" class=\"icon_white no-click\">
-                            <path d=\"m9.54,1.717c.486-.453.96-1.063.96-1.717h-4c0,.654.474,1.264.96,1.717-1.653.64-3.46,2.584-3.46,4.363,0,1.61,1.233,2.919,2.75,2.919h3.5c1.517,0,2.75-1.31,2.75-2.919,0-1.78-1.807-3.724-3.46-4.363Zm13.609,6.963c-.515-.469-1.186-.712-1.878-.678-.697.032-1.339.334-1.794.835l-3.541,3.737c.032.21.065.42.065.638,0,2.083-1.555,3.876-3.617,4.17l-4.241.606-.283-1.979,4.241-.606c1.084-.155,1.9-1.097,1.9-2.191,0-1.22-.993-2.213-2.213-2.213H3c-1.654,0-3,1.346-3,3v7c0,1.654,1.346,3,3,3h9.664l10.674-11.655c.948-1.062.862-2.707-.189-3.665Zm-7.898-3.931l-1.414-1.414,2.75-2.75c.779-.78,2.049-.78,2.828,0l2.752,2.752-1.414,1.414-1.752-1.752v3.661c-.361.219-.69.488-.976.801l-1.024,1.081V3l-1.75,1.75\"/>
-                            </svg>
-
-                        </button>";
-                    
                     
                     echo "</td>";
-
-                    
-                    
-                    
-                    
                     echo "</tr>";
                 }
 

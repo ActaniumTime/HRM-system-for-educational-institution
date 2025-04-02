@@ -474,3 +474,180 @@ p {
     background:rgba(255, 248, 218, 0.66);
     padding: 25px;
 }
+
+/* Улучшенная стилизация аккордеонов в модальном окне */
+#addCourseModal_AddForm .accordion {
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 36px;
+    box-shadow: 0 6px 16px rgba(48, 48, 48, 0.12);
+    overflow: hidden;
+    transition: box-shadow 0.2s ease, background 0.3s ease, border-radius 0.4s ease;
+}
+
+/* Улучшенные заголовки аккордеонов */
+#addCourseModal_AddForm .accordion-header {
+    border: none;
+}
+
+/* Кнопка-спойлер аккордеона */
+#addCourseModal_AddForm .accordion-button {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(240, 240, 240, 0.6));
+    color: #303030;
+    font-weight: bold;
+    border-radius: 36px;
+    padding: 14px 24px;
+    transition: 
+        background 0.2s ease, 
+        box-shadow 0.2s ease, 
+        transform 0.2s ease, 
+        border-radius 0.4s ease, 
+        color 0.2s ease;
+}
+
+/* Стилизация стрелки (иконки) */
+#addCourseModal_AddForm .accordion-button::after {
+    content: "";
+    width: 12px;
+    height: 12px;
+    border-right: 2px solid #303030; /* Исходный цвет стрелки */
+    border-bottom: 2px solid #303030; /* Исходный цвет стрелки */
+    transform: rotate(45deg);
+    margin-left: auto;
+    transition: transform 0.3s ease, border-color 0.3s ease; /* Плавное вращение и смена цвета */
+}
+
+/* Эффект при наведении на кнопку-спойлер */
+#addCourseModal_AddForm .accordion-button:hover {
+    background: #303030;
+    color: white;
+    box-shadow: 0 4px 12px rgba(48, 48, 48, 0.15);
+}
+
+/* Изменение цвета стрелки при наведении */
+#addCourseModal_AddForm .accordion-button:hover::after {
+    border-color: white; /* Белая стрелка при наведении */
+}
+
+/* Активный (раскрытый) аккордеон */
+#addCourseModal_AddForm .accordion-button:not(.collapsed) {
+    background: #303030;
+    color: white;
+    box-shadow: none;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+/* Поворот стрелки в раскрытом состоянии */
+#addCourseModal_AddForm .accordion-button:not(.collapsed)::after {
+    transform: rotate(-135deg);
+    border-color: white; /* Белая стрелка в раскрытом состоянии */
+}
+
+/* Тело (контент) аккордеона */
+#addCourseModal_AddForm .accordion-body {
+    padding: 24px;
+    background: rgba(255, 255, 255, 0.6);
+    border-top: 1px solid rgba(48, 48, 48, 0.1);
+    border-bottom-left-radius: 36px;
+    border-bottom-right-radius: 36px;
+    transition: background 0.3s ease, border-radius 0.4s ease;
+}
+
+/* Плавная анимация открытия/закрытия */
+#addCourseModal_AddForm .accordion-collapse {
+    transition: height 0.35s cubic-bezier(0.4, 0, 0.2, 1), border-radius 0.4s ease;
+}
+
+/* Убираем стандартную рамку при фокусе */
+#addCourseModal_AddForm .accordion-button:focus {
+    box-shadow: none;
+}
+
+/* Состояние при активном фокусе (доступность) */
+#addCourseModal_AddForm .accordion-button:focus-visible {
+    outline: 2px solid #303030;
+    outline-offset: 4px;
+    border-radius: 40px;
+}
+
+/* Стилизация Select2 */
+.select2-container .select2-selection--single {
+    background: rgba(255, 255, 255, 0.6) !important;
+    border-radius: 36px !important;
+    border: 1px solid rgba(48, 48, 48, 0.2)!important;
+    height: 50px !important;
+    display: flex !important;
+    align-items: center !important;
+    padding: 10px 16px !important;
+    font-size: 14px !important;
+    color: #303030 !important;
+    transition: all 0.3s ease !important;
+}
+
+.select2-container .select2-selection--single:focus {
+    border-color: #ffc825 !important;
+    outline: none !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    color: #303030 !important;
+    font-size: 14px !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    height: 100% !important;
+    right: 16px !important;
+}
+
+.select2-dropdown {
+    background: rgba(255, 255, 255, 0.95) !important;
+    border: 1px solid rgba(48, 48, 48, 0.2) !important;
+    border-radius: 20px !important;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1) !important;
+}
+
+.select2-container--default .select2-results__option {
+    padding: 12px !important;
+    font-size: 14px !important;
+    color: #303030 !important;
+    transition: background 0.3s ease !important;
+    border-radius: 20px !important;
+}
+
+.select2-container--default .select2-results__option:hover {
+    background: #ffc825 !important;
+    color: #303030 !important;
+}
+
+/* Стилизация поиска в Select2 */
+.select2-container--default .select2-search--dropdown .select2-search__field {
+    background: rgba(255, 255, 255, 0.6) !important;
+    border-radius: 36px !important;
+    border: 1px solid rgba(48, 48, 48, 0.2) !important;
+    padding: 10px 16px !important;
+    font-size: 14px !important;
+    color: #303030 !important;
+    transition: all 0.3s ease !important;
+    outline: none !important;
+    width: 100% !important;
+}
+
+.select2-container--default .select2-search--dropdown .select2-search__field:focus {
+    border-color: #ffc825 !important;
+}
+
+/* Убираем стандартные стрелки */
+.select2-container--default .select2-selection--single .select2-selection__arrow b {
+    display: none !important;
+}
+
+.select2-container--default .select2-selection--single {
+    background-color: #fff !important;
+    border: 1px solid #aaa !important;
+    border-radius: 36px !important;
+}
+
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+    background-color: #ffc825 !important;
+    color: 303030 !important;
+}
