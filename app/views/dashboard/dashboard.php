@@ -60,7 +60,7 @@ require_once __DIR__ . '/../../../app/models/UserVerify.php';
                         <i class="fas fi fi-ss-book-circle-arrow-right" style="font-size: 3rem; color: #303030;"></i>
                         <h3>Курси та стажування</h3>
                         <p>Керування додатковими курсами та стажуванням співробітників.</p>
-                        <a href=""><button>Відкрити</button></a>
+                        <a href="../CoursesManag/CoursesManag.php"><button>Відкрити</button></a>
                     </div>
 
                     <?php

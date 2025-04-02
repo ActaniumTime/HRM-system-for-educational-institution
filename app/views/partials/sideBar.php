@@ -35,7 +35,7 @@
         <?php
             if($emp->getAccessLevelID() == 1 || $emp->getAccessLevelID() == 2)
             {
-                echo "<a href=\"../documentManag/documentManagPage.php\"><div class=\"nav-button\"><i class=\"fas fi fi-sr-duplicate\"></i><span>Документообіг</span></div></a>";
+                echo "<a href=\"../CoursesManag/CoursesManag.php\"><div class=\"nav-button\"><i class=\"fas fi fi-sr-duplicate\"></i><span>Документообіг</span></div></a>";
             }
         ?>
 

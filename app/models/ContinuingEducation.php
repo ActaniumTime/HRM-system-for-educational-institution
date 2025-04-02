@@ -95,6 +95,113 @@
             $stmt->execute();
         }
 
+
+        public function getAllCourses(){
+            $query = "SELECT * FROM ContinuingEducation";
+            $stmt = $this->connection->prepare($query);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $courses = [];
+            while($row = $result->fetch_assoc()){
+                $course = new ContinuingEducation($this->connection);
+                $course->courseID = $row['courseID'];
+                $course->employerID = $row['employerID'];
+                $course->courseName = $row['courseName'];
+                $course->organizationName = $row['organizationName'];
+                $course->startingDate = $row['startingDate'];
+                $course->endingDate = $row['endingDate'];
+                $course->currentStatus = $row['currentStatus'];
+                $course->documentID = $row['documentID'];
+                $course->hours = $row['hours'];
+                $course->credits = $row['credits'];
+
+                $courses[] = $course;
+            }
+
+            return $courses;
+        }
+
+        public function setCourseID($courseID) {
+            $this->courseID = $courseID;
+        }
+
+        public function setEmployerID($employerID) {
+            $this->employerID = $employerID;
+        }
+
+        public function setCourseName($courseName) {
+            $this->courseName = $courseName;
+        }
+
+        public function setOrganizationName($organizationName) {
+            $this->organizationName = $organizationName;
+        }
+
+        public function setStartingDate($startingDate) {
+            $this->startingDate = $startingDate;
+        }
+
+        public function setEndingDate($endingDate) {
+            $this->endingDate = $endingDate;
+        }
+
+        public function setCurrentStatus($currentStatus) {
+            $this->currentStatus = $currentStatus;
+        }
+
+        public function setDocumentID($documentID) {
+            $this->documentID = $documentID;
+        }
+
+        public function setHours($hours) {
+            $this->hours = $hours;
+        }
+
+        public function setCredits($credits) {
+            $this->credits = $credits;
+        }
+
+        public function getCourseID() {
+            return $this->courseID;
+        }
+
+        public function getEmployerID() {
+            return $this->employerID;
+        }
+
+        public function getCourseName() {
+            return $this->courseName;
+        }
+
+        public function getOrganizationName() {
+            return $this->organizationName;
+        }
+
+        public function getStartingDate() {
+            return $this->startingDate;
+        }
+
+        public function getEndingDate() {
+            return $this->endingDate;
+        }
+
+        public function getCurrentStatus() {
+            return $this->currentStatus;
+        }
+
+        public function getDocumentID() {
+            return $this->documentID;
+        }
+
+        public function getHours() {
+            return $this->hours;
+        }
+
+        public function getCredits() {
+            return $this->credits;
+        }
+        
+
     }
 
 ?>
