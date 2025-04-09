@@ -31,7 +31,6 @@ class Accreditation{
         }
         $stmt->close();
     }
-    
 
     public function AddAccreditation(){
         $query = "INSERT INTO accreditation (

@@ -2,7 +2,7 @@
 
     class Continuingeducationhistory{
         private $connection;
-        private $coursesID;
+        private $courseID;
         private $employerID;
 
         public function __construct($connection){
@@ -14,26 +14,41 @@
             $result = $this->connection->query($sql);
             if($result->num_rows > 0){
                 $row = $result->fetch_assoc();
-                $this->coursesID = $row['coursesID'];
+                $this->courseID = $row['courseID'];
                 $this->employerID = $row['employerID'];
             }
         }
 
+        public function addNewCourse($courseID, $employerID) {
+            $this->courseID = $courseID;
+            $this->employerID = $employerID;
+        
+            $query = "INSERT INTO continuingeducationhistory (courseID, employerID) VALUES (?, ?)";
+            $stmt = $this->connection->prepare($query);
+            $stmt->bind_param("ii", $this->courseID, $this->employerID);
+            if($stmt->execute()){
+                return true;
+            } else {
+                return false;
+            }
+
+        }
+
         public function Show(){
-            echo "coursesID: " . $this->coursesID . "<br>";
+            echo "courseID: " . $this->courseID . "<br>";
             echo "employerID: " . $this->employerID . "<br>";
         }
 
         public function getCourseID(){
-            return $this->coursesID;
+            return $this->courseID;
         }
 
         public function getEmployerID(){
             return $this->employerID;
         }
 
-        public function setCourseID($coursesID){
-            $this->coursesID = $coursesID;
+        public function setCourseID($courseID){
+            $this->courseID = $courseID;
         }
 
         public function setEmployerID($employerID){
@@ -41,17 +56,17 @@
         }
 
         public function save(){
-            $sql = "INSERT INTO continuingeducationhistory (coursesID, employerID) VALUES ($this->coursesID, $this->employerID)";
+            $sql = "INSERT INTO continuingeducationhistory (courseID, employerID) VALUES ($this->courseID, $this->employerID)";
             $this->connection->query($sql);
         }
 
         public function update(){
-            $sql = "UPDATE continuingeducationhistory SET coursesID = $this->coursesID, employerID = $this->employerID WHERE coursesID = $this->coursesID";
+            $sql = "UPDATE continuingeducationhistory SET courseID = $this->courseID, employerID = $this->employerID WHERE courseID = $this->courseID";
             $this->connection->query($sql);
         }
 
         public function delete(){
-            $sql = "DELETE FROM continuingeducationhistory WHERE coursesID = $this->coursesID";
+            $sql = "DELETE FROM continuingeducationhistory WHERE courseID = $this->courseID";
             $this->connection->query($sql);
         }
 

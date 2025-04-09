@@ -11,81 +11,79 @@
                     <div class="row">
 
                         <div class="mb-3">
-                            <label for="employeeSelect" class="form-label">Оберить співробітника</label>
-                            <select id="employeeSelect" class="form-control">
+                            <label for="employeeSelect" class="form-label" name="empID_AddForm">Оберить співробітника </label>
+                            <select id="employeeSelect" class="form-control" name="empID_AddForm">
                                 <option value="">Введить ПІБ...</option>
                                 <?php 
                                     $employers = $emp->getAll($connection);
                                     foreach ($employers as $employer) {
-                                        echo "<option value=\"" . $employer->getEmployerID() . "\">" . htmlspecialchars($employer->getEmpNameByID($employer->getEmployerID())) . "</option>";
+                                        echo "<option value=\"" . $employer->getEmployerID() . "\" name=\"empID_AddForm\">" . htmlspecialchars($employer->getEmpNameByID($employer->getEmployerID())) . "</option>";
                                     }
         
                                 ?>
                             </select>
                         </div>
-
+                        
                     </div>
-
 
                     <div class="row">
 
                         <div class="mb-3 col-md-6">
                             <label for="password" class="form-label">Назва курсів</label>
-                            <input type="text" class="form-control" id="courseName_AddForm" name="courseName" placeholder="Введить назву курсів...">
+                            <input type="text" class="form-control" id="courseName_AddForm" name="courseName_AddForm" placeholder="Введить назву курсів..." required>
                         </div>
                         <div class="mb-3 col-md-6">
                             <label for="name" class="form-label">Назва організації</label>
-                            <input type="text" class="form-control" id="organizationName_AddForm" name="organizationName" placeholder="Введить назву організатору...">
+                            <input type="text" class="form-control" id="organizationName_AddForm" name="organizationName_AddForm" placeholder="Введить назву організатору..." required>
                         </div>
                         <div class="mb-3 col-md-6">
                             <label for="dateAccepted" class="form-label">Дата початку курсів</label>
-                            <input type="date" class="form-control" id="startingDate_AddForm" name="startingDate" placeholder="Оберіть дату початку прохождення курсів...">
+                            <input type="date" class="form-control" id="startingDate_AddForm" name="startingDate_AddForm" placeholder="Оберіть дату початку прохождення курсів..." required>
                         </div>
                         <div class="mb-3 col-md-6">
                             <label for="dateAccepted" class="form-label">Дата закінчення курсів</label>
-                            <input type="date" class="form-control" id="endingDate_AddForm" name="endingDate" placeholder="Оберіть дату закінчення курсів...">
+                            <input type="date" class="form-control" id="endingDate_AddForm" name="endingDate_AddForm" placeholder="Оберіть дату закінчення курсів..." required>
                         </div>
                         <div class="mb-3 col-md-6">
                             <label for="birthday" class="form-label">Кілкість годин</label>
-                            <input type="text" class="form-control" id="hours_AddForm" name="hours" placeholder="Введить кількість годин...">
+                            <input type="text" class="form-control" id="hours_AddForm" name="hours_AddForm" placeholder="Введить кількість годин..." required>
                         </div>
                         <div class="mb-3 col-md-6">
                             <label for="passportID" class="form-label">Кілкість кредитів</label>
-                            <input type="text" class="form-control" id="credits_AddForm" name="credits" placeholder="Введить кількість нарахованних кредитів...">
+                            <input type="text" class="form-control" id="credits_AddForm" name="credits_AddForm" placeholder="Введить кількість нарахованних кредитів..." required>
                         </div>
                     
                         <div class="file-attach">
                             <div class="mb-3 col-md-12" >
                                 <label for="uploadPDF" class="form-label">Додати файл із прохожденням курсів/стажировки</label>
-                                <input type="file" class="form-control" id="uploadPDF" name="confirmationFile" accept=".pdf" required >
+                                <input type="file" class="form-control" id="uploadPDF_AddForm" name="confirmationFile_AddForm" accept=".pdf" required >
                             </div>
                             <div class="row">
                                 <div class="mb-3 col-md-6">
                                     <label for="employeeSelect" class="form-label">Назва документу</label>
-                                    <input type="text" class="form-control" id="docName" name="docName" placeholder="Постанова про створення позиції..." required>
+                                    <input type="text" class="form-control" id="docName_AddForm" name="docName_AddForm" placeholder="Постанова про створення позиції..." required>
                                 </div>
                                 <div class="mb-3 col-md-6">
                                     <label for="department" class="form-label">Ради</label>
-                                    <select class="form-control" id="sphere" name="sphere" required placeholder="Адмінастративна...">
+                                    <select class="form-control" id="sphere_AddForm" name="sphere_AddForm" required placeholder="Адмінастративна...">
                                         <option value="Адмінастративна">Адмінастративна</option>
                                         <option value="Навчальна">Навчальна</option>
                                     </select>
                                 </div>
                                 <div class="mb-3 col-md-6">
                                     <label for="currentSalary" class="form-label">Призначення</label>
-                                    <input type="text" class="form-control" id="purpose" name="purpose" placeholder="Наказ про створення нової посади..." required >
+                                    <input type="text" class="form-control" id="purpose_AddForm" name="purpose_AddForm" placeholder="Наказ про створення нової посади..." required >
                                 </div>
                                 <div class="mb-3 col-md-6">
                                     <label for="department" class="form-label">Тип документа</label>
-                                    <select class="form-control" id="docType" name="docType" required>
+                                    <select class="form-control" id="docType_AddForm" name="docType_AddForm" required>
                                         <option value="Прохождення курсів">Прохождення курсів</option>
                                         <option value="Прохождення стажировки">Прохождення стажировки</option>
                                     </select>
                                 </div>
                             </div>
                         </div>
-
-
+                    
                     </div>
                 </form>
             </div>
@@ -106,17 +104,9 @@ document.getElementById('addCourseModal_AddForm').addEventListener('submit', fun
     const formData = new FormData(form);
     let jsonData = {};
 
-    formData.forEach((value, key) => {
-        if (key === "dateFired_AddForm" && value === "") {
-            jsonData[key] = null;
-        } else {
-            jsonData[key] = value;
-        }
-    });
-
     console.log('Отправляемые данные:', jsonData);
 
-    fetch('../../../app/models/modals/AddEmp.php', {
+    fetch('../../../app/models/modals/AddCourse.php', {
         method: 'POST',
         body: formData, 
     })

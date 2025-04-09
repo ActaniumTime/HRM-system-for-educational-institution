@@ -18,6 +18,8 @@
                 <th scope="col">Дії</th>
             </tr>
         </thead>
+
+        
         <tbody id="employeeTable">
             <?php 
                 ini_set('display_errors', 1);
@@ -41,12 +43,19 @@
                     echo "<td>{$course->getEndingDate()}</td>";
                     echo "<td>{$course->getHours()}</td>";
                     echo "<td>{$course->getCredits()}</td>"; 
-                    if($course->getCurrentStatus() == "Completed"){
-                        echo "<td style=\"color:##303030;\">Завершений</span></td>";
-                    } else {
-                        echo "<td style=\"color:green;\">Активний</span></td>";
+                    switch($course->getCurrentStatus()) {
+                        case "Completed" : 
+                            echo "<td style=\"color:##303030;\" ><div id=\"Complited\">Завершений</div></td>";
+                            break;
+                        case "Ongoing":
+                            echo "<td style=\"color:green;\" ><div id=\"Ongoing\">Активний</div></td>";
+                            break;
+                        case "Waiting":
+                            echo "<td style=\"color:green;\" ><div id=\"Waiting\">Очікує</div></td>";
+                            break;
                     }
-                    echo "<td class=\"d-flex\" style=\"border-radius:  0px 36px 36px 0px ;\">";
+                    echo "<td style=\"border-radius:  0px 36px 36px 0px ;\">";
+                    echo "<div class=\"d-flex\">";
                     echo "<button type=\"button\" class=\"editEmployerBtn \" 
                             data-employer-avatar=\"../../../Files/photos/{$emp->getAvatarByID($course->getEmployerID())}\"
                             data-employer-id=\"{$course->getEmployerID()}\"
@@ -103,7 +112,7 @@
 
 
                         </button>";
-                    
+                    echo "</div>";
                     echo "</td>";
                     echo "</tr>";
                 }

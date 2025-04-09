@@ -53,7 +53,21 @@
         }
 
 
-        public function addNewCourse($employerID, $courseName, $organizationName, $startingDate, $endingDate, $currentStatus, $documentID, $hours, $credits) {
+        public function addNewCourse($employerID, $courseName, $organizationName, $startingDate, $endingDate, $documentID, $hours, $credits) {
+            $date = date('Y-m-d H:i:s');
+            $currentStatus = "";
+            if($date > $startingDate && $date < $endingDate){
+                $currentStatus = "Ongoing";
+            } else {
+                if($date > $endingDate){
+                    $currentStatus = "Completed";
+                } else {
+                    if($date < $startingDate){
+                        $currentStatus = "Waiting";
+                    }
+                }
+            }
+
             $this->employerID = $employerID;
             $this->courseName = $courseName;
             $this->organizationName = $organizationName;
@@ -74,10 +88,14 @@
             $stmt->bind_param("isssssiii", $this->employerID, $this->courseName, $this->organizationName, $this->startingDate, $this->endingDate, $this->currentStatus, $this->documentID, $this->hours, $this->credits);
         
             if ($stmt->execute()) {
-                echo "Course added successfully!";
+                $courseID = $stmt->insert_id;
+                $stmt->close();
+                return $courseID;
             } else {
-                echo "Error: " . $stmt->error;
+                $stmt->close();
+                return false;
             }
+            
         }
         
 

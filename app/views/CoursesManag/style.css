@@ -651,3 +651,23 @@ p {
     background-color: #ffc825 !important;
     color: 303030 !important;
 }
+
+#Waiting{
+    background-color: #fff0c4;
+    padding: 20px;
+    border-radius: 36px;
+    color: #735600;
+}
+
+#Complited{
+    color: white;
+    background-color: #303030;
+    padding: 20px;
+    border-radius: 36px;
+}
+
+#Ongoing{
+    background-color: #e5ffe5;
+    padding: 20px;
+    border-radius: 36px;
+}

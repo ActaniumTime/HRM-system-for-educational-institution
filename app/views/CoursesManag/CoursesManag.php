@@ -7,8 +7,8 @@
     require_once __DIR__ . '/../../../app/models/UserVerify.php';
     require_once __DIR__ . '/../../../app/models/ContinuingEducation.php';
     require_once __DIR__ . '/../../../app/models/ContinuingEducationHistory.php';
+    require_once __DIR__ . '/../../../app/models/modals/AddCourse.php';
     require_once __DIR__ . '../../partials/CoursesManag/modalAddCourses.php';
-
 
 ?>
 
@@ -29,8 +29,6 @@
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-straight/css/uicons-solid-straight.css'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-bold-rounded/css/uicons-bold-rounded.css'>
     
-
-
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="../../../public/css/sidebarStyle.css">
     <link rel="stylesheet" href="../../../public/css/sidebarStyle2.css">
@@ -79,15 +77,8 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-<script src="../../../public/js/AddDeleteUser.js"></script>
+<!-- <script src="../../../public/js/AddDeleteUser.js"></script> -->
 
-<script src="../../../public/js/ModalDataTable.js"></script>
-
-<script src="../../../public/js/tableSearching.js"></script>
-
-<script src="../../../public/js/tableEmpFilters.js"></script>
-
-<script src="../../../public/js/EmpManagTableBut.js"></script>
 
 <script src="../../../public/js/navBar.js"></script>
 
