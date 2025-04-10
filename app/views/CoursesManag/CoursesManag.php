@@ -8,7 +8,9 @@
     require_once __DIR__ . '/../../../app/models/ContinuingEducation.php';
     require_once __DIR__ . '/../../../app/models/ContinuingEducationHistory.php';
     require_once __DIR__ . '/../../../app/models/modals/AddCourse.php';
+    require_once __DIR__ . '/../../../app/models/modals/EditCourses.php';
     require_once __DIR__ . '../../partials/CoursesManag/modalAddCourses.php';
+    require_once __DIR__ . '../../partials/CoursesManag/modalEditCourses.php';
 
 ?>
 
@@ -78,9 +80,12 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <!-- <script src="../../../public/js/AddDeleteUser.js"></script> -->
-
+ 
+<script src="../../../public/js/tooltip.js"></script>
 
 <script src="../../../public/js/navBar.js"></script>
+
+<script src="../../../public/js/coursesJS/ModalDataTable.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
 

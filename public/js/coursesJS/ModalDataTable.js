@@ -1,52 +1,47 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // Используем делегирование событий на весь документ
-    document.addEventListener('click', (event) => {
-        // Проверяем, что клик был по кнопке с классом .editEmployerBtn
-        if (event.target && event.target.classList.contains('editEmployerBtn')) {
-            console.log("JS work 2");
+document.querySelectorAll('.editEmployerBtn').forEach(button => {
+    button.addEventListener('click', () => {
+        // Аватар
+        const avatarSrc = button.getAttribute('data-employer-avatar');
+        document.querySelector('#EditCourseModal #employerAvatar').src = avatarSrc;
 
-            // Получаем все атрибуты из кнопки
-            const employerID = event.target.getAttribute('data-employer-id');
-            const courseID = event.target.getAttribute('data-course-id');
-            const CourseName = event.target.getAttribute('data-course-name');
-            const OrgName = event.target.getAttribute('data-course-rganization-name');
-            const StartDay = event.target.getAttribute('data-course-start');
-            const EndDay = event.target.getAttribute('data-course-end');
-            const CourseDoc = event.target.getAttribute('data-course-document');
-            const Srtificate = event.target.getAttribute('data-course-sectificate');
-            const homeAddress = event.target.getAttribute('data-home-address');
-            const email = event.target.getAttribute('data-email');
-            const phoneNumber = event.target.getAttribute('data-phone-number');
-            const department = event.target.getAttribute('data-department');
-            const dateAccepted = event.target.getAttribute('data-date-accepted');
-            const currentStatus = event.target.getAttribute('data-current-status');
-            const dateFired = event.target.getAttribute('data-date-fired');
-            const admissionBasis = event.target.getAttribute('data-admission-basis');
-            const employmentType = event.target.getAttribute('data-employment-type');
-            
-            // Обновляем элементы в модальном окне
-            const photoElement = document.getElementById('employerAvatar');
-            photoElement.src = employerAvatar;
+        // ID користувача
+        const employerID = button.getAttribute('data-employer-id');
+        document.querySelector('#empID_EditForm').value = employerID;
 
-            // Заполняем поля формы
-            document.getElementById('employerAvatar').value = employerAvatar;
-            document.getElementById('employerID').value = employerID;
-            document.getElementById('accessLevelID').value = accessLevelID;
-            document.getElementById('name').value = name;
-            document.getElementById('surname').value = surname;
-            document.getElementById('fathername').value = fathername;
-            document.getElementById('birthday').value = birthday;
-            document.getElementById('gender').value = gender;
-            document.getElementById('passportID').value = passportID;
-            document.getElementById('homeAddress').value = homeAddress;
-            document.getElementById('email').value = email;
-            document.getElementById('phoneNumber').value = phoneNumber;
-            document.getElementById('department').value = department;
-            document.getElementById('dateAccepted').value = dateAccepted;
-            document.getElementById('currentStatus').value = currentStatus;
-            document.getElementById('dateFired').value = dateFired;
-            document.getElementById('admissionBasis').value = admissionBasis;
-            document.getElementById('employmentType').value = employmentType;
-        }
+        // Назва користувача (если нужно, добавь отдельный data-* атрибут, например: data-employer-name)
+        const empName = button.getAttribute('data-employer-name');
+        if (empName) document.querySelector('#empName_EditForm').value = empName;
+
+        // Назва курсів
+        const courseName = button.getAttribute('data-course-name');
+        document.querySelector('#courseName_EditForm').value = courseName;
+
+        // Назва організації
+        const organizationName = button.getAttribute('data-course-rganization-name') || button.getAttribute('data-course-organization-name');
+        document.querySelector('#organizationName_EditForm').value = organizationName;
+
+        // Дата початку
+        const startDate = button.getAttribute('data-course-start');
+        document.querySelector('#startingDate_EditForm').value = startDate;
+
+        // Дата кінця
+        const endDate = button.getAttribute('data-course-end');
+        document.querySelector('#endingDate_EditForm').value = endDate;
+
+        // Години
+        const hours = button.getAttribute('data-course-hours');
+        document.querySelector('#hours_EditForm').value = hours;
+
+        // Кредити
+        const credits = button.getAttribute('data-course-credit');
+        document.querySelector('#credits_EditForm').value = credits;
+
+        // ID документу
+        const documentID = button.getAttribute('data-course-document');
+        document.querySelector('#docViewBtn1').setAttribute('data-documentID', documentID);
+
+        // ID сертифіката
+        const certificateID = button.getAttribute('data-course-sectificate');
+        document.querySelector('#docViewBtn2').setAttribute('data-documentID', certificateID);
     });
 });

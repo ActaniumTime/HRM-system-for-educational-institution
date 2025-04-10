@@ -19,7 +19,6 @@
             </tr>
         </thead>
 
-        
         <tbody id="employeeTable">
             <?php 
                 ini_set('display_errors', 1);
@@ -59,16 +58,17 @@
                     echo "<button type=\"button\" class=\"editEmployerBtn \" 
                             data-employer-avatar=\"../../../Files/photos/{$emp->getAvatarByID($course->getEmployerID())}\"
                             data-employer-id=\"{$course->getEmployerID()}\"
+                            data-employer-name=\"{$emp->getEmpNameByID($course->getEmployerID())}\"
                             data-course-id=\"{$course->getCourseID()}\"
                             data-course-name=\"{$course->getCourseName()}\"
                             data-course-rganization-name=\"{$course->getOrganizationName()}\"
                             data-course-start=\"{$course->getStartingDate()}\"
                             data-course-end=\"{$course->getEndingDate()}\"
                             data-course-document=\"{$course->getDocumentID()}\"
-                            data-course-sectificate=\"{$course->getDocumentID()}\"
+                            data-course-sectificate=\"{$course->getSertificateID()}\"
                             data-course-hours=\"{$course->getHours()}\"
                             data-course-credit=\"{$course->getCredits()}\"
-                            data-bs-toggle=\"modal\" data-bs-target=\"#employerModal\"
+                            data-bs-toggle=\"modal\" data-bs-target=\"#EditCourseModal\"
                             title=\"Редагувати дані співробітника\">
                             
                             <svg xmlns=\"http://www.w3.org/2000/svg\" id=\"Layer_1\" data-name=\"Layer 1\" viewBox=\"0 0 24 24\" class=\"icon_white no-click\">
@@ -76,19 +76,19 @@
                             <path d=\"M12.95,5.223c-1.073,.968-2.322,2.144-3.752,3.564C3.135,14.807,1.545,17.214,1.48,17.313c-.091,.14-.146,.301-.159,.467l-.319,4.071c-.022,.292,.083,.578,.29,.785,.188,.188,.443,.293,.708,.293,.025,0,.051,0,.077-.003l4.101-.316c.165-.013,.324-.066,.463-.155,.1-.064,2.523-1.643,8.585-7.662,1.462-1.452,2.668-2.716,3.655-3.797-.151-.649-.678-2.501-2.005-3.798-1.346-1.317-3.283-1.833-3.927-1.975Z\"/>
                             </svg>
 
-
                             </button>";
                     
                     echo "<button type=\"button\" class=\"Delete-button\"
                             data-employer-avatar=\"../../../Files/photos/{$emp->getAvatarByID($course->getEmployerID())}\"
+                            data-employer-name=\"{$emp->getEmpNameByID($course->getEmployerID())}\"
                             data-employer-id=\"{$course->getEmployerID()}\"
                             data-course-id=\"{$course->getCourseID()}\"
                             data-course-name=\"{$course->getCourseName()}\"
-                            data-course-rganization-name=\"{$course->getOrganizationName()}\"
+                            data-course-organization-name=\"{$course->getOrganizationName()}\"
                             data-course-start=\"{$course->getStartingDate()}\"
                             data-course-end=\"{$course->getEndingDate()}\"
                             data-course-document=\"{$course->getDocumentID()}\"
-                            data-course-sectificate=\"{$course->getDocumentID()}\"
+                            data-course-sectificate=\"{$course->getSertificateID()}\"
                             data-course-hours=\"{$course->getHours()}\"
                             data-course-credit=\"{$course->getCredits()}\"
                             data-bs-toggle=\"modal\"

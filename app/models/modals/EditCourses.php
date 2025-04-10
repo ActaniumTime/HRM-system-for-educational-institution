@@ -20,12 +20,12 @@
     
         $newFileName = null;
     
-        if (isset($_FILES['confirmationFile_AddForm']) && $_FILES['confirmationFile_AddForm']['error'] === UPLOAD_ERR_OK) {
-            $fileTmpPath = $_FILES['confirmationFile_AddForm']['tmp_name'];
-            $fileName = $_FILES['confirmationFile_AddForm']['name'];
+        if (isset($_FILES['linkToFile']) && $_FILES['linkToFile']['error'] === UPLOAD_ERR_OK) {
+            $fileTmpPath = $_FILES['linkToFile']['tmp_name'];
+            $fileName = $_FILES['linkToFile']['name'];
             $fileExtension = pathinfo($fileName, PATHINFO_EXTENSION);
     
-            $newFileName = uniqid('confirmationFile_AddForm_', true) . '.' . $fileExtension;
+            $newFileName = uniqid('linkToFile_', true) . '.' . $fileExtension;
             $destinationPath = $uploadDir . $newFileName;
     
             if (!move_uploaded_file($fileTmpPath, $destinationPath)) {
@@ -35,7 +35,7 @@
         }
     
         $data = $_POST;
-        
+    
         try{
             $newDoc = new Document($connection);
             $courses = new ContinuingEducation($connection);
@@ -68,9 +68,8 @@
         } catch (Exception $e){
             echo json_encode(['success' => false, 'message' => 'Error saving data: ' . $e->getMessage()]);
         }
-    
-
 
     }
 
 ?>
+
