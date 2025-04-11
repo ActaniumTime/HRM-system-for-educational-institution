@@ -94,6 +94,32 @@
             $stmt->execute();
         }
 
+        public function updateCourse($courseID, $employerID, $courseName, $organizationName, $startingDate, $endingDate, $documentID, $hours, $credits, $currentStatus, $sertificateID) {
+            $query = "UPDATE ContinuingEducation SET employerID = ?,
+             courseName = ?, 
+             organizationName = ?, 
+             startingDate = ?, 
+             endingDate = ?, 
+             documentID = ?, 
+             hours = ?, 
+             sertificateID = ?,
+             currentStatus = ?,
+             credits = ? WHERE courseID = ?";
+            $stmt = $this->connection->prepare($query);
+            $stmt->bind_param("issssiiiisii", 
+                $employerID, 
+                $courseName, 
+                $organizationName, 
+                $startingDate, 
+                $endingDate, 
+                $documentID, 
+                $hours, 
+                $sertificateID,
+                $currentStatus,
+                $credits, 
+                $courseID);
+            return $stmt->execute();
+        }
 
         public function getAllCourses(){
             $query = "SELECT * FROM ContinuingEducation";

@@ -671,3 +671,13 @@ p {
     padding: 20px;
     border-radius: 36px;
 }
+
+#Status_EditForm{
+    background: rgba(255, 200, 37, 0.6);
+    color: #303030;
+    border-radius: 36px;
+    padding: 10px 20px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    border: none;
+}

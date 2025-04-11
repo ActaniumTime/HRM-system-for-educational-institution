@@ -19,24 +19,164 @@
         }
     
         $newFileName = null;
-    
-        if (isset($_FILES['linkToFile']) && $_FILES['linkToFile']['error'] === UPLOAD_ERR_OK) {
-            $fileTmpPath = $_FILES['linkToFile']['tmp_name'];
-            $fileName = $_FILES['linkToFile']['name'];
+        $flag1 = false; 
+        $flag2 = false;
+
+        if (isset($_FILES['confirmationFile_EditForm']) && $_FILES['confirmationFile_EditForm']['error'] === UPLOAD_ERR_OK) {
+            $fileTmpPath = $_FILES['confirmationFile_EditForm']['tmp_name'];
+            $fileName = $_FILES['confirmationFile_EditForm']['name'];
             $fileExtension = pathinfo($fileName, PATHINFO_EXTENSION);
     
-            $newFileName = uniqid('linkToFile_', true) . '.' . $fileExtension;
+            $newFileName = uniqid('confirmationFile_EditForm_', true) . '.' . $fileExtension;
             $destinationPath = $uploadDir . $newFileName;
     
             if (!move_uploaded_file($fileTmpPath, $destinationPath)) {
                 echo json_encode(['success' => false, 'message' => 'Failed to upload file']);
                 exit;
             }
+
+            $flag1 = true;
+        }
+
+        if (isset($_FILES['confirmationFile_EditForm2']) && $_FILES['confirmationFile_EditForm2']['error'] === UPLOAD_ERR_OK) {
+            $fileTmpPath2 = $_FILES['confirmationFile_EditForm2']['tmp_name'];
+            $fileName2 = $_FILES['confirmationFile_EditForm2']['name'];
+            $fileExtension2 = pathinfo($fileName2, PATHINFO_EXTENSION);
+    
+            $newFileName2 = uniqid('confirmationFile_EditForm2_', true) . '.' . $fileExtension2;
+            $destinationPath2 = $uploadDir . $newFileName2;
+    
+            if (!move_uploaded_file($fileTmpPath2, $destinationPath2)) {
+                echo json_encode(['success' => false, 'message' => 'Failed to upload file']);
+                exit;
+            }
+            $flag1 = true;
         }
     
         $data = $_POST;
     
+
+        
+        $courseID = $_POST['empID_EditForm'];
+        $employerID = $_POST['empName_EditForm'];
+        $courseName = $_POST['courseName_EditForm'];
+        $organizationName = $_POST['organizationName_EditForm'];
+        $startingDate = $_POST['startingDate_EditForm'];
+        $endingDate = $_POST['endingDate_EditForm'];
+        $hours = $_POST['hours_EditForm'];
+        $credits = $_POST['credits_EditForm'];
+
+        $newDoc1 = new Document($connection);
+        $newDoc2 = new Document($connection);
+        
+        $tempCourse = new ContinuingEducation($connection);
+        $tempCourse->loadByID($courseID);
+        $tempCourse->setCourseName($courseName);
+        $tempCourse->setOrganizationName($organizationName);
+        $tempCourse->setStartingDate($startingDate);
+        $tempCourse->setEndingDate($endingDate);
+        $tempCourse->setHours($hours);
+        $tempCourse->setCredits($credits);
+
+        $tempCourse->setDocumentID();
+        $tempCourse->setSertificateID();
+
+
         try{
+
+            if($flag1 && $flag2){
+
+                $docID1 = $newDoc1->addDocument($data['confirmationFile_EditForm'],
+                    $data['docName_EditForm'], 
+                    $data['sphere_EditForm'], 
+                    $data['purpose_EditForm'], 
+                    $data['docType_EditForm'], 
+                    $newFileName
+                );
+                $docID2 = $newDoc2->addDocument($data['confirmationFile_EditForm2'],
+                    $data['docName_EditForm2'], 
+                    $data['sphere_EditForm2'], 
+                    $data['purpose_EditForm2'], 
+                    $data['docType_EditForm2'], 
+                    $newFileName2
+                );
+
+                $tempCourse->updateCourse(
+                    $courseID,
+                    $employerID,
+                    $courseName,
+                    $organizationName,
+                    $startingDate,
+                    $endingDate,
+                    $docID1,
+                    $hours,
+                    $credits,
+                    $docID2
+                );
+            }
+            else{
+                if($flag1){
+                    $docID1 = $newDoc1->addDocument($data['confirmationFile_EditForm'],
+                        $data['docName_EditForm'], 
+                        $data['sphere_EditForm'], 
+                        $data['purpose_EditForm'], 
+                        $data['docType_EditForm'], 
+                        $newFileName
+                    );
+                    $tempCourse->updateCourse(
+                        $courseID,
+                        $employerID,
+                        $courseName,
+                        $organizationName,
+                        $startingDate,
+                        $endingDate,
+                        $docID1,
+                        $hours,
+                        $credits,
+                        null
+                    );
+                }
+                else{
+                    if($flag2){
+                        $docID2 = $newDoc2->addDocument($data['confirmationFile_EditForm2'],
+                            $data['docName_EditForm2'], 
+                            $data['sphere_EditForm2'], 
+                            $data['purpose_EditForm2'], 
+                            $data['docType_EditForm2'], 
+                            $newFileName2
+                        );
+                        $tempCourse->updateCourse(
+                            $courseID,
+                            $employerID,
+                            $courseName,
+                            $organizationName,
+                            $startingDate,
+                            $endingDate,
+                            null,
+                            $hours,
+                            $credits,
+                            $docID2
+                        );
+                    }
+                    else{
+                        $tempCourse->updateCourse(
+                            $courseID,
+                            $employerID,
+                            $courseName,
+                            $organizationName,
+                            $startingDate,
+                            $endingDate,
+                            null,
+                            $hours,
+                            $credits
+                        );
+                    }
+                }
+
+            
+
+
+
             $newDoc = new Document($connection);
             $courses = new ContinuingEducation($connection);
             $empCourses = new ContinuingEducationHistory($connection);

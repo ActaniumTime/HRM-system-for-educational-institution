@@ -43,5 +43,28 @@ document.querySelectorAll('.editEmployerBtn').forEach(button => {
         // ID сертифіката
         const certificateID = button.getAttribute('data-course-sectificate');
         document.querySelector('#docViewBtn2').setAttribute('data-documentID', certificateID);
+
+        const currentStat = button.getAttribute('data-course-curStatus');
+
+        switch(currentStat){
+            case 'Ongoing':
+                document.querySelector('#Status_EditForm').value = 'Активний';
+                var statusField = document.getElementById('Status_EditForm');
+                statusField.style.backgroundColor = '#d4edda'; // светло-зелёный
+                statusField.style.color = '#155724'; // тёмно-зелёный
+                break;
+            case 'Waiting':
+                document.querySelector('#Status_EditForm').value = 'Очікує';
+                var statusField = document.getElementById('Status_EditForm');
+                statusField.style.backgroundColor = '#fff0c4'; // светло-жёлтый
+                statusField.style.color = '#735600'; // тёмно-жёлтый
+                break;
+            case 'Completed':
+                document.querySelector('#Status_EditForm').value = 'Завершений';
+                var statusField = document.getElementById('Status_EditForm');
+                statusField.style.backgroundColor = '#303030'; // светло-голубой
+                statusField.style.color = 'white'; // тёмно-синий
+                break;
+        }
     });
 });

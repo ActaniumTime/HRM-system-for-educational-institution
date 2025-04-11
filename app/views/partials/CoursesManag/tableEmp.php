@@ -68,6 +68,7 @@
                             data-course-sectificate=\"{$course->getSertificateID()}\"
                             data-course-hours=\"{$course->getHours()}\"
                             data-course-credit=\"{$course->getCredits()}\"
+                            data-course-curStatus=\"{$course->getCurrentStatus()}\"
                             data-bs-toggle=\"modal\" data-bs-target=\"#EditCourseModal\"
                             title=\"Редагувати дані співробітника\">
                             

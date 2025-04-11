@@ -325,9 +325,17 @@ button:hover {
     border: 2px solid #303030;
 }
 
+.custom-btn svg{
+    fill: #ffffff;
+    margin-right: 10px;
+}
+
 .custom-btn:hover {
     background-color: #ffffff;
     color: #303030;
     border: 2px solid #303030;
 }
 
+.custom-btn:hover svg {
+    fill: #303030;
+}
