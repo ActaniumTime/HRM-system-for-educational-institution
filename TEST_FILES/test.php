@@ -19,16 +19,37 @@
 
     require_once 'config/database.php'; 
 
-
-    $accred = new Accreditation($connection);
-
-
-    $accred->loadByID(24);
-   
-    $accred->Show();
+    $testCourse = new ContinuingEducation($connection);
+    $testCourse->loadByID(1);
+    $testCourse->Show();
 
     echo "<br>";
-    echo "<p>" . $accred->outputCategory(2020) . "</p>";
+
+    $testCourse->setCourseName("English Language Course");
+    $testCourse->setOrganizationName("English School");
+    $testCourse->setStartingDate("2020-01-01");
+    $testCourse->setEndingDate("2020-02-01");
+    $testCourse->setCurrentStatus("Completed");
+    $testCourse->setDocumentID(200);
+    $testCourse->setHours(100);
+    $testCourse->setCredits(10);
+
+    $testCourse->Show();
+
+    $testCourse->updateData();
+
+
+
+
+    // $accred = new Accreditation($connection);
+
+
+    // $accred->loadByID(24);
+   
+    // $accred->Show();
+
+    // echo "<br>";
+    // echo "<p>" . $accred->outputCategory(2020) . "</p>";
 
 
 

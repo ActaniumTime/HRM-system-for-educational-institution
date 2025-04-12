@@ -87,6 +87,8 @@
 
 <script src="../../../public/js/coursesJS/ModalDataTable.js"></script>
 
+<script src="../../../public/js/coursesJS/EditCourse.js"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
 
 <script>

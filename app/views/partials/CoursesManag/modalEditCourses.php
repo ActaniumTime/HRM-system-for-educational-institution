@@ -18,13 +18,17 @@
 
                     <div class="row">
                         <div class="mb-3 col-md-2">
+                            <label for="password" class="form-label">ID курсів</label>
+                            <input type="text" class="form-control" id="courseID_EditForm" name="courseID_EditForm" placeholder="Введить назву курсів..." required>
+                        </div>
+                        <div class="mb-3 col-md-2">
                             <label for="password" class="form-label">ID користувача</label>
-                            <input type="text" class="form-control" id="empID_EditForm" name="courseName_EditForm" placeholder="Введить назву курсів..." required>
+                            <input type="text" class="form-control" id="empID_EditForm" name="empID_EditForm" placeholder="Введить назву курсів..." required>
                         </div>
 
-                        <div class="mb-3 col-md-10">
+                        <div class="mb-3 col-md-8">
                             <label for="password" class="form-label">Користувач</label>
-                            <input type="text" class="form-control" id="empName_EditForm" name="courseName_EditForm" placeholder="Введить назву курсів..." required>
+                            <input type="text" class="form-control" id="empName_EditForm" name="empName_EditForm" placeholder="Введить назву курсів..." required>
                         </div>
 
                         <div class="mb-3" style="border-bottom: 1px solid #dee2e6;"></div>
@@ -98,27 +102,27 @@
                                     <div class="file-attach">
                                         <div class="mb-3 col-md-12" >
                                             <label for="uploadPDF" class="form-label">Додати файл із прохожденням курсів/стажировки</label>
-                                            <input type="file" class="form-control" id="uploadPDF_EditForm" name="confirmationFile_EditForm" accept=".pdf" required >
+                                            <input type="file" class="form-control" id="uploadPDF_EditForm" name="confirmationFile_EditForm" accept=".pdf"  >
                                         </div>
                                         <div class="row">
                                             <div class="mb-3 col-md-6">
                                                 <label for="employeeSelect" class="form-label">Назва документу</label>
-                                                <input type="text" class="form-control" id="docName_EditForm" name="docName_EditForm" placeholder="Постанова про створення позиції..." required>
+                                                <input type="text" class="form-control" id="docName_EditForm" name="docName_EditForm" placeholder="Постанова про створення позиції..." >
                                             </div>
                                             <div class="mb-3 col-md-6">
                                                 <label for="department" class="form-label">Ради</label>
-                                                <select class="form-control" id="sphere_EditForm" name="sphere_EditForm" required placeholder="Адмінастративна...">
+                                                <select class="form-control" id="sphere_EditForm" name="sphere_EditForm"  placeholder="Адмінастративна...">
                                                     <option value="Адмінастративна">Адмінастративна</option>
                                                     <option value="Навчальна">Навчальна</option>
                                                 </select>
                                             </div>
                                             <div class="mb-3 col-md-6">
                                                 <label for="currentSalary" class="form-label">Призначення</label>
-                                                <input type="text" class="form-control" id="purpose_EditForm" name="purpose_EditForm" placeholder="Наказ про створення нової посади..." required >
+                                                <input type="text" class="form-control" id="purpose_EditForm" name="purpose_EditForm" placeholder="Наказ про створення нової посади..."  >
                                             </div>
                                             <div class="mb-3 col-md-6">
                                                 <label for="department" class="form-label">Тип документа</label>
-                                                <select class="form-control" id="docType_EditForm" name="docType_EditForm" required>
+                                                <select class="form-control" id="docType_EditForm" name="docType_EditForm" >
                                                     <option value="Прохождення курсів">Прохождення курсів</option>
                                                     <option value="Прохождення стажировки">Прохождення стажировки</option>
                                                 </select>
@@ -145,27 +149,27 @@
                                     <div class="file-attach">
                                         <div class="mb-3 col-md-12" >
                                             <label for="uploadPDF" class="form-label">Додати сертифікат із прохожденням курсів/стажировки</label>
-                                            <input type="file" class="form-control" id="uploadPDF_EditForm2" name="confirmationFile_EditForm2" accept=".pdf" required >
+                                            <input type="file" class="form-control" id="uploadPDF_EditForm2" name="confirmationFile_EditForm2" accept=".pdf"  >
                                         </div>
                                         <div class="row">
                                             <div class="mb-3 col-md-6">
                                                 <label for="employeeSelect" class="form-label">Назва документу</label>
-                                                <input type="text" class="form-control" id="docName_EditForm2" name="docName_EditForm2" placeholder="Постанова про створення позиції..." required>
+                                                <input type="text" class="form-control" id="docName_EditForm2" name="docName_EditForm2" placeholder="Постанова про створення позиції..." >
                                             </div>
                                             <div class="mb-3 col-md-6">
                                                 <label for="department" class="form-label">Ради</label>
-                                                <select class="form-control" id="sphere_EditForm2" name="sphere_EditForm2" required placeholder="Адмінастративна...">
+                                                <select class="form-control" id="sphere_EditForm2" name="sphere_EditForm2"  placeholder="Адмінастративна...">
                                                     <option value="Адмінастративна">Адмінастративна</option>
                                                     <option value="Навчальна">Навчальна</option>
                                                 </select>
                                             </div>
                                             <div class="mb-3 col-md-6">
                                                 <label for="currentSalary" class="form-label">Призначення</label>
-                                                <input type="text" class="form-control" id="purpose_EditForm2" name="purpose_EditForm2" placeholder="Наказ про створення нової посади..." required >
+                                                <input type="text" class="form-control" id="purpose_EditForm2" name="purpose_EditForm2" placeholder="Наказ про створення нової посади..."  >
                                             </div>
                                             <div class="mb-3 col-md-6">
                                                 <label for="department" class="form-label">Тип документа</label>
-                                                <select class="form-control" id="docType_EditForm2" name="docType_EditForm2" required>
+                                                <select class="form-control" id="docType_EditForm2" name="docType_EditForm2" >
                                                     <option value="Прохождення курсів">Прохождення курсів</option>
                                                     <option value="Прохождення стажировки">Прохождення стажировки</option>
                                                 </select>
@@ -186,53 +190,3 @@
         </div>
     </div>
 </div>
-
-<script>
-
-document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('EditCourseModal').addEventListener('click', event => {
-        const button = event.target.closest('.docViewBtn1');
-        if (button) {
-            const docID = button.getAttribute('data-documentID');
-            window.open(`../../../app/models/GetData/getDocument.php?documentID=${docID}`, '_blank');
-        }
-    });
-});
-
-document.getElementById('fakeButtonInsideLink').addEventListener('click', function (event) {
-    event.preventDefault();
-    event.stopPropagation();
-
-    this.closest('a').click();
-});
-
-document.getElementById('EditCourseModal_EditForm').addEventListener('submit', function (e) {
-    e.preventDefault();
-
-    const form = e.target;
-    const formData = new FormData(form);
-    let jsonData = {};
-
-    console.log('Отправляемые данные:', jsonData);
-
-    fetch('../../../app/models/modals/EditCourse.php', {
-        method: 'POST',
-        body: formData, 
-    })
-        .then(response => response.json())
-        .then(result => {
-            console.log('Результат сервера:', result);
-            if (result.success) {
-                alert('Дані оновлені успішно!');
-                location.reload();
-            } else {
-                alert(`Ошибка: ${result.message}`);
-            }
-        })
-        .catch(error => {
-            console.error('Ошибка:', error);
-        });
-
-    });
-
-</script>

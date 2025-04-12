@@ -10,7 +10,7 @@
         private $endingDate;
         private $currentStatus;
         private $documentID;
-        private $sertificateID;
+        private $certificateID;
         private $hours;
         private $credits;
 
@@ -37,7 +37,7 @@
                 $this->documentID = $data['documentID'];
                 $this->hours = $data['hours'];
                 $this->credits = $data['credits'];
-                $this->sertificateID = $data['sertificateID'];
+                $this->certificateID = $data['certificateID'];
             }
         }
 
@@ -86,39 +86,55 @@
             
         }
         
+        public function Show(){
+            echo "Course ID: " . $this->courseID . "<br>";
+            echo "Employer ID: " . $this->employerID . "<br>";
+            echo "Course Name: " . $this->courseName . "<br>";
+            echo "Organization Name: " . $this->organizationName . "<br>";
+            echo "Starting Date: " . $this->startingDate . "<br>";
+            echo "Ending Date: " . $this->endingDate . "<br>";
+            echo "Current Status: " . $this->currentStatus . "<br>";
+            echo "Document ID: " . $this->documentID . "<br>";
+            echo "Sertificate ID: " . $this->certificateID . "<br>";
+            echo "Hours: " . $this->hours . "<br>";
+            echo "Credits: " . $this->credits . "<br>";
+        }
+
+
+        public function updateData(){
+            $query = "UPDATE ContinuingEducation SET 
+                employerID = ?, 
+                courseName = ?, 
+                organizationName = ?, 
+                startingDate = ?, 
+                endingDate = ?, 
+                currentStatus = ?, 
+                documentID = ?, 
+                hours = ?, 
+                credits = ?,
+                certificateID = ? WHERE courseID = ?";
+            $stmt = $this->connection->prepare($query);
+            $stmt->bind_param("isssssiiiis", 
+                $this->employerID, 
+                $this->courseName, 
+                $this->organizationName, 
+                $this->startingDate, 
+                $this->endingDate, 
+                $this->currentStatus, 
+                $this->documentID, 
+                $this->hours, 
+                $this->credits,
+                $this->certificateID,
+                $this->courseID
+                );
+            return $stmt->execute();
+        }
 
         public function deleteCourse(){
             $query = "DELETE FROM ContinuingEducation WHERE courseID = ?";
             $stmt = $this->connection->prepare($query);
             $stmt->bind_param("i", $this->courseID);
             $stmt->execute();
-        }
-
-        public function updateCourse($courseID, $employerID, $courseName, $organizationName, $startingDate, $endingDate, $documentID, $hours, $credits, $currentStatus, $sertificateID) {
-            $query = "UPDATE ContinuingEducation SET employerID = ?,
-             courseName = ?, 
-             organizationName = ?, 
-             startingDate = ?, 
-             endingDate = ?, 
-             documentID = ?, 
-             hours = ?, 
-             sertificateID = ?,
-             currentStatus = ?,
-             credits = ? WHERE courseID = ?";
-            $stmt = $this->connection->prepare($query);
-            $stmt->bind_param("issssiiiisii", 
-                $employerID, 
-                $courseName, 
-                $organizationName, 
-                $startingDate, 
-                $endingDate, 
-                $documentID, 
-                $hours, 
-                $sertificateID,
-                $currentStatus,
-                $credits, 
-                $courseID);
-            return $stmt->execute();
         }
 
         public function getAllCourses(){
@@ -137,7 +153,7 @@
                 $course->endingDate = $row['endingDate'];
                 $course->currentStatus = $row['currentStatus'];
                 $course->documentID = $row['documentID'];
-                $course->sertificateID = $row['certificateID'];
+                $course->certificateID = $row['certificateID'];
                 $course->hours = $row['hours'];
                 $course->credits = $row['credits'];
 
@@ -147,8 +163,8 @@
             return $courses;
         }
 
-        public function setSertificateID($sertificateID) {
-            $this->sertificateID = $sertificateID;
+        public function setcertificateID($certificateID) {
+            $this->certificateID = $certificateID;
         }
 
         public function setCourseID($courseID) {
@@ -231,8 +247,8 @@
             return $this->credits;
         }
 
-        public function getSertificateID() {
-            return $this->sertificateID;
+        public function getcertificateID() {
+            return $this->certificateID;
         }
 
     }

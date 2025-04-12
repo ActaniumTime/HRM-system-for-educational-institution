@@ -284,6 +284,7 @@ button:hover {
     border-bottom-left-radius: 36px;
     border-bottom-right-radius: 36px;
     transition: background 0.3s ease, border-radius 0.4s ease;
+    
 }
 
 /* Плавная анимация открытия/закрытия */
