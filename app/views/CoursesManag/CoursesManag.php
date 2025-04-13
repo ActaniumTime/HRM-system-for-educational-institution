@@ -92,6 +92,10 @@
 
 <script src="../../../public/js/coursesJS/deleteCourse.js"></script>
 
+<script src="../../../public/js/coursesJS/FiltersMenu.js"></script>
+
+<script src="../../../public/js/coursesJS/SearchBar.js"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
 
 <script>
