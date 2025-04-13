@@ -1,3 +1,7 @@
+<?php
+$current_page = basename($_SERVER['PHP_SELF']); // Получаем текущий файл
+?>
+
 <div id="nav-bar">
     <input id="nav-toggle" type="checkbox"/>
     <div id="nav-header">
@@ -6,50 +10,86 @@
         <hr/>
     </div>
     <div id="nav-content">
-    <a href="../dashboard/dashboard.php"><div class="nav-button"><i class="fas fi fi-sr-home"></i><span>Головна</span></div></a>
+        <a href="../dashboard/dashboard.php">
+            <div class="nav-button <?php echo ($current_page == 'dashboard.php') ? 'active' : ''; ?>">
+                <i class="fas fi fi-sr-home"></i><span>Головна</span>
+            </div>
+        </a>
 
         <?php
-            if($emp->getAccessLevelID() == 1 || $emp->getAccessLevelID() == 2)
-            {
-                echo "<a href=\"../EmpManagmentPanel/EmpManagTable.php\"><div class=\"nav-button\"><i class=\"fas fi fi-sr-mode-portrait\"></i><span>Персонал</span></div></a>";
-            }
+        if($emp->getAccessLevelID() == 1 || $emp->getAccessLevelID() == 2)
+        {
+            echo "<a href=\"../EmpManagmentPanel/EmpManagTable.php\">
+                    <div class=\"nav-button " . ($current_page == 'EmpManagTable.php' ? 'active' : '') . "\">
+                        <i class=\"fas fi fi-sr-mode-portrait\"></i><span>Персонал</span>
+                    </div>
+                  </a>";
+        }
         ?>
 
         <?php
-            if($emp->getAccessLevelID() == 1 || $emp->getAccessLevelID() == 2)
-            {
-                echo "<a href=\"../AccreditationManag/AccreditationManag.php\"><div class=\"nav-button\"><i class=\"fas fi fi-sr-graduation-cap\"></i></i><span>Акредитація</span></div></a>";
-            }
+        if($emp->getAccessLevelID() == 1 || $emp->getAccessLevelID() == 2)
+        {
+            echo "<a href=\"../AccreditationManag/AccreditationManag.php\">
+                    <div class=\"nav-button " . ($current_page == 'AccreditationManag.php' ? 'active' : '') . "\">
+                        <i class=\"fas fi fi-sr-graduation-cap\"></i><span>Акредитація</span>
+                    </div>
+                  </a>";
+        }
         ?>
 
         <?php
-            if($emp->getAccessLevelID() == 1 || $emp->getAccessLevelID() == 2)
-            {
-                echo "<a href=\"../positionManag/positionManagPage.php\"><div class=\"nav-button\"><i class=\"fas fi fi-sr-briefcase\"></i><span>Посади</span></div></a>";
-            }
+        if($emp->getAccessLevelID() == 1 || $emp->getAccessLevelID() == 2)
+        {
+            echo "<a href=\"../positionManag/positionManagPage.php\">
+                    <div class=\"nav-button " . ($current_page == 'positionManagPage.php' ? 'active' : '') . "\">
+                        <i class=\"fas fi fi-sr-briefcase\"></i><span>Посади</span>
+                    </div>
+                  </a>";
+        }
         ?>
 
+<?php
+        if($emp->getAccessLevelID() == 1 || $emp->getAccessLevelID() == 2)
+        {
+            echo "<a href=\"../CoursesManag/CoursesManag.php\">
+                    <div class=\"nav-button " . ($current_page == 'CoursesManag.php' ? 'active' : '') . "\">
+                        <i class=\"fas fi fi-ss-book-circle-arrow-right\"></i><span>Курси</span>
+                    </div>
+                  </a>";
+        }
+        ?>
 
-        <a href=""><div class="nav-button"><i class="fas fi fi-ss-book-circle-arrow-right"></i><span>Курси</span></div></a>
         
         <?php
-            if($emp->getAccessLevelID() == 1 || $emp->getAccessLevelID() == 2)
-            {
-                echo "<a href=\"../CoursesManag/CoursesManag.php\"><div class=\"nav-button\"><i class=\"fas fi fi-sr-duplicate\"></i><span>Документообіг</span></div></a>";
-            }
+        if($emp->getAccessLevelID() == 1 || $emp->getAccessLevelID() == 2)
+        {
+            echo "<a href=\"../documentManag/documentManagPage.php\">
+                    <div class=\"nav-button " . ($current_page == 'documentManagPage.php' ? 'active' : '') . "\">
+                        <i class=\"fas fi fi-sr-duplicate\"></i><span>Документообіг</span>
+                    </div>
+                  </a>";
+        }
         ?>
 
         <hr/>
 
-        
-        <a href="../personalPage.php/personalPage.php"><div class="nav-button"><i class="fas fi fi-ss-user"></i><span>Мій кабінет</span></div></a>
+        <a href="../personalPage.php/personalPage.php">
+            <div class="nav-button <?php echo ($current_page == 'personalPage.php' ? 'active' : ''); ?>">
+                <i class="fas fi fi-ss-user"></i><span>Мій кабінет</span>
+            </div>
+        </a>
         <hr/>
 
         <?php
-            if($emp->getAccessLevelID() == 1)
-            {
-                echo "<a href=\"../AdminPanel/AdminPanel.php\"><div class=\"nav-button\"><i class=\"fas fi fi-br-admin\"></i><span>Адмін. панель</span></div></a>";
-            }
+        if($emp->getAccessLevelID() == 1)
+        {
+            echo "<a href=\"../AdminPanel/AdminPanel.php\">
+                    <div class=\"nav-button " . ($current_page == 'AdminPanel.php' ? 'active' : '') . "\">
+                        <i class=\"fas fi fi-br-admin\"></i><span>Адмін. панель</span>
+                    </div>
+                  </a>";
+        }
         ?>
         
     </div>
@@ -89,9 +129,15 @@
                     <i class="fas fi fi-rr-exit"></i>
                     <span><a href="../../../TEST_FILES/logout.php">Logout</a></span>
                 </div>
-
             </div>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam pariatur quos sit, voluptate ab quam vero nisi quis distinctio ipsam officia quisquam!
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam pariatur quos sit, voluptate ab quam vero nisi quis distinctio ipsam officia quisquam!
         </div>
     </div>
 </div>
+
+<style>
+    .active {
+        background-color: #303030;
+        color: white;
+    }
+</style>

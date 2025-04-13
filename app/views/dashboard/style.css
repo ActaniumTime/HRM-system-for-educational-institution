@@ -252,7 +252,7 @@ a button{
 
 /* Лёгкое покачивание при наведении */
 .tile:hover {
-    transform: translateY(-4px);
-    background: rgba(255, 255, 255, 0.95);
+    
+    background: rgba(255, 251, 229, 0.95);
 }
 
