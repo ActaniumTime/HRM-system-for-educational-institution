@@ -92,8 +92,9 @@
                             data-course-sectificate=\"{$course->getcertificateID()}\"
                             data-course-hours=\"{$course->getHours()}\"
                             data-course-credit=\"{$course->getCredits()}\"
+                            data-course-status=\"{$course->getCurrentStatus()}\"
                             data-bs-toggle=\"modal\"
-                            data-bs-target=\"#deleteEmployerModal\"
+                            data-bs-target=\"#deleteCourseModal\"
                             title=\"Видалити співробітника\">
 
                             <svg xmlns=\"http://www.w3.org/2000/svg\" id=\"Layer_1\" data-name=\"Layer 1\" viewBox=\"0 0 24 24\" class=\"icon_white no-click\">

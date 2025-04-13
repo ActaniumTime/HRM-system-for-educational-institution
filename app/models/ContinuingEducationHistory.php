@@ -10,14 +10,19 @@
         }
 
         public function loadByID($id){
-            $sql = "SELECT * FROM continuingeducationhistory WHERE coureID = $id";
-            $result = $this->connection->query($sql);
+            $query = "SELECT * FROM continuingeducationhistory WHERE courseID = ?";
+            $stmt = $this->connection->prepare($query); 
+            $stmt->bind_param("i", $id);
+            $stmt->execute();
+            $result = $stmt->get_result();
+        
             if($result->num_rows > 0){
                 $row = $result->fetch_assoc();
                 $this->courseID = $row['courseID'];
                 $this->employerID = $row['employerID'];
             }
         }
+        
 
         public function addNewCourse($courseID, $employerID) {
             $this->courseID = $courseID;
@@ -66,10 +71,15 @@
         }
 
         public function delete(){
-            $sql = "DELETE FROM continuingeducationhistory WHERE courseID = $this->courseID";
-            $this->connection->query($sql);
+            $query = "DELETE FROM continuingeducationhistory WHERE courseID = ?";
+            $stmt = $this->connection->prepare($query);
+            $stmt->bind_param("i", $this->courseID);
+            if($stmt->execute()){
+                return true;
+            } else {
+                return false;
+            }
         }
-
         
     }
 

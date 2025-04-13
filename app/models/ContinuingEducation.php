@@ -134,7 +134,12 @@
             $query = "DELETE FROM ContinuingEducation WHERE courseID = ?";
             $stmt = $this->connection->prepare($query);
             $stmt->bind_param("i", $this->courseID);
-            $stmt->execute();
+            if($stmt->execute()){
+                return true;
+            } else {
+                return false;
+            }
+
         }
 
         public function getAllCourses(){
