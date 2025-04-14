@@ -256,6 +256,35 @@
             return $this->certificateID;
         }
 
+        public function getAllCoursesByIDs($IDs){
+            $query = "SELECT * FROM ContinuingEducation WHERE courseID IN (" . implode(',', array_fill(0, count($IDs), '?')) . ")";
+            $stmt = $this->connection->prepare($query);
+            $types = str_repeat('i', count($IDs));
+            $stmt->bind_param($types, ...$IDs);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $courses = [];
+
+            while($row = $result->fetch_assoc()){
+                $course = new ContinuingEducation($this->connection);
+                $course->courseID = $row['courseID'];
+                $course->employerID = $row['employerID'];
+                $course->courseName = $row['courseName'];
+                $course->organizationName = $row['organizationName'];
+                $course->startingDate = $row['startingDate'];
+                $course->endingDate = $row['endingDate'];
+                $course->currentStatus = $row['currentStatus'];
+                $course->documentID = $row['documentID'];
+                $course->certificateID = $row['certificateID'];
+                $course->hours = $row['hours'];
+                $course->credits = $row['credits'];
+
+                array_push($courses, $course);
+            }
+
+            return  $courses;
+
+        }
     }
 
 ?>

@@ -5,10 +5,20 @@
     error_reporting(E_ALL);
 
     require_once __DIR__ . '/../../../app/models/UserVerify.php';
+    require_once __DIR__ . '/../../../app/models/ContinuingEducation.php';
+    require_once __DIR__ . '/../../../app/models/ContinuingEducationHistory.php';
+    require_once __DIR__ . '/../../../app/models/modals/AddCourse.php';
+    require_once __DIR__ . '/../../../app/models/modals/EditCourses.php';
+    require_once __DIR__ . '../../partials/CoursesManag/modalAddCourses.php';
+    require_once __DIR__ . '../../partials/CoursesManag/modalDeleteCourse.php';
+    require_once __DIR__ . '../../partials/CoursesManag/modalEditCourses.php';
+    
+    require_once __DIR__ . '/../../../app/models/classes/Accreditation.php';
+
+    $employerPage = new Employer($connection);
+    $employerPage->loadByID($_SESSION['employer_ID']);
 
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -27,33 +37,91 @@
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-straight/css/uicons-solid-straight.css'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-bold-rounded/css/uicons-bold-rounded.css'>
     
-
-
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="../../../public/css/sidebarStyle.css">
     <link rel="stylesheet" href="../../../public/css/sidebarStyle2.css">
-    <link rel="stylesheet" href="../../../public/css/personalPageStyles.css">
+    <link rel="stylesheet" href="../../../public/css/addEmpModalStyles.css">
+    <link rel="stylesheet" href="../../../public/css/hints.css">
     <link rel="stylesheet" href="EmpManagTable.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
 </head>
 <body>
-    
+
+
 <div class="page-wrapper">
-<?php  
-    require_once __DIR__ . "../../partials/sideBar.php";
-?>
+    <?php  
+        require_once __DIR__ . "../../partials/sideBar.php";
+    ?>
+
     <div class="content-wrapper">
         <div class="layout-container">
-
-            <div class="temp-line">
-                
+            
+            <div class="temp-line" style="grid-template-columns: auto; margin-top: -10px; margin-bottom: -14px;">
+                <div class="tool-bar-element" >
+                    <?php  
+                        require_once __DIR__ . "/../partials/personalPage/FiltersMenu.php";
+                    ?>
+                </div>
             </div>
+
+            <div class="grid-layout">
+                <div class="left-block">
+
+                    <?php  
+                        require_once __DIR__ . "/../partials/personalPage/PersonalData.php";
+                    ?>
+
+                </div>
+                <div class="right-top">
+
+
+                </div>
+                <div class="right-middle">
+                    <div class="card">
+
+                    </div>
+                </div>
+                <div class="right-bottom">
+
+
+
+
+                </div>
+            </div>
+
+
+
 
         </div>
     </div>
-
-</body>
-
-</html>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- <script src="../../../public/js/AddDeleteUser.js"></script> -->
+ 
+<script src="../../../public/js/tooltip.js"></script>
+
 <script src="../../../public/js/navBar.js"></script>
+
+<script src="../../../public/js/coursesJS/ModalDataTable.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+
+<script>
+    
+    $(document).ready(function() {
+        $('#employeeSelect').select2({
+            dropdownParent: $('#addCourseModal'), // Обеспечивает корректное отображение в модальном окне
+            placeholder: "Введить ПІБ...",
+            allowClear: true,
+            width: '100%'
+        });
+    });
+</script>
+
+</body>
+</html>

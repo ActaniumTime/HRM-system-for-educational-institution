@@ -39,6 +39,25 @@
 
         }
 
+        public function getAllCoursesIDByEmpID($ID){
+            $query = "SELECT courseID FROM continuingeducationhistory WHERE employerID = ?";
+            $stmt = $this->connection->prepare($query);
+            $stmt->bind_param("i", $ID);
+            if($stmt->execute()){
+                $stmt->execute();
+                $result = $stmt->get_result();
+                $courseIDs = array();
+                while($row = $result->fetch_assoc()){
+                    $courseIDs[] = $row['courseID'];
+                }
+                return $courseIDs;
+            }
+            else{
+                return false;
+            }
+
+        }
+
         public function Show(){
             echo "courseID: " . $this->courseID . "<br>";
             echo "employerID: " . $this->employerID . "<br>";
