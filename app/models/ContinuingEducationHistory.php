@@ -39,7 +39,7 @@
 
         }
 
-        public function getAllCoursesIDByEmpID($ID){
+        public function getAllCoursesIDsByEmpID($ID){
             $query = "SELECT courseID FROM continuingeducationhistory WHERE employerID = ?";
             $stmt = $this->connection->prepare($query);
             $stmt->bind_param("i", $ID);

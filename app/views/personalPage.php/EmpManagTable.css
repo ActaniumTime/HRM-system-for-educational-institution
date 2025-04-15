@@ -206,3 +206,24 @@ button:hover {
     background-repeat: no-repeat;
     background-position: calc(100% - 16px) center;
 }
+
+custom-btn {
+    color: #ffffff;
+    background-color: #303030;
+    transition: all 0.3s ease;
+    border: 2px solid #303030;
+}
+
+.custom-btn svg{
+    fill: #ffffff;
+    margin-right: 10px;
+}
+
+.custom-btn:hover {
+    background-color: #ffffff;
+    color: #303030;
+}
+
+.custom-btn:hover svg {
+    fill: #303030;
+}

@@ -317,6 +317,18 @@ class Accreditation{
         return "Не має даних. Додайте дані." ;
     }
 
+    public function getAccreditationByID($connection, $employerID){
+        $sql = "SELECT * FROM accreditation WHERE employerID = ?";
+        $stmt = $connection->prepare($sql);
+        $stmt->bind_param("i", $employerID);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($result->num_rows > 0){
+            return $result->fetch_assoc();
+        }
+        return null;
+    }
+
     public function setEmployerID($employerID){
         $this->employerID = $employerID;
     }

@@ -7,6 +7,7 @@
     require_once __DIR__ . '/../../../app/models/UserVerify.php';
     require_once __DIR__ . '/../../../app/models/ContinuingEducation.php';
     require_once __DIR__ . '/../../../app/models/ContinuingEducationHistory.php';
+    require_once __DIR__ . '/../../../app/models/classes/Accreditation.php';
     require_once __DIR__ . '/../../../app/models/modals/AddCourse.php';
     require_once __DIR__ . '/../../../app/models/modals/EditCourses.php';
     require_once __DIR__ . '../../partials/CoursesManag/modalAddCourses.php';
@@ -58,34 +59,42 @@
         <div class="layout-container">
             
             <div class="temp-line" style="grid-template-columns: auto; margin-top: -10px; margin-bottom: -14px;">
-                <div class="tool-bar-element" >
+                <div class="summary tool-bar-element" >
                     <?php  
                         require_once __DIR__ . "/../partials/personalPage/FiltersMenu.php";
                     ?>
                 </div>
             </div>
 
-            <div class="grid-layout">
-                <div class="left-block">
+            <div class="temp-line grid-layout">
+                <div class="summary left-block">
 
                     <?php  
                         require_once __DIR__ . "/../partials/personalPage/PersonalData.php";
                     ?>
 
                 </div>
-                <div class="right-top">
-
+                <div class="summary right-top">
+                
+                    <?php  
+                        require_once __DIR__ . "/../partials/personalPage/CoursesData.php";
+                    ?>
 
                 </div>
-                <div class="right-middle">
-                    <div class="card">
-
+                <div class="summary right-middle">
+                    <div class="card p-4">
+                        <h5 class="mb-3 text-center">Усі документи користувача</h5>                
+                        <?php  
+                            require_once __DIR__ . "/../partials/personalPage/DocumentData.php";
+                        ?>
                     </div>
                 </div>
-                <div class="right-bottom">
+                <div class="card right-bottom">
+        
+                    <div class="card p-4">
+                        <h5 class="mb-3 text-center">Аккредитація користувача</h5>                
 
-
-
+                    </div>
 
                 </div>
             </div>
@@ -108,6 +117,8 @@
 <script src="../../../public/js/navBar.js"></script>
 
 <script src="../../../public/js/coursesJS/ModalDataTable.js"></script>
+
+<script src="../../../public/js/personalJS/ultimate.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
 

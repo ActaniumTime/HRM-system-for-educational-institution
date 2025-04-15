@@ -257,14 +257,26 @@
         }
 
         public function getAllCoursesByIDs($IDs){
-            $query = "SELECT * FROM ContinuingEducation WHERE courseID IN (" . implode(',', array_fill(0, count($IDs), '?')) . ")";
+            if (empty($IDs)) {
+                return []; // или throw new Exception("Нет курсов для загрузки.");
+            }
+        
+            $placeholders = implode(',', array_fill(0, count($IDs), '?'));
+            $query = "SELECT * FROM ContinuingEducation WHERE courseID IN ($placeholders)";
+            
             $stmt = $this->connection->prepare($query);
+            
+            if (!$stmt) {
+                throw new Exception("Ошибка подготовки запроса: " . $this->connection->error);
+            }
+        
             $types = str_repeat('i', count($IDs));
             $stmt->bind_param($types, ...$IDs);
             $stmt->execute();
+            
             $result = $stmt->get_result();
             $courses = [];
-
+        
             while($row = $result->fetch_assoc()){
                 $course = new ContinuingEducation($this->connection);
                 $course->courseID = $row['courseID'];
@@ -278,13 +290,13 @@
                 $course->certificateID = $row['certificateID'];
                 $course->hours = $row['hours'];
                 $course->credits = $row['credits'];
-
-                array_push($courses, $course);
+        
+                $courses[] = $course;
             }
-
-            return  $courses;
-
+        
+            return $courses;
         }
+        
     }
 
 ?>
