@@ -499,9 +499,6 @@ p {
     grid-area: bottom;
 }
 
-
-
-
 @media (max-width: 1160px) {
     /* Общие стили блоков */
 .left-block,
@@ -521,4 +518,31 @@ p {
             "bottom";
         grid-template-columns: 1fr;
     }
+}
+
+
+/* Адаптивность: уменьшенные отступы для небольших экранов */
+@media (max-width: 768px) {
+    #EditAccreditationModal .accordion-button {
+        padding: 12px 16px;
+    }
+
+    #EditAccreditationModal .accordion-body {
+        padding: 16px;
+    }
+}
+
+.accordion-button::after{
+    background-image: none;
+}
+
+.additionalStyles{
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 36px;
+    border: 1px solid rgba(48, 48, 48, 0.2);
+    padding: 10px 15px;
+    font-size: 14px;
+    color: #303030;
+    box-shadow: none;
+    transition: all 0.3s ease;
 }

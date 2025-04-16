@@ -127,6 +127,28 @@ class Accreditation{
         }
         return $accreditationList;
     }
+
+    public function GetByID($connection, $empID){
+        $sql = "SELECT * FROM accreditation WHERE employerID = ?";
+        $stmt = $connection->prepare($sql);
+        $stmt->bind_param("i", $empID);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $accreditationList = [];
+        if ($result->num_rows > 0){
+            while ($row = $result->fetch_assoc()){
+                $accreditation = new Accreditation($connection);
+                $accreditation->accreditationID = $row['id'];
+                $accreditation->employerID = $row['employerID'];
+                $accreditation->accreditationPlan = json_decode($row['accreditationPlan'], true) ?: [];
+                $accreditation->documentYears = json_decode($row['documentYears'], true) ?: [];
+                $accreditation->finishDay = json_decode($row['finishDay'], true) ?: [];
+                $accreditation->experienceYears = $row['experienceYears'];
+                $accreditationList[] = $accreditation;
+            }
+        }
+        return $accreditationList;
+    }
     
     public function isAccreditedYear($year) {
         return in_array($year, $this->accreditationPlan);
@@ -317,17 +339,6 @@ class Accreditation{
         return "Не має даних. Додайте дані." ;
     }
 
-    public function getAccreditationByID($connection, $employerID){
-        $sql = "SELECT * FROM accreditation WHERE employerID = ?";
-        $stmt = $connection->prepare($sql);
-        $stmt->bind_param("i", $employerID);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        if ($result->num_rows > 0){
-            return $result->fetch_assoc();
-        }
-        return null;
-    }
 
     public function setEmployerID($employerID){
         $this->employerID = $employerID;

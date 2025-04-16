@@ -207,7 +207,7 @@ button:hover {
     background-position: calc(100% - 16px) center;
 }
 
-custom-btn {
+.custom-btn {
     color: #ffffff;
     background-color: #303030;
     transition: all 0.3s ease;
@@ -222,8 +222,112 @@ custom-btn {
 .custom-btn:hover {
     background-color: #ffffff;
     color: #303030;
+    border: 2px solid #303030;
+    transition: all 0.3s ease;
 }
 
 .custom-btn:hover svg {
     fill: #303030;
+}
+
+
+#currentYear{
+    background:rgb(255, 248, 218);
+}
+
+
+
+/* Улучшенная стилизация аккордеонов в модальном окне */
+#EditAccreditationModal .accordion {
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 36px;
+    box-shadow: 0 6px 16px rgba(48, 48, 48, 0.12);
+    overflow: hidden;
+    transition: box-shadow 0.2s ease, background 0.3s ease, border-radius 0.4s ease;
+}
+
+/* Улучшенные заголовки аккордеонов */
+#EditAccreditationModal .accordion-header {
+    border: none;
+}
+
+/* Кнопка-спойлер аккордеона */
+#EditAccreditationModal .accordion-button {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(240, 240, 240, 0.6));
+    color: #303030;
+    font-weight: bold;
+    border-radius: 36px;
+    padding: 14px 24px;
+    transition: 
+        background 0.2s ease, 
+        box-shadow 0.2s ease, 
+        transform 0.2s ease, 
+        border-radius 0.4s ease, 
+        color 0.2s ease;
+}
+
+/* Стилизация стрелки (иконки) */
+#EditAccreditationModal .accordion-button::after {
+    content: "";
+    width: 12px;
+    height: 12px;
+    border-right: 2px solid #303030; /* Исходный цвет стрелки */
+    border-bottom: 2px solid #303030; /* Исходный цвет стрелки */
+    transform: rotate(45deg);
+    margin-left: auto;
+    transition: transform 0.3s ease, border-color 0.3s ease; /* Плавное вращение и смена цвета */
+}
+
+/* Эффект при наведении на кнопку-спойлер */
+#EditAccreditationModal .accordion-button:hover {
+    background: #303030;
+    color: white;
+    box-shadow: 0 4px 12px rgba(48, 48, 48, 0.15);
+}
+
+/* Изменение цвета стрелки при наведении */
+#EditAccreditationModal .accordion-button:hover::after {
+    border-color: white; /* Белая стрелка при наведении */
+}
+
+/* Активный (раскрытый) аккордеон */
+#EditAccreditationModal .accordion-button:not(.collapsed) {
+    background: #303030;
+    color: white;
+    box-shadow: none;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+/* Поворот стрелки в раскрытом состоянии */
+#EditAccreditationModal .accordion-button:not(.collapsed)::after {
+    transform: rotate(-135deg);
+    border-color: white; /* Белая стрелка в раскрытом состоянии */
+}
+
+/* Тело (контент) аккордеона */
+#EditAccreditationModal .accordion-body {
+    padding: 24px;
+    background: rgba(255, 255, 255, 0.6);
+    border-top: 1px solid rgba(48, 48, 48, 0.1);
+    border-bottom-left-radius: 36px;
+    border-bottom-right-radius: 36px;
+    transition: background 0.3s ease, border-radius 0.4s ease;
+}
+
+/* Плавная анимация открытия/закрытия */
+#EditAccreditationModal .accordion-collapse {
+    transition: height 0.35s cubic-bezier(0.4, 0, 0.2, 1), border-radius 0.4s ease;
+}
+
+/* Убираем стандартную рамку при фокусе */
+#EditAccreditationModal .accordion-button:focus {
+    box-shadow: none;
+}
+
+/* Состояние при активном фокусе (доступность) */
+#EditAccreditationModal .accordion-button:focus-visible {
+    outline: 2px solid #303030;
+    outline-offset: 4px;
+    border-radius: 40px;
 }

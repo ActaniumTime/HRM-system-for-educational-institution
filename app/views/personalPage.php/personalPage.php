@@ -13,6 +13,7 @@
     require_once __DIR__ . '../../partials/CoursesManag/modalAddCourses.php';
     require_once __DIR__ . '../../partials/CoursesManag/modalDeleteCourse.php';
     require_once __DIR__ . '../../partials/CoursesManag/modalEditCourses.php';
+    require_once __DIR__ . '../../partials/personalPage/modalAccreditationDetail.php';
     
     require_once __DIR__ . '/../../../app/models/classes/Accreditation.php';
 
@@ -49,7 +50,6 @@
 </head>
 <body>
 
-
 <div class="page-wrapper">
     <?php  
         require_once __DIR__ . "../../partials/sideBar.php";
@@ -66,36 +66,32 @@
                 </div>
             </div>
 
-
             <div class="grid-layout">
                 <div class="left-block">
-
                     <?php  
                         require_once __DIR__ . "/../partials/personalPage/PersonalData.php";
                     ?>
-
                 </div>
+
                 <div class="right-top">
-                
                     <?php  
                         require_once __DIR__ . "/../partials/personalPage/CoursesData.php";
                     ?>
-
                 </div>
+
                 <div class="right-middle">
+                    <?php  
+                        require_once __DIR__ . "/../partials/personalPage/AccreditationData.php";
+                    ?>
+                </div>
+
+                <div class="right-bottom">
                     <div class="card p-4">
                         <h5 class="mb-3 text-center">Усі документи користувача</h5>                
                         <?php  
                             require_once __DIR__ . "/../partials/personalPage/DocumentData.php";
                         ?>
                     </div>
-                </div>
-                <div class="right-bottom">
-        
-                    <?php  
-                        require_once __DIR__ . "/../partials/personalPage/CoursesData1.php";
-                    ?>
-
                 </div>
             </div>
 
