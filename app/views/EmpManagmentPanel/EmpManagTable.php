@@ -76,7 +76,7 @@
 
 
                 <div class="summary">
-                <?php require_once __DIR__ . "../../partials/EmpManagPartial/tableEmp.php"; ?>
+                    <?php require_once __DIR__ . "../../partials/EmpManagPartial/tableEmp.php"; ?>
                 </div>
 
 

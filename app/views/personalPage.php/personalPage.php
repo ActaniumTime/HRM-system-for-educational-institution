@@ -66,22 +66,23 @@
                 </div>
             </div>
 
-            <div class="temp-line grid-layout">
-                <div class="summary left-block">
+
+            <div class="grid-layout">
+                <div class="left-block">
 
                     <?php  
                         require_once __DIR__ . "/../partials/personalPage/PersonalData.php";
                     ?>
 
                 </div>
-                <div class="summary right-top">
+                <div class="right-top">
                 
                     <?php  
                         require_once __DIR__ . "/../partials/personalPage/CoursesData.php";
                     ?>
 
                 </div>
-                <div class="summary right-middle">
+                <div class="right-middle">
                     <div class="card p-4">
                         <h5 class="mb-3 text-center">Усі документи користувача</h5>                
                         <?php  
@@ -89,12 +90,11 @@
                         ?>
                     </div>
                 </div>
-                <div class="card right-bottom">
+                <div class="right-bottom">
         
-                    <div class="card p-4">
-                        <h5 class="mb-3 text-center">Аккредитація користувача</h5>                
-
-                    </div>
+                    <?php  
+                        require_once __DIR__ . "/../partials/personalPage/CoursesData1.php";
+                    ?>
 
                 </div>
             </div>

@@ -471,13 +471,12 @@ p {
 .grid-layout {
     display: grid;
     grid-template-areas:
-        "left right-top"
-        "left right-middle"
-        "left right-bottom";
-    grid-template-columns: 1fr 3fr;
+        "left top top"
+        "left middle middle"
+        "bottom bottom bottom";
+    grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: auto auto auto;
     gap: 20px;
-    height: 100%;
     padding: 20px;
     border-radius: 20px;
 }
@@ -489,41 +488,37 @@ p {
 }
 
 .right-top {
-    grid-area: right-top;
+    grid-area: top;
 }
 
 .right-middle {
-    grid-area: right-middle;
+    grid-area: middle;
 }
 
 .right-bottom {
-    grid-area: right-bottom;
+    grid-area: bottom;
 }
 
-/* Адаптация под планшеты */
-@media (max-width: 992px) {
+
+
+
+@media (max-width: 1160px) {
+    /* Общие стили блоков */
+.left-block,
+.right-top,
+.right-middle,
+.right-bottom {
+    box-sizing: border-box;
+    min-width: 0;
+    overflow-wrap: break-word;
+}
+
     .grid-layout {
         grid-template-areas:
             "left"
-            "right-top"
-            "right-middle"
-            "right-bottom";
+            "top"
+            "middle"
+            "bottom";
         grid-template-columns: 1fr;
-        grid-template-rows: auto;
-    }
-}
-
-/* Адаптация под телефоны */
-@media (max-width: 576px) {
-    .grid-layout {
-        padding: 10px;
-        gap: 12px;
-    }
-
-    .left-block,
-    .right-top,
-    .right-middle,
-    .right-bottom {
-        border-radius: 24px;
     }
 }

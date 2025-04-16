@@ -10,7 +10,7 @@
             </div>
         </div>
 
-        <div class="col-md-9">
+        <div class="col-md-9" style="width: 100%;">
             <table class="table align-middle">
                 <tbody>
 
