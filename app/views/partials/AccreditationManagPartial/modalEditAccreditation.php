@@ -427,8 +427,8 @@
         const button = event.target.closest('.docViewBtn');
         if (button) {
             const docID = button.getAttribute('data-documentID');
-            
-        }window.open(`../../../app/models/GetData/getDocument.php?documentID=${docID}`, '_blank');
+            window.open(`../../../app/models/GetData/getDocument.php?documentID=${docID}`, '_blank');
+        }
     });
 });
 

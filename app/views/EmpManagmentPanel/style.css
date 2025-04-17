@@ -474,3 +474,111 @@ p {
     background:rgba(255, 248, 218, 0.66);
     padding: 25px;
 }
+
+.positionManag{
+
+}
+
+.positionManag {
+    fill: #303030;
+    background: transparent; 
+    border: none;
+    cursor: pointer;
+}
+
+.positionManag:hover {
+    background-color: #303030;
+    transform: scale(1);
+    box-shadow: none;
+}
+
+.positionManag:hover .icon_white {
+    fill: white; 
+    box-shadow: none;
+}
+
+/* Стилизация Select2 */
+.select2-container .select2-selection--single {
+    background: rgba(255, 255, 255, 0.6) !important;
+    border-radius: 36px !important;
+    border: 1px solid rgba(48, 48, 48, 0.2)!important;
+    height: 50px !important;
+    display: flex !important;
+    align-items: center !important;
+    padding: 10px 16px !important;
+    font-size: 14px !important;
+    color: #303030 !important;
+    transition: all 0.3s ease !important;
+}
+
+.select2-container .select2-selection--single:focus {
+    border-color: #ffc825 !important;
+    outline: none !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    color: #303030 !important;
+    font-size: 14px !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    height: 100% !important;
+    right: 16px !important;
+}
+
+.select2-dropdown {
+    background: rgba(255, 255, 255, 0.95) !important;
+    border: 1px solid rgba(48, 48, 48, 0.2) !important;
+    border-radius: 20px !important;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1) !important;
+}
+
+.select2-container--default .select2-results__option {
+    padding: 12px !important;
+    font-size: 14px !important;
+    color: #303030 !important;
+    transition: background 0.3s ease !important;
+    border-radius: 20px !important;
+}
+
+.select2-container--default .select2-results__option:hover {
+    background: #ffc825 !important;
+    color: #303030 !important;
+}
+
+/* Стилизация поиска в Select2 */
+.select2-container--default .select2-search--dropdown .select2-search__field {
+    background: rgba(255, 255, 255, 0.6) !important;
+    border-radius: 36px !important;
+    border: 1px solid rgba(48, 48, 48, 0.2) !important;
+    padding: 10px 16px !important;
+    font-size: 14px !important;
+    color: #303030 !important;
+    transition: all 0.3s ease !important;
+    outline: none !important;
+    width: 100% !important;
+}
+
+.select2-container--default .select2-search--dropdown .select2-search__field:focus {
+    border-color: #ffc825 !important;
+}
+
+/* Убираем стандартные стрелки */
+.select2-container--default .select2-selection--single .select2-selection__arrow b {
+    display: none !important;
+}
+
+.select2-container--default .select2-selection--single {
+    background-color: #fff !important;
+    border: 1px solid #aaa !important;
+    border-radius: 36px !important;
+}
+
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+    background-color: #ffc825 !important;
+    color: 303030 !important;
+}
+
+.modal-dialog.modal-xxl {
+    max-width: 75vw; /* Почти вся ширина экрана */
+  }

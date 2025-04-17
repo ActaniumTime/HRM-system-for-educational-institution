@@ -68,7 +68,7 @@ class EmployerPosition {
         }
         return $list;
     }
-
+    
     public function getByEmployerID($empID) {
         $sql = "SELECT * FROM employer_positions WHERE employerID = ?";
         $stmt = $this->connection->prepare($sql);

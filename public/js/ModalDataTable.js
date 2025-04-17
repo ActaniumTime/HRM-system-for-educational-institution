@@ -1,11 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Используем делегирование событий на весь документ
     document.addEventListener('click', (event) => {
-        // Проверяем, что клик был по кнопке с классом .editEmployerBtn
         if (event.target && event.target.classList.contains('editEmployerBtn')) {
-            console.log("JS work 2");
 
-            // Получаем все атрибуты из кнопки
+
             const employerAvatar = event.target.getAttribute('data-employer-avatar');
             const employerID = event.target.getAttribute('data-employer-id');
             const accessLevelID = event.target.getAttribute('data-access-level-id');
@@ -24,12 +21,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const dateFired = event.target.getAttribute('data-date-fired');
             const admissionBasis = event.target.getAttribute('data-admission-basis');
             const employmentType = event.target.getAttribute('data-employment-type');
-            
-            // Обновляем элементы в модальном окне
+
             const photoElement = document.getElementById('employerAvatar');
             photoElement.src = employerAvatar;
 
-            // Заполняем поля формы
             document.getElementById('employerAvatar').value = employerAvatar;
             document.getElementById('employerID').value = employerID;
             document.getElementById('accessLevelID').value = accessLevelID;
@@ -48,6 +43,26 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('dateFired').value = dateFired;
             document.getElementById('admissionBasis').value = admissionBasis;
             document.getElementById('employmentType').value = employmentType;
+        }
+    });
+
+
+
+
+    document.addEventListener('click', (event) => {
+        if (event.target && event.target.classList.contains('positionManag')) {
+
+            const employerID = event.target.getAttribute('data-employer-id');
+            const name = event.target.getAttribute('data-name');
+            const surname = event.target.getAttribute('data-surname');
+            const fathername = event.target.getAttribute('data-fathername');
+
+            document.getElementById('employerID__positionAddForm').value = employerID;
+            document.getElementById('name_positionAddForm').value = name;
+            document.getElementById('surname_positionAddForm').value = surname;
+            document.getElementById('fathername_positionAddForm').value = fathername;
+
+            
         }
     });
 });

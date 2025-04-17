@@ -93,9 +93,8 @@
             $query = "SELECT * FROM positions";
             $result = $connection->query($query);
             $positions = [];
-
             while($row = $result->fetch_assoc()){
-                $position = new Position(connection: $connection);
+                $position = new Position($connection);
                 $position->positionID = $row['positionID'];
                 $position->positionName = $row['positionName'];
                 $position->positionLevel = $row['positionLevel'];

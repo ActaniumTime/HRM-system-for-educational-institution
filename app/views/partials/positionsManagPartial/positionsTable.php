@@ -25,8 +25,6 @@
                     $positionsList = $tempPos->getAllPosition($connection);
                     $counter = 1;
 
-
-
                     foreach ($positionsList as $position)
                     {   
                         echo "<tr class=\"table-row\">";

@@ -32,7 +32,7 @@
                         </div>
 
                         <div class="mb-3 col-md-6">
-                        <label for="name" class="form-label">Ім'я</label>
+                            <label for="name" class="form-label">Ім'я</label>
                             <input type="text" class="form-control" id="name" name="name" placeholder="Введить ім'я...">
                         </div>
                         <div class="mb-3 col-md-6">

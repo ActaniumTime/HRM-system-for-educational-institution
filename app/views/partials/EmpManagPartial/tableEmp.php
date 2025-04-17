@@ -31,7 +31,6 @@
                 $EmployersList = $emp->getAll($connection);
                 $counter = 1;
 
-
                 foreach ($EmployersList as $employer)
                 {   
                     $AccID = $employer->getAccessLevelID();
@@ -65,7 +64,9 @@
                     echo "<td>{$employer->getDateAccepted()}</td>";
                     echo "<td>{$employer->getDateFired()}</td>";
                     echo "<td>{$employer->getEmploymentType()}</td>";   
-                    echo "<td class=\"d-flex\" style=\"border-radius:  0px 36px 36px 0px ;\">";
+                    echo "<td style=\"border-radius:  0px 36px 36px 0px ;\">";
+
+                    echo "<div class=\"d-flex\">";
                     echo "<button type=\"button\" class=\"editEmployerBtn \" 
                             data-employer-avatar=\"../../../Files/photos/{$employer->getAvatar()}\"
                             data-employer-id=\"{$employer->getEmployerID()}\"
@@ -136,9 +137,15 @@
 
                         </button>";
 
-                    echo "<button type=\"button\" class=\"Info-button\" 
+                    echo "<button type=\"button\" class=\"positionManag\" 
                             data-employer-id=\"{$employer->getEmployerID()}\"
                             data-bs-toggle=\"modal\"
+                            data-bs-target=\"#positionManagModal\"
+                            data-employer-id=\"{$employer->getEmployerID()}\"
+                            data-access-level-id=\"{$employer->getAccessLevelID()}\"
+                            data-name=\"{$employer->getName()}\"
+                            data-surname=\"{$employer->getSurname()}\"
+                            data-fathername=\"{$employer->getFathername()}\"
                             title=\"Керування позиціями та ЗП \">
 
                             <svg xmlns=\"http://www.w3.org/2000/svg\" id=\"Layer_1\" data-name=\"Layer 1\" viewBox=\"0 0 24 24\" class=\"icon_white no-click\">
@@ -147,13 +154,8 @@
 
                         </button>";
                     
-                    
+                    echo "</div>";
                     echo "</td>";
-
-                    
-                    
-                    
-                    
                     echo "</tr>";
                 }
 

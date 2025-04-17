@@ -11,6 +11,10 @@
     require_once __DIR__ . '/../../../app/models/modals/deleteEndpoint.php';
     require_once __DIR__ . '../../partials/modals/modalAddEmp.php';
 
+    require_once __DIR__ . '/../../../app/models/Position.php';
+    require_once __DIR__ . '/../../../app/models/EmployerPositions.php';
+
+    require_once __DIR__ . '../../partials/EmpManagPartial/modalEmpPositionManag.php';
 ?>
 
 <!DOCTYPE html>
@@ -30,14 +34,14 @@
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-straight/css/uicons-solid-straight.css'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-bold-rounded/css/uicons-bold-rounded.css'>
     
-
-
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="../../../public/css/sidebarStyle.css">
     <link rel="stylesheet" href="../../../public/css/sidebarStyle2.css">
     <link rel="stylesheet" href="../../../public/css/addEmpModalStyles.css">
     <link rel="stylesheet" href="../../../public/css/hints.css">
     <link rel="stylesheet" href="EmpManagTable.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
 </head>
 <body>
 
@@ -91,7 +95,15 @@
     </div>
 </div>
 
+
+</body>
+</html>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
 
 <script src="../../../public/js/AddDeleteUser.js"></script>
 
@@ -105,5 +117,16 @@
 
 <script src="../../../public/js/navBar.js"></script>
 
-</body>
-</html>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+
+<script>
+    
+    $(document).ready(function() {
+        $('#employeeSelect').select2({
+            dropdownParent: $('#positionManagModal'), // Обеспечивает корректное отображение в модальном окне
+            placeholder: "Оберить позицію...",
+            allowClear: true,
+            width: '100%'
+        });
+    });
+</script>
