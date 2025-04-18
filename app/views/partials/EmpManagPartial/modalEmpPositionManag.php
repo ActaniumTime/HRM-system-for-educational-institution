@@ -25,6 +25,9 @@
                     ini_set('display_startup_errors', 1);
                     error_reporting(E_ALL);
 
+                    // $tempHistory = new EmployerPosition($connection);
+                    // $tempHistory->getByEmployerID()
+
                     $tempPos = new Position($connection);
                     $positionsList[] = new Position($connection);
                     $positionsList = $tempPos->getAllPosition($connection);
