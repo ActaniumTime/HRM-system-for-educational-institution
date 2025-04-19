@@ -70,27 +70,21 @@ class EmployerPosition {
     }
     
     public function getByEmployerID($empID) {
-        $sql = "SELECT * FROM employer_positions WHERE employerID = ?";
+        $sql = "SELECT positionID FROM employer_positions WHERE employerID = ?";
         $stmt = $this->connection->prepare($sql);
         $stmt->bind_param("i", $empID);
         $stmt->execute();
         $result = $stmt->get_result();
         $list = [];
-        if ($result->num_rows > 0){
-            while ($row = $result->fetch_assoc()){
-                $item = new EmployerPosition($this->connection);
-                $item->employerPositionID = $row['employerPositionID'];
-                $item->employerID = $row['employerID'];
-                $item->positionID = $row['positionID'];
-                $item->documentID = $row['documentID'];
-                $list[] = $item;
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $list[] = $row['positionID'];
             }
         }
         $stmt->close();
         return $list;
     }
 
-    // Getters
     public function getEmployerPositionID() {
         return $this->employerPositionID;
     }

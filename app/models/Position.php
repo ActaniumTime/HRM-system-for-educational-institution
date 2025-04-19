@@ -107,6 +107,28 @@
             return $positions;
         }
 
+        public function getAllPositionBy($connection, $empIDs){
+            $query = "SELECT * FROM positions WHERE positionID IN (" . implode(',', array_fill(0, count($empIDs), '?')) . ")";
+            $stmt = $connection->prepare($query);
+            $stmt->bind_param(str_repeat('i', count($empIDs)), ...$empIDs);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $positions = [];
+
+            while ($row = $result->fetch_assoc()) {
+                $position = new Position($connection);
+                $position->positionID = $row['positionID'];
+                $position->positionName = $row['positionName'];
+                $position->positionLevel = $row['positionLevel'];
+                $position->positionRequirements = $row['positionRequirements'];
+                $position->salary = $row['salary'];
+                $position->documentID = $row['documentID'];
+
+                $positions[] = $position;
+            }
+            return $positions;
+        }
+
         public function deletePosition($id){
             $query = "DELETE FROM positions WHERE positionID = ?";
             $stmt = $this->connection->prepare($query);

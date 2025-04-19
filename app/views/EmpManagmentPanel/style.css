@@ -585,7 +585,7 @@ p {
 
 
   /* Улучшенная стилизация аккордеонов в модальном окне */
-#EditAccreditationModal .accordion {
+#positionManagModal .accordion {
     background: rgba(255, 255, 255, 0.7);
     border-radius: 36px;
     box-shadow: 0 6px 16px rgba(48, 48, 48, 0.12);
@@ -594,12 +594,12 @@ p {
 }
 
 /* Улучшенные заголовки аккордеонов */
-#EditAccreditationModal .accordion-header {
+#positionManagModal .accordion-header {
     border: none;
 }
 
 /* Кнопка-спойлер аккордеона */
-#EditAccreditationModal .accordion-button {
+#positionManagModal .accordion-button {
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(240, 240, 240, 0.6));
     color: #303030;
     font-weight: bold;
@@ -614,7 +614,7 @@ p {
 }
 
 /* Стилизация стрелки (иконки) */
-#EditAccreditationModal .accordion-button::after {
+#positionManagModal .accordion-button::after {
     content: "";
     width: 12px;
     height: 12px;
@@ -626,19 +626,19 @@ p {
 }
 
 /* Эффект при наведении на кнопку-спойлер */
-#EditAccreditationModal .accordion-button:hover {
+#positionManagModal .accordion-button:hover {
     background: #303030;
     color: white;
     box-shadow: 0 4px 12px rgba(48, 48, 48, 0.15);
 }
 
 /* Изменение цвета стрелки при наведении */
-#EditAccreditationModal .accordion-button:hover::after {
+#positionManagModal .accordion-button:hover::after {
     border-color: white; /* Белая стрелка при наведении */
 }
 
 /* Активный (раскрытый) аккордеон */
-#EditAccreditationModal .accordion-button:not(.collapsed) {
+#positionManagModal .accordion-button:not(.collapsed) {
     background: #303030;
     color: white;
     box-shadow: none;
@@ -647,13 +647,13 @@ p {
 }
 
 /* Поворот стрелки в раскрытом состоянии */
-#EditAccreditationModal .accordion-button:not(.collapsed)::after {
+#positionManagModal .accordion-button:not(.collapsed)::after {
     transform: rotate(-135deg);
     border-color: white; /* Белая стрелка в раскрытом состоянии */
 }
 
 /* Тело (контент) аккордеона */
-#EditAccreditationModal .accordion-body {
+#positionManagModal .accordion-body {
     padding: 24px;
     background: rgba(255, 255, 255, 0.6);
     border-top: 1px solid rgba(48, 48, 48, 0.1);
@@ -663,17 +663,17 @@ p {
 }
 
 /* Плавная анимация открытия/закрытия */
-#EditAccreditationModal .accordion-collapse {
+#positionManagModal .accordion-collapse {
     transition: height 0.35s cubic-bezier(0.4, 0, 0.2, 1), border-radius 0.4s ease;
 }
 
 /* Убираем стандартную рамку при фокусе */
-#EditAccreditationModal .accordion-button:focus {
+#positionManagModal .accordion-button:focus {
     box-shadow: none;
 }
 
 /* Состояние при активном фокусе (доступность) */
-#EditAccreditationModal .accordion-button:focus-visible {
+#positionManagModal .accordion-button:focus-visible {
     outline: 2px solid #303030;
     outline-offset: 4px;
     border-radius: 40px;
@@ -681,11 +681,11 @@ p {
 
 /* Адаптивность: уменьшенные отступы для небольших экранов */
 @media (max-width: 768px) {
-    #EditAccreditationModal .accordion-button {
+    #positionManagModal .accordion-button {
         padding: 12px 16px;
     }
 
-    #EditAccreditationModal .accordion-body {
+    #positionManagModal .accordion-body {
         padding: 16px;
     }
 }

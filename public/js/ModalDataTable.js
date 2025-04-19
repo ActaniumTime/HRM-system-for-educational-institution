@@ -65,4 +65,52 @@ document.addEventListener('DOMContentLoaded', () => {
             
         }
     });
+
+
+    document.getElementById('employeeTable').addEventListener('click', event => {
+        const button8 = event.target.closest('.positionManag');
+        if (button8) {
+            const employerID  = button8.getAttribute('data-employer-id');
+            fetchPositionsByEmployer(employerID);
+        }
+    });
 });
+
+
+
+function fetchPositionsByEmployer(employerID) {
+    fetch(`../../../app/models/GetData/getPersonalPositionTable.php?employerID=${employerID}`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Positions:', data);
+            updatePositionsTable(data); // можешь написать функцию для отрисовки данных в таблице
+        })
+        .catch(error => {
+            console.error('Ошибка парсинга JSON:', error);
+            console.error('Ответ от сервера:', data); // ← покажет ошибку сервера
+        });
+}
+
+function updatePositionsTable(positions) {
+    const tableBody = document.getElementById('positionsTable');
+    tableBody.innerHTML = ''; // Очистка перед вставкой новых строк
+
+    positions.forEach((position, index) => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <th scope="row">${index + 1}</th>
+            <td>${position.positionName}</td>
+            <td>${position.positionLevel}</td>
+            <td>${position.salary}</td>
+            <td>${position.positionRequirements}</td>
+            <td class="d-flex">
+            </td>
+        `;
+        tableBody.appendChild(row);
+    });
+}
