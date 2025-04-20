@@ -49,12 +49,10 @@
             $query = "INSERT INTO Positions (positionName, positionLevel, positionRequirements, salary, documentID) VALUES (?, ?, ?, ?, ?)";
             $stmt = $this->connection->prepare($query);
             $stmt->bind_param("sssis", $this->positionName, $this->positionLevel, $this->positionRequirements, $this->salary, $this->documentID);
-            $flag = false;
-            if ($stmt->execute())
-                $flag = true;
+            $stmt->execute();
+            $positionID = $stmt->insert_id;
             $stmt->close();
-            return $flag;
-
+            return $positionID;
 
         }
 

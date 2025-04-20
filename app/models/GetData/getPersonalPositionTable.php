@@ -27,7 +27,8 @@
                 'positionLevel'=> $tempPosition->getPositionLevel(),
                 'positionRequirements' => $tempPosition->getPositionRequirements(),
                 'salary' => $tempPosition->getSalary(),
-                'documentID' => $tempPosition->getDocumentID()
+                'documentID' => $tempPosition->getDocumentID(),
+                'empID' =>$employerID
             ];
         }
 

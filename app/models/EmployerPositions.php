@@ -36,6 +36,23 @@ class EmployerPosition {
         $stmt->close();
     }
 
+    public function AddNewPosition($employerID, $positionID, $documentID) {
+        $this->employerID = $employerID;
+        $this->positionID = $positionID;
+
+        $query = "INSERT INTO employer_positions (employerID, positionID) VALUES (?, ?)";
+        $stmt = $this->connection->prepare($query);
+        $stmt->bind_param("ii", $this->employerID, $this->positionID);
+        $stmt->execute();
+        if($stmt->close()){
+            return true;
+        }
+        else{
+            return false;
+        }
+        
+    }
+
     public function update() {
         $query = "UPDATE employer_positions SET employerID = ?, positionID = ?, documentID = ? WHERE employerPositionID = ?";
         $stmt = $this->connection->prepare($query);

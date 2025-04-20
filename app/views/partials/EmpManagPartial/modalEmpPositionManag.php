@@ -66,27 +66,27 @@
                                     <div class="file-attach">
                                         <div class="mb-3 col-md-12" >
                                             <label for="uploadPDF" class="form-label">Додати файл із прохожденням курсів/стажировки</label>
-                                            <input type="file" class="form-control" id="uploadPDF_positionAddForm" name="confirmationFile_AddForm" accept=".pdf" required >
+                                            <input type="file" class="form-control" id="uploadPDF_positionAddForm" name="confirmationFile_positionAddForm" accept=".pdf" required >
                                         </div>
                                         <div class="row">
                                             <div class="mb-3 col-md-6">
                                                 <label for="employeeSelect" class="form-label">Назва документу</label>
-                                                <input type="text" class="form-control" id="docName_positionAddForm" name="docName_AddForm" placeholder="Постанова про створення позиції..." required>
+                                                <input type="text" class="form-control" id="docName_positionAddForm" name="docName_positionAddForm" placeholder="Постанова про створення позиції..." required>
                                             </div>
                                             <div class="mb-3 col-md-6">
                                                 <label for="department" class="form-label">Ради</label>
-                                                <select class="form-control" id="sphere_positionAddForm" name="sphere_AddForm" required placeholder="Адмінастративна...">
+                                                <select class="form-control" id="sphere_positionAddForm" name="sphere_positionAddForm" required placeholder="Адмінастративна...">
                                                     <option value="Адмінастративна">Адмінастративна</option>
                                                     <option value="Навчальна">Навчальна</option>
                                                 </select>
                                             </div>
                                             <div class="mb-3 col-md-6">
                                                 <label for="currentSalary" class="form-label">Призначення</label>
-                                                <input type="text" class="form-control" id="purpose_positionAddForm" name="purpose_AddForm" placeholder="Наказ про створення нової посади..." required >
+                                                <input type="text" class="form-control" id="purpose_positionAddForm" name="purpose_positionAddForm" placeholder="Наказ про створення нової посади..." required >
                                             </div>
                                             <div class="mb-3 col-md-6">
                                                 <label for="department" class="form-label">Тип документа</label>
-                                                <select class="form-control" id="docType_positionAddForm" name="docType_AddForm" required>
+                                                <select class="form-control" id="docType_positionAddForm" name="docType_positionAddForm" required>
                                                     <option value="Прохождення курсів">Прохождення курсів</option>
                                                     <option value="Прохождення стажировки">Прохождення стажировки</option>
                                                 </select>
@@ -141,7 +141,7 @@ document.getElementById('positionManagModal_AddForm').addEventListener('submit',
 
     console.log('Отправляемые данные:', jsonData);
 
-    fetch('../../../app/models/modals/AddCourse.php', {
+    fetch('../../../app/models/modals/AddPersonalPosition.php', {
         method: 'POST',
         body: formData, 
     })

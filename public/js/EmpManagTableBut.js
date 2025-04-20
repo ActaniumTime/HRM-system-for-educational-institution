@@ -90,7 +90,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         <td>${employer.dateAccepted}</td>
                         <td>${employer.dateFired}</td>
                         <td>${employer.employmentType}</td>
-                        <td class=\"d-flex\">
+                        <div class=\"d-flex\">
+                        <td>
                             <button type="button" class="btn btn-primary editEmployerBtn" 
                                 data-employer-avatar="../../../Files/photos/${employer.avatar}"
                                 data-employer-id="${employer.employerID}"
@@ -122,6 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 data-employer-id="${employer.employerID}"
                                 data-bs-toggle=\"modal\"
                                 data-bs-target=\"#deleteEmployerModal\">
+                                title=\"До сторінки співробітника \">
                                 <svg xmlns=\"http://www.w3.org/2000/svg\" id=\"Layer_1\" data-name=\"Layer 1\" viewBox=\"0 0 24 24\" class=\"icon_white no-click\">
                                 <path d=\"m23,12h-6c-.553,0-1-.447-1-1s.447-1,1-1h6c.553,0,1,.447,1,1s-.447,1-1,1Zm-1,4c0-.553-.447-1-1-1h-4c-.553,0-1,.447-1,1s.447,1,1,1h4c.553,0,1-.447,1-1Zm-2,5c0-.553-.447-1-1-1h-2c-.553,0-1,.447-1,1s.447,1,1,1h2c.553,0,1-.447,1-1Zm-4.344,2.668c-.558.213-1.162.332-1.795.332h-5.728c-2.589,0-4.729-1.943-4.977-4.521L1.86,6h-.86c-.552,0-1-.447-1-1s.448-1,1-1h4.101C5.566,1.721,7.586,0,10,0h2c2.414,0,4.434,1.721,4.899,4h4.101c.553,0,1,.447,1,1s-.447,1-1,1h-.886l-.19,2h-2.925c-1.654,0-3,1.346-3,3,0,1.044.537,1.962,1.348,2.5-.811.538-1.348,1.456-1.348,2.5s.537,1.962,1.348,2.5c-.811.538-1.348,1.456-1.348,2.5,0,1.169.678,2.173,1.656,2.668Zm-.84-19.668c-.414-1.161-1.514-2-2.816-2h-2c-1.302,0-2.402.839-2.816,2h7.631Z\"/>
                                 </svg>
@@ -130,6 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <button type=\"button\" class=\"Info-button\"
                                 data-employer-id="${employer.employerID}"
                                 data-bs-toggle=\"modal\">
+                                title=\"Керування позиціями та ЗП \">
                                 <svg xmlns=\"http://www.w3.org/2000/svg\" id=\"Layer_1\" data-name=\"Layer 1\" viewBox=\"0 0 24 24\" class=\"icon_white no-click\">
                                 <path d=\"M12.836.028A12,12,0,0,0,.029,12.855C.47,19.208,6.082,24,13.083,24H19a5.006,5.006,0,0,0,5-5V12.34A12.209,12.209,0,0,0,12.836.028ZM12,5a1.5,1.5,0,0,1,0,3A1.5,1.5,0,0,1,12,5Zm2,13a1,1,0,0,1-2,0V12H11a1,1,0,0,1,0-2h1a2,2,0,0,1,2,2Z\"/>
                                 </svg>
@@ -148,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             </button>;
 
 
-
+                        </div>
 
 
                         </td>
