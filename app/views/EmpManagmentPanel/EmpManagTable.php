@@ -15,6 +15,7 @@
     require_once __DIR__ . '/../../../app/models/EmployerPositions.php';
 
     require_once __DIR__ . '../../partials/EmpManagPartial/modalEmpPositionManag.php';
+    require_once __DIR__ . '../../partials/EmpManagPartial/deletePositionModal.php';
 ?>
 
 <!DOCTYPE html>

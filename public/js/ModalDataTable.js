@@ -68,10 +68,11 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('name_positionAddForm').value = name;
             document.getElementById('surname_positionAddForm').value = surname;
             document.getElementById('fathername_positionAddForm').value = fathername;
-
-            
         }
     });
+
+
+
 
 
     document.getElementById('employeeTable').addEventListener('click', event => {
@@ -81,6 +82,30 @@ document.addEventListener('DOMContentLoaded', () => {
             fetchPositionsByEmployer(employerID);
         }
     });
+
+        document.getElementById('employeeTable').addEventListener('click', event => {
+        const button8 = event.target.closest('.positionManag');
+        if (button8) {
+            const employerID  = button8.getAttribute('data-employer-id');
+            fetchPositionsByEmployer(employerID);
+        }
+    });
+
+
+
+    document.addEventListener('click', (event) => {
+        if (event.target && event.target.classList.contains('deletePositionBtn')) {
+
+            const positionID = event.target.getAttribute('data-positionID');
+            const employerID = event.target.getAttribute('data-employerID');
+
+            document.getElementById('EmployerID_positionDeleteForm').value = employerID;
+            document.getElementById('PositionID_positionDeleteForm').value = positionID;
+            // document.getElementById('surname_positionAddForm').value = surname;
+            // document.getElementById('fathername_positionAddForm').value = fathername;
+        }
+    });
+
 });
 
 
@@ -117,7 +142,7 @@ function updatePositionsTable(positions) {
             <td>${position.positionRequirements}</td>
             <td style="border-radius: 0px 36px 36px 0px;">
             <div class="d-flex">
-                <button type="button" class="Delete-button" 
+                <button type="button" class="Delete-button deletePositionBtn"  
                     data-positionID = "${position.positionID}"
                     data-employerID = "${position.empID}"
                     data-bs-toggle="modal"

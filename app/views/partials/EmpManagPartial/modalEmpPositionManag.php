@@ -110,6 +110,7 @@
                             <th scope="col">Назва посади</th>
                             <th scope="col">Рівень</th>
                             <th scope="col">Ставка</th>
+                            <th scope="col">Вимоги до посади</th>
                             <th scope="col">Дії</th>
                         </tr>
                     </thead>

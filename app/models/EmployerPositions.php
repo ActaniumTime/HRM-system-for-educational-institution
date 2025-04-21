@@ -11,10 +11,10 @@ class EmployerPosition {
         $this->connection = $connection;
     }
 
-    public function loadByID($id) {
-        $sql = "SELECT * FROM employer_positions WHERE employerPositionID = ?";
+    public function loadByID($posID, $empID) {
+        $sql = "SELECT * FROM employer_positions WHERE employerPositionID = ? AND employerID = ?";
         $stmt = $this->connection->prepare($sql);
-        $stmt->bind_param("i", $id);
+        $stmt->bind_param("ii", $posID, $empID);
         $stmt->execute();
         $result = $stmt->get_result();
 
@@ -65,8 +65,13 @@ class EmployerPosition {
         $query = "DELETE FROM employer_positions WHERE employerPositionID = ?";
         $stmt = $this->connection->prepare($query);
         $stmt->bind_param("i", $this->employerPositionID);
-        $stmt->execute();
-        $stmt->close();
+        if($stmt->execute()){
+            $stmt->close();
+            return true;
+        } else {
+            $stmt->close();
+            return false;
+        }
     }
 
     public function getAll() {
