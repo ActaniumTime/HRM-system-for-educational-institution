@@ -7,13 +7,47 @@ require_once __DIR__ . '/../../models/UserVerify.php';
 require_once __DIR__ . '/../../models/Position.php';
 require_once __DIR__ . '/../../models/EmployerPositions.php';
 require_once __DIR__ . '/../../models/Document.php';
+require_once __DIR__ . '/../../models/enc.php';
+
+$enc = new Enigma();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     header('Content-Type: application/json');
 
-    $data = $_POST;
+    $password = $_POST['adminPassword_positionDeleteForm'] ?? null;
+    $employerID = $_POST['EmployerID_positionDeleteForm'] ?? null;
+    $docName = $_POST['docName_positionDeleteForm'] ?? null;
+    $sphere = $_POST['sphere_positionDeleteForm'] ?? null;
+    $purpose = $_POST['purpose_positionDeleteForm'] ?? null;
+    $docType = $_POST['docType_positionDeleteForm'] ?? null;
+    $positionID = $_POST['PositionID_positionDeleteForm'] ?? null;
 
-    $uploadDir = __DIR__ . '../../../../Files/documents/';
+    $currentUserId = $_SESSION['employer_ID'] ?? null;
+
+    if (!$currentUserId) {
+        echo json_encode(['success' => false, 'message' => 'Unauthorized.']);
+        exit;
+    }
+
+    $query = $connection->prepare("SELECT password FROM employers WHERE employerID = ?");
+    $query->bind_param('i', $currentUserId);
+    $query->execute();
+    $result = $query->get_result();
+
+    if ($result->num_rows === 0) {
+        echo json_encode(['success' => false, 'message' => 'Invalid user session.']);
+        exit;
+    }
+
+    $user = $result->fetch_assoc();
+
+    // Проверка пароля
+    if ($enc->encrypt($user['password']) !== $password) {
+        echo json_encode(['success' => false, 'message' => 'Incorrect password.']);
+        exit;
+    }
+
+    $uploadDir = __DIR__ . '/../../../Files/documents/';
 
     if (!is_dir($uploadDir) && !mkdir($uploadDir, 0755, true) && !is_dir($uploadDir)) {
         echo json_encode(['success' => false, 'message' => 'Failed to create upload directory']);
@@ -28,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $fileName = $_FILES['confirmationFile_positionDeleteForm']['name'];
         $fileExtension = pathinfo($fileName, PATHINFO_EXTENSION);
 
-        $newFileName = uniqid('confirmationFile_positionDeleteForm_', true) . '.' . $fileExtension;
+        $newFileName = uniqid('confirmationFile_', true) . '.' . $fileExtension;
         $destinationPath = $uploadDir . $newFileName;
 
         if (!move_uploaded_file($fileTmpPath, $destinationPath)) {
@@ -36,13 +70,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit;
         }
 
+        // Добавление документа
         $newDoc = new Document($connection);
         $documentID = $newDoc->addDocument(
-            $data['EmployerID_positionDeleteForm'],
-            $data['docName_positionDeleteForm'],
-            $data['sphere_positionDeleteForm'],
-            $data['purpose_positionDeleteForm'],
-            $data['docType_positionDeleteForm'],
+            $employerID,
+            $docName,
+            $sphere,
+            $purpose,
+            $docType,
             $newFileName
         );
     } else {
@@ -51,22 +86,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     try {
+        // Загрузка и удаление позиции
         $newPos = new EmployerPosition($connection);
+        $newPos->loadByID($positionID, $employerID);
 
-        $newPos->loadByID($data['positionID_positionDeleteForm'], $data['EmployerID_positionDeleteForm']);
-        
-
-        $flag = false;
-        if($newPos->delete()) {
-            $flag = true;
+        if ($newPos->delete()) {
+            echo json_encode(['success' => true, 'message' => 'Position deleted successfully']);
         } else {
-            $flag = false;
-        }
-
-        if ($flag) {
-            echo json_encode(['success' => true, 'message' => 'Position added successfully']);
-        } else {
-            echo json_encode(['success' => false, 'message' => 'Failed to save position']);
+            echo json_encode(['success' => false, 'message' => 'Failed to delete position']);
         }
     } catch (Exception $e) {
         echo json_encode(['success' => false, 'message' => 'Error: ' . $e->getMessage()]);

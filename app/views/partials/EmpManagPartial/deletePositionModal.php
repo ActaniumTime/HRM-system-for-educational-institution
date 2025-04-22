@@ -8,17 +8,23 @@
             </div>
             <form id="deleteEmployerPositionForm" enctype="multipart/form-data">
             <div class="modal-body">
-                <p>Ви увірені у тому, що бажаєте видалити посаду?</p>
-                <p><strong>ПІБ:  </strong> <span id="EmployerNamee_positionDeleteForm"></span></p>
-                <p><strong>ID користувача </strong><span id="EmployerID_positionDeleteForm" name="EmployerID_positionDeleteForm"></span></p>
-                <p><strong>Назва посади: </strong><span id="PositionName_positionDeleteForm" ></span></p>
-                <p><strong>ID посади:  </strong> <span id="PositionID_positionDeleteForm" name="PositionID_positionDeleteForm"></span></p>
-                
-                
-                    <div class="mb-3">
-                        <label for="adminPassword" class="form-label">Підтвердить пароль адміністратору:</label>
-                        <input type="password" id="adminPassword_positionDeleteForm" name="adminPassword_positionDeleteForm" class="form-control" placeholder="Введить пароль" required>
-                    </div>
+                <p>Ви увірені у тому, що бажаєте звільнити співробітника із цієх посади?</p>
+                <div class="mb-3">
+                    <label for="EmployerID_positionDeleteForm" class="form-label"><strong>ID користувача</strong></label>
+                    <input type="text" id="EmployerID_positionDeleteForm" name="EmployerID_positionDeleteForm" class="form-control" readonly>
+                </div>
+                <div class="mb-3">
+                    <label for="PositionName_positionDeleteForm" class="form-label"><strong>Назва посади</strong></label>
+                    <input type="text" id="PositionName_positionDeleteForm" name="PositionName_positionDeleteForm" class="form-control" readonly>
+                </div>
+                <div class="mb-3">
+                    <label for="PositionID_positionDeleteForm" class="form-label"><strong>ID посади</strong></label>
+                    <input type="text" id="PositionID_positionDeleteForm" name="PositionID_positionDeleteForm" class="form-control" readonly>
+                </div>  
+                <div class="mb-3">
+                    <label for="adminPassword" class="form-label">Підтвердить пароль адміністратору:</label>
+                    <input type="password" id="adminPassword_positionDeleteForm" name="adminPassword_positionDeleteForm" class="form-control" placeholder="Введить пароль" required>
+                </div>
 
                     <div class="file-attach">
                             <div class="mb-3 col-md-12" >

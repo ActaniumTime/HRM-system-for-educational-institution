@@ -98,11 +98,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const positionID = event.target.getAttribute('data-positionID');
             const employerID = event.target.getAttribute('data-employerID');
+            const positionName = event.target.getAttribute('data-positionName');
 
-            document.getElementById('EmployerID_positionDeleteForm').value = employerID;
-            document.getElementById('PositionID_positionDeleteForm').value = positionID;
-            // document.getElementById('surname_positionAddForm').value = surname;
-            // document.getElementById('fathername_positionAddForm').value = fathername;
+            document.getElementById('EmployerID_positionDeleteForm').value  = employerID;
+            document.getElementById('PositionID_positionDeleteForm').value  = positionID;
+            document.getElementById('PositionName_positionDeleteForm').value = positionName;
         }
     });
 
@@ -145,6 +145,7 @@ function updatePositionsTable(positions) {
                 <button type="button" class="Delete-button deletePositionBtn"  
                     data-positionID = "${position.positionID}"
                     data-employerID = "${position.empID}"
+                    data-positionName = "${position.positionName}"
                     data-bs-toggle="modal"
                     data-bs-target="#deletePositionModal"
                     title="Видалити позицію">
@@ -160,3 +161,34 @@ function updatePositionsTable(positions) {
         tableBody.appendChild(row);
     });
 }
+
+
+document.getElementById('deleteEmployerPositionForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const form = e.target;
+    const formData = new FormData(form);
+
+    console.log('Отправляемые данные:');
+    for (let [key, value] of formData.entries()) {
+        console.log(`${key}:`, value);
+    }
+
+    fetch('../../../app/models/modals/DeleteEmpPosition.php', {
+        method: 'POST',
+        body: formData,
+    })
+        .then(response => response.json())
+        .then(result => {
+            console.log('Результат сервера:', result);
+            if (result.success) {
+                alert('Сотрудник добавлен успешно!');
+                location.reload();
+            } else {
+                alert(`Ошибка: ${result.message}`);
+            }
+        })
+        .catch(error => {
+            console.error('Ошибка:', error);
+        });
+});
