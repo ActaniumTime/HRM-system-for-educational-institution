@@ -60,13 +60,7 @@
     <div class="content-wrapper">
         <div class="layout-container">
             
-            <div class="temp-line" style="grid-template-columns: auto; margin-top: -10px; margin-bottom: -14px;">
-                <div class="summary tool-bar-element" >
-                    <?php  
-                        require_once __DIR__ . "/../partials/personalPage/FiltersMenu.php";
-                    ?>
-                </div>
-            </div>
+
 
             <div class="grid-layout">
                 <div class="left-block">
@@ -92,8 +86,15 @@
                 </div>
 
                 <div class="right-bottom">
-                    <div class="card p-4">
-                        <h5 class="mb-3 text-center">Усі документи користувача</h5>                
+
+
+                    <div class="card p-4" style="margin-top: 20px;">
+                        <h5 class="mb-3 text-center">Усі документи користувача</h5> 
+                        
+                        <?php  
+                            require_once __DIR__ . "/../partials/personalPage/searchBar.php";
+                        ?>
+
                         <?php  
                             require_once __DIR__ . "/../partials/personalPage/DocumentData.php";
                         ?>

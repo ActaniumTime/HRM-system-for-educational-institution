@@ -1,5 +1,8 @@
 
-<div class="card" style="margin-top: 25px;">
+
+    
+
+
     <div class="table-responsive">
         <table class="table table-hover align-middle">
             <thead class="table-dark">

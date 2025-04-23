@@ -12,7 +12,7 @@ class EmployerPosition {
     }
 
     public function loadByID($posID, $empID) {
-        $sql = "SELECT * FROM employer_positions WHERE employerPositionID = ? AND employerID = ?";
+        $sql = "SELECT * FROM employer_positions WHERE positionID = ? AND employerID = ?";
         $stmt = $this->connection->prepare($sql);
         $stmt->bind_param("ii", $posID, $empID);
         $stmt->execute();
@@ -39,10 +39,11 @@ class EmployerPosition {
     public function AddNewPosition($employerID, $positionID, $documentID) {
         $this->employerID = $employerID;
         $this->positionID = $positionID;
+        $this->documentID = $documentID;
 
-        $query = "INSERT INTO employer_positions (employerID, positionID) VALUES (?, ?)";
+        $query = "INSERT INTO employer_positions (employerID, positionID, documentID) VALUES (?, ?, ?)";
         $stmt = $this->connection->prepare($query);
-        $stmt->bind_param("ii", $this->employerID, $this->positionID);
+        $stmt->bind_param("iii", $this->employerID, $this->positionID, $this->documentID);
         $stmt->execute();
         if($stmt->close()){
             return true;

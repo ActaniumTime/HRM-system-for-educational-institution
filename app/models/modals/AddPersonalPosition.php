@@ -64,7 +64,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $newEmpPos->AddNewPosition(
             $data['employerID_positionAddForm'],
             $positionID,
-            $documentID)
+            $newPos->getDocumentID()
+            )
         ) {
             $flag = true;
         } else {
