@@ -14,6 +14,8 @@
     require_once __DIR__ . '../../partials/CoursesManag/modalDeleteCourse.php';
     require_once __DIR__ . '../../partials/CoursesManag/modalEditCourses.php';
     require_once __DIR__ . '../../partials/personalPage/modalAccreditationDetail.php';
+    require_once __DIR__ . '/../../../app/models/Position.php';
+    require_once __DIR__ . '/../../../app/models/EmployerPositions.php';
     
     require_once __DIR__ . '/../../../app/models/classes/Accreditation.php';
 
@@ -82,7 +84,11 @@
                 <div class="right-middle">
                     <?php  
                         require_once __DIR__ . "/../partials/personalPage/AccreditationData.php";
+                    
+                        require_once __DIR__ . "/../partials/personalPage/PositionsData.php";
                     ?>
+
+
                 </div>
 
                 <div class="right-bottom">
