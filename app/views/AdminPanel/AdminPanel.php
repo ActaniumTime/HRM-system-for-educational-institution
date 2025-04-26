@@ -5,7 +5,7 @@
     error_reporting(E_ALL);
 
     require_once __DIR__ . '/../../../app/models/UserVerify.php';
-
+    require_once __DIR__ . '../../partials/AdminPartial/modalEmpMan.php';
 ?>
 
 <!DOCTYPE html>
@@ -67,6 +67,8 @@
 <script src="../../../public/js/tooltip.js"></script>
 
 <script src="../../../public/js/navBar.js"></script>
+
+<script src="../../../public/js/adminJS/empManagTable.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
 
