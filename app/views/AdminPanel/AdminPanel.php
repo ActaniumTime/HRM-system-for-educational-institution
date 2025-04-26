@@ -50,9 +50,20 @@
                 ?>
             </div>
 
-            <div class="summary">
-                <?php require_once __DIR__ . "../../partials/AdminPartial/employerManagTable.php"; ?>
+            <div class="temp-line" style="grid-template-columns: none">
+                    <?php  
+                        require_once __DIR__ . "/../partials/AdminPartial/searchBar.php";
+                    ?>
             </div>
+
+
+
+            <div class="temp-line">
+                <div class="summary">
+                    <?php require_once __DIR__ . "../../partials/AdminPartial/employerManagTable.php"; ?>
+                </div>
+            </div>
+
 
         </div>
     </div>
@@ -69,6 +80,8 @@
 <script src="../../../public/js/navBar.js"></script>
 
 <script src="../../../public/js/adminJS/empManagTable.js"></script>
+
+<script src="../../../public/js/adminJS/tableSearching.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
 
