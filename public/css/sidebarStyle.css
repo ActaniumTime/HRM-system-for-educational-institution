@@ -97,6 +97,7 @@ label[for=nav-toggle] {
   z-index: 1;
   transition: background 0.2s, color 0.2s;
   border-radius: 36px;
+  margin-bottom: 5px;
 }
 
 .nav-button:hover {

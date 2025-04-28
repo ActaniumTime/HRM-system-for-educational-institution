@@ -1,6 +1,6 @@
 <?php
     $sourceDir = 'G:\Job\MAMP\htdocs\diploma\Files'; // Укажи здесь путь к каталогу с документами
-    $backupDir = '../../../backupsFiles/';
+    $backupDir = '../../backupsFiles/';
     $timestamp = date('Y-m-d_H-i-s');
     $zipFile = $backupDir . 'documents_' . $timestamp . '.zip';
 

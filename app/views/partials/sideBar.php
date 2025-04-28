@@ -74,7 +74,7 @@ $current_page = basename($_SERVER['PHP_SELF']); // Получаем текущи
 
         <hr/>
 
-        <a href="../personalPage.php/personalPage.php">
+        <a href="../personalPage/personalPage.php">
             <div class="nav-button <?php echo ($current_page == 'personalPage.php' ? 'active' : ''); ?>">
                 <i class="fas fi fi-ss-user"></i><span>Мій кабінет</span>
             </div>

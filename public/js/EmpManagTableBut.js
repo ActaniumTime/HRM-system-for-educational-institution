@@ -166,7 +166,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     
-    
+    document.getElementById('employeeTable').addEventListener('click', event => {
+        const button3 = event.target.closest('.Info-button');
+        if (button3) {
+            const docID = button3.getAttribute('data-employer-id');
+            window.open(`../../../app/models/GetData/getEmployerPage.php?emp_ID=${docID}`);
+        }
+    });
     
     
 });

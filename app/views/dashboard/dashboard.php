@@ -87,14 +87,14 @@ require_once __DIR__ . '/../../../app/models/UserVerify.php';
                         <p>Рівень: 
                             <?php
                             switch ($emp->getAccessLevelID()) {
-                                case 1: echo "Admin"; break;
-                                case 2: echo "Manager"; break;
-                                case 3: echo "Employee"; break;
-                                default: echo "Unknown"; break;
+                                case 1: echo "Директор/Адмін"; break;
+                                case 2: echo "HR-менеджер"; break;
+                                case 3: echo "Співробітник"; break;
+                                default: echo "Хто ти, воїн?..."; break;
                             }
                             ?>
                         </p>
-                        <a href=""><button>Відкрити</button></a>
+                        <a href="../personalPage/personalPage.php"><button>Відкрити</button></a>
                     </div>
 
                     <?php 
@@ -105,7 +105,7 @@ require_once __DIR__ . '/../../../app/models/UserVerify.php';
                                         <i class=\"fas fi fi-br-admin\" style=\"font-size: 3rem; color: #2e2e2e;\"></i>
                                         <h5 class=\"card-title\">Панель адміністратору</h5>
                                         <p>Якись чудові настроїки для адміна, якому не має що робити</p>
-                                        <a href=\"\"><button>Відкрити</button></a>
+                                        <a href=\"../AdminPanel/AdminPanel.php\"><button>Відкрити</button></a>
                                     </div>
                                 ";
                             default:

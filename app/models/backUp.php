@@ -2,7 +2,7 @@
 require_once __DIR__ . '/UserVerify.php';
 
 $mysqldumpPath = 'G:\\Job\\MAMP\\bin\\mysql\\bin\\mysqldump.exe';
-$backupDir = '../../../backups/';
+$backupDir = '../../backups/';
 if (!is_dir($backupDir)) {
     mkdir($backupDir, 0755, true);
 }
