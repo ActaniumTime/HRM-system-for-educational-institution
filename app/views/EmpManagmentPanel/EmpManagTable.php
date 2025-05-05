@@ -16,6 +16,8 @@
 
     require_once __DIR__ . '../../partials/EmpManagPartial/modalEmpPositionManag.php';
     require_once __DIR__ . '../../partials/EmpManagPartial/deletePositionModal.php';
+
+    require_once __DIR__ . "../../partials/SuccessModals/SuccessEmp.php";
 ?>
 
 <!DOCTYPE html>
@@ -40,6 +42,7 @@
     <link rel="stylesheet" href="../../../public/css/sidebarStyle2.css">
     <link rel="stylesheet" href="../../../public/css/addEmpModalStyles.css">
     <link rel="stylesheet" href="../../../public/css/hints.css">
+    <link rel="stylesheet" href="../../../public/css/SuccessModal.css">
     <link rel="stylesheet" href="EmpManagTable.css">
 
     <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />

@@ -42,6 +42,9 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('currentStatus').value = currentStatus;
             document.getElementById('dateFired').value = dateFired;
             document.getElementById('admissionBasis').value = admissionBasis;
+
+            document.querySelector('#docViewBtn001').setAttribute('data-documentID', admissionBasis);
+            
             document.getElementById('employmentType').value = employmentType;
         }
     });
@@ -108,6 +111,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('employerForm').addEventListener('click', event => {
+        const button = event.target.closest('.docViewBtn001');
+        if (button) {
+            const docID = button.getAttribute('data-documentID');
+            window.open(`../../../app/models/GetData/getDocument.php?documentID=${docID}`, '_blank');
+        }
+    });
+});
 
 
 function fetchPositionsByEmployer(employerID) {
@@ -192,3 +204,21 @@ document.getElementById('deleteEmployerPositionForm').addEventListener('submit',
             console.error('Ошибка:', error);
         });
 });
+
+
+function showSuccessModal() {
+  // Создать кастомный затемнитель
+  const backdrop = document.createElement('div');
+  backdrop.classList.add('custom-backdrop');
+  document.body.appendChild(backdrop);
+  setTimeout(() => backdrop.classList.add('show'), 10);
+
+  const modal = new bootstrap.Modal(document.getElementById('successModal'));
+  modal.show();
+
+  setTimeout(() => {
+    modal.hide();
+    backdrop.classList.remove('show');
+    setTimeout(() => backdrop.remove(), 200); // удалить затемнитель
+  }, 3000);
+}

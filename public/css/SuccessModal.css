@@ -1,0 +1,76 @@
+.checkmark-circle {
+    width: 80px;
+    height: 80px;
+    position: relative;
+    display: inline-block;
+  }
+  .checkmark-circle .background {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #28a7452e;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .checkmark {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: block;
+    stroke-width: 4;
+    stroke: #28a745;
+    stroke-miterlimit: 10;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+  }
+  .checkmark.draw::before {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 50px;
+    border-right: 4px solid #28a745;
+    border-bottom: 4px solid #28a745;
+    transform: rotate(45deg);
+    top: 14px;
+    left: 26px;
+    animation: draw-check 0.5s ease-out forwards;
+  }
+  
+  /* Сделать successModal выше других */
+  #successModal {
+    z-index: 1056; /* выше стандартных модалок Bootstrap (1055) */
+  }
+  
+  /* Кастомный backdrop только для successModal */
+  .custom-backdrop {
+    position: fixed;
+    z-index: 1055;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* затемнение */
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+  .custom-backdrop.show {
+    opacity: 1;
+  }
+  
+  @keyframes draw-check {
+    0% {
+      width: 0;
+      height: 0;
+      opacity: 0;
+    }
+    100% {
+      width: 25px;
+      height: 50px;
+      opacity: 1;
+    }
+  }
+  

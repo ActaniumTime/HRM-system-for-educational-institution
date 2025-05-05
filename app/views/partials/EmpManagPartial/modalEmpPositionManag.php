@@ -2,20 +2,41 @@
     <div class="modal-dialog modal-xxl">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="positionManagModal1">Додавання курсів та стажировок</h5>
+                <h5 class="modal-title" id="positionManagModal1">Керування посадими співробітника</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 
 
+
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead class="table-dark">
+                        <tr>
+                            <th scope="col">№</th>
+                            <th scope="col">Назва посади</th>
+                            <th scope="col">Рівень</th>
+                            <th scope="col">Ставка</th>
+                            <th scope="col">Вимоги до посади</th>
+                            <th scope="col">Дії</th>
+                        </tr>
+                    </thead>
+                    <tbody id="positionsTable">
+
+                    </tbody>
+                    
+                </table>
+            </div>
+
+            
             <div class="accordion" id="accordionExample">
                 <div class="accordion-item">
                     <h2 class="accordion-header">
                     <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
-                        Додати нову посаду
+                        Додати нову посаду для співробітника
                     </button>
                     </h2>
-                    <div id="collapse1" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                    <div id="collapse1" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
 
                             <form id="positionManagModal_AddForm" enctype="multipart/form-data">
@@ -101,26 +122,6 @@
                     </div>
                 </div>
             </div>
-
-            <div class="table-responsive">
-                <table class="table table-hover align-middle">
-                    <thead class="table-dark">
-                        <tr>
-                            <th scope="col">№</th>
-                            <th scope="col">Назва посади</th>
-                            <th scope="col">Рівень</th>
-                            <th scope="col">Ставка</th>
-                            <th scope="col">Вимоги до посади</th>
-                            <th scope="col">Дії</th>
-                        </tr>
-                    </thead>
-                    <tbody id="positionsTable">
-
-                    </tbody>
-                    
-                </table>
-            </div>
-
 
             </div>
             <div class="modal-footer">
