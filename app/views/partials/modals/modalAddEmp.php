@@ -20,10 +20,8 @@
                         <div class="mb-3 col-md-6">
                             <label for="accessLevelID" class="form-label">Рівень доступу</label>
                             <select class="form-select" id="accessLevelID_AddForm" name="accessLevelID">
-                                <option value="1">Администратор</option>
-                                <option value="2">Менеджер</option>
-                                <option value="3">Сотрудник</option>
-                                <option value="4">Преподаватель</option>
+                                <option value="2">HR-менеджер</option>
+                                <option value="3">Співробітник</option>
                             </select>
                         </div>
                         <div class="mb-3 col-md-6">
@@ -70,13 +68,17 @@
                             <input type="text" class="form-control" id="phoneNumber_AddForm" name="phoneNumber" placeholder="Введить номер телефону...">
                         </div>
                         <div class="mb-3 col-md-6">
-                            <label for="department" class="form-label">Коміссія/кафедра</label>
+                            <label for="department" class="form-label">Циклова комісія</label>
                             <select class="form-select" id="department_AddForm" name="department" placeholder="Оберить коміссію/кафедру...">
-                                <option value="Software Engineering">Программная инженерия</option>
-                                <option value="Computer Science">Компьютерные науки</option>
-                                <option value="Designers">Дизайнеры</option>
-                                <option value="Administration">Администрация</option>
-                                <option value="Accounting">Бухгалтерия</option>
+                                <option value="121. Інженерія программного забезпечення">121. Інженерія программного забезпечення</option>
+                                <option value="122. Ком'ютерні науки">122. Ком'ютерні науки</option>
+                                <option value="022. Дизайн">022. Дизайн</option>
+                                <option value="Администрация коледжу">Администрация коледжу</option>
+                                <option value="ЦК математично-природничих дисциплін">ЦК математично-природничих дисциплін</option>
+                                <option value="ЦК гуманітарних дисциплін">ЦК гуманітарних дисциплін</option>
+                                <option value="ЦК іноземних мов">ЦК іноземних мов</option>
+                                <option value="ЦК соціально-економічних дисциплін">ЦК соціально-економічних дисциплін</option>
+                                <option value="ЦК фізичного виховання і безпеки життєдіяльності">ЦК фізичного виховання і безпеки життєдіяльності</option>
                             </select>
                         </div>
                         <div class="mb-3 col-md-6">
@@ -197,8 +199,10 @@ document.getElementById('employerForm_AddForm').addEventListener('submit', funct
         .then(result => {
             console.log('Результат сервера:', result);
             if (result.success) {
-                alert('Сотрудник добавлен успешно!');
+                showSuccessModal();
+                setTimeout(() => {
                 location.reload();
+            }, 3000);
             } else {
                 alert(`Ошибка: ${result.message}`);
             }

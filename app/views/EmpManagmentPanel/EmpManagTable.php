@@ -18,6 +18,12 @@
     require_once __DIR__ . '../../partials/EmpManagPartial/deletePositionModal.php';
 
     require_once __DIR__ . "../../partials/SuccessModals/SuccessEmp.php";
+    require_once __DIR__ . "../../partials/SuccessModals/SuccessAddEmpModal.php";
+    require_once __DIR__ . "../../partials/SuccessModals/SuccessPosition.php";
+    require_once __DIR__ . "../../partials/SuccessModals/SuccessPosition.php";
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -107,7 +113,7 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-
+<script src="../../../public/js/ModalStat/empManagStat.js"></script>
 
 <script src="../../../public/js/AddDeleteUser.js"></script>
 
@@ -127,7 +133,7 @@
     
     $(document).ready(function() {
         $('#employeeSelect').select2({
-            dropdownParent: $('#positionManagModal'), // Обеспечивает корректное отображение в модальном окне
+            dropdownParent: $('#positionManagModal_AddForm'), // Обеспечивает корректное отображение в модальном окне
             placeholder: "Оберить позицію...",
             allowClear: true,
             width: '100%'

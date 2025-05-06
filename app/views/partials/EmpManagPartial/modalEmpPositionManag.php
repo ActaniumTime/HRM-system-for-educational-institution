@@ -151,8 +151,8 @@ document.getElementById('positionManagModal_AddForm').addEventListener('submit',
         .then(result => {
             console.log('Результат сервера:', result);
             if (result.success) {
-                alert('Сотрудник добавлен успешно!');
-                location.reload();
+                closeAllModals();
+                showSuccessAddPosModal();
             } else {
                 alert(`Ошибка: ${result.message}`);
             }

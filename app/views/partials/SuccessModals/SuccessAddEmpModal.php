@@ -1,4 +1,4 @@
-<div class="modal fade" id="successAddPosModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+<div class="modal fade" id="successAddEmpModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-l modal-dialog-centered">
     <div class="modal-content text-center">
       <div class="modal-body p-4">
@@ -6,12 +6,9 @@
           <div class="background"></div>
           <div class="checkmark draw"></div>
         </div>
-        <h5 class="mt-3">Посада була успішно додана!</h5>
+        <h5 class="mt-3">Користувача було додано до системи!</h5>
         <p class="mt-2">Усі додані дані успішно збережени. Зараз перезовантажиться сторінка... </p>
       </div>
     </div>
   </div>
 </div>
-
-
-
