@@ -94,10 +94,6 @@ button {
     transition: transform 0.2s, background-color 0.3s;
 }
 
-button:hover {
-    background-color: #303030;
-    transform: scale(1.05);
-}
 
 .page-wrapper {
     display: flex;
@@ -233,9 +229,27 @@ p {
 }
 
 a button{
-    width: 200px;
+    width: 250px;
     font-weight:normal;
     
+}
+
+a button {
+    color: #ffffff;
+    background-color: #303030;
+    transition: all 0.3s ease;
+    border: 2px solid #303030;
+}
+
+a button svg{
+    fill: #ffffff;
+    margin-right: 10px;
+}
+
+a button:hover {
+    background-color: #ffffff00;
+    color: #303030;
+    border: 2px solid #303030;
 }
 
 /* Анимация при загрузке */

@@ -21,8 +21,9 @@
     require_once __DIR__ . "../../partials/SuccessModals/SuccessAddEmpModal.php";
     require_once __DIR__ . "../../partials/SuccessModals/SuccessPosition.php";
     require_once __DIR__ . "../../partials/SuccessModals/SuccesDelete.php";
+    require_once __DIR__ . "../../partials/SuccessModals/SuccesDelPos.php";
 
-
+    
 
 ?>
 

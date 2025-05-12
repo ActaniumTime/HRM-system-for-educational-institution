@@ -42,7 +42,9 @@ function deletePosition(documentID, tableRow){
     .then(response => response.json())
     .then(data => {
         if (data.success) {
-            alert('Document deleted successfully.');
+            closeAllModals();
+            showSuccesDelDoccModal();
+
             if (tableRow) {
                 tableRow.remove();
             }

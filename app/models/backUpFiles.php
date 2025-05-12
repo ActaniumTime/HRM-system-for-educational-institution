@@ -11,6 +11,8 @@
 
     $zip = new ZipArchive();
     if ($zip->open($zipFile, ZipArchive::CREATE) === TRUE) {
+        $zip->setPassword('rubicon_protocol');
+
         $files = new RecursiveIteratorIterator(
             new RecursiveDirectoryIterator($sourceDir, FilesystemIterator::SKIP_DOTS),
             RecursiveIteratorIterator::LEAVES_ONLY
@@ -18,13 +20,16 @@
 
         foreach ($files as $file) {
             $filePath = $file->getRealPath();
-            $relativePath = substr($filePath, strlen($sourceDir) + 1); // относительный путь внутри архива
-            $zip->addFile($filePath, $relativePath);
+            $relativePath = substr($filePath, strlen($sourceDir) + 1);
+
+            if ($zip->addFile($filePath, $relativePath)) {
+                // Шифруем добавленный файл
+                $zip->setEncryptionName($relativePath, ZipArchive::EM_AES_256);
+            }
         }
 
         $zip->close();
 
-        // Отдаем архив пользователю
         header('Content-Type: application/zip');
         header('Content-Disposition: attachment; filename="' . basename($zipFile) . '"');
         header('Content-Length: ' . filesize($zipFile));

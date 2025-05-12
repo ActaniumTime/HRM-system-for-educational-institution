@@ -4,6 +4,11 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 require_once __DIR__ . '/../../../app/models/UserVerify.php';
+
+if ($emp->getAccessLevelID() === 3) {
+    header("Location: ../personalPage/personalPage.php");
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
@@ -41,27 +46,36 @@ require_once __DIR__ . '/../../../app/models/UserVerify.php';
                         <p>Сторінка для керування акредитаціями співробітників.</p>
                         <a href="../AccreditationManag/AccreditationManag.php"><button>Відкрити</button></a>
                     </div>
+                    <?php
+                    switch ($emp->getAccessLevelID()) {
+                        case 1 : case 2 :
+                            echo "
 
-                    <div class="tile">
-                    <i class="fas fi fi-sr-duplicate" style="font-size: 3rem; color: #303030;"></i>
-                        <h3>Документообіг</h3>
-                        <p>Сторінка для керування усіма документами у системі.</p>
-                        <a href="../documentManag/documentManagPage.php"><button>Відкрити</button></a>
-                    </div>
+                                <div class=\"tile\">
+                                    <i class=\"fas fi fi-sr-duplicate\" style=\"font-size: 3rem; color: #303030;\"></i>
+                                    <h3>Документообіг</h3>
+                                    <p>Сторінка для керування усіма документами у системі.</p>
+                                    <a href=\"../documentManag/documentManagPage.php\"><button>Відкрити</button></a>
+                                </div>
 
-                    <div class="tile">
-                        <i class="fi fi-sr-briefcase" style="font-size: 3rem; color: #303030;"></i>
-                        <h3>Посади</h3>
-                        <p>Сторінка для керування позиціями у закладі.</p>
-                        <a href="../positionManag/positionManagPage.php"><button>Відкрити</button></a>
-                    </div>
+                                <div class=\"tile\">
+                                    <i class=\"fi fi-sr-briefcase\" style=\"font-size: 3rem; color: #303030;\"></i>
+                                    <h3>Посади</h3>
+                                    <p>Сторінка для керування позиціями у закладі.</p>
+                                    <a href=\"../positionManag/positionManagPage.php\"><button>Відкрити</button></a>
+                                </div>
 
-                    <div class="tile">
-                        <i class="fas fi fi-ss-book-circle-arrow-right" style="font-size: 3rem; color: #303030;"></i>
-                        <h3>Курси та стажування</h3>
-                        <p>Керування додатковими курсами та стажуванням співробітників.</p>
-                        <a href="../CoursesManag/CoursesManag.php"><button>Відкрити</button></a>
-                    </div>
+                                <div class=\"tile\">
+                                    <i class=\"fas fi fi-ss-book-circle-arrow-right\" style=\"font-size: 3rem; color: #303030;\"></i>
+                                    <h3>Курси та стажування</h3>
+                                    <p>Керування додатковими курсами та стажуванням співробітників.</p>
+                                    <a href=\"../CoursesManag/CoursesManag.php\"><button>Відкрити</button></a>
+                                </div>
+                            ";
+                        default:
+                            break;
+                    }
+                    ?>
 
                     <?php
                     switch ($emp->getAccessLevelID()) {
@@ -77,7 +91,6 @@ require_once __DIR__ . '/../../../app/models/UserVerify.php';
                         default:
                             break;
                     }
-                    
                     ?>
                     
 
@@ -87,7 +100,7 @@ require_once __DIR__ . '/../../../app/models/UserVerify.php';
                         <p>Рівень: 
                             <?php
                             switch ($emp->getAccessLevelID()) {
-                                case 1: echo "Директор/Адмін"; break;
+                                case 1: echo "Директор"; break;
                                 case 2: echo "HR-менеджер"; break;
                                 case 3: echo "Співробітник"; break;
                                 default: echo "Хто ти, воїн?..."; break;

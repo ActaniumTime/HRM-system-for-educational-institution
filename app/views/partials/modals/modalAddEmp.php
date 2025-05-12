@@ -91,7 +91,10 @@
                         </div>
                         <div class="mb-3 col-md-6">
                             <label for="currentStatus" class="form-label">Поточний статус </label>
-                            <input type="text" class="form-control" id="currentStatus_AddForm" name="currentStatus" placeholder="Введить поточний статус...">
+                            <select class="form-select" id="currentStatus_AddForm" name="currentStatus" placeholder="Введить поточний статус...">
+                                <option value="Active">Вже працює</option>
+                                <option value="Inactive">Не працює</option>
+                            </select>
                         </div>
                         <div class="mb-3 col-md-6">
                             <label for="employmentType" class="form-label">Тип зайнятості</label>
@@ -140,12 +143,7 @@
                                 <div class="mb-3 col-md-6">
                                     <label for="department" class="form-label">Тип документа</label>
                                     <select class="form-control" id="docType" name="docType" required>
-                                        <option value="Наказ">Наказ</option>
-                                        <option value="Розпорядження">Розпорядження</option>
-                                        <option value="Постанова">Постанова</option>
-                                        <option value="Рішення">Рішення</option>
-                                        <option value="Свідоцтво">Свідоцтво </option>
-                                        <option value="Свідоцтво">Контракт про працевлаштування</option>
+                                        <option value="Контракт про працевлаштування">Контракт про працевлаштування</option>
                                     </select>
                                 </div>
                             </div>

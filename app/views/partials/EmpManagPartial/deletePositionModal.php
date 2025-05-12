@@ -50,8 +50,8 @@
                                 <div class="mb-3 col-md-6">
                                     <label for="department" class="form-label">Тип документа</label>
                                     <select class="form-control" id="docType_positionDeleteForm" name="docType_positionDeleteForm" required>
-                                        <option value="Прохождення курсів">Прохождення курсів</option>
-                                        <option value="Прохождення стажировки">Прохождення стажировки</option>
+                                        <option value="Звільнення із посади">Звільнення із посади</option>
+                                        <option value="Тимчасове зняття із посади">Тимчасове зняття із посади</option>
                                     </select>
                                 </div>
                             </div>

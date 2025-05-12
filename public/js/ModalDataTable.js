@@ -194,8 +194,8 @@ document.getElementById('deleteEmployerPositionForm').addEventListener('submit',
         .then(result => {
             console.log('Результат сервера:', result);
             if (result.success) {
-                alert('Сотрудник добавлен успешно!');
-                location.reload();
+                closeAllModals();
+                showSuccessDelPosModal();
             } else {
                 alert(`Ошибка: ${result.message}`);
             }

@@ -15,7 +15,7 @@
                 <th scope="col">Стать</th>
                 <th scope="col">Email</th>
                 <th scope="col">Телефон</th>
-                <th scope="col">Кафедра/ЦК</th>
+                <th scope="col">Циклова Коміссія</th>
                 <th scope="col">Прийнято з</th>
                 <th scope="col">Звільнено з</th>
                 <th scope="col">Тип зайнятості</th>

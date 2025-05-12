@@ -19,7 +19,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Відміна</button>
-                <button type="button" class="btn bg-danger" id="confirmDeletPosition" style="color: #ffffff;" >Звільнити</button>
+                <button type="button" class="btn bg-danger" id="confirmDeletPosition" style="color: #ffffff;" >Видалити документ</button>
             </div>
         </div>
     </div>

@@ -11,6 +11,9 @@
 
     require_once __DIR__ . '/../../../app/models/modals/deleteDocument.php';
     require_once __DIR__ . '/../../../app/models/modals/EditDocument.php';
+
+    require_once __DIR__ . "../../partials/SuccessModals/SuccessUpdDoc.php";
+    require_once __DIR__ . "../../partials/SuccessModals/SuccessDelDoc.php";
     
 ?>
 
@@ -38,6 +41,7 @@
     <link rel="stylesheet" href="../../../public/css/sidebarStyle2.css">
     <link rel="stylesheet" href="../../../public/css/modalAddPosition.css">
     <link rel="stylesheet" href="../../../public/css/hints.css">
+    <link rel="stylesheet" href="../../../public/css/SuccessModal.css">
 
 </head>
 <body>
@@ -88,6 +92,7 @@
 <script src="../../../public/js/documentJS/tableDocumentFilters.js"></script>
 <script src="../../../public/js/documentJS/tableDocumentSearch.js"></script>
 <script src="../../../public/js/documentJS/editDocument.js"></script>
+<script src="../../../public/js/ModalStat/empManagStat.js"></script>
 
 </body>
 </html>

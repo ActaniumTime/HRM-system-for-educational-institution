@@ -22,6 +22,7 @@
     </div>
     
     <div class="container cont" >
-        <a href="../../../app/models/backUpFiles.php" style="margin-left: 20px;"><button id="backupBtn">Завантажити файли</button></a>
+        <a href="../../../app/models/backUpFilesZip.php" style="margin-left: 20px;"><button id="backupBtn">Завантажити файли (zip)</button></a>
+        <a href="../../../app/models/backUpFiles.php" style="margin-left: 20px;"><button id="backupBtn">Завантажити файли (rar)</button></a>
     </div>
 </div>

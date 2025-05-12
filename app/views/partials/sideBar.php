@@ -106,16 +106,16 @@ $current_page = basename($_SERVER['PHP_SELF']); // Получаем текущи
                 <?php
                 switch ($emp->getAccessLevelID()) {
                     case 1:
-                        echo "Admin";
+                        echo "Директор";
                         break;
                     case 2:
-                        echo "Manager";
+                        echo "HR-менеджер";
                         break;
                     case 3:
-                        echo "Teacher";
+                        echo "Співробітник";
                         break;
                     default:
-                        echo "Employee";
+                        echo "Хто ти, воїн?...";
                         break;
                 }
                 ?>
@@ -127,10 +127,9 @@ $current_page = basename($_SERVER['PHP_SELF']); // Получаем текущи
             <div class="profile-line">
                 <div class="log-out">
                     <i class="fas fi fi-rr-exit"></i>
-                    <span><a href="../../../TEST_FILES/logout.php">Logout</a></span>
+                    <span><a href="../../../TEST_FILES/logout.php">Вийти із системи...</a></span>
                 </div>
             </div>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam pariatur quos sit, voluptate ab quam vero nisi quis distinctio ipsam officia quisquam!
         </div>
     </div>
 </div>

@@ -361,3 +361,25 @@ label[for=nav-footer-toggle] {
   color: var(--navbar-dark-primary);
 }
 
+
+.log-out {
+    background-color: #303030;
+    color: #ffffff;
+    border: none;
+    border-radius: 36px;
+    padding: 10px 15px;
+    transition: transform 0.2s, background-color 0.3s;
+}
+
+.log-out {
+    color: #ffffff;
+    background-color: #303030;
+    transition: all 0.3s ease;
+    border: 2px solid #303030;
+}
+
+.log-out:hover {
+    background-color: #ffffff00;
+    color: #303030;
+    border: 2px solid #303030;
+}

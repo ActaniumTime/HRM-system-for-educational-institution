@@ -71,6 +71,24 @@ function showSuccessAddEmpModal() {
     }, 3000);
   }
 
+    function showSuccessDelPosModal() {
+    const backdrop = document.createElement('div');
+    backdrop.classList.add('custom-backdrop');
+    document.body.appendChild(backdrop);
+    setTimeout(() => backdrop.classList.add('show'), 10);
+  
+    const modal = new bootstrap.Modal(document.getElementById('SuccessDelPosModal'));
+    modal.show();
+  
+    setTimeout(() => {
+      modal.hide();
+      backdrop.classList.remove('show');
+      setTimeout(() => backdrop.remove(), 300); // удалить затемнитель
+      location.reload();
+    }, 3000);
+  }
+
+
 
 
   function showSuccessUpdAccredModal() {
@@ -142,6 +160,42 @@ function showSuccessAddEmpModal() {
       setTimeout(() => backdrop.remove(), 300); 
     }, 3000);
   }
+
+  function showSuccessUpdDocModal() {
+    const backdrop = document.createElement('div');
+    backdrop.classList.add('custom-backdrop');
+    document.body.appendChild(backdrop);
+    setTimeout(() => backdrop.classList.add('show'), 10);
+  
+    const modal = new bootstrap.Modal(document.getElementById('successUpdDocModal'));
+    modal.show();
+  
+    setTimeout(() => {
+      modal.hide();
+      backdrop.classList.remove('show');
+      setTimeout(() => backdrop.remove(), 300); 
+      location.reload();
+    }, 3000);
+  }
+
+    function showSuccesDelDoccModal() {
+    const backdrop = document.createElement('div');
+    backdrop.classList.add('custom-backdrop');
+    document.body.appendChild(backdrop);
+    setTimeout(() => backdrop.classList.add('show'), 10);
+  
+    const modal = new bootstrap.Modal(document.getElementById('SuccessDeleteDocModal'));
+    modal.show();
+  
+    setTimeout(() => {
+      modal.hide();
+      backdrop.classList.remove('show');
+      setTimeout(() => backdrop.remove(), 300); 
+    }, 3000);
+  }
+
+
+
 
 
 

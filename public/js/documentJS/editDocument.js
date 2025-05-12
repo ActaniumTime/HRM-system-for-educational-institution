@@ -13,7 +13,8 @@ document.getElementById('EditDocumentForm').addEventListener('submit', function 
     .then(response => response.json())
     .then(data => {
         if (data.success) {
-            alert('Document added successfully!');
+            closeAllModals();
+            showSuccessUpdDocModal();
             document.getElementById('EditDocumentModal').classList.remove('show');
             document.body.classList.remove('modal-open');
             document.querySelector('.modal-backdrop').remove(); // Убираем затемнение

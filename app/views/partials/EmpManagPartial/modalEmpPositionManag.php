@@ -108,8 +108,7 @@
                                             <div class="mb-3 col-md-6">
                                                 <label for="department" class="form-label">Тип документа</label>
                                                 <select class="form-control" id="docType_positionAddForm" name="docType_positionAddForm" required>
-                                                    <option value="Прохождення курсів">Прохождення курсів</option>
-                                                    <option value="Прохождення стажировки">Прохождення стажировки</option>
+                                                    <option value="Призначення на посаду">Призначення на посаду</option>
                                                 </select>
                                             </div>
                                         </div>

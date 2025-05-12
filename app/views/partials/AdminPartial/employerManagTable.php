@@ -15,7 +15,7 @@
                 <th scope="col">Стать</th>
                 <th scope="col">Email</th>
                 <th scope="col">Телефон</th>
-                <th scope="col">Department</th>
+                <th scope="col">Циклова Коміссія</th>
                 <th scope="col">Дії</th>
             </tr>
         </thead>
@@ -37,16 +37,16 @@
                     
                     switch ($AccID) {
                         case 1:
-                            echo "<td>Admin</td>";
+                            echo "<td>Директор</td>";
                             break;
                         case 2:
-                            echo "<td>Manager</td>";
+                            echo "<td>HR_менеджер</td>";
                             break;
                         case 3:
-                            echo "<td>Employee</td>";
+                            echo "<td>Співробітник</td>";
                             break;
                         default:
-                            echo "<td>Unknown</td>";
+                            echo "<td>Хто ти, воїн?...</td>";
                             break;
                     }
                     
@@ -82,7 +82,7 @@
                             data-admission-basis=\"{$employer->getAdmissionBasis()}\"
                             data-employment-type=\"{$employer->getEmploymentType()}\"
                             data-bs-toggle=\"modal\" data-bs-target=\"#employerModal\"
-                            title=\"Редагувати дані співробітника\">
+                            title=\"Редагувати рівень доступу співробітника\">
                             
                             <svg xmlns=\"http://www.w3.org/2000/svg\" id=\"Layer_1\" data-name=\"Layer 1\" viewBox=\"0 0 24 24\" class=\"icon_white no-click\">
                             <path d=\"M22.987,5.452c-.028-.177-.312-1.767-1.464-2.928-1.157-1.132-2.753-1.412-2.931-1.44-.237-.039-.479,.011-.682,.137-.071,.044-1.114,.697-3.173,2.438,1.059,.374,2.428,1.023,3.538,2.109,1.114,1.09,1.78,2.431,2.162,3.471,1.72-2.01,2.367-3.028,2.41-3.098,.128-.205,.178-.45,.14-.689Z\"/>
