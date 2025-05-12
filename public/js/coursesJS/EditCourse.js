@@ -31,8 +31,9 @@ document.getElementById('EditCourseModal_EditForm').addEventListener('submit', f
         .then(result => {
             console.log('Результат сервера:', result);
             if (result.success) {
-                alert('Дані оновлені успішно!');
-                location.reload();
+                closeAllModals();
+                showSuccessUpdateCourseModal();
+
             } else {
                 alert(`Ошибка: ${result.message}`);
             }

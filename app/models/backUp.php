@@ -27,7 +27,7 @@ exec($command, $output, $returnVar);
 if ($returnVar === 0) {
     $zip = new ZipArchive();
     if ($zip->open($zipFile, ZipArchive::CREATE) === TRUE) {
-        $zip->setPassword('rubicon_protol');
+        $zip->setPassword('rubicon_protocol');
         $zip->addFile($backupFile, basename($backupFile));
         $zip->setEncryptionName(basename($backupFile), ZipArchive::EM_AES_256);
         $zip->close();

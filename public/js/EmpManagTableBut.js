@@ -33,6 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
             response.json()
         })
         .then(result => {
+            closeAllModals();
             showSuccessModal();
             updateTable();
         })
@@ -60,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .then(response => response.json())
         .then(result => {
-            console.log(result);
+            closeAllModals();
             showSuccessModal();
             updateTable();
         })

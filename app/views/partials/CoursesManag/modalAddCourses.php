@@ -114,8 +114,9 @@ document.getElementById('addCourseModal_AddForm').addEventListener('submit', fun
         .then(result => {
             console.log('Результат сервера:', result);
             if (result.success) {
-                alert('Сотрудник добавлен успешно!');
-                location.reload();
+                closeAllModals();
+                showSuccessAddCourseModal();
+                
             } else {
                 alert(`Ошибка: ${result.message}`);
             }

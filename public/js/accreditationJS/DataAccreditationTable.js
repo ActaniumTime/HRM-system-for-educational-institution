@@ -33,6 +33,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
+    document.getElementById('accreditationTable').addEventListener('click', event => {
+        const button30 = event.target.closest('.Info-button');
+        if (button30) {
+            const docID = button30.getAttribute('data-employer-id');
+            window.open(`../../../app/models/GetData/getEmployerPage.php?emp_ID=${docID}`);
+        }
+    });
+
 document.addEventListener("DOMContentLoaded", () => {
     const editBtns = document.querySelectorAll(".editEmployerBtn");
 

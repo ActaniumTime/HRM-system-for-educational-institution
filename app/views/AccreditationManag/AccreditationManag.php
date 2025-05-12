@@ -10,6 +10,7 @@
     require_once __DIR__ . '../../partials/modals/modalAddEmp.php';
     require_once __DIR__ . '../../partials/AccreditationManagPartial/modalEditAccreditation.php';
     require_once __DIR__ . "../../partials/AccreditationManagPartial/AccreditationWillAchive.php";
+    require_once __DIR__ . "../../partials/SuccessModals/SuccessUpdateAccred.php";
 
 ?>
 
@@ -35,6 +36,7 @@
     <link rel="stylesheet" href="../../../public/css/sidebarStyle2.css">
     <link rel="stylesheet" href="../../../public/css/addEmpModalStyles.css">
     <link rel="stylesheet" href="../../../public/css/hints.css">
+    <link rel="stylesheet" href="../../../public/css/SuccessModal.css">
     <link rel="stylesheet" href="AccredStyle.css">
 </head>
 <body>
@@ -89,6 +91,7 @@
 
 <script src="../../../public/js/tableEmpFilters.js"></script>
 
+<script src="../../../public/js/ModalStat/empManagStat.js"></script>
 
 <script src="../../../public/js/navBar.js"></script>
 

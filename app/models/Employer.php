@@ -1,6 +1,7 @@
 <?php
 
 require_once __DIR__ . "/enc.php";
+require_once __DIR__ . "/Document.php";
 
 class Employer {
     private $connection;
@@ -380,16 +381,29 @@ class Employer {
     
     public function deleteEmployer($id) {
         if(isset($id)){
+            $query1 = "UPDATE document SET ownerID = NULL WHERE ownerID = ?";
+            $stmt1 = $this->connection->prepare($query1);
+            $stmt1->bind_param("i", $id);
+            $stmt1->execute();
+            $stmt1->close();
+
+            $query0 = "DELETE FROM employer_positions WHERE employerID = ?";
+            $stmt0 = $this->connection->prepare($query0);
+            $stmt0->bind_param("i", $id);
+            $stmt0->execute();
+            $stmt0->close();
+
             $query = "DELETE FROM employers WHERE employerID = ?";
             $stmt = $this->connection->prepare($query);
             $stmt->bind_param("i", $id);
-            if( $stmt->execute()){
+            if($stmt->execute()){
                 $stmt->close();
                 return true;
             } else {
+                $stmt->close();
                 return false;
             }
-            $stmt->close();
+            
         }
 
     }

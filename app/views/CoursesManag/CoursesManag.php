@@ -12,6 +12,9 @@
     require_once __DIR__ . '../../partials/CoursesManag/modalAddCourses.php';
     require_once __DIR__ . '../../partials/CoursesManag/modalDeleteCourse.php';
     require_once __DIR__ . '../../partials/CoursesManag/modalEditCourses.php';
+    require_once __DIR__ . "../../partials/SuccessModals/SuccessAddCourse.php";
+    require_once __DIR__ . "../../partials/SuccessModals/SuccessUpdateCourse.php";
+        require_once __DIR__ . "../../partials/SuccessModals/SuccessDeleteCourse.php";
 
 ?>
 
@@ -38,6 +41,7 @@
     <link rel="stylesheet" href="../../../public/css/addEmpModalStyles.css">
     <link rel="stylesheet" href="../../../public/css/hints.css">
     <link rel="stylesheet" href="EmpManagTable.css">
+    <link rel="stylesheet" href="../../../public/css/SuccessModal.css">
 
     <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
 </head>
@@ -97,6 +101,8 @@
 <script src="../../../public/js/coursesJS/SearchBar.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+
+<script src="../../../public/js/ModalStat/empManagStat.js"></script>
 
 <script>
     

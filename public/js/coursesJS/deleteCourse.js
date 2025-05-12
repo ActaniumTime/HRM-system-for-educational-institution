@@ -58,9 +58,10 @@ function deleteEmployer(employerId, tableRow) {
     .then(response => response.json())
     .then(data => {
         if (data.success) {
-            alert('Employer deleted successfully.');
 
-            // Удаляем строку из таблицы
+            closeAllModals();
+            showSuccessDeleteCourseModal();
+
             if (tableRow) {
                 tableRow.remove();
             }

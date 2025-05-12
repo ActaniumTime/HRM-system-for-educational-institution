@@ -199,7 +199,8 @@ document.getElementById('employerForm_AddForm').addEventListener('submit', funct
         .then(result => {
             console.log('Результат сервера:', result);
             if (result.success) {
-                showSuccessModal();
+                closeAllModals();
+                showSuccessAddEmpModal();
                 setTimeout(() => {
                 location.reload();
             }, 3000);

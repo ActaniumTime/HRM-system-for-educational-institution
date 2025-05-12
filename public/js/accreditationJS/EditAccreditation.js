@@ -90,12 +90,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const result = await response.json();
             console.log('Ответ от EditAccreditation.php:', result);
 
+
             if (result.status !== 'success') {
                 throw new Error(`Ошибка сохранения: ${result.message}`);
             }
 
-            alert('Аккредитация и документы успешно сохранены!');
-            location.reload();
+            closeAllModals();
+            showSuccessUpdAccredModal();
         } catch (error) {
             console.error('Ошибка при сохранении аккредитации:', error);
             alert('Ошибка при сохранении. Подробности в консоли.');
