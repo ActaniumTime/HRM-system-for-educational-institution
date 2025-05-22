@@ -60,7 +60,8 @@
                             data-employer-id=\"{$course->getEmployerID()}\"
                             data-employer-name=\"{$emp->getEmpNameByID($course->getEmployerID())}\"
                             data-course-id=\"{$course->getCourseID()}\"
-                            data-course-name=\"{$course->getCourseName()}\"
+                            data-course-name=\"" . htmlspecialchars($course->getCourseName(), ENT_QUOTES, 'UTF-8') . "\"
+
                             data-course-rganization-name=\"{$course->getOrganizationName()}\"
                             data-course-start=\"{$course->getStartingDate()}\"
                             data-course-end=\"{$course->getEndingDate()}\"
