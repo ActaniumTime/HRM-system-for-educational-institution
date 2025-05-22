@@ -8,8 +8,6 @@
 
     require_once __DIR__ . '/../../app/models/Employer.php';
 
-    //Current user and his session
-
     if (isset($_COOKIE['employer_ID']) && !isset($_SESSION['employer_ID'])) {
         $_SESSION['employer_ID'] = $_COOKIE['employer_ID'];
     }
@@ -22,10 +20,6 @@
 
     $emp = new Employer($connection);
     $emp->loadByID($_SESSION['employer_ID']);
-    
-    //echo "current ID employer : " . $_SESSION['employer_ID'];
-
-    //For working with employers
 
     $testEmp = new Employer($connection);
     

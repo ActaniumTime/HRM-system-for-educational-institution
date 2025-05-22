@@ -89,7 +89,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Відміна</button>
-                <button type="submit" class="btn btn-primary" form="addCourseModal_AddForm">Додати співроботника</button>
+                <button type="submit" class="btn btn-primary" form="addCourseModal_AddForm">Додати</button>
             </div>
         </div>
     </div>

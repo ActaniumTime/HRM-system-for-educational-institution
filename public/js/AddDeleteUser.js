@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Делегирование событий на таблицу
+
     document.getElementById('employeeTable').addEventListener('click', event => {
         const button = event.target.closest('.Delete-button');
         if (button) {

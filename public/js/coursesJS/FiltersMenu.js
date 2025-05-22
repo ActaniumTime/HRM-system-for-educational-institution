@@ -1,8 +1,7 @@
 
     const tableBody = document.getElementById("employeeTable");
-    const rowsOriginalOrder = Array.from(tableBody.rows); // сохранить изначальный порядок
+    const rowsOriginalOrder = Array.from(tableBody.rows); 
 
-    // --- Фильтрация по состоянию курсу ---
     const filterBtn = document.getElementById("sortByState");
     const tableRows = document.querySelectorAll("#employeeTable .table-row");
     const states = ["Ongoing", "Waiting", "Complited"];
@@ -24,7 +23,6 @@
         filterIndex++;
     });
 
-    // --- Сортировка по дате початку ---
     const sortByDateBegin = document.getElementById("sortByDateBegin");
     let beginSortState = 0;
 
@@ -46,7 +44,6 @@
         beginSortState++;
     });
 
-    // --- Сортировка по даті закінчення ---
     const sortByDateEnd = document.getElementById("sortByDateEnd");
     let endSortState = 0;
 
@@ -68,7 +65,6 @@
         endSortState++;
     });
 
-    // --- Кнопка сбросу всіх фільтрів ---
     const resetFilters = document.getElementById("resetFilters");
     resetFilters.addEventListener("click", () => {
         showAllRows();
@@ -78,7 +74,6 @@
         endSortState = 0;
     });
 
-    // --- Вспомогательные функции ---
     function showAllRows() {
         tableRows.forEach(row => row.style.display = "");
     }
@@ -92,7 +87,6 @@
         redrawTable(rowsOriginalOrder);
     }
 
-    // Отключить всплытие для SVG
     document.querySelectorAll('.no-click').forEach(element => {
         element.addEventListener('click', event => event.stopPropagation());
     });

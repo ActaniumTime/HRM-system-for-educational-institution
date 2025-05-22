@@ -41,7 +41,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $user = $result->fetch_assoc();
 
-    // Проверка пароля
     if ($enc->encrypt($user['password']) !== $password) {
         echo json_encode(['success' => false, 'message' => 'Incorrect password.']);
         exit;
@@ -70,7 +69,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit;
         }
 
-        // Добавление документа
         $newDoc = new Document($connection);
         $documentID = $newDoc->addDocument(
             $employerID,
@@ -86,7 +84,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     try {
-        // Загрузка и удаление позиции
+
         $newPos = new EmployerPosition($connection);
         $newPos->loadByID($positionID, $employerID);
 

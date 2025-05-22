@@ -131,8 +131,8 @@ a button:hover {
     padding: 12px;
     margin-left: calc(var(--navbar-width) + 1rem);
     transition: margin-left 0.3s;
-    overflow-y: auto; /* Добавлено */
-    height: 100vh; /* Убедись, что высота равна высоте окна */
+    overflow-y: auto; 
+    height: 100vh; 
 }
 
 
@@ -149,7 +149,7 @@ p {
 
 .temp-line {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 столбца одинаковой ширины */
+    grid-template-columns: repeat(4, 1fr);
     gap: 6px;
     padding: 6px;
     background: transparent;
@@ -159,10 +159,10 @@ p {
     background: #ffffff8e;
     border-radius: 36px;
     padding: 20px;
-    text-align: center; /* Для текста внутри блочных элементов, если они не flex-items */
+    text-align: center; 
     display: flex;
     flex-direction: column;
-    align-items: center; /* Горизонтальное центрирование flex-items */
+    align-items: center; 
     justify-content: space-between;
 }
 
@@ -193,7 +193,7 @@ p {
 }
 
 .summary {
-    grid-column: span 4; /* Растянуть summary на всю ширину */
+    grid-column: span 4;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -219,24 +219,23 @@ p {
     color: #555;
 }
 
-/* Адаптивность */
 @media (max-width: 1024px) {
     .temp-line {
-        grid-template-columns: repeat(2, 1fr); /* 2 столбца на средних экранах */
+        grid-template-columns: repeat(2, 1fr); 
     }
 
     .summary {
-        grid-column: span 2; /* Растянуть summary на 2 столбца */
+        grid-column: span 2; 
     }
 }
 
 @media (max-width: 768px) {
     .temp-line {
-        grid-template-columns: 1fr; /* 1 столбец на маленьких экранах */
+        grid-template-columns: 1fr; 
     }
 
     .summary {
-        grid-column: span 1; /* Растянуть summary на 1 столбец */
+        grid-column: span 1; 
         flex-direction: column;
     }
 
@@ -251,19 +250,16 @@ a button{
     
 }
 
-/* Анимация при загрузке */
 .tile {
     animation: fadeIn 0.8s ease-in-out;
 }
 
-/* Плавная пульсация тени */
 
 .tile {
     transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.6s ease;
-    animation: shadowPulse 3s ease-in-out infinite alternate; /* Плавная пульсация */
+    animation: shadowPulse 3s ease-in-out infinite alternate;
 }
 
-/* Лёгкое покачивание при наведении */
 .tile:hover {
     
     background: rgba(255, 251, 229, 0.95);

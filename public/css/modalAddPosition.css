@@ -78,15 +78,15 @@ header img {
 
 
 .btn-cor {
-    background: transparent; /* Без фона */
-    border: 2px solid transparent; /* Граница скрыта */
+    background: transparent;
+    border: 2px solid transparent; 
     border-radius: 36px;
     opacity: 0.6;
     transition: border-color 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
     padding: 10px 20px;
     font-weight: bold;
     font-size: 14px;
-    color: inherit; /* Наследуем цвет от button, если там изменится */
+    color: inherit; 
 }
 
 .btn-cor:hover {

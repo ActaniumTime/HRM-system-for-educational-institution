@@ -1,9 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
     const searchIcon = document.getElementById("searchIcon");
     const searchInput = document.getElementById("searchInput");
-    const table = document.getElementById("positionsTable"); // ID tbody
+    const table = document.getElementById("positionsTable");
 
-    // Показать/скрыть строку поиска
     searchIcon.addEventListener("click", () => {
         searchInput.classList.toggle("active");
         if (searchInput.classList.contains("active")) {
@@ -14,7 +13,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Фильтрация таблицы по названию позиции и уровню
     searchInput.addEventListener("input", () => {
         const query = searchInput.value.toLowerCase().trim();
         filterTable(query);

@@ -39,13 +39,13 @@ try {
             throw new Exception("Не удалось сохранить файл: {$file['name']}");
         }
 
-        // Получение данных документа из POST
+
         $docName = $_POST["docName_$index"] ?? 'Без названия';
         $sphere = $_POST["sphere_$index"] ?? '';
         $purpose = $_POST["purpose_$index"] ?? '';
         $docType = $_POST["docType_$index"] ?? 'Прочее';
 
-        // Добавление документа в базу
+
         $docID = $document->addDocument($ownerID, $docName, $sphere, $purpose, $docType, $publicPath);
         if (!$docID) {
             throw new Exception("Ошибка при добавлении документа в базу.");

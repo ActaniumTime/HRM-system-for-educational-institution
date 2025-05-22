@@ -40,7 +40,6 @@ class Employer {
         
     }
 
-    // Метод для загрузки данных о сотруднике по ID
     public function loadByID($id) {
         $query = "SELECT * FROM Employers WHERE employerID = ?";
         $stmt = $this->connection->prepare($query);
@@ -178,7 +177,6 @@ class Employer {
 
     )
      {
-        // Hash the password before storing it in the database
         $enigma = new Enigma();
         $hashedPassword = $enigma->encrypt($password);
         
@@ -231,10 +229,8 @@ class Employer {
             $avatar
         );
         if ($stmt->execute()) {
-            // echo "Employer added successfully!";
             return $stmt->insert_id;
         } else {
-            // echo "Error: " . $stmt->error;
             return false;
         }
         
@@ -286,7 +282,7 @@ class Employer {
             $employer->getDateFired(),
             $employer->getAdmissionBasis(),
             $employer->getEmploymentType(),
-            $employer->getEmployerID(), // Primary key to identify the record
+            $employer->getEmployerID(),
             $employer->getAvatar()
         );
     
@@ -321,61 +317,49 @@ class Employer {
     }
 
     public function updateChangedFields($data) {
-        // Prepare fields for update
         $fields = [];
         $values = [];
     
-        // Check each field for changes
         foreach ($data as $key => $value) {
             if (property_exists($this, $key) && $this->$key !== $value) {
                 $fields[] = "$key = ?";
-                // If the value is empty and it's a date, set it to NULL
                 if ($key === 'dateFired' && empty($value)) {
-                    $values[] = null; // Set dateFired to NULL if empty
+                    $values[] = null;
                 } else {
                     $values[] = $value;
                 }
             }
         }
     
-        // If no fields were changed, return early
         if (empty($fields)) {
             echo json_encode(["status" => "error", "message" => "No fields were changed."]);
             return;
         }
     
-        // Add the ID for WHERE clause
         $values[] = $this->employerID;
-    
-        // Formulate the SQL query
+
         $query = "UPDATE employers SET " . implode(", ", $fields) . " WHERE employerID = ?";
-    
-        // Prepare the query
+
         $stmt = $this->connection->prepare($query);
         if (!$stmt) {
             echo json_encode(["status" => "error", "message" => "Failed to prepare statement: " . $this->connection->error]);
             return;
         }
-    
-        // Create type string for bind_param
+
         $types = str_repeat("s", count($values) - 1) . "i";
-    
-        // Bind parameters
+
         if (!$stmt->bind_param($types, ...$values)) {
             echo json_encode(["status" => "error", "message" => "Failed to bind parameters: " . $stmt->error]);
             return;
         }
-    
-        // Execute the query
+
         if (!$stmt->execute()) {
             echo json_encode(["status" => "error", "message" => "Failed to execute query: " . $stmt->error]);
             return;
         }
-    
-        // Close the statement
+
         $stmt->close();
-    
-        // Return success message
+
         echo json_encode(["status" => "success", "message" => "Fields updated successfully."]);
     }
     

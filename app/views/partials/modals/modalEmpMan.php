@@ -25,7 +25,8 @@
                         <div class="mb-3 col-md-6">
                             <label for="accessLevelID" class="form-label">Рівень доступу</label>
                             <select class="form-select" id="accessLevelID" name="accessLevelID" placeholder="Оберіть рівень доступу..." readonly>
-                                <option value="2">Менеджер</option readonly>
+                                <option value="1">Директор</option readonly>
+                                <option value="2">HR-Менеджер</option readonly>
                                 <option value="3">Співроботник</option readonly>
                             </select>
                         </div>
@@ -70,20 +71,29 @@
                             <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="Введить номер телефону...">
                         </div>
                         <div class="mb-3 col-md-6">
-                            <label for="department" class="form-label">Коміссія/кафедра</label>
-                            <input type="text" class="form-control" id="department" name="department"  placeholder="Оберить коміссію/кафедру...">
+                            <label for="department" class="form-label">Циклова комісія</label>
+                            <select class="form-select" id="department" name="department" placeholder="Оберить коміссію/кафедру...">
+                                <option value="121. Інженерія программного забезпечення">121. Інженерія программного забезпечення</option>
+                                <option value="122. Ком'ютерні науки">122. Ком'ютерні науки</option>
+                                <option value="022. Дизайн">022. Дизайн</option>
+                                <option value="Администрация коледжу">Администрация коледжу</option>
+                                <option value="ЦК математично-природничих дисциплін">ЦК математично-природничих дисциплін</option>
+                                <option value="ЦК гуманітарних дисциплін">ЦК гуманітарних дисциплін</option>
+                                <option value="ЦК іноземних мов">ЦК іноземних мов</option>
+                                <option value="ЦК соціально-економічних дисциплін">ЦК соціально-економічних дисциплін</option>
+                                <option value="ЦК фізичного виховання і безпеки життєдіяльності">ЦК фізичного виховання і безпеки життєдіяльності</option>
+                            </select>
                         </div>
                         <div class="mb-3 col-md-6">
                             <label for="dateAccepted" class="form-label">Дата прийняття на работу</label>
                             <input type="date" class="form-control" id="dateAccepted" name="dateAccepted" placeholder="оберіть дату прийняття на роботу...">
                         </div>
                         <div class="mb-3 col-md-6">
-                        <label for="currentStatus" class="form-label">Поточний статус</label>
+                            <label for="currentStatus" class="form-label">Поточний статус</label>
                             <select class="form-select" id="currentStatus" name="currentStatus" placeholder="Введить поточний статус...">
                                 <option value="Active">Працює</option>
                                 <option value="Inactive">Не працює</option>
                             </select>
-
                         </div>
                         <div class="mb-3 col-md-6">
                             <label for="dateFired" class="form-label">Дата звільнення</label>
@@ -92,8 +102,12 @@
 
 
                         <div class="mb-3 col-md-6">
-                            <label for="employmentType" class="form-label">Тип зайнятості</label>
-                            <input type="text" class="form-control" id="employmentType" name="employmentType" placeholder="Оберіть тип зайнятості...">
+                           <label for="employmentType" class="form-label">Тип зайнятості</label>
+                            <select class="form-select" id="employmentType" name="employmentType" placeholder="Оберіть тип зайнятості...">
+                                <option value="Full-time">Повна зайнятість</option>
+                                <option value="Part-time">Часткова зайнятість</option>
+                            </select>
+                            
                         </div>
 
                         <div class="row">

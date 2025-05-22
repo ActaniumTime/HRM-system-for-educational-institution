@@ -21,8 +21,8 @@
 
     $empIDPage = new Employer($connection); 
     if (isset($_GET['emp_ID'])) {
-        $empID = $_GET['emp_ID']; // получили значение из URL в переменную
-        $empIDPage->loadByID($empID); // передали дальше
+        $empID = $_GET['emp_ID']; 
+        $empIDPage->loadByID($empID); 
     } else {
         echo "ID пользователя не передан.";
     }
@@ -353,7 +353,7 @@
                     <script>
                         document.querySelectorAll('.no-click').forEach(element => {
                         element.addEventListener('click', event => {
-                            event.stopPropagation(); // Останавливает дальнейшую обработку события
+                            event.stopPropagation();
                             });
                         });
 
@@ -508,8 +508,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-<!-- <script src="../../../public/js/AddDeleteUser.js"></script> -->
  
 <script src="../../../public/js/tooltip.js"></script>
 
@@ -525,7 +523,7 @@
     
     $(document).ready(function() {
         $('#employeeSelect').select2({
-            dropdownParent: $('#addCourseModal'), // Обеспечивает корректное отображение в модальном окне
+            dropdownParent: $('#addCourseModal'),
             placeholder: "Введить ПІБ...",
             allowClear: true,
             width: '100%'

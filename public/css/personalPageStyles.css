@@ -111,7 +111,7 @@ p {
 
 .temp-line {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 столбца одинаковой ширины */
+    grid-template-columns: repeat(4, 1fr); 
     gap: 6px;
     padding: 6px;
     background: transparent;
@@ -137,7 +137,7 @@ p {
 
 
 .summary {
-    grid-column: span 4; /* Растянуть summary на всю ширину */
+    grid-column: span 4;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -163,27 +163,23 @@ p {
     color: #555;
 }
 
-
-
-
-/* Адаптивность */
 @media (max-width: 1024px) {
     .temp-line {
-        grid-template-columns: repeat(2, 1fr); /* 2 столбца на средних экранах */
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .summary {
-        grid-column: span 2; /* Растянуть summary на 2 столбца */
+        grid-column: span 2; 
     }
 }
 
 @media (max-width: 768px) {
     .temp-line {
-        grid-template-columns: 1fr; /* 1 столбец на маленьких экранах */
+        grid-template-columns: 1fr; 
     }
 
     .summary {
-        grid-column: span 1; /* Растянуть summary на 1 столбец */
+        grid-column: span 1; 
         flex-direction: column;
     }
 
@@ -214,6 +210,6 @@ p {
     padding: 12px;
     margin-left: calc(var(--navbar-width) + 1rem);
     transition: margin-left 0.3s;
-    overflow-y: auto; /* Добавлено */
-    height: 100vh; /* Убедись, что высота равна высоте окна */
+    overflow-y: auto;
+    height: 100vh;
 }

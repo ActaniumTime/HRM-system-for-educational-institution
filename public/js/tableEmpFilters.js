@@ -1,30 +1,28 @@
 document.addEventListener("DOMContentLoaded", () => {
     const table = document.getElementById("employeeTable");
     const sortState = {
-        birthday: 0, // 0 - неактивно, 1 - возрастание, 2 - убывание
+        birthday: 0,
         dateAccepted: 0,
         dateFired: 0,
     };
 
     function saveRowsOrder(){
-            // Сохраняем исходный порядок строк
+
     Array.from(table.rows).forEach((row, index) => {
         if (row.cells.length > 0) {
-            row.dataset.originalIndex = index; // Сохраняем индекс в атрибуте
+            row.dataset.originalIndex = index; 
         }
     });1
     }
 
     saveRowsOrder();
 
-    // Делегирование событий для фильтров
     document.addEventListener("change", (event) => {
         if (event.target.matches("#accessLevelFilter, #genderFilter, #departmentFilter, #employmentTypeFilter")) {
             applyFilters();
         }
     });
 
-    // Делегирование событий для сортировки
     document.addEventListener("click", (event) => {
         if (event.target.matches("#sortByBirthday")) {
             toggleSort(6, "birthday");
@@ -38,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     function getTableRows() {
-        return Array.from(table.rows).filter((row) => row.cells.length > 0); // Исключаем строки заголовков
+        return Array.from(table.rows).filter((row) => row.cells.length > 0); 
     }
 
     function applyFilters() {
@@ -61,14 +59,14 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function toggleSort(columnIndex, sortKey) {
-        sortState[sortKey] = (sortState[sortKey] + 1) % 3; // Переключение между 0, 1, 2
+        sortState[sortKey] = (sortState[sortKey] + 1) % 3; 
 
         if (sortState[sortKey] === 0) {
             resetSort();
             return;
         }
 
-        const rows = getTableRows().filter((row) => row.style.display !== "none"); // Только видимые строки
+        const rows = getTableRows().filter((row) => row.style.display !== "none");
         const ascending = sortState[sortKey] === 1;
 
         rows.sort((a, b) => {
@@ -81,7 +79,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         rows.forEach((row) => table.appendChild(row));
 
-        // Сброс состояний других кнопок
         Object.keys(sortState).forEach((key) => {
             if (key !== sortKey) {
                 sortState[key] = 0;
@@ -96,23 +93,23 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function resetFilters() {
-        // Сбрасываем значения фильтров
+
         document.getElementById("accessLevelFilter").value = "";
         document.getElementById("genderFilter").value = "";
         document.getElementById("departmentFilter").value = "";
         document.getElementById("employmentTypeFilter").value = "";
     
-        // Восстанавливаем исходный порядок строк и показываем все строки
+       
         const rows = getTableRows();
         rows.forEach((row) => {
-            row.style.display = ""; // Показываем все строки
+            row.style.display = ""; 
         });
     
-        // Сортировка по начальному порядку
+
         rows.sort((a, b) => parseInt(a.cells[0].textContent.trim()) - parseInt(b.cells[0].textContent.trim()));
         rows.forEach((row) => table.appendChild(row));
     
-        // Сброс состояний сортировки
+
         Object.keys(sortState).forEach((key) => {
             sortState[key] = 0;
         });

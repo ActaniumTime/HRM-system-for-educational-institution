@@ -3,16 +3,15 @@
     session_start();
 
     $host = 'localhost';
-    $port = 3306; // порт для MAMP
+    $port = 3306; // port for MAMP 
     $username = 'root';
     $password = 'root';
     $database = 'employeemanagement';
     $table = 'employers';
 
-    // Подключение к базе данных
+    // Connect to the database
     $connection = new mysqli($host, $username, $password, $database, $port);
 
-    // Проверка соединения
     if ($connection->connect_error) {
         die("Ошибка подключения: " . $connection->connect_error);
     }

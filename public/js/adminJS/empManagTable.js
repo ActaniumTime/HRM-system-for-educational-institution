@@ -108,7 +108,6 @@ function getAccessLevelText(accessLevelID) {
 function updateTable() {
     const url = '../../models/get_table.php';
 
-    // Отправляем GET-запрос
     fetch(url)
         .then(response => {
             if (!response.ok) {
@@ -118,10 +117,9 @@ function updateTable() {
         })
         .then(data => {
             console.log('Ответ от сервера:', data);
-            const tbody = document.querySelector('tbody'); // Находим tbody, где выводятся данные
-            tbody.innerHTML = ''; // Очищаем текущий контент таблицы
+            const tbody = document.querySelector('tbody');
+            tbody.innerHTML = ''; 
 
-            // Заполняем таблицу новыми данными
             data.forEach((employer, index) => {
                 const accessLevelText = getAccessLevelText(employer.accessLevelID);
                 const row = document.createElement('tr');
@@ -180,7 +178,6 @@ function updateTable() {
         .catch(error => {
             console.error('Ошибка при запросе:', error);
         });
-        // saveRowsOrder();
 }
 
 

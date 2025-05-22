@@ -258,7 +258,7 @@
 
         public function getAllCoursesByIDs($IDs){
             if (empty($IDs)) {
-                return []; // или throw new Exception("Нет курсов для загрузки.");
+                return []; 
             }
         
             $placeholders = implode(',', array_fill(0, count($IDs), '?'));

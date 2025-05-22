@@ -8,7 +8,6 @@ html {
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: transparent !important;
-    /* display: flex; */
     color: #303030;
 }
 
@@ -79,27 +78,10 @@ h2 {
     margin-bottom: 20px;
 }
 
-/* Круглая аватарка */
 img.rounded-circle {
     border: 3px solid #ffc825;
 }
 
-/* button {
-    background-color: #5a5af7;
-    color: #ffffff;
-    border: none;
-    border-radius: 8px;
-    padding: 10px 15px;
-    transition: transform 0.2s, background-color 0.3s, box-shadow 0.3s;
-}
-
-button:hover {
-    background-color: #4a4ae0;
-    transform: scale(1.05);
-    box-shadow: 0 4px 8px rgba(90, 90, 247, 0.4);
-} */
-
-/* Стили для таблицы */
 .table-container {
     margin: 20px auto;
     padding: 20px;
@@ -141,12 +123,6 @@ button:hover {
     background-color: rgba(255, 255, 255, 0.5);
 }
 
-/* .table tbody tr:hover {
-    background-color: #FFD85F;
-    border-radius: 36px;
-    overflow: hidden;
-} */
-
 .table tbody td {
     color: #303030;
 }
@@ -156,7 +132,6 @@ button:hover {
     object-fit: cover;
 }
 
-/* Стили для кнопок */
 .btn {
     display: inline-block;
     padding: 10px 20px;
@@ -176,13 +151,13 @@ button:hover {
     background-color: #303030;
 }
 
-/* Стили для поиска */
+
 .search-container {
     display: flex;
     align-items: center;
     background-color: rgba(255, 255, 255, 0.5);
     border-radius: 36px;
-    max-width: 400px; /* Изначальная ширина */
+    max-width: 400px;
     width: 100%;
     padding: 5px 10px;
 }
@@ -203,19 +178,16 @@ button:hover {
     color: #4a4af7;
 }
 
-/* Поле пустое */
 .dynamic-input:invalid {
     border: 2px solid #f79a9a;
     animation: shake 0.2s ease-in-out;
 }
 
-/* Поле изменено */
 .dynamic-input.updated {
     border: 2px solid #ffd966;
     background-color: #fff8d6;
 }
 
-/* Анимация ошибки */
 @keyframes shake {
     0% { transform: translateX(0); }
     25% { transform: translateX(-5px); }
@@ -249,8 +221,8 @@ button:hover {
     padding: 12px;
     margin-left: calc(var(--navbar-width) + 1rem);
     transition: margin-left 0.3s;
-    overflow-y: auto; /* Добавлено */
-    height: 100vh; /* Убедись, что высота равна высоте окна */
+    overflow-y: auto; 
+    height: 100vh; 
 }
 
 
@@ -267,7 +239,7 @@ p {
 
 .temp-line {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 столбца одинаковой ширины */
+    grid-template-columns: repeat(4, 1fr); 
     gap: 6px;
     padding: 6px;
     background: transparent;
@@ -314,7 +286,7 @@ p {
 }
 
 .summary {
-    grid-column: span 4; /* Растянуть summary на всю ширину */
+    grid-column: span 4;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -340,66 +312,65 @@ p {
     color: #303030;
 }
 
-/* Адаптивность */
 @media (max-width: 1198px) {
 
     .summary {
-        grid-column: span 2; /* Растянуть summary на 2 столбца */
+        grid-column: span 2; 
     }
 
     .temp-line {
-        grid-template-columns: 1fr 1fr; /* Две колонки */
-        grid-template-rows: auto auto; /* Две строки */
+        grid-template-columns: 1fr 1fr; 
+        grid-template-rows: auto auto;
     }
 
-    .tool-bar-element:nth-child(1) { /* FiltersMenu1 */
+    .tool-bar-element:nth-child(1) { 
         display: flex;
         flex-direction: column;
-        grid-column: span 1; /* Занимает половину ширины */
+        grid-column: span 1;
     }
 
-    .tool-bar-element:nth-child(3) { /* searchBar */
-        grid-column: span 1; /* Растягивается на всю ширину */
+    .tool-bar-element:nth-child(3) { 
+        grid-column: span 1; 
     }
 
-    .tool-bar-element:nth-child(2) { /* FiltersMenu2 */
-        grid-column: span 1; /* Переносится под searchBar */
+    .tool-bar-element:nth-child(2) { 
+        grid-column: span 1;
     }
 }
 
 @media (max-width: 768px) {
     .search-container {
-        max-width: 100%; /* Растягиваем на всю ширину */
+        max-width: 100%; 
     }
 
     .search-input {
-        font-size: 0.9rem; /* Уменьшаем текст */
+        font-size: 0.9rem;
         padding: 3px;
     }
 
     .search-icon {
-        font-size: 1rem; /* Уменьшаем иконку */
+        font-size: 1rem;
     }
 
 
 
     .temp-line {
-        grid-template-columns: 1fr 1fr; /* Две колонки */
-        grid-template-rows: auto auto; /* Две строки */
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto; 
     }
 
-    .tool-bar-element:nth-child(1) { /* FiltersMenu1 */
+    .tool-bar-element:nth-child(1) { 
         display: flex;
         flex-direction: column;
-        grid-column: span 2; /* Занимает половину ширины */
+        grid-column: span 2; 
     }
 
-    .tool-bar-element:nth-child(3) { /* searchBar */
-        grid-column: span 2; /* Растягивается на всю ширину */
+    .tool-bar-element:nth-child(3) { 
+        grid-column: span 2; 
     }
 
-    .tool-bar-element:nth-child(2) { /* FiltersMenu2 */
-        grid-column: span 2; /* Переносится под searchBar */
+    .tool-bar-element:nth-child(2) { 
+        grid-column: span 2; 
     }
 
 }
@@ -456,11 +427,11 @@ p {
 
 .tool-bar-element:last-child {
     display: flex;
-    justify-content: flex-end; /* Прижимает содержимое к правому краю */
+    justify-content: flex-end; 
 }
 
 
-.tool-bar-element:nth-child(1) { /* FiltersMenu1 */
+.tool-bar-element:nth-child(1) { 
     display: flex;
     align-items: center;
     flex-direction: row;

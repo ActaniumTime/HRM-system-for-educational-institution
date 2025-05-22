@@ -20,7 +20,7 @@
         
         foreach ($docs as $doc) {
             $ownerID = $doc->getOwnerID();
-            $ownerName = $testEmp->getEmpNameByID($ownerID) ?? "???"; // Обработка ошибок
+            $ownerName = $testEmp->getEmpNameByID($ownerID) ?? "???";
             $result[] = [
                 'documentID' => $doc->getDocumentID(),
                 'ownerName' => $ownerName,

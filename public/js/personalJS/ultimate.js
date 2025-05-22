@@ -1,6 +1,6 @@
 document.querySelectorAll('.no-click').forEach(element => {
     element.addEventListener('click', event => {
-        event.stopPropagation(); // Останавливает дальнейшую обработку события
+        event.stopPropagation(); 
         });
     });
     
@@ -76,13 +76,12 @@ document.querySelectorAll('.no-click').forEach(element => {
     
         editBtns.forEach((btn) => {
             btn.addEventListener("click", () => {
-                // Извлечение данных из data-атрибутов
+
                 const finishDay = JSON.parse(btn.getAttribute("data-finish-day"))
                 const accreditationPlan = JSON.parse(btn.getAttribute("data-accreditation-plan"));
                 const documentYears = JSON.parse(btn.getAttribute("data-document-years"));
                 const experienceYears = btn.getAttribute("data-expirience-years");
-    
-                // Соответствие категорий и их идентификаторов
+
                 const categoryMapping = {
                     "Спеціаліст": 1,
                     "Спеціаліст другої категорії": 2,
@@ -91,17 +90,15 @@ document.querySelectorAll('.no-click').forEach(element => {
                     "Підтвердження вищої категорії": 5,
                     "Підтвердження вищої категорії 2": 6
                 };
-    
-                // Заполнение полей для каждой категории
+
                 for (const [category, year] of Object.entries(accreditationPlan)) {
                     const categoryId = categoryMapping[category];
                     if (categoryId && year) {
                         document.getElementById(`accreditationYearModal${categoryId}`).value = year;
-                        // document.getElementById(`categoryYearsModal${categoryId}`).value = experienceYears || 0;
+                        
                     }
                 }
-    
-                // Сортируем годы и значения (по возрастанию годов)
+ 
                 const sortedYears = Object.entries(documentYears)
     
                 const docButtons = document.querySelectorAll('.docViewBtn');

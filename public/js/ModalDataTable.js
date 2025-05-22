@@ -132,11 +132,11 @@ function fetchPositionsByEmployer(employerID) {
         })
         .then(data => {
             console.log('Positions:', data);
-            updatePositionsTable(data); // можешь написать функцию для отрисовки данных в таблице
+            updatePositionsTable(data); 
         })
         .catch(error => {
             console.error('Ошибка парсинга JSON:', error);
-            console.error('Ответ от сервера:', data); // ← покажет ошибку сервера
+            console.error('Ответ от сервера:', data); 
         });
 }
 
@@ -207,7 +207,7 @@ document.getElementById('deleteEmployerPositionForm').addEventListener('submit',
 
 
 function showSuccessModal() {
-  // Создать кастомный затемнитель
+
   const backdrop = document.createElement('div');
   backdrop.classList.add('custom-backdrop');
   document.body.appendChild(backdrop);
@@ -219,6 +219,6 @@ function showSuccessModal() {
   setTimeout(() => {
     modal.hide();
     backdrop.classList.remove('show');
-    setTimeout(() => backdrop.remove(), 200); // удалить затемнитель
+    setTimeout(() => backdrop.remove(), 200); 
   }, 3000);
 }

@@ -68,7 +68,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button"  class="btn-cor"  data-bs-dismiss="modal">Назад</button>
-                    <button type="submit" class="btn btn-primary" form="positionEditForm">Додати позицію</button>
+                    <button type="submit" class="btn btn-primary" form="positionEditForm">Оновити дані</button>
                 </div>
             </div>
         </div>

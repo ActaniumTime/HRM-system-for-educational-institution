@@ -89,7 +89,7 @@
 <script>
     document.querySelectorAll('.no-click').forEach(element => {
     element.addEventListener('click', event => {
-        event.stopPropagation(); // Останавливает дальнейшую обработку события
+        event.stopPropagation();
         });
     });
 

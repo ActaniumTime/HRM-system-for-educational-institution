@@ -1,17 +1,16 @@
 document.querySelectorAll('.editEmployerBtn').forEach(button => {
     button.addEventListener('click', () => {
-        // Аватар
+
         const avatarSrc = button.getAttribute('data-employer-avatar');
         document.querySelector('#EditCourseModal #employerAvatar').src = avatarSrc;
 
-        // ID користувача
         const employerID = button.getAttribute('data-employer-id');
         document.querySelector('#empID_EditForm').value = employerID;
 
         const courseID = button.getAttribute('data-course-id');
         document.querySelector('#courseID_EditForm').value = courseID;
 
-        // Назва користувача (если нужно, добавь отдельный data-* атрибут, например: data-employer-name)
+        
         const empName = button.getAttribute('data-employer-name');
         if (empName) document.querySelector('#empName_EditForm').value = empName;
 

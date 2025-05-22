@@ -48,8 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
     
         const formData = new FormData(updateEmpDoc);
-    
-        // Добавим employerID, если нужно
+
         const employerIDField = document.getElementById('employerID');
         if (employerIDField) {
             formData.append('employerID', employerIDField.value);
@@ -83,8 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateTable() {
         const url = '../../models/get_table.php';
-    
-        // Отправляем GET-запрос
+
         fetch(url)
             .then(response => {
                 if (!response.ok) {
@@ -94,10 +92,9 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .then(data => {
                 console.log('Ответ от сервера:', data);
-                const tbody = document.querySelector('#employeeTable'); // Находим tbody, где выводятся данные
-                tbody.innerHTML = ''; // Очищаем текущий контент таблицы
-    
-                // Заполняем таблицу новыми данными
+                const tbody = document.querySelector('#employeeTable');
+                tbody.innerHTML = '';
+
                 data.forEach((employer, index) => {
                     const accessLevelText = getAccessLevelText(employer.accessLevelID);
                     var tempAccessLevelID;
@@ -115,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             tempAccessLevelID = "Хто ти воїн?...";
                     }
                     const row = document.createElement('tr');
-                    row.classList.add('table-row'); // Добавляем класс "table-row" к элементу TR
+                    row.classList.add('table-row'); 
                     console.log("JS work 4");
                     row.innerHTML = `
                         <th scope="row" style="border-radius: 36px 0px 0px 36px;">${index + 1}</th>

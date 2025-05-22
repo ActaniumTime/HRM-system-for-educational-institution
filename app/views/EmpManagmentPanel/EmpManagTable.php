@@ -134,7 +134,7 @@
     
     $(document).ready(function() {
         $('#employeeSelect').select2({
-            dropdownParent: $('#positionManagModal_AddForm'), // Обеспечивает корректное отображение в модальном окне
+            dropdownParent: $('#positionManagModal_AddForm'),
             placeholder: "Оберить позицію...",
             allowClear: true,
             width: '100%'

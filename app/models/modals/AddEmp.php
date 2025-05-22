@@ -115,14 +115,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $empAccred = new Accreditation($connection);
         $empAccred->setEmployerID($employID);
 
-        // Определяем первый возможный год аккредитации
         if ($data['categoryAge'] < 3) {
             $commingAccreditationYear = $currentYear + (3 - $data['categoryAge']);
         } else {
             $commingAccreditationYear = $lastYear + $data['categoryAge'];
         }
 
-        // Ограничиваем перенос на 5 лет максимум
         $commingAccreditationYear = min($commingAccreditationYear, $lastYear + 5);
 
         if ($data['category'] == 4) {

@@ -1,10 +1,9 @@
 <?php
-    $sourceDir = 'G:\Job\MAMP\htdocs\diploma\Files'; // Укажи здесь путь к каталогу с документами
+    $sourceDir = 'G:\Job\MAMP\htdocs\diploma\Files'; 
     $backupDir = '../../backupsFiles/';
     $timestamp = date('Y-m-d_H-i-s');
     $zipFile = $backupDir . 'documents_' . $timestamp . '.zip';
 
-    // Создание директории для архивов, если не существует
     if (!is_dir($backupDir)) {
         mkdir($backupDir, 0755, true);
     }

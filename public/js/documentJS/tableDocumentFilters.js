@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const key = btn.id.replace("Filter", "");
             const indicator = btn.querySelector(".sort-indicator");
             if (!indicator) return;
-            // Обновление иконки сортировки (если требуется)
+
         });
     }
 

@@ -11,7 +11,7 @@
                         <div class="row">
                             <div class="col-md-12 text-center">
                                 <img id="employerAvatarPreview" src="" alt="User Photo" class="rounded-circle" width="150" height="150" style="    border: 5px solid #ffc825; margin-bottom: 15px;">
-                                <input type="file" id="employerAvatar" name="avatar" accept="image/*" class="form-control mt-3">
+                                <input type="file" id="employerAvatar111" name="avatar" accept="image/*" class="form-control mt-3">
                             </div>
                         </div>
                     </div>
@@ -161,15 +161,17 @@
 </div>
 
 <script>
-document.getElementById('employerAvatar').addEventListener('change', function (e) {
-    const file = e.target.files[0];
-    if (file) {
-        const reader = new FileReader();
-        reader.onload = function (e) {
-            document.getElementById('employerAvatarPreview').src = e.target.result;
-        };
-        reader.readAsDataURL(file);
-    }
+document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('employerAvatar111').addEventListener('change', function (e) {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                document.getElementById('employerAvatarPreview').src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+    });
 });
 
 document.getElementById('employerForm_AddForm').addEventListener('submit', function (e) {

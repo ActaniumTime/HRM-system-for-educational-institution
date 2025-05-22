@@ -1,5 +1,5 @@
 function showSuccessAddEmpModal() {
-    // Создать кастомный затемнитель
+
     const backdrop = document.createElement('div');
     backdrop.classList.add('custom-backdrop');
     document.body.appendChild(backdrop);
@@ -11,13 +11,13 @@ function showSuccessAddEmpModal() {
     setTimeout(() => {
       modal.hide();
       backdrop.classList.remove('show');
-      setTimeout(() => backdrop.remove(), 300); // удалить затемнитель
+      setTimeout(() => backdrop.remove(), 300); 
       location.reload();
     }, 3000);
   }
   
   function showSuccessModal() {
-    // Создать кастомный затемнитель
+
     const backdrop = document.createElement('div');
     backdrop.classList.add('custom-backdrop');
     document.body.appendChild(backdrop);
@@ -29,13 +29,13 @@ function showSuccessAddEmpModal() {
     setTimeout(() => {
       modal.hide();
       backdrop.classList.remove('show');
-      setTimeout(() => backdrop.remove(), 300); // удалить затемнитель
+      setTimeout(() => backdrop.remove(), 300); 
       location.reload();
     }, 3000);
   }
 
   function showSuccessAddPosModal() {
-    // Создать кастомный затемнитель
+
     const backdrop = document.createElement('div');
     backdrop.classList.add('custom-backdrop');
     document.body.appendChild(backdrop);
@@ -47,7 +47,7 @@ function showSuccessAddEmpModal() {
     setTimeout(() => {
       modal.hide();
       backdrop.classList.remove('show');
-      setTimeout(() => backdrop.remove(), 300); // удалить затемнитель
+      setTimeout(() => backdrop.remove(), 300);
       location.reload();
     }, 3000);
   }
@@ -66,7 +66,7 @@ function showSuccessAddEmpModal() {
     setTimeout(() => {
       modal.hide();
       backdrop.classList.remove('show');
-      setTimeout(() => backdrop.remove(), 300); // удалить затемнитель
+      setTimeout(() => backdrop.remove(), 300);
       location.reload();
     }, 3000);
   }
@@ -83,7 +83,7 @@ function showSuccessAddEmpModal() {
     setTimeout(() => {
       modal.hide();
       backdrop.classList.remove('show');
-      setTimeout(() => backdrop.remove(), 300); // удалить затемнитель
+      setTimeout(() => backdrop.remove(), 300); 
       location.reload();
     }, 3000);
   }
@@ -204,11 +204,11 @@ function showSuccessAddEmpModal() {
 
 
   function closeAllModals() {
-    // Найти все открытые модалки
+
     const modals = document.querySelectorAll('.modal.show');
 
     modals.forEach(modal => {
-        // Используем Bootstrap API для скрытия
+
         const modalInstance = bootstrap.Modal.getInstance(modal);
         if (modalInstance) {
             modalInstance.hide();
