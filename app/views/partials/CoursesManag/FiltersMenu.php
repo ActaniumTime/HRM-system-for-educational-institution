@@ -1,5 +1,4 @@
 <div >
-    <button class="btn sort-btn" data-bs-toggle="modal" data-bs-target="#AnalModal" title="Загальний аналіз"><i class="fi fi-sr-stats"></i></button>
 
     <button class="btn sort-btn" id="sortByState" title="Сортувати за станом курсів"><i class="fi fi-rr-arrow-progress"></i></button>
     <button class="btn sort-btn" id="sortByDateBegin" title="Сортувати за датою початку курсів"><i class="fi fi-sr-shopping-bag-add  no-click" ></i></button>

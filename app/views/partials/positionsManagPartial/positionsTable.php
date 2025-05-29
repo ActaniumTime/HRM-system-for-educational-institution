@@ -34,7 +34,10 @@
                         echo "<td>{$position->getPositionLevel()}</td>";
                         echo "<td>{$position->getSalary()}</td>";
                         echo "<td>{$position->getPositionRequirements()}</td>";
-                        echo "<td class=\"d-flex\" style=\"border-radius:  0px 36px 36px 0px ;\">";
+
+                        echo "<td style=\"border-radius:  0px 36px 36px 0px ;\">";
+                        echo "<div class=\"d-flex\">";
+
                         echo "<a href=\"#\" class=\"docViewBtn\" data-documentID=\"{$position->getDocumentID()}\">
 
                         
@@ -90,6 +93,7 @@
                             </svg>
                         </button>";
 
+                                            echo "</div>";
                         echo "</td>";
 
                         echo "</tr>";

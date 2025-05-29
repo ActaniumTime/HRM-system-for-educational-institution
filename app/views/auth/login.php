@@ -119,20 +119,20 @@
 <body>
     <div class="slider-thumb"></div>
     <div class="card">
-        <h2>Вітаемо!</h2>
+        <h2>Вітаємо!</h2>
         <?php if (isset($error)): ?>
             <p class="text-danger text-center"><?php echo htmlspecialchars($error); ?></p>
         <?php endif; ?>
         <form method="POST" action="">
             <div class="mb-4">
-                <label for="email" class="form-label">Email:</label>
+                <label for="email" class="form-label">Електрона пошта:</label>
                 <input type="email" id="email" name="email" class="form-control" required>
             </div>
             <div class="mb-4">
-                <label for="password" class="form-label">Password:</label>
+                <label for="password" class="form-label">Пароль:</label>
                 <input type="password" id="password" name="password" class="form-control" required>
             </div>
-            <button type="submit" class="btn btn-primary">Login</button>
+            <button type="submit" class="btn btn-primary">Увійти</button>
         </form>
     </div>
 </body>

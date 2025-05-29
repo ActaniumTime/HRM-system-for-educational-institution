@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('employerAvatar').value = employerAvatar;
             document.getElementById('employerID').value = employerID;
             document.getElementById('accessLevelID').value = accessLevelID;
+            document.getElementById('accessLevelHidden').value = accessLevelID;
             document.getElementById('name').value = name;
             document.getElementById('surname').value = surname;
             document.getElementById('fathername').value = fathername;

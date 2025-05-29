@@ -3,11 +3,11 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header bg-danger text-white">
-                <h5 class="modal-title" id="deleteEmployerModalLabel" style="color: #ffffff;">Звільнення працівника</h5>
+                <h5 class="modal-title" id="deleteEmployerModalLabel" style="color: #ffffff;">Видалення документу</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <p>Ви увірені у тому, що бажаєте видалити посаду?</p>
+                <p>Ви увірені у тому, що бажаєте видалити документ?</p>
                 <p><strong>Номер документу:  </strong> <span id="deleteDocumentID"></span></p>
                 <p><strong>Назва джокумента: </strong><span id="deleteDocumentName"></span></p>
                 <p><strong>Властник документу: </strong><span id="deleteDocumentOwner"></span></p>

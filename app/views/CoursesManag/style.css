@@ -85,10 +85,9 @@ img.rounded-circle {
 
 
 button:hover {
-    background-color: #4a4ae0;
+    background-color: #ffc825;
     transform: scale(1.05);
-    box-shadow: 0 4px 8px rgba(90, 90, 247, 0.4);
-} */
+} 
 
 .table-container {
     margin: 20px auto;

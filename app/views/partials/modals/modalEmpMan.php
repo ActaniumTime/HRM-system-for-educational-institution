@@ -24,11 +24,13 @@
                         </div>
                         <div class="mb-3 col-md-6">
                             <label for="accessLevelID" class="form-label">Рівень доступу</label>
-                            <select class="form-select" id="accessLevelID" name="accessLevelID" placeholder="Оберіть рівень доступу..." readonly>
-                                <option value="1">Директор</option readonly>
-                                <option value="2">HR-Менеджер</option readonly>
-                                <option value="3">Співроботник</option readonly>
+                            <select class="form-select" id="accessLevelID" disabled>
+                                <option value="1">Директор</option>
+                                <option value="2">HR-Менеджер</option>
+                                <option value="3">Співробітник</option>
                             </select>
+                            <input type="hidden" id="accessLevelHidden" name="accessLevelID">
+
                         </div>
 
                         <div class="mb-3 col-md-6">

@@ -114,6 +114,68 @@ document.addEventListener('DOMContentLoaded', () => {
                     const row = document.createElement('tr');
                     row.classList.add('table-row'); 
                     console.log("JS work 4");
+                    let deleteButtonHTML = '';
+                    if (employer.accessLevelID !== "1" || employer.accessLevelID !== "2") {
+                        deleteButtonHTML = `
+                                    <button type="button" class="Delete-button"
+                                    data-employer-avatar="../../../Files/photos/${employer.avatar}"
+                                    data-employer-id="${employer.employerID}"
+                                    data-access-level-id="${employer.accessLevelID}"
+                                    data-name="${employer.name}"
+                                    data-surname="${employer.surname}"
+                                    data-fathername="${employer.fathername}"
+                                    data-birthday="${employer.birthday}"
+                                    data-gender="${employer.gender}"
+                                    data-passport-id="${employer.passportID}"
+                                    data-home-address="${employer.homeAddress}"
+                                    data-email="${employer.email}"
+                                    data-phone-number="${employer.phoneNumber}"
+                                    data-department="${employer.department}"
+                                    data-date-accepted="${employer.dateAccepted}"
+                                    data-current-status="${employer.currentStatus}"
+                                    data-date-fired="${employer.dateFired}"
+                                    data-admission-basis="${employer.admissionBasis}"
+                                    data-employment-type="${employer.employmentType}"
+                                data-bs-toggle="modal"
+                                data-bs-target="#deleteEmployerModal"
+                                title="Видалити співробітника">
+
+                                <svg xmlns=http://www.w3.org/2000/svg id=Layer_1 data-name=Layer 1 viewBox=0 0 24 24 class=icon_white no-click>
+                                <path d=m23,12h-6c-.553,0-1-.447-1-1s.447-1,1-1h6c.553,0,1,.447,1,1s-.447,1-1,1Zm-1,4c0-.553-.447-1-1-1h-4c-.553,0-1,.447-1,1s.447,1,1,1h4c.553,0,1-.447,1-1Zm-2,5c0-.553-.447-1-1-1h-2c-.553,0-1,.447-1,1s.447,1,1,1h2c.553,0,1-.447,1-1Zm-4.344,2.668c-.558.213-1.162.332-1.795.332h-5.728c-2.589,0-4.729-1.943-4.977-4.521L1.86,6h-.86c-.552,0-1-.447-1-1s.448-1,1-1h4.101C5.566,1.721,7.586,0,10,0h2c2.414,0,4.434,1.721,4.899,4h4.101c.553,0,1,.447,1,1s-.447,1-1,1h-.886l-.19,2h-2.925c-1.654,0-3,1.346-3,3,0,1.044.537,1.962,1.348,2.5-.811.538-1.348,1.456-1.348,2.5s.537,1.962,1.348,2.5c-.811.538-1.348,1.456-1.348,2.5,0,1.169.678,2.173,1.656,2.668Zm-.84-19.668c-.414-1.161-1.514-2-2.816-2h-2c-1.302,0-2.402.839-2.816,2h7.631Z/>
+                                </svg>
+                                </button>
+                        `;
+                    }
+                    else{
+                        deleteButtonHTML = `
+                            <button type="button" class="Delete-button"
+                            data-employer-avatar="../../../Files/photos/${employer.avatar}"
+                            data-employer-id="${employer.employerID}"
+                            data-access-level-id="${employer.accessLevelID}"
+                            data-name="${employer.name}"
+                            data-surname="${employer.surname}"
+                            data-fathername="${employer.fathername}"
+                            data-birthday="${employer.birthday}"
+                            data-gender="${employer.gender}"
+                            data-passport-id="${employer.passportID}"
+                            data-home-address="${employer.homeAddress}"
+                            data-email="${employer.email}"
+                            data-phone-number="${employer.phoneNumber}"
+                            data-department="${employer.department}"
+                            data-date-accepted="${employer.dateAccepted}"
+                            data-current-status="${employer.currentStatus}"
+                            data-date-fired="${employer.dateFired}"
+                            data-admission-basis="${employer.admissionBasis}"
+                            data-employment-type="${employer.employmentType}"
+                            title="Видалити співробітника">
+
+                            <svg xmlns=http://www.w3.org/2000/svg id=Layer_1 data-name=Layer 1 viewBox=0 0 24 24 class=icon_white no-click>
+                            <path d=m23,12h-6c-.553,0-1-.447-1-1s.447-1,1-1h6c.553,0,1,.447,1,1s-.447,1-1,1Zm-1,4c0-.553-.447-1-1-1h-4c-.553,0-1,.447-1,1s.447,1,1,1h4c.553,0,1-.447,1-1Zm-2,5c0-.553-.447-1-1-1h-2c-.553,0-1,.447-1,1s.447,1,1,1h2c.553,0,1-.447,1-1Zm-4.344,2.668c-.558.213-1.162.332-1.795.332h-5.728c-2.589,0-4.729-1.943-4.977-4.521L1.86,6h-.86c-.552,0-1-.447-1-1s.448-1,1-1h4.101C5.566,1.721,7.586,0,10,0h2c2.414,0,4.434,1.721,4.899,4h4.101c.553,0,1,.447,1,1s-.447,1-1,1h-.886l-.19,2h-2.925c-1.654,0-3,1.346-3,3,0,1.044.537,1.962,1.348,2.5-.811.538-1.348,1.456-1.348,2.5s.537,1.962,1.348,2.5c-.811.538-1.348,1.456-1.348,2.5,0,1.169.678,2.173,1.656,2.668Zm-.84-19.668c-.414-1.161-1.514-2-2.816-2h-2c-1.302,0-2.402.839-2.816,2h7.631Z/>
+                            </svg>
+                            </button>
+                        `;
+                    }
+
                     row.innerHTML = `
                         <th scope="row" style="border-radius: 36px 0px 0px 36px;">${index + 1}</th>
                         <td><img src="../../../Files/photos/${employer.avatar}" alt="User Photo" class="rounded-circle" width="50" height="50" id="employerAvatar"></td>
@@ -159,33 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                     </svg>
                                 </button>
 
-                                <button type="button" class="Delete-button"
-                                    data-employer-avatar="../../../Files/photos/${employer.avatar}"
-                                    data-employer-id="${employer.employerID}"
-                                    data-access-level-id="${employer.accessLevelID}"
-                                    data-name="${employer.name}"
-                                    data-surname="${employer.surname}"
-                                    data-fathername="${employer.fathername}"
-                                    data-birthday="${employer.birthday}"
-                                    data-gender="${employer.gender}"
-                                    data-passport-id="${employer.passportID}"
-                                    data-home-address="${employer.homeAddress}"
-                                    data-email="${employer.email}"
-                                    data-phone-number="${employer.phoneNumber}"
-                                    data-department="${employer.department}"
-                                    data-date-accepted="${employer.dateAccepted}"
-                                    data-current-status="${employer.currentStatus}"
-                                    data-date-fired="${employer.dateFired}"
-                                    data-admission-basis="${employer.admissionBasis}"
-                                    data-employment-type="${employer.employmentType}"
-                                data-bs-toggle="modal"
-                                data-bs-target="#deleteEmployerModal"
-                                title="Видалити співробітника">
-
-                                <svg xmlns=http://www.w3.org/2000/svg id=Layer_1 data-name=Layer 1 viewBox=0 0 24 24 class=icon_white no-click>
-                                <path d=m23,12h-6c-.553,0-1-.447-1-1s.447-1,1-1h6c.553,0,1,.447,1,1s-.447,1-1,1Zm-1,4c0-.553-.447-1-1-1h-4c-.553,0-1,.447-1,1s.447,1,1,1h4c.553,0,1-.447,1-1Zm-2,5c0-.553-.447-1-1-1h-2c-.553,0-1,.447-1,1s.447,1,1,1h2c.553,0,1-.447,1-1Zm-4.344,2.668c-.558.213-1.162.332-1.795.332h-5.728c-2.589,0-4.729-1.943-4.977-4.521L1.86,6h-.86c-.552,0-1-.447-1-1s.448-1,1-1h4.101C5.566,1.721,7.586,0,10,0h2c2.414,0,4.434,1.721,4.899,4h4.101c.553,0,1,.447,1,1s-.447,1-1,1h-.886l-.19,2h-2.925c-1.654,0-3,1.346-3,3,0,1.044.537,1.962,1.348,2.5-.811.538-1.348,1.456-1.348,2.5s.537,1.962,1.348,2.5c-.811.538-1.348,1.456-1.348,2.5,0,1.169.678,2.173,1.656,2.668Zm-.84-19.668c-.414-1.161-1.514-2-2.816-2h-2c-1.302,0-2.402.839-2.816,2h7.631Z/>
-                                </svg>
-                                </button>
+                                ${deleteButtonHTML}
 
                                 <button type="button" class="Info-button"
                                     data-employer-id="${employer.employerID}"
