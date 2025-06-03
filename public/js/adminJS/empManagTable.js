@@ -98,9 +98,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function getAccessLevelText(accessLevelID) {
     const levels = {
-        1: "Admin",
-        2: "Manager",
-        3: "Employee"
+        1: "Директор",
+        2: "HR-менеджер",
+        3: "Співробітник",
     };
     return levels[accessLevelID] || "Unknown";
 }

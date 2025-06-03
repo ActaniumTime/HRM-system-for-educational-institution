@@ -40,7 +40,7 @@
                             echo "<td>Директор</td>";
                             break;
                         case 2:
-                            echo "<td>HR_менеджер</td>";
+                            echo "<td>HR-менеджер</td>";
                             break;
                         case 3:
                             echo "<td>Співробітник</td>";
@@ -62,7 +62,7 @@
                     echo "<td style=\"border-radius:  0px 36px 36px 0px ;\">";
 
                     echo "<div class=\"d-flex\">";
-                    echo "<button type=\"button\" class=\"editEmployerBtn \" 
+                    echo "<button type=\"button\" class=\"btn btn-primary editEmployerBtn \" 
                             data-employer-avatar=\"../../../Files/photos/{$employer->getAvatar()}\"
                             data-employer-id=\"{$employer->getEmployerID()}\"
                             data-access-level-id=\"{$employer->getAccessLevelID()}\"
