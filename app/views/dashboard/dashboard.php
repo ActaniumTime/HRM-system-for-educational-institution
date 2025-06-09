@@ -43,7 +43,7 @@ if ($emp->getAccessLevelID() === 3) {
                     <div class="tile">
                         <i class="fi fi-sr-graduation-cap" style="font-size: 3rem; color: #ffc825;"></i>
                         <h3>Підвищення кваліфікації</h3>
-                        <p>Сторінка для керування акредитаціями співробітників.</p>
+                        <p>Сторінка для керування аттестаціями співробітників.</p>
                         <a href="../AccreditationManag/AccreditationManag.php"><button>Відкрити</button></a>
                     </div>
                     <?php
@@ -117,7 +117,7 @@ if ($emp->getAccessLevelID() === 3) {
                                     <div class=\"tile\">
                                         <i class=\"fas fi fi-br-admin\" style=\"font-size: 3rem; color: #2e2e2e;\"></i>
                                         <h5 class=\"card-title\">Панель адміністратору</h5>
-                                        <p>Якись чудові настроїки для адміна, якому не має що робити</p>
+                                        <p>Керування рівнем доступу користувачів, архівування даних та файлів системи.</p>
                                         <a href=\"../AdminPanel/AdminPanel.php\"><button>Відкрити</button></a>
                                     </div>
                                 ";

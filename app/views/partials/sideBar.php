@@ -32,7 +32,7 @@ $current_page = basename($_SERVER['PHP_SELF']); // Получаем текущи
         {
             echo "<a href=\"../AccreditationManag/AccreditationManag.php\">
                     <div class=\"nav-button " . ($current_page == 'AccreditationManag.php' ? 'active' : '') . "\">
-                        <i class=\"fas fi fi-sr-graduation-cap\"></i><span>Акредитація</span>
+                        <i class=\"fas fi fi-sr-graduation-cap\"></i><span>Атестація</span>
                     </div>
                   </a>";
         }

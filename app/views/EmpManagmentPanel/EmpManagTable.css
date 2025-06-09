@@ -242,3 +242,7 @@ button:hover {
 .custom-backdrop.show {
   opacity: 1;
 }
+
+.inactive-row {
+    opacity: 0.5;
+}

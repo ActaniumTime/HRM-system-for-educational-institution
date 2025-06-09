@@ -32,7 +32,12 @@
 
                 foreach ($Courses as $course)
                 {   
-                    echo "<tr class=\"table-row\">";
+                    $tempEmp = new Employer($connection);
+                    $tempEmp->loadByID($course->getEmployerID());
+                    $statusClass = $tempEmp->getCurrentStatus() === 'Inactive' ? 'inactive-row' : '';
+                    $status = $tempEmp->getCurrentStatus() === 'Inactive' ? 'inactive' : 'active';
+
+                    echo "<tr class=\"table-row {$statusClass}\" data-status=\"$status\">";
                     echo "<th scope=\"row\" style=\"border-radius: 36px 0px 0px 36px;\" >" . $counter++ . "</th>";
                     echo "<td><img src=\"../../../Files/photos/{$emp->getAvatarByID($course->getEmployerID())}\" alt=\"User Photo\" class=\"rounded-circle\" width=\"50\" height=\"50\"  id=\"employerAvatar\"></td>";
                     echo "<td>{$emp->getEmpNameByID($course->getEmployerID())}</td>";

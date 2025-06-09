@@ -31,7 +31,7 @@
                     foreach ($documentList as $document)
                     {   
                         echo "<tr class=\"table-row\">";
-                        echo "<th scope=\"row\" >" . $counter++ . "</th>";
+                        echo "<th scope=\"row\" style=\"border-radius: 36px 0px 0px 36px;\" >" . $counter++ . "</th>";
                         echo "<td>{$document->getDocumentID()}</td>";
                         echo "<td>{$document->getDocumentName()}</td>";
                         echo "<td>{$document->getSphere()}</td>";

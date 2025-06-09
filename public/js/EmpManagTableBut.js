@@ -176,6 +176,14 @@ document.addEventListener('DOMContentLoaded', () => {
                         `;
                     }
 
+                    let tempEmpStatus = '';
+                    if(employer.currentStatus === "Inactive"){
+                        tempEmpStatus = 'inactive-row';
+                        row.classList.add(tempEmpStatus); 
+                        row.setAttribute('data-status', employer.currentStatus);
+                    }
+
+
                     row.innerHTML = `
                         <th scope="row" style="border-radius: 36px 0px 0px 36px;">${index + 1}</th>
                         <td><img src="../../../Files/photos/${employer.avatar}" alt="User Photo" class="rounded-circle" width="50" height="50" id="employerAvatar"></td>

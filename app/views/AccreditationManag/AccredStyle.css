@@ -436,3 +436,7 @@ button:hover {
         padding: 16px;
     }
 }
+
+.inactive-row {
+    opacity: 0.5;
+}

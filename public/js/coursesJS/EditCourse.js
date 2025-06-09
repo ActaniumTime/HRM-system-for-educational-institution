@@ -43,3 +43,60 @@ document.getElementById('EditCourseModal_EditForm').addEventListener('submit', f
         });
 
     });
+
+
+    
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const button = document.getElementById("toggleFilterBtn");
+        const table = document.getElementById("employeeTable");
+        const allRows = Array.from(table.querySelectorAll("tr"));
+        let state = 0; // 0: Active, 1: Inactive, 2: All
+
+        function updateTable() {
+            let visibleRows = [];
+
+            allRows.forEach(row => {
+                const isInactive = row.classList.contains("inactive-row");
+
+                switch (state) {
+                    case 0: // Only active
+                        row.style.display = isInactive ? "none" : "";
+                        if (!isInactive) visibleRows.push(row);
+                        break;
+                    case 1: // Only inactive
+                        row.style.display = isInactive ? "" : "none";
+                        if (isInactive) visibleRows.push(row);
+                        break;
+                    case 2: // All
+                        row.style.display = "";
+                        visibleRows.push(row);
+                        break;
+                }
+            });
+
+            visibleRows.forEach((row, index) => {
+                const cell = row.querySelector("th[scope='row']");
+                if (cell) cell.textContent = index + 1;
+            });
+
+            switch (state) {
+                case 0:
+                    button.innerHTML = '<i class="fi fi-sr-delete-user no-click">';
+                    break;
+                case 1:
+                    button.innerHTML = '<i class="fi fi-sr-people-line no-click">';
+                    break;
+                case 2:
+                    button.innerHTML = '<i class="fi fi-sr-user-add no-click">';
+                    break;
+            }
+        }
+
+        button.addEventListener("click", () => {
+            state = (state + 1) % 3;
+            updateTable();
+        });
+
+        updateTable(); 
+    });

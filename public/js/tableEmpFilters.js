@@ -92,28 +92,36 @@ document.addEventListener("DOMContentLoaded", () => {
         rows.forEach((row) => table.appendChild(row));
     }
 
-    function resetFilters() {
+function resetFilters() {
+    document.getElementById("accessLevelFilter").value = "";
+    document.getElementById("genderFilter").value = "";
+    document.getElementById("departmentFilter").value = "";
+    document.getElementById("employmentTypeFilter").value = "";
 
-        document.getElementById("accessLevelFilter").value = "";
-        document.getElementById("genderFilter").value = "";
-        document.getElementById("departmentFilter").value = "";
-        document.getElementById("employmentTypeFilter").value = "";
-    
-       
-        const rows = getTableRows();
-        rows.forEach((row) => {
-            row.style.display = ""; 
-        });
-    
+    const rows = getTableRows();
+    let visibleIndex = 1;
 
-        rows.sort((a, b) => parseInt(a.cells[0].textContent.trim()) - parseInt(b.cells[0].textContent.trim()));
-        rows.forEach((row) => table.appendChild(row));
-    
+    rows.forEach((row) => {
+        const isInactive = row.classList.contains("inactive-row");
+        row.style.display = isInactive ? "none" : "";
 
-        Object.keys(sortState).forEach((key) => {
-            sortState[key] = 0;
-        });
-    }
+        const cell = row.querySelector("th[scope='row']");
+        if (!isInactive && cell) {
+            cell.textContent = visibleIndex++;
+        }
+    });
+
+    // Сортировка по изначальному порядку
+    rows.sort((a, b) => a.dataset.originalIndex - b.dataset.originalIndex);
+    rows.forEach((row) => table.appendChild(row));
+
+    // Сброс состояний сортировки
+    Object.keys(sortState).forEach((key) => {
+        sortState[key] = 0;
+    });
+}
+
+
     
 });
 
@@ -124,3 +132,60 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+
+document.addEventListener("DOMContentLoaded", function () {
+    const button = document.getElementById("toggleFilterBtn");
+    const table = document.getElementById("employeeTable");
+    let state = 0; // 0: Active, 1: Inactive, 2: All
+
+    function updateTable() {
+        // Получаем актуальные строки таблицы (исключая заголовок)
+        const rows = Array.from(table.querySelectorAll("tbody tr"));
+        let visibleIndex = 1;
+
+        rows.forEach(row => {
+            const isInactive = row.classList.contains("inactive-row");
+
+            let shouldShow = false;
+            switch (state) {
+                case 0:
+                    shouldShow = !isInactive;
+                    break;
+                case 1:
+                    shouldShow = isInactive;
+                    break;
+                case 2:
+                    shouldShow = true;
+                    break;
+            }
+
+            row.style.display = shouldShow ? "" : "none";
+
+            // Обновляем номер строки, если она отображается
+            const cell = row.querySelector("th[scope='row']");
+            if (shouldShow && cell) {
+                cell.textContent = visibleIndex++;
+            }
+        });
+
+        // Обновляем иконку кнопки
+        switch (state) {
+            case 0:
+                button.innerHTML = '<i class="fi fi-sr-delete-user no-click"></i>';
+                break;
+            case 1:
+                button.innerHTML = '<i class="fi fi-sr-people-line no-click"></i>';
+                break;
+            case 2:
+                button.innerHTML = '<i class="fi fi-sr-user-add no-click"></i>';
+                break;
+        }
+    }
+
+    button.addEventListener("click", () => {
+        state = (state + 1) % 3;
+        updateTable();
+    });
+
+    updateTable();
+});

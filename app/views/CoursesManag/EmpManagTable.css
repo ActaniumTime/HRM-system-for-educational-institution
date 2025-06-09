@@ -371,3 +371,7 @@ button:hover {
 .custom-btn:hover svg {
     fill: #303030;
 }
+
+.inactive-row {
+    opacity: 0.5;
+}

@@ -745,3 +745,7 @@ p {
     background-image: none;
 }
 
+.inactive-row {
+    opacity: 0.5;
+}
+

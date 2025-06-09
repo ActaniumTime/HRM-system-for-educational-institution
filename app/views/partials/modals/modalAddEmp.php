@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="employerModalLabel">Employer Details</h5>
+                <h5 class="modal-title" id="employerModalLabel">Додати співробітника</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -144,6 +144,7 @@
                                     <label for="department" class="form-label">Тип документа</label>
                                     <select class="form-control" id="docType" name="docType" required>
                                         <option value="Контракт про працевлаштування">Контракт про працевлаштування</option>
+                                        <option value="Наказ із звільнення">Звільнення</option>
                                     </select>
                                 </div>
                             </div>

@@ -1,92 +1,128 @@
+document.addEventListener("DOMContentLoaded", () => {
+    const table = document.getElementById("employeeTable");
+    const buttonStateSort = document.getElementById("sortByState");
+    const buttonDateBegin = document.getElementById("sortByDateBegin");
+    const buttonDateEnd = document.getElementById("sortByDateEnd");
+    const resetButton = document.getElementById("resetFilters");
 
-    const tableBody = document.getElementById("employeeTable");
-    const rowsOriginalOrder = Array.from(tableBody.rows); 
+    const sortState = {
+        state: 0,
+        dateBegin: 0,
+        dateEnd: 0,
+    };
 
-    const filterBtn = document.getElementById("sortByState");
-    const tableRows = document.querySelectorAll("#employeeTable .table-row");
-    const states = ["Ongoing", "Waiting", "Complited"];
-    let filterIndex = 0;
+    const stateCycle = ["Ongoing", "Waiting", "Complited"];
+    let currentStateIndex = 0;
 
-    filterBtn.addEventListener("click", () => {
-        if (filterIndex === 3) {
-            showAllRows();
-            filterIndex = 0;
-            return;
-        }
-
-        const currentState = states[filterIndex];
-        tableRows.forEach(row => {
-            const statusCell = row.querySelector("td:nth-child(10) div");
-            row.style.display = (statusCell && statusCell.id === currentState) ? "" : "none";
+    function saveOriginalOrder() {
+        Array.from(table.rows).forEach((row, index) => {
+            if (row.cells.length > 0) {
+                row.dataset.originalIndex = index;
+            }
         });
+    }
 
-        filterIndex++;
-    });
+    saveOriginalOrder();
 
-    const sortByDateBegin = document.getElementById("sortByDateBegin");
-    let beginSortState = 0;
+    function getTableRows() {
+        return Array.from(table.rows).filter(row => row.cells.length > 0);
+    }
 
-    sortByDateBegin.addEventListener("click", () => {
-        if (beginSortState === 2) {
-            resetToOriginal();
-            beginSortState = 0;
+    function applyStateFilter() {
+        const rows = getTableRows();
+        if (sortState.state === 0) {
+            rows.forEach(row => row.style.display = "");
+        } else {
+            const targetState = stateCycle[currentStateIndex];
+            rows.forEach(row => {
+                const statusCell = row.querySelector("td:nth-child(10) div");
+                row.style.display = (statusCell && statusCell.id === targetState) ? "" : "none";
+            });
+        }
+        updateRowNumbers();
+    }
+
+    function sortByDate(columnIndex, key) {
+        sortState[key] = (sortState[key] + 1) % 3;
+
+        if (sortState[key] === 0) {
+            resetSort();
             return;
         }
 
-        const rows = Array.from(tableBody.rows).filter(row => row.style.display !== "none");
+        const ascending = sortState[key] === 1;
+        const rows = getTableRows().filter(row => row.style.display !== "none");
+
         rows.sort((a, b) => {
-            const aDate = new Date(a.cells[5].innerText.trim());
-            const bDate = new Date(b.cells[5].innerText.trim());
-            return beginSortState === 0 ? aDate - bDate : bDate - aDate;
+            const aDate = new Date(a.cells[columnIndex].textContent.trim());
+            const bDate = new Date(b.cells[columnIndex].textContent.trim());
+            return ascending ? aDate - bDate : bDate - aDate;
         });
 
-        redrawTable(rows);
-        beginSortState++;
-    });
+        rows.forEach(row => table.appendChild(row));
+        updateRowNumbers();
 
-    const sortByDateEnd = document.getElementById("sortByDateEnd");
-    let endSortState = 0;
+        Object.keys(sortState).forEach(k => {
+            if (k !== key) sortState[k] = 0;
+        });
+    }
 
-    sortByDateEnd.addEventListener("click", () => {
-        if (endSortState === 2) {
-            resetToOriginal();
-            endSortState = 0;
-            return;
-        }
+    function resetSort() {
+        const rows = getTableRows();
+        rows.sort((a, b) => a.dataset.originalIndex - b.dataset.originalIndex);
+        rows.forEach(row => table.appendChild(row));
+        updateRowNumbers();
+    }
 
-        const rows = Array.from(tableBody.rows).filter(row => row.style.display !== "none");
-        rows.sort((a, b) => {
-            const aDate = new Date(a.cells[6].innerText.trim());
-            const bDate = new Date(b.cells[6].innerText.trim());
-            return endSortState === 0 ? aDate - bDate : bDate - aDate;
+    function updateRowNumbers() {
+        const rows = getTableRows();
+        let visibleIndex = 1;
+
+        rows.forEach(row => {
+            if (row.style.display !== "none") {
+                const indexCell = row.querySelector("th[scope='row']");
+                if (indexCell) {
+                    indexCell.textContent = visibleIndex++;
+                }
+            }
+        });
+    }
+
+    function resetAllFilters() {
+        const rows = getTableRows();
+
+        rows.forEach(row => {
+            const isInactive = row.classList.contains("inactive-row");
+            row.style.display = isInactive ? "none" : "";
         });
 
-        redrawTable(rows);
-        endSortState++;
+        resetSort();
+
+        sortState.state = 0;
+        sortState.dateBegin = 0;
+        sortState.dateEnd = 0;
+        currentStateIndex = 0;
+    }
+
+    buttonStateSort.addEventListener("click", () => {
+        sortState.state = (sortState.state + 1) % 4;
+        currentStateIndex = (sortState.state - 1 + stateCycle.length) % stateCycle.length;
+        applyStateFilter();
     });
 
-    const resetFilters = document.getElementById("resetFilters");
-    resetFilters.addEventListener("click", () => {
-        showAllRows();
-        resetToOriginal();
-        filterIndex = 0;
-        beginSortState = 0;
-        endSortState = 0;
+    buttonDateBegin.addEventListener("click", () => {
+        sortByDate(5, "dateBegin");
     });
 
-    function showAllRows() {
-        tableRows.forEach(row => row.style.display = "");
-    }
+    buttonDateEnd.addEventListener("click", () => {
+        sortByDate(6, "dateEnd");
+    });
 
-    function redrawTable(rows) {
-        tableBody.innerHTML = "";
-        rows.forEach(row => tableBody.appendChild(row));
-    }
-
-    function resetToOriginal() {
-        redrawTable(rowsOriginalOrder);
-    }
+    resetButton.addEventListener("click", () => {
+        resetAllFilters();
+    });
 
     document.querySelectorAll('.no-click').forEach(element => {
         element.addEventListener('click', event => event.stopPropagation());
     });
+});
