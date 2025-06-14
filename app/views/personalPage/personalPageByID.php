@@ -177,7 +177,7 @@
 
                     
                     <div class="card p-4">
-                        <h5 class="mb-3 text-center">Усі курси та стажировки користувача</h5>
+                        <h5 class="mb-3 text-center">Усі курси та стажування користувача</h5>
                         <div class="table-responsive">
                         <table class="table table-hover align-middle">
                             <thead class="table-dark">
