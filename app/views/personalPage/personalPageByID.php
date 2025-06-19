@@ -35,7 +35,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Employees</title>
+    <title>Персональний кабінет співробітника</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css'>
 
@@ -266,7 +266,7 @@
                     <?php $currentYear = date('Y'); ?>
 
                     <div class="card p-4">
-                        <h5 class="mb-3 text-center">План із аккредитації співробітника</h5>                
+                        <h5 class="mb-3 text-center">План із атестації співробітника</h5>                
                         <div class="table-responsive">
                         <table class="table table-hover align-middle">
                             <thead class="table-dark">
@@ -449,7 +449,7 @@
                                             foreach ($documentList as $document)
                                             {   
                                                 echo "<tr class=\"table-row\">";
-                                                echo "<th scope=\"row\" >" . $counter++ . "</th>";
+                                                echo "<th scope=\"row\" style=\"border-radius: 36px 0px 0px 36px;\" >" . $counter++ . "</th>";
                                                 echo "<td>{$document->getDocumentID()}</td>";
                                                 echo "<td>{$document->getDocumentName()}</td>";
                                                 echo "<td>{$document->getSphere()}</td>";
@@ -468,6 +468,7 @@
 
                                                 echo "</tr>";
                                             }
+
 
                                         ?>
 

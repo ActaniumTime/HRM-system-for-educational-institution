@@ -389,8 +389,8 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
-                <button type="submit" class="btn btn-primary" id="saveAccreditation">Сохранить</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Відміна</button>
+                <button type="submit" class="btn btn-primary" id="saveAccreditation">Зберегти</button>
             </div>
         </div>
     </div>
